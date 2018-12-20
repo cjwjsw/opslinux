@@ -297,5 +297,4 @@ POST /customer/external/_bulk?pretty
 {"delete":{"_id":"AVqm6MURU67sF7xAeJ5S"}}
 ```
 
-
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
