@@ -19,7 +19,24 @@ GREEN: Great. Your cluster is fully operational. Elasticsearch is able to alloca
 
 ## 2. 获取集群中的节点列表
 ```
+#bash命令
+[root@localhost ~]# curl -XGET 'localhost:9200/_cat/nodes?v?pretty'
+192.168.56.138 192.168.56.138 6 91 0.01 d * Infant Terrible
+
+#kibana命令
+GET /_cat/nodes?v
 ```
 
+## 3. 创建索引
+```
+#bash命令
+[root@localhost ~]# curl -XPUT 'localhost:9200/customer?pretty&pretty'
+{
+  "acknowledged" : true
+}
+
+#kibana命令
+PUT /customer?pretty
+```
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
