@@ -174,7 +174,20 @@ curl -XDELETE 'localhost:9200/customer/external/1?pretty?pretty'
 DELETE /customer/external/1?pretty
 
 返回示例
-
+{"found":true,"_index":"customer","_type":"external","_id":"1","_version":6,"_shards":{"total":2,"successful":1,"failed":0}}
 ```
+
+## 10. 批量查询文档
+```bash
+#bash命令：
+curl -XGET 'localhost:9200/customer/ external/_search?pretty'
+
+#kibana命令：
+GET /customer/external/_search?pretty
+```
+
+
+
+
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
