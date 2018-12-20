@@ -29,3 +29,38 @@ print res[0]['_source']['name']
 [{u'_score': 0.30685282, u'_type': u'external', u'_id': u'2', u'_index': u'customer', u'_source': {u'age': 20, u'name': u'Tom'}}]
 Tom
 ```
+# 三、原始数据
+```
+[root@localhost ~]# curl -XGET 'localhost:9200/customer/external/_search?pretty' -H 'Content-Type: application/json' -d'
+> {
+>     "query": {
+>         "match" : {
+>             "name":"Tom"
+>         }
+>     }
+> }
+> '
+{
+  "took" : 5,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1,
+    "max_score" : 0.30685282,
+    "hits" : [ {
+      "_index" : "customer",
+      "_type" : "external",
+      "_id" : "2",
+      "_score" : 0.30685282,
+      "_source" : {
+        "name" : "Tom",
+        "age" : 20
+      }
+    } ]
+  }
+}
+```
