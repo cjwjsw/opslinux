@@ -196,6 +196,40 @@ curl -XGET 'localhost:9200/customer/external/_search?pretty'
 GET /customer/external/_search?pretty
 ```
 
+返回示例
+```
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "customer",
+      "_type" : "external",
+      "_id" : "2",
+      "_score" : 1.0,
+      "_source" : {
+        "name" : "Tom",
+        "age" : 20
+      }
+    }, {
+      "_index" : "customer",
+      "_type" : "external",
+      "_id" : "1",
+      "_score" : 1.0,
+      "_source" : {
+        "name" : "John Doe"
+      }
+    } ]
+  }
+}
+```
 
 
 
