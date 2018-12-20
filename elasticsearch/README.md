@@ -168,10 +168,10 @@ POST /customer/external/1/_update?pretty
 ## 9. 删除文档
 ```bash
 #bash命令
-curl -XDELETE 'localhost:9200/customer/external/2?pretty?pretty'
+curl -XDELETE 'localhost:9200/customer/external/1?pretty?pretty'
 
 #kibana命令
-DELETE /customer/external/2?pretty
+DELETE /customer/external/1?pretty
 
 返回示例
 
