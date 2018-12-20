@@ -60,7 +60,27 @@ GET /_cat/indices?v
 描述： 该条指令用于获取所有索引列表
 ```
 
-## 5. 索引文档
+## 5. 删除索引
+```bash
+
+#bash命令：
+curl -XDELETE 'localhost:9200/customer?pretty&pretty'
+
+#kibana命令：
+DELETE /customer?pretty
+
+返回示例：
+{
+  "acknowledged" : true
+}
+
+描述： 通过添加 * 通配符，我们可以删除所有形如 customer2017-3-8-11-26-58的索引。
+
+#删除所有所有
+curl -XDELETE 'localhost:9200/*?pretty&pretty'
+```
+
+## 6. 索引文档
 ```bash
 
 #bash命令
@@ -93,7 +113,7 @@ PUT /customer/external/1?pretty
 描述：索引中可以存在不同的类型，我们刚刚便创建了类型 “external”及其文档，大家可以把它理解为关系型数据库中的表和列。索引时 ID 字段是可选的，假如我们没有指定，es 将自动为我们生成 ID（此种情况下需要使用 POST HTTPVerb）。
 ```
 
-## 6. 查询文档
+## 7. 查询文档
 ```
 #bash命令
 curl -XGET 'localhost:9200/customer/external/1?pretty&pretty'
@@ -114,24 +134,6 @@ GET /customer/external/1?pretty
 }
 ```
 
-## 7. 删除索引
-```bash
 
-#bash命令：
-curl -XDELETE 'localhost:9200/customer?pretty&pretty'
-
-#kibana命令：
-DELETE /customer?pretty
-
-返回示例：
-{
-  "acknowledged" : true
-}
-
-描述： 通过添加 * 通配符，我们可以删除所有形如 customer2017-3-8-11-26-58的索引。
-
-#删除所有所有
-curl -XDELETE 'localhost:9200/*?pretty&pretty'
-```
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
