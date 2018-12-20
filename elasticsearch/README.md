@@ -134,6 +134,47 @@ GET /customer/external/1?pretty
 }
 ```
 
+## 8.更新文档
+```bash
+#bash命令：
+curl -XPOST 'localhost:9200/customer/external/1/_update?pretty&pretty' -H 'Content-Type: application/json' -d'
+{
+  "doc": { "name": "Jane Doe", "age": 20 }
+}
+'
 
+#kibana命令：
+POST /customer/external/1/_update?pretty
+{
+  "doc": { "name": "Jane Doe", "age": 20 }
+}
+
+返回示例：
+{
+  "_index" : "customer",
+  "_type" : "external",
+  "_id" : "1",
+  "_version" : 2,
+  "_shards" : {
+    "total" : 2,
+    "successful" : 1,
+    "failed" : 0
+  }
+}
+
+描述： 我们刚才针对之前录入的 customer 的某条 id 为 1 的数据进行了更新，并扩充了其属性。值得注意的是，当我们执行更新操作时，es 实际上是对索引的文档进行了删除并重建的操作，并不是真正意义上的更新。
+```
+
+## 9. 删除文档
+```bash
+#bash命令
+curl -XDELETE 'localhost:9200/customer/external/2?pretty?pretty'
+
+#kibana命令
+DELETE /customer/external/2?pretty
+
+返回示例
+
+```
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
