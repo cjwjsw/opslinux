@@ -194,10 +194,8 @@ curl -XGET 'localhost:9200/customer/external/_search?pretty'
 
 #kibana命令：
 GET /customer/external/_search?pretty
-```
 
 返回示例
-```
 {
   "took" : 8,
   "timed_out" : false,
