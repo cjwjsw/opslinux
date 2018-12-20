@@ -32,3 +32,7 @@ for item in resp_docs:
 [root@localhost ~]# python result_query.py
 {u'age': 20, u'name': u'Tom'}
 ```
+
+参考资料:
+
+https://www.cnblogs.com/kongzhagen/p/7899346.html
