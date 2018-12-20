@@ -229,7 +229,65 @@ GET /customer/external/_search?pretty
 }
 ```
 
+## 11. 字符串查询文档
+```
+#bash命令： 
+curl -XGET 'localhost:9200/customer/external/_search?q=name:Jane'
 
+#kibana命令：
+GET /customer/external/_search?q=name:Jane Doe?pretty
+
+描述： 字符串查询即是一种条件查询，q=name:Jane 即意味着我们想要查询 external 类型中属性 name 值含有 Jane 的文档，es 会自动将相关匹配返回给我们。假如想要了解更多，请参见 Simple Query String Query。
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#query-dsl-simple-query-string-query
+```
+
+## 12. DSL条件查询文档
+```
+#bash命令：
+curl -XGET 'localhost:9200/customer/external/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+            "name":"Jane"
+        }
+    }
+}
+'
+
+#kibana命令：
+GET /customer/external/_search?pretty
+{
+    "query": {
+        "match" : {
+            "name":"Joe"
+        }
+    }
+}
+```
+
+## 13. 批量更新文档
+```
+#bash命令：
+curl -XPOST 'localhost:9200/customer/external/_bulk?pretty&pretty' -H 'Content-Type: application/json' -d'
+{"index":{"_id":"AVqm6MRTU67sF7xAeJ5R"}}
+{"name": "John Doe" }
+{"index":{"_id":"AVqm6MURU67sF7xAeJ5S"}}
+{"name": "Jane Doe" }
+{"update":{"_id":"AVqm6MRTU67sF7xAeJ5R"}}
+{"doc": { "name": "John Doe becomes Jane Doe" } }
+{"delete":{"_id":"AVqm6MURU67sF7xAeJ5S"}}
+'
+
+#kibana命令：
+POST /customer/external/_bulk?pretty
+{"index":{"_id":"AVqm6MRTU67sF7xAeJ5R"}}
+{"name": "John Doe" }
+{"index":{"_id":"AVqm6MURU67sF7xAeJ5S"}}
+{"name": "Jane Doe" }
+{"update":{"_id":"AVqm6MRTU67sF7xAeJ5R"}}
+{"doc": { "name": "John Doe becomes Jane Doe" } }
+{"delete":{"_id":"AVqm6MURU67sF7xAeJ5S"}}
+```
 
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
