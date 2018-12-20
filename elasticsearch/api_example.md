@@ -72,3 +72,6 @@ curl -XGET 'localhost:9200/customer/external/_search?pretty' -H 'Content-Type: a
   }
 }
 ```
+
+
+参考资料：  https://www.cnblogs.com/kongzhagen/p/7899346.html   elasticsearch DSL查询
