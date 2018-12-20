@@ -237,6 +237,14 @@ curl -XGET 'localhost:9200/customer/external/_search?q=name:Tom'
 #kibana命令：
 GET /customer/external/_search?q=name:Tom?pretty
 
+
+返回示例
+{"took":13,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":0.30685282,"hits":[{"_index":"customer","_type":"external","_id":"2","_score":0.30685282,"_source":
+{
+  "name": "Tom",
+    "age": 20
+}
+
 描述： 字符串查询即是一种条件查询，q=name:Jane 即意味着我们想要查询 external 类型中属性 name 值含有 Jane 的文档，es 会自动将相关匹配返回给我们。假如想要了解更多，请参见 Simple Query String Query。
 https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html#query-dsl-simple-query-string-query
 ```
