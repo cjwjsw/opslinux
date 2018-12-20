@@ -93,15 +93,17 @@ curl -XPUT 'localhost:9200/customer/external/1?pretty&pretty' -H 'Content-Type: 
 #再插入另外一条
 curl -XPUT 'localhost:9200/customer/external/2?pretty&pretty' -H 'Content-Type: application/json' -d'
 {
-  "name": "Tom"
+  "name": "Tom",
+    "age": 20 
 }
 '
-注意这里更改了ID为2
+#注意这里更改了ID为2
 
 #kibana命令
 PUT /customer/external/1?pretty
 {
-  "name": "John Doe"
+  "name": "John Doe",
+  "age": 20
 }
 
 返回示例：
