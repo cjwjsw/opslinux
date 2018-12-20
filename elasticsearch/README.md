@@ -39,4 +39,21 @@ GET /_cat/nodes?v
 PUT /customer?pretty
 ```
 
+## 4、获取索引
+```bash
+#bash命令：
+[root@localhost ~]# curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+health status index    pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   indexdb    5   1          1            0      3.7kb          3.7kb
+yellow open   my-index   5   1          2            0      7.3kb          7.3kb
+yellow open   my_index   5   1          2            0      6.9kb          6.9kb
+yellow open   customer   5   1          0            0       795b           795b
+
+#kibana命令：
+GET /_cat/indices?v
+
+ 描述： 该条指令用于获取所有索引列表
+```
+
+## 5. 索引文档
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
