@@ -180,7 +180,7 @@ DELETE /customer/external/1?pretty
 ## 10. 批量查询文档
 ```bash
 #bash命令：
-curl -XGET 'localhost:9200/customer/ external/_search?pretty'
+curl -XGET 'localhost:9200/customer/external/_search?pretty'
 
 #kibana命令：
 GET /customer/external/_search?pretty
