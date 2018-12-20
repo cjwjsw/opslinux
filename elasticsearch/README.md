@@ -46,7 +46,8 @@ PUT /customer?pretty
 ## 4、获取索引
 ```bash
 #bash命令：
-[root@localhost ~]# curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+
 health status index    pri rep docs.count docs.deleted store.size pri.store.size
 yellow open   indexdb    5   1          1            0      3.7kb          3.7kb
 yellow open   my-index   5   1          2            0      7.3kb          7.3kb
@@ -95,7 +96,7 @@ PUT /customer/external/1?pretty
 ## 6. 查询文档
 ```
 #bash命令
-[root@localhost ~]# curl -XGET 'localhost:9200/customer/external/1?pretty&pretty'
+curl -XGET 'localhost:9200/customer/external/1?pretty&pretty'
 
 #kibana命令
 GET /customer/external/1?pretty
@@ -130,7 +131,7 @@ DELETE /customer?pretty
 描述： 通过添加 * 通配符，我们可以删除所有形如 customer2017-3-8-11-26-58的索引。
 
 #删除所有所有
-[root@localhost ~]# curl -XDELETE 'localhost:9200/*?pretty&pretty'
+curl -XDELETE 'localhost:9200/*?pretty&pretty'
 ```
 
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
