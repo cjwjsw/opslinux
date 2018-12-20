@@ -3,7 +3,8 @@
 ## 1. 检查 es 集群健康状态
 ```bash
 #bash命令
-[root@localhost ~]# curl -XGET 'localhost:9200/_cat/health?v&pretty'
+curl -XGET 'localhost:9200/_cat/health?v&pretty'
+
 epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
 1545296116 03:55:16  elasticsearch yellow          1         1     15  15    0    0       15             0                  -                 50.0%
 
@@ -20,7 +21,8 @@ GREEN: Great. Your cluster is fully operational. Elasticsearch is able to alloca
 ## 2. 获取集群中的节点列表
 ```
 #bash命令
-[root@localhost ~]# curl -XGET 'localhost:9200/_cat/nodes?v?pretty'
+curl -XGET 'localhost:9200/_cat/nodes?v?pretty'
+
 192.168.56.138 192.168.56.138 6 91 0.01 d * Infant Terrible
 
 #kibana命令
@@ -30,13 +32,15 @@ GET /_cat/nodes?v
 ## 3. 创建索引
 ```
 #bash命令
-[root@localhost ~]# curl -XPUT 'localhost:9200/customer?pretty&pretty'
-{
-  "acknowledged" : true
-}
+curl -XPUT 'localhost:9200/customer?pretty&pretty'
 
 #kibana命令
 PUT /customer?pretty
+
+返回示例：
+{
+  "acknowledged" : true
+}
 ```
 
 ## 4、获取索引
@@ -52,7 +56,7 @@ yellow open   customer   5   1          0            0       795b           795b
 #kibana命令：
 GET /_cat/indices?v
 
- 描述： 该条指令用于获取所有索引列表
+描述： 该条指令用于获取所有索引列表
 ```
 
 ## 5. 索引文档
