@@ -31,17 +31,18 @@ Tom
 ```
 # 三、原始数据
 ```
-[root@localhost ~]# curl -XGET 'localhost:9200/customer/external/_search?pretty' -H 'Content-Type: application/json' -d'
-> {
->     "query": {
->         "match" : {
->             "name":"Tom"
->         }
->     }
-> }
-> '
+curl -XGET 'localhost:9200/customer/external/_search?pretty' -H 'Content-Type: application/json' -d'
 {
-  "took" : 5,
+    "query": {
+        "match" : {
+            "name":"Tom"
+        }
+    }
+}
+'
+
+{
+  "took" : 4,
   "timed_out" : false,
   "_shards" : {
     "total" : 5,
