@@ -56,4 +56,28 @@ GET /_cat/indices?v
 ```
 
 ## 5. 索引文档
+```bash
+
+#bash命令
+curl -XPUT 'localhost:9200/customer/external/1?pretty&pretty' -H 'Content-Type: application/json' -d'
+{
+  "name": "John Doe"
+}
+'
+
+#kibana命令
+PUT /customer/external/1?pretty
+{
+  "name": "John Doe"
+}
+
+
+返回示例：
+
+
+描述：索引中可以存在不同的类型，我们刚刚便创建了类型 “external”及其文档，大家可以把它理解为关系型数据库中的表和列。索引时 ID 字段是可选的，假如我们没有指定，es 将自动为我们生成 ID（此种情况下需要使用 POST HTTPVerb）。
+```
+
+
+
 参考文档： https://www.cnblogs.com/Wddpct/archive/2017/03/26/6623191.html
