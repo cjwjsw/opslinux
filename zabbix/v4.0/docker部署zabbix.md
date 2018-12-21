@@ -17,3 +17,8 @@ https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 开始部署zabbix：
 192.168.56.138上操作：
+
+
+参考资料：
+
+http://blog.51cto.com/passed/2321191
