@@ -35,4 +35,24 @@ resp_docs = resp['hits']['hits']
 
 for item in resp_docs:
     print(item['_source'])
+    
+    
+注意，这里的now 是es自动获取的时间
+```
+# 二、运行结果
+```
+python res_new.py agent-statistics-2018.12.21 310003258
+
+2018-12-21 17:20:47
+{'query': {'range': {'time': {'lt': '2018-12-21 17:20:47'}}}, '_source': ['sn', 'source', 'epod.state']}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C002116', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11B364348', u'epod': {u'state': 400}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ121134851', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C013054', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11A143240', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG121222146', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG121248760', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11B367195', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C223570', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11C046516', u'epod': {u'state': 200}}
 ```
