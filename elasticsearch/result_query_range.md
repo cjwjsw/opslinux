@@ -87,7 +87,10 @@ query = {
         { "range": { "age": { "gte": "10" }}}
       ]
     }
-  }
+  },
+  "sort": [ { "age": { "order": "desc" } } ],
+  "size": 100,
+  "_source" : ["age"]
 }
 
 resp = es.search(index, body=query)
@@ -100,8 +103,10 @@ for item in resp_docs:
 # 四、运行结果
 ```
 [root@localhost ~]# python 1.py customer Tom
-2018-12-21 22:37:55
-{u'age': 20, u'name': u'Tom'}
+2018-12-21 22:48:05
+{u'age': 200}
+{u'age': 100}
+{u'age': 20}
 ```
 
 参考资料：
