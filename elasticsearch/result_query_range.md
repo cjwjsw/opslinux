@@ -39,7 +39,7 @@ for item in resp_docs:
     
 注意，这里的now 是es自动获取的时间
 ```
-# 二、运行结果
+## 运行结果
 ```
 python res_new.py agent-statistics-2018.12.21 310003258
 
@@ -57,7 +57,7 @@ python res_new.py agent-statistics-2018.12.21 310003258
 ```
 
 
-# 三、多个条件
+# 二、多个条件
 ```
 [root@localhost ~]# cat 1.py
 #!/usr/bin/env python
@@ -100,7 +100,7 @@ for item in resp_docs:
     print(item['_source'])
 ```
 
-# 四、运行结果
+## 运行结果
 ```
 [root@localhost ~]# python 1.py customer Tom
 2018-12-21 22:48:05
