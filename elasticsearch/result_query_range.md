@@ -43,16 +43,15 @@ for item in resp_docs:
 ```
 python res_new.py agent-statistics-2018.12.21 310003258
 
-2018-12-21 17:20:47
 {'query': {'range': {'time': {'lt': '2018-12-21 17:20:47'}}}, '_source': ['sn', 'source', 'epod.state']}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C002116', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11B364348', u'epod': {u'state': 400}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ121134851', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C013054', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11A143240', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG121222146', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG121248760', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11B367195', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPZ11C223570', u'epod': {u'state': 200}}
-{u'source': u'/data/log/statistics/task.log', u'sn': u'OCPG11C046516', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'C002116', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'B364348', u'epod': {u'state': 400}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'1134851', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'C013054', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'A143240', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'1222146', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'1248760', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'B367195', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'C223570', u'epod': {u'state': 200}}
+{u'source': u'/data/log/statistics/task.log', u'sn': u'C046516', u'epod': {u'state': 200}}
 ```
