@@ -57,6 +57,52 @@ python res_new.py agent-statistics-2018.12.21 310003258
 ```
 
 
+# 三、多个条件
+```
+#!/usr/bin/env python
+# _*_ coding:utf-8 _*_
+
+from datetime import datetime
+from elasticsearch import Elasticsearch
+import json
+import sys
+
+es = Elasticsearch([{'host':'10.33.99.31','port':9200}])
+
+index = sys.argv[1]
+sn = sys.argv[2]
+now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print now
+
+#bool查询
+args = {
+   "query": {
+       "bool": {
+         "must": [
+          {
+             "match": {
+                 "sn": sn
+             }
+           }
+       ],
+       "filter": {
+        "range" : {
+            "time": {
+                "lt": now
+            }
+          }
+       }
+    }
+  }
+}
+
+resp = es.search(index, body=args)
+resp_docs = resp['hits']['hits']
+
+for item in resp_docs:
+    print(item['_source'])
+```
+
 参考资料：
 
 https://www.cnblogs.com/sunfie/p/6653778.html
