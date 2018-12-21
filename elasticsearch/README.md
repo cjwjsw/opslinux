@@ -86,7 +86,8 @@ curl -XDELETE 'localhost:9200/*?pretty&pretty'
 #bash命令
 curl -XPUT 'localhost:9200/customer/external/1?pretty&pretty' -H 'Content-Type: application/json' -d'
 {
-  "name": "John Doe"
+  "name": "John",
+  "age": 18
 }
 '
 
