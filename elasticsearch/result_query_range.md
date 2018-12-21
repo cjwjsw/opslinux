@@ -59,6 +59,7 @@ python res_new.py agent-statistics-2018.12.21 310003258
 
 # 三、多个条件
 ```
+[root@localhost ~]# cat 1.py
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
@@ -67,40 +68,40 @@ from elasticsearch import Elasticsearch
 import json
 import sys
 
-es = Elasticsearch([{'host':'10.33.99.31','port':9200}])
+# es = Elasticsearch([{'host':'10.33.99.31','port':9200}])
+es = Elasticsearch()
 
 index = sys.argv[1]
-sn = sys.argv[2]
+key = sys.argv[2]
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print now
 
 #bool查询
-args = {
-   "query": {
-       "bool": {
-         "must": [
-          {
-             "match": {
-                 "sn": sn
-             }
-           }
-       ],
-       "filter": {
-        "range" : {
-            "time": {
-                "lt": now
-            }
-          }
-       }
+query = {
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "name":      key     }}
+      ],
+      "filter": [
+        { "range": { "age": { "gte": "10" }}}
+      ]
     }
   }
 }
 
-resp = es.search(index, body=args)
+resp = es.search(index, body=query)
 resp_docs = resp['hits']['hits']
 
 for item in resp_docs:
     print(item['_source'])
+```
+
+# 四、运行结果
+```
+[root@localhost ~]# python 1.py customer Tom
+2018-12-21 22:37:55
+{u'age': 20, u'name': u'Tom'}
 ```
 
 参考资料：
