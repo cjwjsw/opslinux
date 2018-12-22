@@ -21,6 +21,11 @@ pip install requests
 
 2、测试脚本是否能正常发送消息
 python /usr/lib/zabbix/alertscripts/wechat_alert.py 2 test_message
+
+k0YpqvW1EiJwK2N4znNpU3XFKNKDoUrvaeJQJE8oP1xf-tlof4aC9l0tBzN1_n0K__fKtqO3E6UsdrglmcCGP_iHOc4bfnWZ92XeEV6PVtcEfTs3-b8GJuo9qycBySuXl7DSzGyy9O-yrEzCw7QeVV2xv0ai4zHdbI2v1J8oRJ4LcC_shNEnqAgcrunHm731lD2J0RnQETTEB7JoyYkaeg
+
+{"errcode":0,"errmsg":"ok","invaliduser":""}    ----这表示成功发送了消息
+
 ```
 
 ## 三、模拟告警
