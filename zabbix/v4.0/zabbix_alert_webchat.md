@@ -32,11 +32,11 @@ k0YpqvW1EiJwK2N4znNpU3XFKNKDoUrvaeJQJE8oP1xf-tlof4aC9l0tBzN1_n0K__fKtqO3E6Usdrgl
 
 ## 三、配置触发器告警
 
-  ![触发器设置01](https://github.com/Lancger/opslinux/blob/master/images/action-01.png)
+  ![触发器设置01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action01.png)
 
-  ![触发器设置02](https://github.com/Lancger/opslinux/blob/master/images/action-01.png)
+  ![触发器设置02](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action02.png)
 
-  ![触发器设置03](https://github.com/Lancger/opslinux/blob/master/images/action-01.png)
+  ![触发器设置03](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action03.png)
 
 
 ## 四、模拟告警
