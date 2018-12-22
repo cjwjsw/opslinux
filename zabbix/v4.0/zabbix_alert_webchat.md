@@ -7,6 +7,8 @@ http://blog.51cto.com/itnihao/1733245
 ## 二、配置微信告警
 ```
 1、下载微信告警脚本
+cd /tmp
+
 git clone https://github.com/Lancger/Wechat-Alert-for-Zabbix.git
 
 cp /tmp/Wechat-Alert-for-Zabbix/wechat_alert.py /usr/lib/zabbix/alertscripts
@@ -18,7 +20,7 @@ chmod +x /usr/lib/zabbix/alertscripts/wechat_alert.py
 pip install requests
 
 2、测试脚本是否能正常发送消息
-python wechat_alert.py 2 test_message
+python /usr/lib/zabbix/alertscripts/wechat_alert.py 2 test_message
 ```
 
 ## 三、模拟告警
