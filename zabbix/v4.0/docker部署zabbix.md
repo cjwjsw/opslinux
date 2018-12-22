@@ -20,6 +20,8 @@ zabbix: 4.0.1
 192.168.56.138上操作：
 
 ```
+[root@server ~]# useradd mysql
+
 [root@server ~]# mkdir -p /data/zabbix/mysql
 
 [root@server ~]# chown -R mysql.mysql  /data/zabbix/mysql
