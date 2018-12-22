@@ -59,12 +59,12 @@ zabbix: 4.0.1
 
 ## 三、开始部署zabbix_agent
 ```
-[root@agent ~]# docker run --name zabbix-agent \
+[root@server ~]# docker run --name zabbix-agent \
             -e ZBX_HOSTNAME="www.web01.com" \
             -e ZBX_SERVER_HOST="192.168.56.138" \
             -e ZBX_METADATA="harbor" \
             -p 10050:10050 \
-            --privileged
+            --privileged \
             -d zabbix/zabbix-agent:latest
 ```
 
