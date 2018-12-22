@@ -30,7 +30,9 @@ k0YpqvW1EiJwK2N4znNpU3XFKNKDoUrvaeJQJE8oP1xf-tlof4aC9l0tBzN1_n0K__fKtqO3E6Usdrgl
 
 ```
 
-## 三、配置触发器告警
+## 三、配置媒介和触发器告警
+
+  ![微信媒介设置01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-media.png)
 
   ![触发器设置01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action01.png)
 
