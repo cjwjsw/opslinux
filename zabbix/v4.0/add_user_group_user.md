@@ -6,4 +6,8 @@
 
 ## 二、新建用户
 
-  ![新建用户01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-group02.png)
+  ![新建用户01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-add-user01.png)
+
+  ![新建用户02](https://github.com/Lancger/opslinux/blob/master/images/zabbix-add-user02.png)
+
+  ![新建用户03](https://github.com/Lancger/opslinux/blob/master/images/zabbix-add-user03.png)
