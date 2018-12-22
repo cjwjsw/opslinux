@@ -97,3 +97,14 @@ case $1 in
         echo "Usage:$0(Uptime|Com_update|Slow_queries|Com_select|Com_rollback|Questions|Com_insert|Com_delete|Com_commit|Bytes_sent|Bytes_received|Com_begin)" 
         ;; 
 esac
+
+
+
+#zabbix 配置监控mysql参数
+www>$ cat userparameter_mysql.conf 
+# 获取mysql版本
+UserParameter=mysql.version,/usr/local/mysql/bin/mysql -V
+# 获取mysql性能指标,这个是上面定义好的脚本
+UserParameter=mysql.status[*],/etc/zabbix/scripts/check_mysql.sh $1
+# 获取mysql运行状态
+UserParameter=mysql.ping,/usr/local/mysql/bin/mysqladmin -uroot -p123456 -P3306 -h127.0.0.1  ping 2>/dev/null| grep -c alive
