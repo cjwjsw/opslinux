@@ -52,4 +52,8 @@ echo 1 >/proc/sys/net/ipv4/icmp_echo_ignore_all
 ```
 ## 五、告警消息
 
+  ![告警消息01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action01.png)
+
 ## 六、恢复消息
+
+  ![告警恢复01](https://github.com/Lancger/opslinux/blob/master/images/zabbix-triger-action01.png)
