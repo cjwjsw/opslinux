@@ -63,7 +63,7 @@ zabbix: 4.0.1
             --privileged \
             -d zabbix/zabbix-agent:latest
 ```
-安装完成，浏览器上访问：192.168.56.138/zabbix Admin/zabbix
+安装完成，浏览器上访问：http://192.168.56.138/zabbix   Admin/zabbix
 
 ## 三、开始部署zabbix_agent
 
