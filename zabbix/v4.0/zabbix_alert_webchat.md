@@ -3,3 +3,5 @@
 参考链接：
 
 http://blog.51cto.com/itnihao/1733245
+
+## 二、配置微信告警
