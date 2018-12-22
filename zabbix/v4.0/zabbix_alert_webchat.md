@@ -8,6 +8,12 @@ http://blog.51cto.com/itnihao/1733245
 ```
 git clone https://github.com/Lancger/Wechat-Alert-for-Zabbix.git
 
+cp /tmp/Wechat-Alert-for-Zabbix/wechat_alert.py /usr/lib/zabbix/alertscripts
+
+chown zabbix.zabbix /usr/lib/zabbix/alertscripts/wechat_alert.py
+
+chmod +x /usr/lib/zabbix/alertscripts/wechat_alert.py
+
 
 ```
 
