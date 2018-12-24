@@ -11,3 +11,5 @@ UserParameter=user.auto.login.count,ps -ef|grep -w ssh|grep -v grep|awk '{print 
 [root@web01 zabbix_agentd.d]# ps -ef|grep -w ssh|grep -v grep|awk '{print $NF}'|wc -l
 1
 ```
+
+## 二、zabbix监控页面配置
