@@ -22,7 +22,7 @@ UserParameter=user.auto.login.count,ps -ef|grep -w ssh|grep -v grep|awk '{print 
 [root@web01 zabbix_agentd.d]# tail -100f zabbix_agentd.log|grep auto
 
   8206:20181224:142309.131 for key [user.auto.login.count] received value [1]
-  8206:20181224:142309.131 In process_value() key:'tw13c145:user.auto.login.count' value:'1'
+  8206:20181224:142309.131 In process_value() key:'web01:user.auto.login.count' value:'1'
                         "key":"user.auto.login.count",
                         "key":"user.auto.login.count",
   8206:20181224:142334.149 In add_check() key:'user.auto.login.count' refresh:60 lastlogsize:0 mtime:0
