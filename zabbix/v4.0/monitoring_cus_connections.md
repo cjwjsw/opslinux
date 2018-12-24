@@ -27,3 +27,7 @@ UserParameter=user.auto.login.count,ps -ef|grep -w ssh|grep -v grep|awk '{print 
                         "key":"user.auto.login.count",
   8206:20181224:142334.149 In add_check() key:'user.auto.login.count' refresh:60 lastlogsize:0 mtime:0
 ```
+
+## 四、页面检查数据
+
+  ![zabbix监控自定义连接数02](https://github.com/Lancger/opslinux/blob/master/images/zabbix-monitors-02.png)
