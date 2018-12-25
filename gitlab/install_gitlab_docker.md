@@ -42,3 +42,20 @@ gitlab_rails['gitlab_email_from'] = "xxxx@163.com"
 user["git_user_email"] = "xxxx@163.com"
 ```
 注意以上的xxxx@163.com代表用户名，即邮箱地址，而xxxxpassword不是邮箱的登陆密码而是网易邮箱的客户端授权密码, 再网易邮箱web页面的设置-POP3/SMTP/IMAP-客户端授权密码查看。
+
+3.2 配置外部访问URL
+
+这个必须配置，否则默认以容器的主机名作为URL，刚开始由于做了端口映射80->8080, 因此设置为
+```
+external_url "http://10.103.240.36:8080"
+```
+后来发现external_url只能配置ip或者域名，不能有端口，否则不能启动。
+于是只能把端口设置为80->80，然后external_url设置为:
+```
+external_url "http://10.103.240.36"
+
+4. 重启gitlab
+```
+docker restart gitlab
+```
+```
