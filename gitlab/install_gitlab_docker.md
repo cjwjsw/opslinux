@@ -54,6 +54,7 @@ external_url "http://10.103.240.36:8080"
 ```
 external_url "http://10.103.240.36"
 
+```
 ## 4. 重启gitlab
 ```
 docker restart gitlab
