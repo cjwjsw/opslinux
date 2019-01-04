@@ -8,6 +8,10 @@ lvm inactive问题定位及解决
 
 http://ju.outofmemory.cn/entry/105644
 
+安装pvs等命令包
+
+yum install -y lvm2
+
 1、lvscan 查看
 ```
 [root@iadad1 ~]# lvscan
