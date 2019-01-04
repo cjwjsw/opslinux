@@ -41,7 +41,13 @@ vim /etc/fstab     (注意这里是xfs格式的)
 ```
 mount -a
 
-
-df -h
-
+[root@iZuf62w1juq9pm5jar66slZ ~]# df -hT
+Filesystem                  Type      Size  Used Avail Use% Mounted on
+/dev/vda1                   ext4       50G  1.6G   46G   4% /
+devtmpfs                    devtmpfs  7.8G     0  7.8G   0% /dev
+tmpfs                       tmpfs     7.8G     0  7.8G   0% /dev/shm
+tmpfs                       tmpfs     7.8G  316K  7.8G   1% /run
+tmpfs                       tmpfs     7.8G     0  7.8G   0% /sys/fs/cgroup
+tmpfs                       tmpfs     1.6G     0  1.6G   0% /run/user/0
+/dev/mapper/vg_coin-lv_coin xfs       200G   78G  123G  39% /data0
 ```
