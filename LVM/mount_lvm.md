@@ -51,3 +51,9 @@ tmpfs                       tmpfs     7.8G     0  7.8G   0% /sys/fs/cgroup
 tmpfs                       tmpfs     1.6G     0  1.6G   0% /run/user/0
 /dev/mapper/vg_coin-lv_coin xfs       200G   78G  123G  39% /data0
 ```
+
+
+参考资料：
+
+
+https://yq.aliyun.com/articles/52222?spm=5176.11065265.1996646101.searchclickresult.1546247dUlgfe4   阿里云文档
