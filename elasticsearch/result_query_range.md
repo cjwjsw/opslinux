@@ -22,7 +22,8 @@ args = {
     "query": {
         "range" : {
             "time": {
-                "lt": now
+                "lt": now,
+                "gt": "now-15min"
             }
         }
     },
