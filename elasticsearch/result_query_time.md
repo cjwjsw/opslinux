@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 import json
 import sys
 
-es = Elasticsearch([{'host':'10.33.99.31','port':9200,}])
+es = Elasticsearch([{'host':'10.33.99.31','port':9200}])
 
 index = sys.argv[1]
 key1 = sys.argv[2]
