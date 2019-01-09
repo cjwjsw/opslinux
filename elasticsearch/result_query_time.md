@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 import json
 import sys
 
-es = Elasticsearch([{'host':'10.33.99.31','port':9200,}])
+es = Elasticsearch([{'host':'120.88.99.31','port':9200,}])
 
 index = sys.argv[1]
 key1 = sys.argv[2]
@@ -37,4 +37,9 @@ resp_docs = resp['hits']['hits']
 
 for item in resp_docs:
     print(item)
+```
+
+# 操作示例
+```
+[root@test ~]# python res_new.py agent-statistics-2019.01.09 200 10306
 ```
