@@ -2,8 +2,8 @@
 ```
 1.重启mysql,开启mysql主从，设置expire_logs_days
 
-# vim /etc/my.cnf //修改expire_logs_days,x是自动删除的天数，一般将x设置为短点，如10
-expire_logs_days = x //二进制日志自动删除的天数。默认值为0,表示“没有自动删除”
+# vim /etc/my.cnf    //修改expire_logs_days,x是自动删除的天数，一般将x设置为短点，如10
+expire_logs_days = 3 //二进制日志自动删除的天数。默认值为0,表示“没有自动删除”
 
 此方法需要重启mysql，附录有关于expire_logs_days的英文说明
 ```
@@ -15,4 +15,13 @@ expire_logs_days = x //二进制日志自动删除的天数。默认值为0,表�
 > show binary logs;
 > show variables like '%log%';
 > set global expire_logs_days = 10;
+
+
+purge binary logs to 'master-bin.000730'; 
 ```
+
+参考文档：
+
+
+https://www.cnblogs.com/love123/p/6898568.html
+
