@@ -129,6 +129,17 @@ git push origin master
   
 #解决了冲突合并了，才可以提交上来
 ```
+
+# 五、Git 回退版本
+```
+git reset (–mixed) HEAD~1
+回退一个版本,且会将暂存区的内容和本地已提交的内容全部恢复到未暂存的状态,不影响原来本地文件(未提交的也
+不受影响)
+git reset –soft HEAD~1
+回退一个版本,不清空暂存区,将已提交的内容恢复到暂存区,不影响原来本地的文件(未提交的也不受影响)
+git reset –hard HEAD~1
+回退一个版本,清空暂存区,将已提交的内容的版本恢复到本地,本地的文件也将被恢复的版本替换
+```
 参考：https://blog.csdn.net/liang0000zai/article/details/50724632
 
 
