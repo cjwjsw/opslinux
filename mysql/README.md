@@ -109,3 +109,14 @@ Time                 Id Command    Argument
 SET timestamp=1539168725;
 select sleep(2) as a, 1 as b;
 ```
+
+## 六、只安装mysql-client
+```
+# centos6
+rpm -ivh http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+yum install -y mysql-client
+
+# centos7
+rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+yum install -y mysql-community-client
+```
