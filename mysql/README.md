@@ -33,13 +33,15 @@ mysql> select Host,User,Password from user where User='root';
 mysql> exit
 ```
 
-## 三、查看表结构
+## 三、查看表结构和新建库
 ```
 mysql> desc user;
 
 mysql> show create table user\G;
 
 mysql> describe user;
+
+mysql -h 127.0.0.1 -u root -p123456 -e "create database cmdb default character set utf8mb4 collate utf8mb4_unicode_ci;"
 ```
 
 ## 四、查看参数变量
