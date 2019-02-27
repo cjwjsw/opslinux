@@ -1,4 +1,4 @@
-## 一、Python多线程批量Ping主机IP的脚本
+## 一、批量ping脚本（单进程方式）
 
 脚本内容
 ```
@@ -35,7 +35,7 @@ print('执行所用时间：%s' % (time.time() - start_time))
 执行所用时间：100s
 ```
 
-二、改造成多线程
+## 二、改造成多线程
 ```
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
