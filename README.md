@@ -40,6 +40,14 @@ git push -u origin master
 第一次推送后，直接使用该命令即可推送修改
 
 git push origin master 
+
+
+git删除文件并推送
+git rm * -r
+
+git commit -m "clear"
+
+git push origin master 
 ```
 参考：http://blog.csdn.net/liang0000zai/article/details/50724632
 
