@@ -7,7 +7,6 @@
 - [Zabbix手册](https://github.com/Lancger/opslinux/blob/master/zabbix/v4.0/README.md)
 
 
-
 ## 二、git 初始化
 
 ```
@@ -150,4 +149,12 @@ git reset –hard HEAD~1
 ```
 参考：https://blog.csdn.net/liang0000zai/article/details/50724632
 
+# 六、linux cp 隐藏文件和删除隐藏文件
+```
+显示所有文件，包含隐藏文件
+ls -la   
 
+cp -rp vue-element-admin/. /opt/mysite/frontend     一定要有这个 . 才能完整复制隐藏文件
+
+rm -rf .*   删除隐藏文件
+```
