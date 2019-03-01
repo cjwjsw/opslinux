@@ -155,6 +155,9 @@ git reset –hard HEAD~1
 ls -la   
 
 cp -rp vue-element-admin/. /opt/mysite/frontend     一定要有这个 . 才能完整复制隐藏文件
+cp -a vue-element-admin/. /opt/mysite/frontend
+cp -rf vue-element-admin/. /opt/mysite/frontend
+
 
 rm -rf .*   删除隐藏文件
 ```
