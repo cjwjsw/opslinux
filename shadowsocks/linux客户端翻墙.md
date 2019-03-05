@@ -1,14 +1,14 @@
-## 前言
+## 一、前言
 (需要一个已经能翻墙的 shadowsocks 服务端)
 
 本文介绍的是在 CentOS 上安装 shadowsocks 客户端的过程，最终实现的也就是当前 CentOS 通过其他服务器的 Shadowsocks 服务联网，非在 CentOS 上安装 shadowsocks 服务端的过程，因此你需要一个已经能翻墙的 shadowsocks 服务端。
 
-## 安装 pip
+## 二、安装 pip
 ```
 yum install python-pip
 pip install shadowsocks
 ```
-## 配置 shadowsocks
+## 三、配置 shadowsocks
 ```
 vim /etc/shadowsocks.json
 ```
@@ -25,11 +25,11 @@ vim /etc/shadowsocks.json
     "workers": 3
 }
 ```
-## 启动shadowsocks服务
+## 四、启动shadowsocks服务
 ```
 sslocal -c /etc/shadowsocks.json
 ```
-## 设置shadowsocks开机自启
+## 五、设置shadowsocks开机自启
 ```
 配置开机自启
 sudo vim /etc/systemd/system/shadowsocks.service
@@ -49,7 +49,7 @@ WantedBy=multi-user.target
 配置生效
 systemctl enable /etc/systemd/system/shadowsocks.service
 ```
-## 测试验证
+## 六、测试验证
 ```
 curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
 
@@ -58,4 +58,24 @@ curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
   "origin": "13.229.223.57, 13.229.223.57"
 }
 
+```
+## 七、安装 Privoxy
+Shadowsocks 是一个 socket5 服务，因此我们需要使用 Privoxy 把流量转到 http/https 上。
+
+```
+直接使用yum安装即可：
+yum install privoxy
+
+安装好后，修改一下配置：
+vim /etc/privoxy/config
+搜索forward-socks5t将
+forward-socks5t / 127.0.0.1:9050 .
+取消注释并修改为：
+forward-socks5t / 127.0.0.1:1080 .
+
+启动 privoxy
+privoxy /etc/privoxy/config
+
+或以指定用户如www运行privoxy：
+privoxy --user www /etc/privoxy/config
 ```
