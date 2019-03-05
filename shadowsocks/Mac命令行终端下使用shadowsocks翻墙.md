@@ -29,7 +29,7 @@ forward-socks5 / localhost:1080 .
 ## 3. 启动privoxy
 因为没有安装在系统目录内，所以启动的时候需要打全路径。
 ```
-sudo /usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+sudo /usr/local/opt/privoxy/sbin/privoxy /usr/local/etc/privoxy/config
 ```
 
 ## 4. 查看是否启动成功
