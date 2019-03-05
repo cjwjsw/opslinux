@@ -57,4 +57,4 @@ unset https_proxy
 ```
 参考文档：
 
-https://segmentfault.com/a/1190000016126554
+https://segmentfault.com/a/1190000016126554  Mac命令行终端下使用shadowsocks翻墙
