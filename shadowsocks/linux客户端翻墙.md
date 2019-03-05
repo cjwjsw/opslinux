@@ -108,6 +108,8 @@ systemctl restart privoxy
 ```
 
 ## 九、配置/etc/profile
+
+这里8118为privoxy的服务端口
 ```
 执行vim /etc/profile,添加如下代码：
 
