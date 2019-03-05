@@ -26,7 +26,35 @@ forward-socks5 / localhost:1080 .
 
 第一行设置privoxy监听任意IP地址的8118端口。第二行设置本地socks5代理客户端端口，注意不要忘了最后有一个空格和点号。
 ```
+## 3. 启动privoxy
+因为没有安装在系统目录内，所以启动的时候需要打全路径。
+```
+sudo /usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+```
 
+## 4. 查看是否启动成功
+```
+netstat -na | grep 8118
+
+看到有类似如下信息就表示启动成功了
+tcp4 0 0 *.8118 *.* LISTEN
+
+```
+
+## 5. privoxy使用
+```
+在命令行终端中输入如下命令后，该终端即可翻墙了。
+
+export http_proxy='http://localhost:8118'
+export https_proxy='http://localhost:8118'
+
+他的原理是讲socks5代理转化成http代理给命令行终端使用。
+如果不想用了取消即可
+
+unset http_proxy
+unset https_proxy
+
+```
 参考文档：
 
 https://segmentfault.com/a/1190000016126554
