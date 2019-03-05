@@ -54,6 +54,8 @@ export https_proxy='http://localhost:8118'
 unset http_proxy
 unset https_proxy
 
+验证
+curl ip.gs
 ```
 参考文档：
 
