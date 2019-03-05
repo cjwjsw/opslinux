@@ -48,6 +48,9 @@ WantedBy=multi-user.target
 
 配置生效
 systemctl enable /etc/systemd/system/shadowsocks.service
+
+重启服务
+systemctl restart shadowsocks
 ```
 ## 六、测试验证
 ```
@@ -100,6 +103,8 @@ WantedBy=multi-user.target
 配置生效
 systemctl enable /lib/systemd/system/privoxy.service
 
+重启服务
+systemctl restart privoxy
 ```
 
 ## 九、配置/etc/profile
