@@ -1,4 +1,4 @@
-Mac命令行终端下使用shadowsocks翻墙
+## Mac命令行终端下使用shadowsocks翻墙
 
 配置好shadowsocks服务器端后，安装对应系统的客户端，浏览器安装相应插件就可以翻墙上网了，这都很简单。
 
