@@ -79,3 +79,25 @@ privoxy /etc/privoxy/config
 或以指定用户如www运行privoxy：
 privoxy --user www /etc/privoxy/config
 ```
+## 八、设置privoxy开机自启
+```
+配置开机自启
+sudo vim /lib/systemd/system/privoxy.service
+
+[Unit]
+Description=Privoxy Web Proxy With Advanced Filtering Capabilities
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/privoxy.pid
+ExecStart=/usr/sbin/privoxy --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config
+
+[Install]
+WantedBy=multi-user.target
+
+配置生效
+systemctl enable /lib/systemd/system/privoxy.service
+
+```
