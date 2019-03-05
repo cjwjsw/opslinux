@@ -111,8 +111,8 @@ systemctl restart privoxy
 ```
 执行vim /etc/profile,添加如下代码：
 
-export http_proxy=http://127.0.0.1:1080
-export https_proxy=http://127.0.0.1:1080
+export http_proxy=http://127.0.0.1:8118
+export https_proxy=http://127.0.0.1:8118
 
 source /etc/profile
 
