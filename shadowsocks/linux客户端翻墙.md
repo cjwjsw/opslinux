@@ -49,3 +49,10 @@ WantedBy=multi-user.target
 配置生效
 systemctl enable /etc/systemd/system/shadowsocks.service
 ```
+## 测试验证
+```
+测试
+
+运行curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
+如果返回你的 ss 服务器 ip 则测试成功：
+```
