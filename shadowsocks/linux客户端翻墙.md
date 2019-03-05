@@ -10,6 +10,9 @@ pip install shadowsocks
 ```
 ## 配置 shadowsocks
 ```
+vim /etc/shadowsocks.json
+```
+```
 {
     "server":"13.229.223.57",      #ss服务器IP
     "server_port":8388, #端口
