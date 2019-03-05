@@ -25,3 +25,26 @@ vim /etc/shadowsocks.json
     "workers": 3
 }
 ```
+## 启动shadowsocks服务
+```
+sslocal -c /etc/shadowsocks.json
+```
+## 设置shadowsocks开机自启
+```
+sudo vim /etc/systemd/system/shadowsocks.service
+
+[Unit]
+Description=Shadowsocks Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/sslocal -c /etc/shadowsocks.json
+
+[Install]
+WantedBy=multi-user.target
+
+配置生效
+systemctl enable /etc/systemd/system/shadowsocks.service
+```
