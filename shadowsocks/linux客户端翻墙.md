@@ -87,7 +87,7 @@ privoxy --user www /etc/privoxy/config
 配置开机自启
 sudo vim /lib/systemd/system/privoxy.service
 
-[Unit]
+[[Unit]
 Description=Privoxy Web Proxy With Advanced Filtering Capabilities
 Wants=network-online.target
 After=network-online.target
@@ -95,7 +95,7 @@ After=network-online.target
 [Service]
 Type=forking
 PIDFile=/run/privoxy.pid
-ExecStart=/usr/sbin/privoxy --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config
+ExecStart=/usr/sbin/privoxy --pidfile /run/privoxy.pid /etc/privoxy/config
 
 [Install]
 WantedBy=multi-user.target
