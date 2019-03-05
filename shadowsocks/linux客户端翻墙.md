@@ -101,3 +101,15 @@ WantedBy=multi-user.target
 systemctl enable /lib/systemd/system/privoxy.service
 
 ```
+
+## 九、配置/etc/profile
+```
+执行vim /etc/profile,添加如下代码：
+
+export http_proxy=http://127.0.0.1:8118
+export https_proxy=http://127.0.0.1:8118
+
+source /etc/profile
+
+curl www.google.com
+```
