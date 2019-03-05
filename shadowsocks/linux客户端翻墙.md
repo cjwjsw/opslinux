@@ -31,6 +31,7 @@ sslocal -c /etc/shadowsocks.json
 ```
 ## 设置shadowsocks开机自启
 ```
+配置开机自启
 sudo vim /etc/systemd/system/shadowsocks.service
 
 [Unit]
