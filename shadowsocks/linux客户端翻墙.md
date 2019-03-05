@@ -51,8 +51,11 @@ systemctl enable /etc/systemd/system/shadowsocks.service
 ```
 ## 测试验证
 ```
-测试
+curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
 
-运行curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
 如果返回你的 ss 服务器 ip 则测试成功：
+{
+  "origin": "13.229.223.57, 13.229.223.57"
+}
+
 ```
