@@ -14,14 +14,14 @@ vim /etc/shadowsocks.json
 ```
 ```
 {
-    "server":"13.229.223.57",      #ss服务器IP
-    "server_port":8388, #端口
-    "local_address": "127.0.0.1",   #本地ip
-    "local_port":1080,              #本地端口
-    "password":"your_server_passwd",#连接ss密码
-    "timeout":300,                  #等待超时
-    "method":"aes-256-cfb",             #加密方式
-    "fast_open": false,             # true 或 false。如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟。开启方法： echo 3 > /proc/sys/net/ipv4/tcp_fastopen 开启之后，将 fast_open 的配置设置为 true 即可
-    "workers": 3                    # 工作线程数
+    "server":"13.229.223.57",
+    "server_port":8388,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"your_server_passwd",
+    "timeout":300,
+    "method":"aes-256-cfb",
+    "fast_open": false,
+    "workers": 3
 }
 ```
