@@ -75,6 +75,12 @@ function proxy_on() {
     export https_proxy=$http_proxy
     echo -e "已开启代理"
 }
+
+使用开关
+➜  ~ proxy_off
+已关闭代理
+➜  ~ proxy_on
+已开启代理
 ```
 参考文档：
 
