@@ -67,7 +67,7 @@ Shadowsocks 是一个 socket5 服务，因此我们需要使用 Privoxy 把流�
 
 ```
 直接使用yum安装即可：
-yum install privoxy
+yum install privoxy -y
 
 安装好后，修改一下配置：
 vim /etc/privoxy/config
