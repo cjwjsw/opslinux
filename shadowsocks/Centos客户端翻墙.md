@@ -5,7 +5,7 @@
 
 ## 二、安装 pip
 ```
-yum install python-pip
+yum install epel-release python-pip -y
 pip install shadowsocks
 ```
 ## 三、配置 shadowsocks
