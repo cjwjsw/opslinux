@@ -58,8 +58,9 @@ unset https_proxy
 ```
 
 ## 6.便捷开关
+
 还可以在 ~/.bash_profile 里加入开关函数，使用起来更方便
-```
+
 vim ~/.bash_profile
 
 function proxy_off(){
