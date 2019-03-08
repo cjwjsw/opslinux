@@ -88,7 +88,7 @@ Current IP / 当前 IP: 13.229.223.57
 ISP / 运营商:  amazon.com
 City / 城市:  Singapore
 Country / 国家: Singapore
-IP.GS is now IP.SB, please visit https://ip.sb/ for more information. / IP.GS 已更改为 IP.SB ，请访问 https://ip.sb/ 获取更详细 IP ```
+IP.GS is now IP.SB, please visit https://ip.sb/ for more information. / IP.GS 已更改为 IP.SB ，请访问 https://ip.sb/ 获取更详细 IP 
 
 参考文档：
 
