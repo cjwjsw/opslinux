@@ -61,6 +61,7 @@ unset https_proxy
 
 还可以在 ~/.bash_profile 里加入开关函数，使用起来更方便
 
+```
 vim ~/.bash_profile
 
 function proxy_off(){
@@ -90,6 +91,7 @@ ISP / 运营商:  amazon.com
 City / 城市:  Singapore
 Country / 国家: Singapore
 IP.GS is now IP.SB, please visit https://ip.sb/ for more information. / IP.GS 已更改为 IP.SB ，请访问 https://ip.sb/ 获取更详细 IP 
+```
 
 参考文档：
 
