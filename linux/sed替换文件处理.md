@@ -11,7 +11,7 @@ export GOPATH=/opt/path/
 
 ```
 替换命令
-sed -i 's#export PATH=$PATH.*#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin#g' /etc/profile
+sed -i 's#export PATH=$PATH.*#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin#g' /etc/profile    ---注意这里必须是单引号，不然无效
 
 [root@localhost path]# cat /etc/profile
 
