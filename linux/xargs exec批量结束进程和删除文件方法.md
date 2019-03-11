@@ -7,16 +7,16 @@ ps -ef |grep hello |awk '{print $2}'|xargs kill -9
 ```
 
 
-exec
+## exec
 ```
-exec 然后是一对儿{ }，一个空格和一个\，最后是一个分号。
-find . -name .svn -type d -exec rm -rf {} \;
-
 在删除之前可以打印出来看看：
-
 find . -name .svn -type d -exec ls -l {} \;
 
+find . -name .svn -type d -exec rm -rf {} \;
 
-find / -name .svn -type d | xargs rm -rf
+```
+## xargs
+```
+find . -name .svn -type d | xargs rm -rf
 
 ```
