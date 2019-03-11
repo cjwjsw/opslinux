@@ -5,11 +5,14 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$TEST
 export GOPATH=/opt/path/
 
-替换命令
-sed -i 's#export PATH=$PATH.*#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin#g' /etc/profile
 ```
 ## 二、替换后
+使用#来替换分隔符/
+
 ```
+替换命令
+sed -i 's#export PATH=$PATH.*#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin#g' /etc/profile
+
 [root@localhost path]# cat /etc/profile
 
 export GOROOT=/usr/local/go
