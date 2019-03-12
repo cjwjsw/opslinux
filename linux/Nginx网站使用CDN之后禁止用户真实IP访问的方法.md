@@ -34,3 +34,17 @@ location / {
 }
 
 ```
+但对于后面2种模式就无能为力了，因为iptables 和 deny 都只能针对直连IP，而后面2种模式中，WEB服务器直连IP是CDN节点或者代理服务器，此时使用 iptable 或 deny 就只能把 CDN节点 或代理IP给封了，可能误杀一大片正常用户了，而真正的罪魁祸首轻轻松松换一个代理IP又能继续请求了。
+
+那我们可以通过什么途径去解决以上问题呢？
+## 二、火眼金睛
+如果长期关注张戈博客的朋友，应该还记得之前转载过一篇分享Nginx在CDN加速之后，获取用户真实IP做并发访问限制的方法。说明Nginx还是可以实实在在的拿到用户真实IP地址的，那么事情就好办了。
+
+要拿到用户真实IP，只要在Nginx的http模块内加入如下配置：
+```
+#获取用户真实IP，并赋值给变量$clientRealIP
+map $http_x_forwarded_for  $clientRealIp {
+        ""      $remote_addr;
+        ~^(?P<firstAddr>[0-9\.]+),?.*$  $firstAddr;
+}
+```
