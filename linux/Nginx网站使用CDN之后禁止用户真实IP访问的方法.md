@@ -48,3 +48,35 @@ map $http_x_forwarded_for  $clientRealIp {
         ~^(?P<firstAddr>[0-9\.]+),?.*$  $firstAddr;
 }
 ```
+那么，$clientRealIP就是用户真实IP了，其实就是匹配了 $http_x_forwarded_for 的第一个值，具体原理前文也简单分享过：
+
+
+    其实，当一个 CDN 或者透明代理服务器把用户的请求转到后面服务器的时候，这个 CDN 服务器会在 Http 的头中加入一个记录
+    X-Forwarded-For : 用户IP, 代理服务器IP
+    如果中间经历了不止一个代理服务器，这个记录会是这样
+    X-Forwarded-For : 用户IP, 代理服务器1-IP, 代理服务器2-IP, 代理服务器3-IP, ….
+    可以看到经过好多层代理之后， 用户的真实IP 在第一个位置， 后面会跟一串中间代理服务器的IP地址，从这里取到用户真实的IP地址，针对这个 IP 地址做限制就可以了。
+
+而且代码中还配合使用了 $remote_addr，因此$clientRealIP 还能兼容上文中第1种直接访问模式，不像 $http_x_forwarded_for 在直接访问模式中将会是空值！
+
+所以，$clientRealIP 还能配置到 Nginx 日志格式中，替代传统的 $remote_addr 使用，推荐！
+## 三、隔山打牛
+既然已经拿到了真实IP，却不能使用 iptables 和 deny 指令，是否无力感油然而生？
+
+哈哈，在强大的 Nginx 面前只要想得到，你就做得到！通过对 $clientRealIP 这个变量的判断，Nginx就能实现隔山打牛的目的，而且规则简单易懂：
+```
+#如果真实IP为 121.42.0.18、121.42.0.19，那么返回403
+if ($clientRealIp ~* "121.42.0.18|121.42.0.19") {
+        #如果你的nginx安装了echo模块，还能如下输出语言，狠狠的发泄你的不满(但不兼容返回403,试试200吧)！
+        #add_header Content-Type text/plain;
+        #echo "son of a bitch,you mother fucker,go fuck yourself!";
+        return 403;
+        break;
+}
+```
+把这个保存为 deny_ip.conf ，上传到 Nginx 的 conf 文件夹，然后在要生效的网站 server 模块中引入这个配置文件，并 Reload 重载 Nginx 即可生效：
+
+#禁止某些用户访问
+include deny_ip.conf;
+
+如果再想添加其他要禁止的IP，只需要编辑这个文件，插入要禁止的IP，使用分隔符 | 隔开即可，记得每次修改都需要 reload 重载 Nginx才能生效。
