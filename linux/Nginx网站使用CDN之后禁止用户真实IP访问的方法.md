@@ -21,16 +21,16 @@
 
 对于第一种模式，我要禁止这个用户的访问很简单，可以直接通过 iptables 或者 Nginx的deny指令来禁止均可：
 ```
-    iptabels：
-    iptables -I INPUT -s 用户ip -j DROP
-    Nginx的deny指令：
-    语 法: deny address | CIDR | unix: | all;
-    默认值: —
-    配置段: http, server, location, limit_except
-    顺 序：从上往下
-    Demo：
-    location / {
-        deny 用户IP或IP段;
-    }
+iptabels：
+iptables -I INPUT -s 用户ip -j DROP
+Nginx的deny指令：
+语 法: deny address | CIDR | unix: | all;
+默认值: —
+配置段: http, server, location, limit_except
+顺 序：从上往下
+Demo：
+location / {
+  deny 用户IP或IP段;
+}
 
 ```
