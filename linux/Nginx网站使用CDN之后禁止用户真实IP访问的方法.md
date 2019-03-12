@@ -281,7 +281,22 @@ server
 
 好了，本文分享到此，希望对你有所帮助。
 
+## 使用
+```
+第一步：（在nginx.conf的http段中添加以下内容）
+vim nginx.conf
 
+#获取用户真实IP，并赋值给变量$clientRealIP
+map $http_x_forwarded_for  $clientRealIp {
+        ""      $remote_addr;
+        ~^(?P<firstAddr>[0-9\.]+),?.*$  $firstAddr;
+}
+
+第二步：
+在对应的域名的server段中添加
+     include deny_ip.conf;
+     
+```
 参考链接
 
 https://www.cnblogs.com/qcloud1001/p/6617970.html
