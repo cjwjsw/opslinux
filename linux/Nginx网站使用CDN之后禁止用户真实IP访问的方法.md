@@ -280,3 +280,8 @@ server
     Nginx在CDN加速之后，获取用户真实IP做并发访问限制的方法
 
 好了，本文分享到此，希望对你有所帮助。
+
+
+参考链接
+
+https://www.cnblogs.com/qcloud1001/p/6617970.html
