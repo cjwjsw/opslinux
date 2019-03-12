@@ -85,6 +85,7 @@ include deny_ip.conf;
 
 为了更方便的添加和删除这些黑名单IP，昨晚熬夜写了一个小脚本，一键添加和删除，懒人有福了！
 
+```
 #!/bin/bash
 ###################################################################
 #  Deny Real IP for Nginx;  Author: Jager <ge@zhangge.net>        #
@@ -224,7 +225,7 @@ while [ $2 ];do
     exit
 done
 show_help
-
+```
 使用方法：
 
     根据实际情况修改第9、10行 Nginx 二进制文件及其deny配置文件路径
@@ -244,14 +245,14 @@ show_help
         -s | --show : 显示当前已拉黑IP清单
 
 初次使用，先执行 ./deny_ctrl.sh -c 创建一下 Nginx 相关配置文件：deny_ip.conf，默认内容如下：
-
+```
 if ($clientRealIp ~* "8.8.8.8") {
     #add_header Content-Type text/plain;
     #echo "son of a bitch,you mother fucker,go fuck yourself!"; 
     return 403;
     break;
 }
-
+```
 8.8.8.8 是为了占位，规避为空的情况，实际使用中也请注意，必须要有一个IP占位，否则可能导致误杀哦！
 
 生成这个文件之后，编辑网站对应的配置文件，比如 zhangge.net.conf
@@ -259,7 +260,7 @@ if ($clientRealIp ~* "8.8.8.8") {
 在 server {}模块内部插入 include deny_ip.conf; （注意有英文分号）即可。
 
 比如：
-
+```
 server
     {
         listen 80;   
@@ -271,7 +272,7 @@ server
         #其他略 ...
 
 最后，使用nginx -s reload 重载nginx即可。
-
+```
 后面需要添加黑名单或删除黑名单都可以使用 deny_ctrl.sh 脚本来操作了！
 
 最后，顺便说明一下，本文分享的方法仅作为使用CDN网站遇到恶意IP的一种手工拉黑方案。而自动化限制的方案可以参考博客之前的分享：
