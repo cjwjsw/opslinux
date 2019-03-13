@@ -10,6 +10,7 @@ yum  install  sendmail  -y
  下面启动sendmail服务：
 ```sh
 /etc/init.d/sendmail  restart
+
 systemctl restart sendmail
 ```
 
