@@ -39,14 +39,14 @@ make  &&  make  install
 nali-update
 ```
 使用nali命令瞧一瞧：# 
+```
 nali  42.96.189.63
+```
   查看一下环境变量nali在哪个目录下：
-  ```
+```
   如果nali命令得到的中文地名输入到log中或发送出去的邮件中为空或乱码，那可能是服务器、脚本的编码问题，请自行解决。下面说正事儿：
-  
-  
   首先编写下面这个脚本，不要放在/root目录下！
-  
+```
 ```
   # vim  /mydata/bash_shell/ssh_login_monitor.sh
   
