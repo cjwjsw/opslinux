@@ -48,7 +48,7 @@ which nali
 ```
     如果nali命令得到的中文地名输入到log中或发送出去的邮件中为空或乱码，那可能是服务器、脚本的编码问题，请自行解决。下面说正事儿：
 
-三、编写脚本
+## 三、编写脚本
 
 ```
 # vim  /mydata/bash_shell/ssh_login_monitor.sh
