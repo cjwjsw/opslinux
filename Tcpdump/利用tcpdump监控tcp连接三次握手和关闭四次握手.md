@@ -134,6 +134,7 @@ tcpdump 'port 10000' -i eth0 -S
 
 第三行显示客户端192.168.11.223确认服务端的请求序号（第二行中的seq 821610649），对应下图tcp三路握手中的 （ACK K+1）
 
+  ![TCP三次握手原理](https://github.com/Lancger/opslinux/blob/master/images/tcpdump1.png)
 
 
 参考文档：
