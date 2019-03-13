@@ -118,8 +118,11 @@ tcpdump命令如下：
 tcpdump 'port 10000' -i eth0 -S
 ```
 建立连接时服务端220的监控内容如下：
-```
-14:52:19.772673 IP 192.168.11.223.55081 > npsc-220.ndmp: Flags [S], seq 1925249825, win 14600, options [mss 1460,sackOK,TS val 11741993 ecr 0,nop,wscale 6], length 0 14:52:19.772695 IP npsc-220.ndmp > 192.168.11.223.55081: Flags [S.], seq 821610649, ack 1925249826, win 14480, options [mss 1460,sackOK,TS val 20292985 ecr 11741993,nop,wscale 7], length 0 14:52:19.773256 IP 192.168.11.223.55081 > npsc-220.ndmp: Flags [.], ack 821610650, win 229, options [nop,nop,TS val 11741994 ecr 20292985], length 0
+```sh
+14:52:19.772673 IP 192.168.11.223.55081 > npsc-220.ndmp: Flags [S], seq 1925249825, win 14600, options [mss 1460,sackOK,TS val 11741993 ecr 0,nop,wscale 6], length 0 
+14:52:19.772695 IP npsc-220.ndmp > 192.168.11.223.55081: Flags [S.], seq 821610649, ack 1925249826, win 14480, options [mss 1460,sackOK,TS val 20292985 ecr 11741993,nop,wscale 7], length 0 
+14:52:19.773256 IP 192.168.11.223.55081 > npsc-220.ndmp: Flags [.], ack 821610650, win 229, options [nop,nop,TS val 11741994 ecr 20292985], length 0
+
 ```
  下面结合上图和下面三次握手示意图，解释握手细节： 
  第一行显示客户端192.168.11.223先发送一个seq,1925249825给服务端，对应下面三次握手示意图中的SYN J
