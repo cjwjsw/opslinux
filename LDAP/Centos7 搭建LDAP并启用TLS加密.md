@@ -218,6 +218,7 @@ a7ff3bd5dced        osixia/openldap:1.2.2                 "/container/tool/run" 
 
 # 简单添加个用户，然后用另一台linux机器测试ldap连接
 ```
+```
 Centos7 搭建LDAP并启用TLS加密
 Centos7 搭建LDAP并启用TLS加密
 Centos7 搭建LDAP并启用TLS加密
@@ -300,7 +301,7 @@ su - bigboss
 
 Centos7 搭建LDAP并启用TLS加密
 Centos7 搭建LDAP并启用TLS加密
-
+```
 参考文档：
 
 https://blog.51cto.com/bigboss/2341986
