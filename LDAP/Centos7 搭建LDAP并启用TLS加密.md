@@ -1,3 +1,5 @@
+https://blog.51cto.com/bigboss/2341986
+
 简介
 
     LDAP（轻量级目录访问协议，Lightweight Directory Access Protocol)是为了实现目录服务的信息服务。
