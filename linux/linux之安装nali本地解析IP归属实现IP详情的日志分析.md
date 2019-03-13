@@ -216,6 +216,6 @@ rtt min/avg/max/mdev = 254.066/254.195/254.325/0.520 ms
 
 参考资料：
 
-https://www.dwhd.org/20150802_014526.html
+https://www.dwhd.org/20150802_014526.html  linux之安装nali本地解析IP归属实现IP详情的日志分析
 
 https://cloud.tencent.com/developer/article/1362614  利用Nali-ipip在线工具查看域名解析/IP位置/MTR追踪路由
