@@ -38,13 +38,13 @@ nali  42.96.189.63
 ## 三、编写脚本
 
 ```
-# vim  /mydata/bash_shell/ssh_login_monitor.sh
+# vim  /opt/scripts/ssh_login_monitor.sh
 
 #!/bin/bash
 
 echo
-CommonlyIP=("139.168.55.6")                           #  常用ssh登陆服务器的IP地址,即IP白名单
-SendToEmail=("opsadmin@rjl.com" "123456789@qq.com")   #  接收报警的邮箱地址
+CommonlyIP=("192.168.56.1")                           #  常用ssh登陆服务器的IP地址,即IP白名单
+SendToEmail=("11519801610@qq.com" "123456789@qq.com")   #  接收报警的邮箱地址
 
 LoginInfo=`last | grep "still logged in" | head -n1`
 UserName=`echo $LoginInfo | gawk '{print $1}'`
