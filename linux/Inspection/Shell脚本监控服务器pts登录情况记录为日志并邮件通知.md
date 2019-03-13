@@ -24,10 +24,18 @@ unzip master.zip
 cd nali-ipip-master/
 ./configure && make && make install && nali-update
 ```
+
+如果要使用nali的全部命令，需要安装一下依赖包
+```
+CentOS/RedHat: yum install traceroute bind-utils bind-utils -y
+Debian/Ubuntu: apt-get update; apt-get install traceroute dnsutils bind-utils -y
+```
+
 查看一下环境变量nali在哪个目录下：
 ```sh
 which nali
 ```
+
 使用nali命令瞧一瞧:
 ```sh
 nali  42.96.189.63
