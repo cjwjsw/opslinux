@@ -10,6 +10,7 @@ yum  install  sendmail  -y
  下面启动sendmail服务：
 ```sh
 /etc/init.d/sendmail  restart
+systemctl restart sendmail
 ```
 
 启动后请单独用mail -s测试邮件是否可以发送出去，此处不介绍了。
