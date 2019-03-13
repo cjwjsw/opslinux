@@ -111,6 +111,8 @@ int main(int argc, char ** argv)
 } 
  ```
  
+## 三、原理剖析
+
  先在192.168.11.220上运行服务端程序，然后在192.168.11.223上运行客户端程序。同时在两个服务器上以root用户执行tcpdump工具，监控10000端口
 
 tcpdump命令如下：
@@ -135,6 +137,37 @@ tcpdump 'port 10000' -i eth0 -S
 第三行显示客户端192.168.11.223确认服务端的请求序号（第二行中的seq 821610649），对应下图tcp三路握手中的 （ACK K+1）
 
   ![TCP三次握手原理](https://github.com/Lancger/opslinux/blob/master/images/tcpdump1.png)
+
+下图显示了传递一次数据的通信过程
+
+  ![数据通信抓包](https://github.com/Lancger/opslinux/blob/master/images/tcpdump2.png)
+  
+  ```
+14:52:39.773434 IP npsc-220.ndmp > 192.168.11.223.55081: Flags [P.], seq 821610650:821610676, ack 1925249826, win 114, options [nop,nop,TS val 20312985 ecr 11741994], length 26 
+
+14:52:39.774208 IP 192.168.11.223.55081 > npsc-220.ndmp: Flags [.], ack 821610676, win 229, options [nop,nop,TS val 11761994 ecr 20312985], length 0
+
+  ```
+由于代码中服务端建立连接后直接给客户端发送本地时间的数据给客户端，所以上面第一行中的信息可以看出由npsc-220(服务端)发送数据给客户端192.168.11.223,请求序号为：821610650:821610676 共26个字节，
+
+第二行表示客户端223收到数据后给服务端的发送了一个ack的确认信息
+
+
+下图显示了断开连接的通信过程(其中客户端代表被动断开的一端，服务端代表主动断开的一端)
+
+  ![断开通信抓包](https://github.com/Lancger/opslinux/blob/master/images/tcpdump3.png)
+
+由于我的程序是由服务端主动关闭连接，所以和下图的四次握手示意图稍微有些差别
+
+第一行显示：服务端(npsc-220)主动发送了一个FIN给客户端192.168.11.223,对应下图的FIN M ,其中M的值为821610676
+
+第二行显示：客户端192.168.11.223确认了服务端的821610676（即下图的ACK M+1, 即ack 821610677），并发送了一个FIN给服务端，对应下图的FIN N 
+
+第三行显示：服务端(npsc-220)确认了客户端的FIN  ack 19252429827，即下图的ACK N+1 ,
+
+下图是断开连接的四次握手示意图
+
+  ![TCP四次挥手](https://github.com/Lancger/opslinux/blob/master/images/tcpdump4.png)
 
 
 参考文档：
