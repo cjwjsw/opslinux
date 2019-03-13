@@ -53,8 +53,8 @@ nali  42.96.189.63
 #!/bin/bash
 
 echo
-CommonlyIP=("192.168.56.1")                           #  常用ssh登陆服务器的IP地址,即IP白名单
-SendToEmail=("11519801610@qq.com" "123456789@qq.com")   #  接收报警的邮箱地址
+CommonlyIP=("192.168.56.2" "192.168.56.1")                           #  常用ssh登陆服务器的IP地址,即IP白名单
+SendToEmail=("1151980610@qq.com" "123456789@qq.com")   #  接收报警的邮箱地址
 
 LoginInfo=`last | grep "still logged in" | head -n1`
 UserName=`echo $LoginInfo | gawk '{print $1}'`
@@ -65,6 +65,7 @@ SSHLoginLog="/var/log/login_access.log"
 
 for ip in ${CommonlyIP[*]}  # 判断登录的客户端地址是否在白名单中
 do
+    echo $ip
     if [ "$LoginIP" == $ip ];then
         COOL="YES"
     fi
