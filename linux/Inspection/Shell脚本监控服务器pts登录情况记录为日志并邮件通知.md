@@ -103,3 +103,10 @@ chmod  666  /var/log/login_access.log
   vim  /var/log/login_access.log
   ```
   至此，监控终端登陆全部完成！
+
+
+参考文档：
+
+https://cloud.tencent.com/developer/article/1362614  利用Nali-ipip在线工具查看域名解析/IP位置/MTR追踪路由
+
+https://my.oschina.net/jamieliu/blog/718863   Shell脚本监控服务器pts登录情况记录为日志并邮件通知
