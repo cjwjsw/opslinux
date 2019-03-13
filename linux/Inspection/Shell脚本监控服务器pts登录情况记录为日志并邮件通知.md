@@ -19,9 +19,9 @@ systemctl restart sendmail
 ## 二、Linux下用nali查询IP地址归属地：
 安装nali
 ```
-wget http://www.dwhd.org/wp-content/uploads/2015/08/nali-0.2.tar.gz
-tar xf nali-0.2.tar.gz
-cd nali-0.2
+wget https://github.com/dzxx36gyy/nali-ipip/archive/master.zip
+unzip master.zip
+cd nali-ipip-master/
 ./configure && make && make install && nali-update
 ```
 查看一下环境变量nali在哪个目录下：
