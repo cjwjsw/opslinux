@@ -65,7 +65,6 @@ SSHLoginLog="/var/log/login_access.log"
 
 for ip in ${CommonlyIP[*]}  # 判断登录的客户端地址是否在白名单中
 do
-    echo $ip
     if [ "$LoginIP" == $ip ];then
         COOL="YES"
     fi
