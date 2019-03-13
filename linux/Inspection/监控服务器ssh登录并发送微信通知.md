@@ -1,10 +1,12 @@
-## 通知脚本
-
+## 一、通知脚本
+```
+vim /etc/ssh/sshrc
+```
 ```
 #!/bin/bash
 ###V1-2019-03-13###
 
-CropID='wwd618cb53fdf20d94'
+CropID='aaaaa'
 Secret='HeD64P1nPSTWaUhp_Yne_MY7IsA7lhF-EUZaCOmb_gY'
 GURL="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$CropID&corpsecret=$Secret"
 Gtoken=$(/usr/bin/curl -s -G $GURL | jq -r '.access_token')
