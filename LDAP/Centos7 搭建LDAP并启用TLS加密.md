@@ -1,6 +1,6 @@
 https://blog.51cto.com/bigboss/2341986
 
-简介
+## 简介
 
     LDAP（轻量级目录访问协议，Lightweight Directory Access Protocol)是为了实现目录服务的信息服务。
     目录服务是一种特殊的数据库系统，其专门针对读取，浏览和搜索操作进行了特定的优化。在网络中应用了LDAP后，用户只需要使用一个账号和密码就可以轻松访问网络中的所有服务，实现用户身份的统一认证。
@@ -9,15 +9,15 @@ https://blog.51cto.com/bigboss/2341986
 关于SSL/TLS
 
     LDAP over SSL
-
+```
 # LDAP over SSL 也就是 ldaps
 # ldap默认不加密情况下是走的389端口
 # 当使用ldaps的时候走的就是636端口了
 # 可以简单理解成http和https的关系
 # 当然ldaps已经淘汰了，不然也不会有LDAP over TLS出来
-
+```
     LDAP over TLS
-
+```
 # TLS可以简单理解为ldaps的升级
 # 它默认走389端口，但是会通讯的时候加密
 # 客户端连接LDAP时，需要指明通讯类型为TLS，所以他可以跟不加密的模式一样，任意端口都行
@@ -25,32 +25,32 @@ https://blog.51cto.com/bigboss/2341986
 对比一下连接方式：
 ldaps： ldapsearch -H ldaps://127.0.0.1
 TLS:   ldapsearch -ZZ -H ldap://127.0.0.1 
-
+```
 环境
-
+```
 CentOS Linux release 7.5.1804
 Kernel 4.20.0-1.el7.elrepo.x86_64
 
 docker-ce 18.09
 docker-compose 1.23.1
-
+```
 安装docker-compose
-
+```
 yum install -y python-pip
 pip install docker-compose
 docker-compose -v 
-
+```
 准备证书
-
+```
     安装cfssl
 
 wget -O /bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
 wget -O /bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
 wget -O /bin/cfssl-certinfo  https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64
 for cfssl in `ls /bin/cfssl*`;do chmod +x $cfssl;done;
-
+```
     配置证书信息
-
+```
 cd $HOME && mkdir ssl && cd ssl
 
 # ca配置文件
@@ -74,7 +74,9 @@ cat > ca-config.json << EOF
   }
 }
 EOF
+```
 # 自签名ca的证书申请
+```
 cat > ldap-ca-csr.json << EOF
 {
   "CN": "ldap",
@@ -138,11 +140,11 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=ldap
 # 其中  ldap-key.pem  ldap.pem ca.pem 是我们需要的
 [root@master ssl]#ls
 ca-config.json  ca.csr  ca-key.pem  ca.pem  ldap-ca-csr.json  ldap.csr  ldap-csr.json  ldap-key.pem  ldap.pem
-
+```
 开始安装ldap
 
     克隆仓库，获取docker-compose.yaml文件
-
+```
 cd $HOME
 git clone https://github.com/JyBigBoss/docker-compose.git
 cd docker-compose/LDAP/
@@ -215,7 +217,7 @@ a7ff3bd5dced        osixia/openldap:1.2.2                 "/container/tool/run" 
 # lam可以管理多个ldap服务器，所以可以拥有多个profile，每个profile对应一台服务器
 
 # 简单添加个用户，然后用另一台linux机器测试ldap连接
-
+```
 Centos7 搭建LDAP并启用TLS加密
 Centos7 搭建LDAP并启用TLS加密
 Centos7 搭建LDAP并启用TLS加密
