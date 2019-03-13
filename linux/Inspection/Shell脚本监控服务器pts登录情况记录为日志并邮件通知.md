@@ -5,6 +5,8 @@
  安装sendmail服务：
 ```sh
 yum  install  sendmail  -y
+yum -y install mailx
+yum -y install jwhois
 ```
 
  下面启动sendmail服务：
