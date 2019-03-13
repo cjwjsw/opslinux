@@ -82,3 +82,29 @@ fi
 echo
 ```
   
+## 四、配置生效
+  将脚本添加到hosts.allow里，登录终端自动执行该脚本一次：
+  ```
+  # vim  /etc/hosts.allow
+  
+  # 添加下面这句话即可
+  sshd:All:spawn (/bin/sh /mydata/bash_shell/ssh_login_monitor.sh) &:allow
+  ```
+  
+ 【BUG提示】本人在后期使用过程中发现，如果写在/etc/hosts.allow中，会有一个BUG，那就是第一个SSH终端登录的用户将不会被“监视”到，也就是无法触发脚本，不会记录下日志。于是做如下改进：
+ 
+   将脚本写到到 /etc/ssh/sshrc 中，ssh登录时自动执行该脚本一次：
+```
+# vim  /etc/ssh/sshrc
+
+# 添加下面这句话即可
+/bin/sh  /mydata/bash_shell/ssh_login_monitor.sh
+```
+
+由于/etc/hosts.allow 无论登录用户是谁，执行该文件中的都将是root用户，因此，被调用的脚本也是root执行的。但是 /etc/ssh/sshrc 中就不一样了，哪个用户登录的，就是哪个用户执行脚本，那么问题来了，记录登录信息的日志此时可能权限为644（echo生成的txt文件默认权限），普通用户写不成该文件！所以一定要记得用root用户赋予login_access.log文件 666 权限（如果结合zabbix自定义报警的话，就需要读文件，在这里读写权限一起给了）：
+```
+chmod  666  /var/log/login_access.log
+```
+    可以打开一个新的终端试试效果了。如果脚本没有执行，请赋予脚本可执行权限（chmod +x），讲道理/bin/sh已经避免了权限导致脚本不可执行的问题。下面是实际效果：
+
+  查看邮箱：
