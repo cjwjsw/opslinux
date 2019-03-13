@@ -17,6 +17,9 @@ systemctl restart sendmail
 ```
 
 启动后请单独用mail -s测试邮件是否可以发送出去，此处不介绍了。
+```
+mail -s test 1151980610@qq.com
+```
 
 ## 二、Linux下用nali查询IP地址归属地：
 安装nali
