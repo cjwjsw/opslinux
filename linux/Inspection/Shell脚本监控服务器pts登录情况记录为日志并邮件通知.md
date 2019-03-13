@@ -46,7 +46,8 @@ nali  42.96.189.63
   
   
   首先编写下面这个脚本，不要放在/root目录下！
-  ```
+  
+```
   # vim  /mydata/bash_shell/ssh_login_monitor.sh
   
   #!/bin/bash
@@ -76,5 +77,5 @@ elif [ $LoginIP ];then
     echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址为【 $LoginIP 】,归属地【 $LoginPlace 】" >> $SSHLoginLog
 fi
 echo
-  ```
+```
   
