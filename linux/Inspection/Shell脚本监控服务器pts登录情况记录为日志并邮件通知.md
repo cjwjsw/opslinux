@@ -38,3 +38,43 @@ make  &&  make  install
 ```sh
 nali-update
 ```
+使用nali命令瞧一瞧：# 
+nali  42.96.189.63
+  查看一下环境变量nali在哪个目录下：
+  ```
+  如果nali命令得到的中文地名输入到log中或发送出去的邮件中为空或乱码，那可能是服务器、脚本的编码问题，请自行解决。下面说正事儿：
+  
+  
+  首先编写下面这个脚本，不要放在/root目录下！
+  ```
+  # vim  /mydata/bash_shell/ssh_login_monitor.sh
+  
+  #!/bin/bash
+
+echo
+CommonlyIP=("139.168.55.6")                          #  常用ssh登陆服务器的IP地址,即IP白名单
+SendToEmail=("opsadmin@rjl.com" "123456789@qq.com")           #  接收报警的邮箱地址
+
+LoginInfo=`last | grep "still logged in" | head -n1`
+UserName=`echo $LoginInfo | gawk '{print $1}'`
+LoginIP=`echo $LoginInfo | gawk '{print $3}'`
+LoginTime=`date +'%Y-%m-%d %H:%M:%S'`
+LoginPlace=`/usr/local/bin/nali $LoginIP | gawk -F'[][]' '{print $2}'`
+SSHLoginLog="/var/log/login_access.log"
+
+for ip in ${CommonlyIP[*]}  # 判断登录的客户端地址是否在白名单中
+do
+    if [ "$LoginIP" == $ip ];then
+        COOL="YES"
+    fi
+done
+
+if [ "$COOL" == "YES" ];then
+    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址安全！" >> $SSHLoginLog
+elif [ $LoginIP ];then
+    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址为【 $LoginIP 】,归属地【 $LoginPlace 】" | mail -s "【 通知 】 有终端SSH连上服务器了!" ${SendToEmail[*]}
+    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址为【 $LoginIP 】,归属地【 $LoginPlace 】" >> $SSHLoginLog
+fi
+echo
+  ```
+  
