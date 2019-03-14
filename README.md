@@ -139,6 +139,15 @@ git push origin master
 
 # 五、Git 回退版本
 ```
+查看所有的历史版本，获取你git的某个历史版本的id
+git log
+
+恢复到历史版本
+git reset --hard fae6966548e3ae76cfa7f38a461c438cf75ba965
+
+把修改推到远程服务器
+git push -f -u origin master
+
 git reset (–mixed) HEAD~1
 回退一个版本,且会将暂存区的内容和本地已提交的内容全部恢复到未暂存的状态,不影响原来本地文件(未提交的也
 不受影响)
