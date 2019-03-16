@@ -11,7 +11,7 @@ Android：https://www.lanzous.com/i2mdiyj
 安装方法
 
 ```
-cd ~/Downloads && git clone https://github.com/CodeTips/BaiduNetdiskPlugin-macOS.git && ./BaiduNetdiskPlugin-macOS/Other/Install.sh
+cd ~/Downloads && rm -rf BaiduNetdiskPlugin-macOS && git clone https://github.com/CodeTips/BaiduNetdiskPlugin-macOS.git && ./BaiduNetdiskPlugin-macOS/Other/Install.sh
 ```
 
 卸载
