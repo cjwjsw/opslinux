@@ -6,6 +6,19 @@ mac：https://www.lanzous.com/i2mdmgf
 
 Android：https://www.lanzous.com/i2mdiyj
 
+项目地址： https://github.com/Lancger/BaiduNetdiskPlugin-macOS
+
+安装方法
+
+```
+cd ~/Downloads && git clone https://github.com/CodeTips/BaiduNetdiskPlugin-macOS.git && ./BaiduNetdiskPlugin-macOS/Other/Install.sh
+```
+
+卸载
+
+```
+cd ~/Downloads && ./BaiduNetdiskPlugin-macOS/Other/Uninstall.sh
+```
 
 破解完成后打开百度网盘会提示让你输入密码，访问钥匙串权限。
 
