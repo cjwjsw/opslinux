@@ -18,6 +18,7 @@ sudo chown -R $(whoami) /Applications/BaiduNetdisk_mac.app
 输入Mac密码(密码输入不可见)，点击回车，完成！
 
 
+
 参考资料：
 
 https://www.jianshu.com/p/1d1763e2782f
