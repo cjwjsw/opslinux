@@ -12,7 +12,7 @@ Android：https://www.lanzous.com/i2mdiyj
 
 如果不想输入密码，请在终端输入【sudo chown -R $（whoami）/Application/百度网盘】，点击回车，如图：
 ```
-sudo chown -R $（whoami）/Applications/BaiduNetdisk_mac.app
+sudo chown -R $(whoami) /Applications/BaiduNetdisk_mac.app
 ```
 
 输入Mac密码(密码输入不可见)，点击回车，完成！
