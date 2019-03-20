@@ -42,6 +42,73 @@
 
 第一种部署架构由于资源占用问题，现已很少使用，目前使用最多的是第二种部署架构，至于第三种部署架构个人觉得没有必要引入消息队列，除非有其他需求，因为在数据量较大的情况下，Filebeat 使用压力敏感协议向 Logstash 或 Elasticsearch 发送数据。如果 Logstash 正在繁忙地处理数据，它会告知 Filebeat 减慢读取速度。拥塞解决后，Filebeat 将恢复初始速度并继续发送数据。
 
+
+## 三、问题及解决方案
+
+### 问题一：如何实现日志的多行合并功能？
+
+系统应用中的日志一般都是以特定格式进行打印的，属于同一条日志的数据可能分多行进行打印，那么在使用ELK收集日志的时候就需要将属于同一条日志的多行数据进行合并。
+
+### 解决方案：使用Filebeat或Logstash中的multiline多行合并插件来实现
+
+在使用multiline多行合并插件的时候需要注意，不同的ELK部署架构可能multiline的使用方式也不同，如果是本文的第一种部署架构，那么multiline需要在Logstash中配置使用，如果是第二种部署架构，那么multiline需要在Filebeat中配置使用，无需再在Logstash中配置multiline。
+
+1、multiline在Filebeat中的配置方式：
+```
+filebeat.prospectors:
+    -
+       paths:
+          - /home/project/elk/logs/test.log
+       input_type: log 
+       multiline:
+            pattern: '^\['
+            negate: true
+            match: after
+output:
+   logstash:
+      hosts: ["localhost:5044"]
+
+        pattern：正则表达式
+        negate：默认为false，表示匹配pattern的行合并到上一行；true表示不匹配pattern的行合并到上一行
+        match：after表示合并到上一行的末尾，before表示合并到上一行的行首
+
+如：
+
+pattern: '\['
+negate: true
+match: after
+
+该配置表示将不匹配pattern模式的行合并到上一行的末尾
+```
+
+2、multiline在Logstash中的配置方式
+```
+input {
+  beats {
+    port => 5044
+  }
+}
+
+filter {
+  multiline {
+    pattern => "%{LOGLEVEL}\s*\]"
+    negate => true
+    what => "previous"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => "localhost:9200"
+  }
+}
+
+    （1）Logstash中配置的what属性值为previous，相当于Filebeat中的after，Logstash中配置的what属性值为next，相当于Filebeat中的before。
+    （2）pattern => "%{LOGLEVEL}\s*\]" 中的LOGLEVEL是Logstash预制的正则匹配模式，预制的还有好多常用的正则匹配模式，详细请看：https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns
+
+```
+
+
 参考文档：
 
 https://www.kemin-cloud.com/?p=130
