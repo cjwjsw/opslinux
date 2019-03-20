@@ -23,14 +23,20 @@
 
 这种架构是比较原始的部署架构，在各应用服务器端分别部署一个Logstash组件，作为日志收集器，然后将Logstash收集到的数据过滤、分析、格式化处理后发送至Elasticsearch存储，最后使用Kibana进行可视化展示，这种架构不足的是：Logstash比较耗服务器资源，所以会增加应用服务器端的负载压力。
 
+  ![Logstash作为日志收集器](https://github.com/Lancger/opslinux/blob/master/images/logstash.png)
+
 
 2.2 Filebeat作为日志收集器
 
 该架构与第一种架构唯一不同的是：应用端日志收集器换成了Filebeat，Filebeat轻量，占用服务器资源少，所以使用Filebeat作为应用服务器端的日志收集器，一般Filebeat会配合Logstash一起使用，这种部署方式也是目前最常用的架构。
 
+  ![Filebeat作为日志收集器](https://github.com/Lancger/opslinux/blob/master/images/filebeat.png)
+
 2.3 引入缓存队列的部署架构
 
 该架构在第二种架构的基础上引入了Kafka消息队列（还可以是其他消息队列），将Filebeat收集到的数据发送至Kafka，然后在通过Logstasth读取Kafka中的数据，这种架构主要是解决大数据量下的日志收集方案，使用缓存队列主要是解决数据安全与均衡Logstash与Elasticsearch负载压力。
+
+  ![kafka缓存](https://github.com/Lancger/opslinux/blob/master/images/kafka.png)
 
 参考文档：
 
