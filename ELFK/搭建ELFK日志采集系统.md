@@ -25,13 +25,7 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
 <table border="0">
     <tr>
         <td><strong>服务器HOST11</strong></td>
-        <td><a >elasticsearch(master,data,client)</a></td>
-        <td><a >2.Docker安装</a></td>
-        <td><a 3.CA证书制作</a></td>
-        <td><a stall.md">4.ETCD集群部署</a></td>
-        <td><a md">5.Master节点部署</a></td>
-        <td><a ">6.Node节点部署</a></td>
-        <td><a .md">7.Flannel部署</a></td>
-        <td><a >8.应用创建</a></td>
+        <td><a >服务器host11</a></td>
+        <td><a >服务器host13</a></td>
     </tr>
 </table>
