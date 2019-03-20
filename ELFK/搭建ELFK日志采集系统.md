@@ -245,3 +245,6 @@ image-20181013223740706
     https://mp.weixin.qq.com/s/eyfApIiDeg3qv-BD9hBNvw
     https://www.elastic.co/guide/cn/kibana/current/production.html
     https://www.ibm.com/developerworks/cn/opensource/os-cn-elk-filebeat/index.html
+    
+    
+https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/#%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA  搭建ELFK日志采集系统
