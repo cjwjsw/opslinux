@@ -34,13 +34,13 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
         <td><a >elasticsearch(master,data,client)</a></td>
     </tr>
     <tr>
-        <td>logstash</td>
+        <td><a >logstash</a></td>
         <td><a >logstash</a></td>
         <td><a >logstash</a></td>
     </tr>
     <tr>
-        <td>elasticsearch(master,data,client)</td>
-        <td><a >elasticsearch(master,data,client)</a></td>
-        <td><a >elasticsearch(master,data,client)</a></td>
+        <td><a >filebeat</a></td>
+        <td><a >filebeat</a></td>
+        <td><a >filebeat</a></td>
     </tr>
 </table>
