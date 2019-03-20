@@ -24,12 +24,12 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
 # 使用手册
 <table border="0">
     <tr>
-        <td><strong>服务器HOST11</strong></td>
-        <td><strong><a >服务器host11</a></td>
-        <td><strong><a >服务器host13</a></td>
+        <td><strong>服务器HOST1</strong></td>
+        <td><strong><a >服务器host2</a></td>
+        <td><strong><a >服务器host3</a></td>
     </tr>
     <tr>
-        <td>elasticsearch(master,data,client)</td>
+        <td><a >elasticsearch(master,data,client)</a></td>
         <td><a >elasticsearch(master,data,client)</a></td>
         <td><a >elasticsearch(master,data,client)</a></td>
     </tr>
