@@ -16,6 +16,18 @@
     4、Winlogbeat（搜集 Windows 事件日志数据）
 ```
 
+
+## 二、ELK常见部署架构
+
+2.1 Logstash作为日志收集器
+
+这种架构是比较原始的部署架构，在各应用服务器端分别部署一个Logstash组件，作为日志收集器，然后将Logstash收集到的数据过滤、分析、格式化处理后发送至Elasticsearch存储，最后使用Kibana进行可视化展示，这种架构不足的是：Logstash比较耗服务器资源，所以会增加应用服务器端的负载压力。
+
+
+2.2 Filebeat作为日志收集器
+
+该架构与第一种架构唯一不同的是：应用端日志收集器换成了Filebeat，Filebeat轻量，占用服务器资源少，所以使用Filebeat作为应用服务器端的日志收集器，一般Filebeat会配合Logstash一起使用，这种部署方式也是目前最常用的架构。
+
 参考文档：
 
 https://www.kemin-cloud.com/?p=130
