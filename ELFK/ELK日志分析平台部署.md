@@ -108,6 +108,64 @@ output {
 (2）pattern => "%{LOGLEVEL}\s*\]" 中的LOGLEVEL是Logstash预制的正则匹配模式，预制的还有好多常用的正则匹配模式，详细请看：https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns
 ```
 
+### 问题二：如何将Kibana中显示日志的时间字段替换为日志信息中的时间？
+
+默认情况下，我们在Kibana中查看的时间字段与日志信息中的时间不一致，因为默认的时间字段值是日志收集时的当前时间，所以需要将该字段的时间替换为日志信息中的时间。
+
+### 解决方案：使用grok分词插件与date时间格式化插件来实现
+
+在Logstash的配置文件的过滤器中配置grok分词插件与date时间格式化插件，如：
+```
+input {
+  beats {
+    port => 5044
+  }
+}
+
+filter {
+  multiline {
+    pattern => "%{LOGLEVEL}\s*\]\[%{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME}\]"
+    negate => true
+    what => "previous"
+  }
+
+  grok {
+    match => [ "message" , "(?<customer_time>%{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME})" ]
+  }
+
+  date {
+        match => ["customer_time", "yyyyMMdd HH:mm:ss,SSS"] //格式化时间
+        target => "@timestamp" //替换默认的时间字段
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => "localhost:9200"
+  }
+}
+```
+如要匹配的日志格式为：“[DEBUG][20170811 10:07:31,359][DefaultBeanDefinitionDocumentReader:106] Loading bean definitions”，解析出该日志的时间字段的方式有：
+
+① 通过引入写好的表达式文件，如表达式文件为customer_patterns，内容为：
+CUSTOMER_TIME %{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME}
+注：内容格式为：[自定义表达式名称] [正则表达式]
+然后logstash中就可以这样引用：
+
+filter {
+  grok {
+      patterns_dir => ["./customer-patterms/mypatterns"] //引用表达式文件路径
+      match => [ "message" , "%{CUSTOMER_TIME:customer_time}" ] //使用自定义的grok表达式
+  }
+}
+
+② 以配置项的方式，规则为：(?<自定义表达式名称>正则匹配规则)，如：
+
+filter {
+  grok {
+    match => [ "message" , "(?<customer_time>%{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME})" ]
+  }
+}
 
 参考文档：
 
