@@ -205,7 +205,7 @@ output:
    logstash:
       hosts: ["localhost:5044"]
 
-    通过新增：log_from字段来标识不同的系统模块日志
+通过新增：log_from字段来标识不同的系统模块日志
 ```
 2、根据不同的系统模块配置对应的ES索引，然后在Kibana中创建对应的索引模式匹配，即可在页面通过索引模式下拉框选择不同的系统模块数据。
 这里以第二种部署架构讲解，分为两步：
@@ -247,10 +247,10 @@ output {
   }
 }
 
-    在output中增加index属性，%{type}表示按不同的document_type值建ES索引
+在output中增加index属性，%{type}表示按不同的document_type值建ES索引
 ```
 
 
 参考文档：
 
-https://www.kemin-cloud.com/?p=130
+https://my.oschina.net/feinik/blog/1580625
