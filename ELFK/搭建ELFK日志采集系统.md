@@ -24,7 +24,7 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
 # 使用手册
 <table border="0">
     <tr>
-        <td><strong>手动部署</strong></td>
+        <td><strong>elasticsearch(master,data,client)</strong></td>
         <td><a >1.Kubernetes集群环境准备</a></td>
         <td><a >2.Docker安装</a></td>
         <td><a 3.CA证书制作</a></td>
