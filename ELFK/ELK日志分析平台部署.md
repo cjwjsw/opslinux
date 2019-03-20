@@ -68,9 +68,10 @@ output:
    logstash:
       hosts: ["localhost:5044"]
 
-        pattern：正则表达式
-        negate：默认为false，表示匹配pattern的行合并到上一行；true表示不匹配pattern的行合并到上一行
-        match：after表示合并到上一行的末尾，before表示合并到上一行的行首
+
+#pattern：正则表达式
+#negate：默认为false，表示匹配pattern的行合并到上一行；true表示不匹配pattern的行合并到上一行
+#match：after表示合并到上一行的末尾，before表示合并到上一行的行首
 
 如：
 
@@ -103,9 +104,8 @@ output {
   }
 }
 
-    （1）Logstash中配置的what属性值为previous，相当于Filebeat中的after，Logstash中配置的what属性值为next，相当于Filebeat中的before。
-    （2）pattern => "%{LOGLEVEL}\s*\]" 中的LOGLEVEL是Logstash预制的正则匹配模式，预制的还有好多常用的正则匹配模式，详细请看：https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns
-
+(1）Logstash中配置的what属性值为previous，相当于Filebeat中的after，Logstash中配置的what属性值为next，相当于Filebeat中的before。
+(2）pattern => "%{LOGLEVEL}\s*\]" 中的LOGLEVEL是Logstash预制的正则匹配模式，预制的还有好多常用的正则匹配模式，详细请看：https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns
 ```
 
 
