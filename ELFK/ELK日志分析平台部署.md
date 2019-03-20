@@ -236,7 +236,7 @@ output:
    logstash:
       hosts: ["localhost:5044"]
 
-    通过document_type来标识不同系统模块
+通过document_type来标识不同系统模块
 
 ② 修改Logstash中output的配置内容为：
 
