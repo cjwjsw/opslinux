@@ -169,6 +169,88 @@ filter {
   }
 }
 ```
+
+### 问题三：如何在Kibana中通过选择不同的系统日志模块来查看数据
+
+一般在Kibana中显示的日志数据混合了来自不同系统模块的数据，那么如何来选择或者过滤只查看指定的系统模块的日志数据？
+
+### 解决方案：新增标识不同系统模块的字段或根据不同系统模块建ES索引
+
+1、新增标识不同系统模块的字段，然后在Kibana中可以根据该字段来过滤查询不同模块的数据
+这里以第二种部署架构讲解，在Filebeat中的配置内容为：
+```
+filebeat.prospectors:
+    -
+       paths:
+          - /home/project/elk/logs/account.log
+       input_type: log 
+       multiline:
+            pattern: '^\['
+            negate: true
+            match: after
+       fields: //新增log_from字段
+         log_from: account
+
+    -
+       paths:
+          - /home/project/elk/logs/customer.log
+       input_type: log 
+       multiline:
+            pattern: '^\['
+            negate: true
+            match: after
+       fields:
+         log_from: customer
+output:
+   logstash:
+      hosts: ["localhost:5044"]
+
+    通过新增：log_from字段来标识不同的系统模块日志
+```
+2、根据不同的系统模块配置对应的ES索引，然后在Kibana中创建对应的索引模式匹配，即可在页面通过索引模式下拉框选择不同的系统模块数据。
+这里以第二种部署架构讲解，分为两步：
+```
+
+① 在Filebeat中的配置内容为：
+filebeat.prospectors:
+    -
+       paths:
+          - /home/project/elk/logs/account.log
+       input_type: log 
+       multiline:
+            pattern: '^\['
+            negate: true
+            match: after
+       document_type: account
+
+    -
+       paths:
+          - /home/project/elk/logs/customer.log
+       input_type: log 
+       multiline:
+            pattern: '^\['
+            negate: true
+            match: after
+       document_type: customer
+output:
+   logstash:
+      hosts: ["localhost:5044"]
+
+    通过document_type来标识不同系统模块
+
+② 修改Logstash中output的配置内容为：
+
+output {
+  elasticsearch {
+    hosts => "localhost:9200"
+    index => "%{type}"
+  }
+}
+
+    在output中增加index属性，%{type}表示按不同的document_type值建ES索引
+```
+
+
 参考文档：
 
 https://www.kemin-cloud.com/?p=130
