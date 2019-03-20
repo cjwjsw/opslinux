@@ -266,3 +266,5 @@ output {
 https://my.oschina.net/feinik/blog/1580625
 
 https://www.kemin-cloud.com/?p=130  ELK日志分析平台部署
+
+https://www.kemin-cloud.com/?p=172  Logstash收集日志
