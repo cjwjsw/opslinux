@@ -17,3 +17,12 @@ https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-x86_64.rpm
 https://artifacts.elastic.co/downloads/logstash/logstash-6.3.2.rpm
 
 https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
+
+
+服务器规划
+
+服务器host11 	服务器host12 	服务器host13
+elasticsearch(master,data,client) 	elasticsearch(master,data,client) 	elasticsearch(master,data,client)
+	kibana 	
+logstash 	logstash 	logstash
+filebeat 	filebeat 	filebeat
