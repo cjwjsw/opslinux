@@ -230,6 +230,7 @@ systemctl start filebeat
 为保证数据安全，filebeat与logstash、filebeat与elasticsearch、logstash与elasticsearch、kibana与elasticsearch之间的通讯及kibana自身均能启用SSL加密，具体启用办法就是在配置文件中配一配SSL证书就可以了，这个比较简单，不再赘述。
 
 kibana登录认证需要升级License，这一点比较不爽，如果考虑成本，还是在前置机nginx上配个HTTP Basic认证处理好了。
+
 部署测试
 
 至此一个较完整的ELFK日志采集系统就搭建好了，用浏览器访问http://10.211.55.12:5601/，在kibana的界面上简单设置下就可以查看到抓取的日志了：
