@@ -1,4 +1,4 @@
-# 
+# 条件查询
 ```
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
@@ -66,6 +66,8 @@ task_id:310000508 AND pod.state:200     --这里必须使用大写的AND条件
 ```
 python 1.py statistics-2019.03.20 200 310000508
 ```
+
+## 聚合数量统计
 
 参考链接：
 
