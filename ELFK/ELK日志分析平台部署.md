@@ -144,7 +144,7 @@ output {
     hosts => "localhost:9200"
   }
 }
-```
+
 如要匹配的日志格式为：“[DEBUG][20170811 10:07:31,359][DefaultBeanDefinitionDocumentReader:106] Loading bean definitions”，解析出该日志的时间字段的方式有：
 
 ① 通过引入写好的表达式文件，如表达式文件为customer_patterns，内容为：
@@ -166,7 +166,7 @@ filter {
     match => [ "message" , "(?<customer_time>%{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME})" ]
   }
 }
-
+```
 参考文档：
 
 https://www.kemin-cloud.com/?p=130
