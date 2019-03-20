@@ -55,9 +55,9 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
 
 ![ELFK架构](https://github.com/Lancger/opslinux/blob/master/images/ELFK.png)
 
-## 日志采集系统搭建
+## 一、日志采集系统搭建
 
-安装elasticsearch集群
+### 安装elasticsearch集群
 
 照手把手教你搭建一个 Elasticsearch 集群文章所述，elasticsearch集群中节点有多种类型：
 
@@ -106,7 +106,7 @@ discovery.zen.minimum_master_nodes: 2
 gateway.recover_after_nodes: 2
 EOF
 ```
-在三台服务器上启动elasticsearch:
+### 在三台服务器上启动elasticsearch:
 
 ```
 systemctl daemon-reload
