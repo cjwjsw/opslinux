@@ -49,3 +49,8 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
         <td><a >filebeat</a></td>
     </tr>
 </table>
+
+
+## 整个ELFK的部署架构图大致如下图：
+
+![ELFK架构](https://github.com/Lancger/opsfull/blob/master/images/k8s-soft.jpg)
