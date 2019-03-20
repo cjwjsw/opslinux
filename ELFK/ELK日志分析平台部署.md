@@ -149,7 +149,9 @@ output {
 
 ① 通过引入写好的表达式文件，如表达式文件为customer_patterns，内容为：
 CUSTOMER_TIME %{YEAR}%{MONTHNUM}%{MONTHDAY}\s+%{TIME}
+
 注：内容格式为：[自定义表达式名称] [正则表达式]
+
 然后logstash中就可以这样引用：
 
 filter {
