@@ -28,7 +28,8 @@ https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-x86_64.rpm
         <td><strong><a >服务器host2</a></td>
         <td><strong><a >服务器host3</a></td>
     </tr>
-    <tr>
+    <tr>        
+        <td><a >elasticsearch(master,data,client)</a></td>
         <td><a >elasticsearch(master,data,client)</a></td>
         <td><a >elasticsearch(master,data,client)</a></td>
         <td><a >elasticsearch(master,data,client)</a></td>
