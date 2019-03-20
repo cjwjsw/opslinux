@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 import json
 import sys
 
-es = Elasticsearch([{'host':'10.33.99.31','port':9200,}],timeout=60)
+es = Elasticsearch([{'host':'127.0.0.1','port':9200,}],timeout=60)
 
 index = sys.argv[1]
 key1 = sys.argv[2]
@@ -15,7 +15,7 @@ key2 = sys.argv[3]
 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 print now
 
-#过滤条件：字段task_id为key1且字段cpod.state为key2，且时间在过去1小时之间
+#过滤条件：字段task_id为key1且字段pod.state为key2，且时间在过去1小时之间
 #desc 降序排序
 args = { 
   "size": 10,
@@ -59,11 +59,11 @@ for item in resp_docs:
 
 对应kibana界面的条件为
 ```
-task_id:310000508 AND cpod.state:200     --这里必须使用大写的AND条件
+task_id:310000508 AND pod.state:200     --这里必须使用大写的AND条件
 ```
 操作实例
 ```
-python 1.py iaas-agent-bak-statistics-2019.03.20 200 310000508
+python 1.py statistics-2019.03.20 200 310000508
 ```
 
 参考链接：
