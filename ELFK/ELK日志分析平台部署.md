@@ -10,10 +10,10 @@
 
 5、Filebeat隶属于Beats。目前Beats包含四种工具：
 ```
-    1、Packetbeat（搜集网络流量数据）
-    2、Topbeat（搜集系统、进程和文件系统级别的 CPU 和内存使用情况等数据）
-    3、Filebeat（搜集文件数据）
-    4、Winlogbeat（搜集 Windows 事件日志数据）
+1、Packetbeat（搜集网络流量数据）
+2、Topbeat（搜集系统、进程和文件系统级别的 CPU 和内存使用情况等数据）
+3、Filebeat（搜集文件数据）
+4、Winlogbeat（搜集 Windows 事件日志数据）
 ```
 
 
