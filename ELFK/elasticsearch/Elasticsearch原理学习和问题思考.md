@@ -37,6 +37,8 @@ Elasticsearch研究有一段时间了，现特将Elasticsearch相关核心知识
 
 3）通过代理中间件将查询语句分发到各个slave节点进行查询，并汇总结果 
 
+  ![关系型数据库集群](https://github.com/Lancger/opslinux/blob/master/images/关系型db.png)
+
 
 ### （3）非关系型数据库的解决方案
 
@@ -49,6 +51,7 @@ Elasticsearch研究有一段时间了，现特将Elasticsearch相关核心知识
 
 3）先从配置库检索分片信息，然后将请求分发到各个节点，最后由路由节点合并汇总结果
 
+  ![nosql数据库集群](https://github.com/Lancger/opslinux/blob/master/images/nosql.png)
 
 ### 另辟蹊径——完全把数据放入内存怎么样？
 
