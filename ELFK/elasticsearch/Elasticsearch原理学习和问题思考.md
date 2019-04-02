@@ -182,3 +182,6 @@ Filed(列)：Filed是Elasticsearch的最小单位，相当于数据的某一列�
 参考文档：
 
 https://blog.csdn.net/makang110/article/details/80596017
+
+
+http://www.cnblogs.com/ningskyer/articles/5789010.html    Elasticsearch系统概念及架构图 
