@@ -81,26 +81,34 @@ Elasticsearch研究有一段时间了，现特将Elasticsearch相关核心知识
 ES=elaticsearch简写， Elasticsearch是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别的数据。 
 Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的RESTful API来隐藏Lucene的复杂性，从而让全文搜索变得简单。
 
-### 1.2 Lucene与ES关系？
+
+### 1.2 ES特性
+
+1、高扩展性，体现在ElasticSearch添加节点非常简单，基本新的节点无需做复杂的配置，就可以接入ElasticSearch集群，自动会被发现
+2、高可用性，因为ElasticSearch它是分布式的，每一个节点都有备份，所以down一两个节点不会出现任何问题
+3、实时性，那么这个实时（real time）,这个ElasticSearch是实时的搜索，同时它支持这个PB级别的这种大数据的搜索能力，从索引一个文档到这个文档能被搜索到，只有一个轻微的延时，大约一秒的时间
+
+
+### 1.3 Lucene与ES关系？
 
 1）Lucene只是一个库。想要使用它，你必须使用Java来作为开发语言并将其直接集成到你的应用中，更糟糕的是，Lucene非常复杂，你需要深入了解检索的相关知识来理解它是如何工作的。
 
 2）Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的RESTful API来隐藏Lucene的复杂性，从而让全文搜索变得简单。
 
-### 1.3 ES主要解决问题：
+### 1.4 ES主要解决问题：
 
 1）检索相关数据； 
 2）返回统计结果； 
 3）速度要快。
 
-### 1.4 ES工作原理
+### 1.5 ES工作原理
 
 当ElasticSearch的节点启动后，它会利用多播(multicast)(或者单播，如果用户更改了配置)寻找集群中的其它节点，并与之建立连接。这个过程如下图所示：
 
   ![elasticsearch](https://github.com/Lancger/opslinux/blob/master/images/elasticsearch.png)
 
 
-### 1.5 ES核心概念
+### 1.6 ES核心概念
 
 ### 1）Cluster：集群。
 
@@ -126,7 +134,7 @@ ES可以作为一个独立的单个搜索服务器。不过，为了处理大型
 全文检索就是对一篇文章进行索引，可以根据关键字搜索，类似于mysql里的like语句。 
 全文索引就是把内容根据词的意义进行分词，然后分别创建索引，例如”你们的激情是因为什么事情来的” 可能会被分词成：“你们“，”激情“，“什么事情“，”来“ 等token，这样当你搜索“你们” 或者 “激情” 都会把这句搜出来。
 
-### 1.6 ES数据架构的主要概念（与关系数据库Mysql对比）
+### 1.7 ES数据架构的主要概念（与关系数据库Mysql对比）
 
   ![mysql_elasticsearch](https://github.com/Lancger/opslinux/blob/master/images/mysql_elasticsearch.png)
 
