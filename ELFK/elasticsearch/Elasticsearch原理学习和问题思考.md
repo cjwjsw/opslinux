@@ -97,6 +97,8 @@ Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索
 
 当ElasticSearch的节点启动后，它会利用多播(multicast)(或者单播，如果用户更改了配置)寻找集群中的其它节点，并与之建立连接。这个过程如下图所示：
 
+  ![elasticsearch](https://github.com/Lancger/opslinux/blob/master/images/elasticsearch.png)
+
 
 ### 1.5 ES核心概念
 
@@ -126,7 +128,7 @@ ES可以作为一个独立的单个搜索服务器。不过，为了处理大型
 
 ### 1.6 ES数据架构的主要概念（与关系数据库Mysql对比）
 
-  ![mysql_elasticsearch](https://github.com/Lancger/opslinux/blob/master/images/关系型db.png)
+  ![mysql_elasticsearch](https://github.com/Lancger/opslinux/blob/master/images/mysql_elasticsearch.png)
 
 
 （1）关系型数据库中的数据库（DataBase），等价于ES中的索引（Index）
