@@ -142,6 +142,8 @@ Elasticsearch将索引分成若干份，每个部分就是一个Shards(分片)�
 当我们需要查询的时候
 
   ![elasticsearch_get](https://github.com/Lancger/opslinux/blob/master/images/elasticsearch_get.png)
+  
+  每一个节点都做了工作，把其中的一部分反馈给用户。那么同时这里还有一个细节，假如这个节点如果down掉的话，那么另外一个节点也存在一份（索引）。它就没到这个节点上搜索了，它就寻找了另外一个节点。这样就提高了快速搜索的能力，同时可靠性也是不错的。
 
 
 ### 6）Type：类型
