@@ -5,7 +5,7 @@ wget https://artifacts.elastic.co/downloads/kibana/kibana-6.7.0-linux-x86_64.tar
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-linux-x86_64.tar.gz
 ```
 # 二、配置Elasticsearch实现冷热数据分离
-为了不浪费服务器资源（每台机器上均配置有SSD和大存储,且内存配置较高），提高ES读写性能，我们尝试进行了ES集群冷热分离的配置。三台机器，均配置有SSD和SATA盘。每台机器上运行两个ES实例，其中一个实例为配置data目录为SSD
+为了不浪费服务器资源（每台机器上均配置有SSD和大存储,且内存配置较高），提高ES读写性能，我们尝试进行了ES集群冷热分离的配置。四台机器，均配置有SSD和SATA盘。每台机器上运行两个ES实例，其中一个实例为配置data目录为SSD
 
 master节点：普通服务器即可(CPU 内存 消耗一般)；
 
