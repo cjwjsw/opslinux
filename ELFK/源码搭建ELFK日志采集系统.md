@@ -38,6 +38,12 @@ tw13c917	tw13c917:9301	es-hot3	SSD	Cold
 tw13c920	tw13c920:9300	es-cold1	SATA	Cold
 tw13c920	tw13c920:9301	es-cold2	SATA	Cold
 
+|Tables         | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 # 三、准备Elasticsearch
 
 1、安装Java环境
