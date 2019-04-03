@@ -27,9 +27,6 @@ java -version
 useradd elk
 su elk
 
-sed -i "s/#\ network.host:\ 192.168.0.1/network.host:\ 0.0.0.0/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
-sed -i "s/#\ http.port/http.port/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
-
 2、增加vm.max_map_count项到sysctl.conf文件中
 a、修改配置文件方式
 vim /etc/sysctl.conf
