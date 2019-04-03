@@ -23,11 +23,27 @@ java -version
 
 2、新增用户和系统配置
 ```
+1、新增用户
 useradd elk
 su elk
 
 sed -i "s/#\ network.host:\ 192.168.0.1/network.host:\ 0.0.0.0/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
 sed -i "s/#\ http.port/http.port/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
+
+2、增加vm.max_map_count项到sysctl.conf文件中
+a、修改配置文件方式
+vim /etc/sysctl.conf
+vm.max_map_count = 655360
+sysctl -p
+
+b、命令行方式
+sysctl -w vm.max_map_count=655360
+sysctl -a | grep vm.max_map_count
+
+3、修改用户文件最大数量
+vim /etc/security/limits.conf 
+elk        hard    nofile           262144
+elk        soft    nofile           262144
 ```
 
 3、修改配置文件
