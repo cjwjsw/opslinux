@@ -3,11 +3,9 @@
 
 1、安装Java环境
 ```
-################################################
 yum安装
 yum -y install java-1.8.0-openjdk
 
-################################################
 源码安装
 java   http://www.oracle.com/technetwork/java/javase/downloads/index.html 
 
