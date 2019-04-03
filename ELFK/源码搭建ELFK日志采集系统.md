@@ -85,7 +85,8 @@ su elk
 
 tar -zxvf elasticsearch-6.7.0.tar.gz -C /usr/local/elk
 cd /usr/local/elk
-mv elasticsearch-6.7.0 elasticsearch        #热数据或者master_es实例
+mv elasticsearch-6.7.0 elasticsearch        #master实例
+cp -rf elasticsearch elasticsearch-hot      #热数据es实例
 cp -rf elasticsearch elasticsearch-cold     #冷数据es实例
 chown -R elk:elk /usr/local/elk/
 
