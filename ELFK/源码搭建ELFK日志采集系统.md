@@ -59,6 +59,9 @@ elk        soft    nofile           262144
 
 3、修改配置文件
 ```
+mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
+```
+```
 cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
 cluster.name: Demo-Cloud  #配置集群名称
 node.name: node-1  #配置节点名称
