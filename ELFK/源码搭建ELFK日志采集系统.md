@@ -205,6 +205,10 @@ discovery.zen.ping.multicast.enabled: false  #配置是否启用广播地址
 discovery.zen.ping.unicast.hosts: ["server-01:9300", "server-01:9301", "server-02:9300", "server-02:9301", "server-03:9300", "server-03:9301", "server-04:9300", "server-04:9301"]  #配置指定节点
 EOF
 ```
+4、启动elasticsearch
+```
+/usr/local/elk/elasticsearch/bin/elasticsearch
+```
 
 # 三、准备Filebeat
 
