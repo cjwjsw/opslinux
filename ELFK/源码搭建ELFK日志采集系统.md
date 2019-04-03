@@ -13,6 +13,7 @@ data节点：主要消耗磁盘，内存；
 
 client节点：普通服务器即可(如果要进行分组聚合操作的话，建议这个节点内存也分配多一点)。
 
+  ![elasticsearch冷热架构](https://github.com/Lancger/opslinux/blob/master/images/es-hot-cold.png)
 
 ```
 ssd 热数据
