@@ -33,9 +33,10 @@ java -version
 2、新增用户和系统配置
 ```
 1、新增用户和解压安装包
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
 useradd elk
-su elk
 mkdir -p /usr/local/elk/
+su elk
 
 tar -zxvf elasticsearch-6.7.0.tar.gz -C /usr/local/elk
 mv elasticsearch-6.7.0 elasticsearch
