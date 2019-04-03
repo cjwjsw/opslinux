@@ -59,17 +59,27 @@ elk        soft    nofile           262144
 
 3、修改配置文件
 ```
-cat << EOF > /etc/elasticsearch/elasticsearch.yml
-cluster.name: DemoESCluster
-# 注意不同节点的node.name要设置得不一样
-node.name: demo-es-node-1
-path.data: /var/lib/elasticsearch
-path.logs: /var/log/elasticsearch
-network.host: 0.0.0.0
-http.port: 9200
-discovery.zen.ping.unicast.hosts: ["10.211.55.11", "10.211.55.12", "10.211.55.13"]
-discovery.zen.minimum_master_nodes: 2
-gateway.recover_after_nodes: 2
+cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
+cluster.name: Demo-Cloud  #配置集群名称
+node.name: node-1  #配置节点名称
+node.master: true  #指定该节点是否有资格被选举成为node，默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。
+node.data: true  #指定该节点是否存储索引数据，默认为true。
+index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
+index.number_of_replicas: 1  #设置默认索引副本个数，默认为1个副本。
+path.data: /data/database/elasticsearch/,/data1/database/elasticsearch/  #配置data存放的路径
+path.logs: /usr/local/elk/elasticsearch-6.7.0/logs  #配置日志存放的路径
+bootstrap.memory_lock: false  #配置是否使用内存交换分区
+bootstrap.system_call_filter: false  #配置是否启用检测
+http.max_content_length: 1000mb  #设置内容的最大容量，默认100mb
+http.enabled: false  #是否使用http协议对外提供服务，默认为true，开启。
+gateway.type: local  #gateway的类型，默认为local即为本地文件系统，可以设置为本地文件系统，分布式文件系统，hadoop的HDFS，和amazon的s3服务器等。
+gateway.recover_after_nodes: 1  #设置集群中N个节点启动时进行数据恢复，默认为1。
+network.host: 0.0.0.0  #配置监听地址
+http.port: 9200  #配置监听端口
+transport.tcp.port: 9300  #设置节点之间交互的tcp端口，默认是9300。
+discovery.zen.ping.timeout: 3s  #设置集群中自动发现其它节点时ping连接超时时间，默认为3秒，对于比较差的网络环境可以高点的值来防止自动发现时出错。
+discovery.zen.ping.multicast.enabled: false  #配置是否启用广播地址
+discovery.zen.ping.unicast.hosts: ["tw13c912:9200", "tw13c916", "tw13c917"]  #配置指定节点
 EOF
 ```
 
