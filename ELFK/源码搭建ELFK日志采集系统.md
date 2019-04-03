@@ -65,6 +65,7 @@ mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
 cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
 cluster.name: Demo-Cloud  #配置集群名称
 node.name: node-1  #配置节点名称
+node.attr.box_type: hot  #node.attr.box_type: hot热数据节点，node.attr.box_type: cold 冷数据节点
 node.master: true  #指定该节点是否有资格被选举成为node，默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。
 node.data: true  #指定该节点是否存储索引数据，默认为true。
 index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
