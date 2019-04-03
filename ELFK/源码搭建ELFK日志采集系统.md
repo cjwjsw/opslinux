@@ -111,6 +111,9 @@ elk        soft    nofile           262144
 创建热数据存放目录
 mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
 
+创建热数据存放目录
+mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
+
 创建冷数据存放目录
 mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
 ```
@@ -123,7 +126,7 @@ node.name: es-master2    #配置节点名称
 node.name: es-master3    #配置节点名称
 ```
 ```
-cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
+cat << EOF > /usr/local/elk/elasticsearch/config/elasticsearch.yml
 cluster.name: Demo-Cloud  #配置集群名称
 node.name: es-master1  #配置节点名称
 #node.attr.box_type: hot  #node.attr.box_type: hot热数据节点，node.attr.box_type: cold 冷数据节点
@@ -150,7 +153,7 @@ EOF
 ```
 热数据节点配置
 ```
-cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
+cat << EOF > /usr/local/elk/elasticsearch-hot/config/elasticsearch.yml
 cluster.name: Demo-Cloud  #配置集群名称
 node.name: node-1  #配置节点名称
 node.attr.box_type: hot  #node.attr.box_type: hot热数据节点，node.attr.box_type: cold 冷数据节点
@@ -160,7 +163,7 @@ node.data: true  #指定该节点是否存储索引数据，默认为true。
 index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
 index.number_of_replicas: 1  #设置默认索引副本个数，默认为1个副本。
 path.data: /data/database/elasticsearch/,/data1/database/elasticsearch/  #配置data存放的路径，磁盘为ssd磁盘
-path.logs: /usr/local/elk/elasticsearch-6.7.0/logs  #配置日志存放的路径
+path.logs: /usr/local/elk/elasticsearch-hot/logs  #配置日志存放的路径
 bootstrap.memory_lock: false  #配置是否使用内存交换分区
 bootstrap.system_call_filter: false  #配置是否启用检测
 http.max_content_length: 1000mb  #设置内容的最大容量，默认100mb
