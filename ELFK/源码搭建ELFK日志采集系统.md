@@ -112,7 +112,7 @@ elk        soft    nofile           262144
 mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
 
 创建热数据存放目录
-mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
+mkdir -p /data/database/elasticsearch-hot/ /data1/database/elasticsearch-hot/
 
 创建冷数据存放目录
 mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
