@@ -14,7 +14,8 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-linux-
 
 3、再根据数据量设置一批data节点【node.master: false node.data: true】，这些节点只负责存储数据，后期提供建立索引和查询索引的服务，这样的话如果用户请求比较频繁，这些节点的压力也会比较大。     
 
-4、在集群中建议再设置一批client节点【node.master: false node.data: true】，这些节点只负责处理用户请求，实现请求转发，负载均衡等功能。               
+4、在集群中建议再设置一批client节点【node.master: false node.data: true】，这些节点只负责处理用户请求，实现请求转发，负载均衡等功能。          
+
 5、master节点：普通服务器即可(CPU 内存 消耗一般)。         
 
 data节点：主要消耗磁盘，内存。            
