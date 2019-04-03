@@ -67,6 +67,16 @@ java -version
 
 2、新增用户和系统配置
 ```
+0、主机hosts绑定
+cat > /etc/hosts <<EOF
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.1.5.112 server-01
+10.1.5.116 server-02
+10.1.5.117 server-03
+10.1.5.120 server-04
+EOF
+
 1、新增用户和解压安装包
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
 useradd elk
