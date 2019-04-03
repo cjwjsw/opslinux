@@ -100,7 +100,7 @@ mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
 创建冷数据存放目录
 mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
 ```
-热数据节点配置
+master节点配置
 ```
 cat << EOF > /usr/local/elk/elasticsearch-6.7.0/config/elasticsearch.yml
 cluster.name: Demo-Cloud  #配置集群名称
@@ -108,7 +108,7 @@ node.name: node-1  #配置节点名称
 node.attr.box_type: hot  #node.attr.box_type: hot热数据节点，node.attr.box_type: cold 冷数据节点
 node.max_local_storage_nodes: 2  #允许每个机器启动两个es进程
 node.master: true  #指定该节点是否有资格被选举成为node，默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。
-node.data: true  #指定该节点是否存储索引数据，默认为true。
+node.data: false  #指定该节点是否存储索引数据，默认为true。
 index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
 index.number_of_replicas: 1  #设置默认索引副本个数，默认为1个副本。
 path.data: /data/database/elasticsearch/,/data1/database/elasticsearch/  #配置data存放的路径，磁盘为ssd磁盘
@@ -124,7 +124,7 @@ http.port: 9200  #配置监听端口
 transport.tcp.port: 9300  #设置节点之间交互的tcp端口，默认是9300。
 discovery.zen.ping.timeout: 3s  #设置集群中自动发现其它节点时ping连接超时时间，默认为3秒，对于比较差的网络环境可以高点的值来防止自动发现时出错。
 discovery.zen.ping.multicast.enabled: false  #配置是否启用广播地址
-discovery.zen.ping.unicast.hosts: ["tw13c912:9300", "tw13c912:9301", "tw13c916:9300", "tw13c916:9301", "tw13c917:9300", "tw13c917:9301"]  #配置指定节点
+discovery.zen.ping.unicast.hosts: ["server-01:9300", "server-01:9301", "server-02:9300", "server-02:9301", "server-03:9300", "server-03:9301", "server-04:9300", "server-04:9301"]  #配置指定节点
 EOF
 ```
 冷数据节点配置
