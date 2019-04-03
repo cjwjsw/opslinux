@@ -21,8 +21,30 @@ java -version
 ```
 
 
-2、编写Elasticearch的yum仓库文件
+2、新增用户和系统配置
+```
+useradd elk
+su elk
 
+sed -i "s/#\ network.host:\ 192.168.0.1/network.host:\ 0.0.0.0/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
+sed -i "s/#\ http.port/http.port/" /opt/elasticsearch-6.3.2/config/elasticsearch.yml
+```
+
+3、修改配置文件
+```
+cat << EOF > /etc/elasticsearch/elasticsearch.yml
+cluster.name: DemoESCluster
+# 注意不同节点的node.name要设置得不一样
+node.name: demo-es-node-1
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+discovery.zen.ping.unicast.hosts: ["10.211.55.11", "10.211.55.12", "10.211.55.13"]
+discovery.zen.minimum_master_nodes: 2
+gateway.recover_after_nodes: 2
+EOF
+```
 
 参考文档
 
