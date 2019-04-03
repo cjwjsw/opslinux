@@ -140,3 +140,6 @@ EOF
 参考文档
 
 elk       https://www.elastic.co/cn/products 
+
+http://www.mamicode.com/info-detail-2361555.html    elasticsearch实现冷热数据分离
+
