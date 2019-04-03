@@ -143,3 +143,7 @@ elk       https://www.elastic.co/cn/products
 
 http://www.mamicode.com/info-detail-2361555.html    elasticsearch实现冷热数据分离
 
+https://blog.csdn.net/J_bean/article/details/80147277   
+
+https://blog.51cto.com/stuart/2335120  
+
