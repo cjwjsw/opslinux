@@ -29,9 +29,10 @@ java -version
 
 2、新增用户和系统配置
 ```
-1、新增用户
+1、新增用户和解压安装包
 useradd elk
 su elk
+tar -zxvf elasticsearch-6.7.0.tar.gz -C /usr/local/
 
 2、增加vm.max_map_count项到sysctl.conf文件中
 a、修改配置文件方式
