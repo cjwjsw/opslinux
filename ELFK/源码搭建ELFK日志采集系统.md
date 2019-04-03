@@ -1,4 +1,3 @@
-elk       https://www.elastic.co/cn/products 
 
 # 一、准备Elasticsearch
 
@@ -24,3 +23,7 @@ java -version
 
 2、编写Elasticearch的yum仓库文件
 
+
+参考文档
+
+elk       https://www.elastic.co/cn/products 
