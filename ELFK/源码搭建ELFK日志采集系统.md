@@ -36,7 +36,7 @@ SATA 冷数据
 | server-01    | 9301            | es-hot1     |   SSD    |  HOT      |
 | server-02    | 9301            | es-hot2     |   SSD    |  HOT      |
 | server-03    | 9301            | es-hot3     |   SSD    |  HOT      |
-| server-04    | 9300            | es-cold1+kibana    |   SATA   |  COLD     |
+| server-04    | 9300            | es-cold1    |   SATA   |  COLD     |
 | server-04    | 9301            | es-cold2    |   SATA   |  COLD     |
 
 
