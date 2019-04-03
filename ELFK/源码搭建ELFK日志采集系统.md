@@ -28,16 +28,16 @@ client节点：普通服务器即可(如果要进行分组聚合操作的话，�
 SSD  热数据
 SATA 冷数据
 ```
-| 服务器名称         | 端口            | 节点名称     |  磁盘类型  |  存储数据  |          角色         |
-| ---------------- |:---------------:| :---------:| :--------:| :--------:| --------------------:|
-| server-01        | 9300            | es-master1  |   SATA   |  元数据    | elasticsearch+kafka  |
-| server-02        | 9300            | es-master2  |   SATA   |  元数据    | elasticsearch+kafka  |
-| server-03        | 9300            | es-master3  |   SATA   |  元数据    | elasticsearch+kafka  |
-| server-01        | 9301            | es-hot1     |   SSD    |  HOT      |                      |
-| server-02        | 9301            | es-hot2     |   SSD    |  HOT      |                      |
-| server-03        | 9301            | es-hot3     |   SSD    |  HOT      |                      |
-| server-04        | 9300            | es-cold1    |   SATA   |  COLD     | elasticsearch+kibana |
-| server-04        | 9301            | es-cold2    |   SATA   |  COLD     |                      |
+| 服务器名称         | 端口            | 节点名称     |  磁盘类型  |  存储数据  |                    角色                  |
+| ---------------- |:---------------:| :---------:| :--------:| :--------:| ---------------------------------------:|
+| server-01        | 9300            | es-master1  |   SATA   |  元数据    | filebeat+es_master+kafka+zookeeper      |
+| server-02        | 9300            | es-master2  |   SATA   |  元数据    | filebeat+es_master+kafka+zookeeper      |
+| server-03        | 9300            | es-master3  |   SATA   |  元数据    | filebeat+es_master+kafka+zookeeper      |
+| server-01        | 9301            | es-hot1     |   SSD    |  HOT      | es_data_node                            |
+| server-02        | 9301            | es-hot2     |   SSD    |  HOT      | es_data_node                            |
+| server-03        | 9301            | es-hot3     |   SSD    |  HOT      | es_data_node                            |
+| server-04        | 9300            | es-cold1    |   SATA   |  COLD     | filebeat+es_data_node+kibana            |
+| server-04        | 9301            | es-cold2    |   SATA   |  COLD     | es_data_node                            |
 
 
 # 三、准备Elasticsearch
