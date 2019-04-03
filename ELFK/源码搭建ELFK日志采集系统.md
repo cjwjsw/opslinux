@@ -7,11 +7,14 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.0-linux-
 # 二、配置Elasticsearch实现冷热数据分离
 为了不浪费服务器资源（每台机器上均配置有SSD和大存储,且内存配置较高），提高ES读写性能，我们尝试进行了ES集群冷热分离的配置。四台机器，均配置有SSD和SATA盘。每台机器上运行两个ES实例，其中一个实例为配置data目录为SSD
 
-master节点：普通服务器即可(CPU 内存 消耗一般)；
+1、默认情况下，每个节点都有成为主节点的资格，也会存储数据，还会处理客户端的请求。    
 
-data节点：主要消耗磁盘，内存；
+2、在一个生产集群中我们可以对这些节点的职责进行划分。建议集群中设置3台以上的节点作为master节点【node.master: true node.data: false】，这些节点只负责成为主节点，维护整个集群的状态。           
 
-client节点：普通服务器即可(如果要进行分组聚合操作的话，建议这个节点内存也分配多一点)。
+3、再根据数据量设置一批data节点【node.master: false node.data: true】，这些节点只负责存储数据，后期提供建立索引和查询索引的服务，这样的话如果用户请求比较频繁，这些节点的压力也会比较大。     
+
+4、在集群中建议再设置一批client节点【node.master: false node.data: true】，这些节点只负责处理用户请求，实现请求转发，负载均衡等功能。               
+5、master节点：普通服务器即可(CPU 内存 消耗一般)。         data节点：主要消耗磁盘，内存。            client节点：普通服务器即可(如果要进行分组聚合操作的话，建议这个节点内存也分配多一点)。
 
   ![elasticsearch冷热架构](https://github.com/Lancger/opslinux/blob/master/images/es-hot-cold.png)
 
