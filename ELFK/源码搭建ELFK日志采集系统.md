@@ -39,7 +39,6 @@ mkdir -p /usr/local/elk/
 su elk
 
 tar -zxvf elasticsearch-6.7.0.tar.gz -C /usr/local/elk
-mv elasticsearch-6.7.0 elasticsearch
 chown -R elk:elk /usr/local/elk/
 
 2、增加vm.max_map_count项到sysctl.conf文件中
