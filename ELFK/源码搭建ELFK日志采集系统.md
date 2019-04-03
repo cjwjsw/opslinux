@@ -64,7 +64,11 @@ elk        soft    nofile           262144
 
 3、修改配置文件
 ```
+创建热数据存放目录
 mkdir -p /data/database/elasticsearch/ /data1/database/elasticsearch/
+
+创建冷数据存放目录
+mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
 ```
 热数据节点配置
 ```
