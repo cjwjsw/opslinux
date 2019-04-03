@@ -30,14 +30,14 @@ sata 冷数据
 ```
 | 服务器名称         | 端口            | 节点名称     |  磁盘类型  |  存储数据  |
 | ---------------- |:---------------:| :---------:| :--------:| --------:|
-| tw13c912        | 9300            | es-master1  |   SATA   |  元数据    |
-| tw13c916        | 9300            | es-master2  |   SATA   |  元数据    |
-| tw13c917        | 9300            | es-master3  |   SATA   |  元数据    |
-| tw13c912        | 9301            | es-hot1     |   SSD    |  HOT      |
-| tw13c916        | 9301            | es-hot2     |   SSD    |  HOT      |
-| tw13c917        | 9301            | es-hot3     |   SSD    |  HOT      |
-| tw13c920        | 9300            | es-cold1    |   SATA   |  COLD     |
-| tw13c920        | 9301            | es-cold2    |   SATA   |  COLD     |
+| server-01    | 9300            | es-master1  |   SATA   |  元数据    |
+| server-02    | 9300            | es-master2  |   SATA   |  元数据    |
+| server-03    | 9300            | es-master3  |   SATA   |  元数据    |
+| server-01    | 9301            | es-hot1     |   SSD    |  HOT      |
+| server-02    | 9301            | es-hot2     |   SSD    |  HOT      |
+| server-03    | 9301            | es-hot3     |   SSD    |  HOT      |
+| server-04    | 9300            | es-cold1    |   SATA   |  COLD     |
+| server-04    | 9301            | es-cold2    |   SATA   |  COLD     |
 
 
 # 三、准备Elasticsearch
