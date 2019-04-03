@@ -116,6 +116,8 @@ mkdir -p /data/database/elasticsearch-hot/ /data1/database/elasticsearch-hot/
 
 创建冷数据存放目录
 mkdir -p /data/database/elasticsearch-cold/ /data1/database/elasticsearch-cold/
+
+chown -R elk:elk /data/database/elasticsearch/ /data1/database/elasticsearch/
 ```
 master节点配置
 ```
