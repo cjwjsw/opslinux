@@ -135,8 +135,8 @@ node.name: es-master1  #配置节点名称
 node.max_local_storage_nodes: 2  #允许每个机器启动两个es进程
 node.master: true  #指定该节点是否有资格被选举成为node，默认是true，es是默认集群中的第一台机器为master，如果这台机挂了就会重新选举master。
 node.data: false  #指定该节点是否存储索引数据，默认为true。
-index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
-index.number_of_replicas: 1  #设置默认索引副本个数，默认为1个副本。
+#index.number_of_shards: 5  #设置默认索引分片个数，默认为5片。
+#index.number_of_replicas: 1  #设置默认索引副本个数，默认为1个副本。
 path.data: /data/database/elasticsearch/,/data1/database/elasticsearch/  #配置data存放的路径，磁盘为ssd磁盘
 path.logs: /usr/local/elk/elasticsearch/logs  #配置日志存放的路径
 bootstrap.memory_lock: false  #配置是否使用内存交换分区
