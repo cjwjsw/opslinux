@@ -23,7 +23,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
 使环境变量生效
-source /etc/bashrc
+source /etc/profile
 
 验证安装是否成功
 java -version
