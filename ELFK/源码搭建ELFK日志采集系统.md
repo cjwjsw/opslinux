@@ -74,6 +74,9 @@ gateway.recover_after_nodes: 2
 EOF
 ```
 
+# 三、准备Filebeat
+
+
 参考文档
 
 elk       https://www.elastic.co/cn/products 
