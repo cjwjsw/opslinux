@@ -17,6 +17,7 @@ java   http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 tar -zxvf jdk-8u201-linux-x64.tar.gz -C /opt/
 
+#Set JAVA_HOME
 export JAVA_HOME=/opt/jdk1.8.0_201
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
