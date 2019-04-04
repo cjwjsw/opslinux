@@ -5,6 +5,7 @@
 - [Node手册](https://github.com/Lancger/opslinux/blob/master/node/README.md)
 - [Git手册](https://github.com/Lancger/opslinux/blob/master/gitlab/git%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF.md)
 - [Zabbix手册](https://github.com/Lancger/opslinux/blob/master/zabbix/v4.0/README.md)
+- [Elasticsearch手册](https://github.com/Lancger/opslinux/blob/master/ELFK/elasticsearch/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%B3%BB%E5%88%97%E6%96%87%E6%A1%A3.md)
 
 
 ## 二、git 初始化
