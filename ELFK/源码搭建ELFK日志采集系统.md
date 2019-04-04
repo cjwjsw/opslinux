@@ -105,6 +105,12 @@ sysctl -a | grep vm.max_map_count
 vim /etc/security/limits.conf 
 elk        hard    nofile           262144
 elk        soft    nofile           262144
+
+4、修改内存限制
+vim /etc/security/limits.conf
+# allow user 'elk' mlockall
+elk soft memlock unlimited
+elk hard memlock unlimited
 ```
 
 3、修改配置文件
