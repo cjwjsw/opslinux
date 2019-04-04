@@ -79,7 +79,8 @@ EOF
 
 1、新增用户和解压安装包
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
-useradd elk
+groupadd elk
+useradd -g elk elk
 mkdir -p /usr/local/elk/
 su elk
 
