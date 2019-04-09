@@ -88,3 +88,12 @@ LVS的结构主要分为两部分：
 3. OutPPS   (current out packet rate)   每秒的出包个数  
 4. InBPS    (current in byte rate)      每秒入流量（字节）  
 5. OutBPS   (current out byte rate)     每秒入流量（字节） 
+
+
+
+参考文档：
+
+https://segmentfault.com/a/1190000002609473   ipvsadm 命令详解
+
+
+https://www.cnblogs.com/lipengxiang2009/p/7353373.html  LVS管理工具--ipvsadm
