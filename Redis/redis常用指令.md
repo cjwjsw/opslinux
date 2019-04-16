@@ -26,3 +26,18 @@ hash
     hash (哈希表)
 
 ```
+
+## 三、Redis 哈希(Hash)操作
+```
+127.0.0.1:6379>  HMSET runoobkey name "redis tutorial" description "redis basic commands for caching" likes 20 visitors 23000
+OK
+127.0.0.1:6379>  HGETALL runoobkey
+1) "name"
+2) "redis tutorial"
+3) "description"
+4) "redis basic commands for caching"
+5) "likes"
+6) "20"
+7) "visitors"
+8) "23000"
+```
