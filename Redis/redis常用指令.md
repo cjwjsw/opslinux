@@ -40,7 +40,12 @@ OK
 6) "20"
 7) "visitors"
 8) "23000"
+
+
+#删除字段
+HDEL runoobkey name
 ```
+
 
 
 
