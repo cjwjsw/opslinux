@@ -76,7 +76,20 @@
 
     #修改版本信息
     vi src/core/nginx.h
-
+    
+    #nginx隐藏server信息和版本信息
+    进入解压出来的nginx 源码目录
+    vi src/http/ngx_http_header_filter_module.c
+    
+    将
+    static char ngx_http_server_string[] = "Server: " TENGINE CRLF;
+    static char ngx_http_server_full_string[] = "Server: " TENGINE_VER CRLF;
+    
+    改为
+    static char ngx_http_server_string[] = "Server: X-Web" CRLF;
+    static char ngx_http_server_full_string[] = "Server:X-Web " CRLF;
+    
+    #编译安装
     make && make install
 
     安装完成，启动nginx服务
