@@ -41,3 +41,9 @@ OK
 7) "visitors"
 8) "23000"
 ```
+
+
+
+参考文档：
+
+http://www.runoob.com/redis/redis-hashes.html
