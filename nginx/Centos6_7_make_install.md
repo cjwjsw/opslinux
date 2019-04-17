@@ -114,6 +114,9 @@
     开机自动启动
 
     chkconfig nginx on
+    
+    #centos7启动命令
+    systemctl restart nginx.service
 
 
 ## 四、部署waf
