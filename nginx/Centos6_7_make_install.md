@@ -117,6 +117,7 @@
     
     #centos7启动命令
     systemctl restart nginx.service
+    systemctl enable nginx.service
 
 
 ## 四、部署waf
