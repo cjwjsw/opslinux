@@ -19,3 +19,16 @@ Prometheus是一个开源的系统监视和警报工具包，自2012成立以来
     Alertmanager 程序，主要是负责实现报警功能。
     Pushgateway 程序，主要是实现接收由Client push过来的指标数据，在指定的时间间隔，由主程序来抓取。
     node_exporter 这类是不同系统已经实现了的集成。
+
+架构图
+
+
+
+
+
+
+参考文档：
+
+https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
+
+https://www.cnblogs.com/yanyouqiang/p/7240696.html   Prometheus入门 
