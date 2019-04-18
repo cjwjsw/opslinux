@@ -129,8 +129,8 @@ systemctl status node_exporter.service
 
 1、下载及安装
 ```
-wget https://dl.grafana.com/oss/release/grafana-5.4.0-1.x86_64.rpm 
-yum localinstall grafana-5.4.0-1.x86_64.rpm
+wget https://dl.grafana.com/oss/release/grafana-6.1.4-1.x86_64.rpm
+yum localinstall grafana-6.1.4-1.x86_64.rpm
 
 ```
 
