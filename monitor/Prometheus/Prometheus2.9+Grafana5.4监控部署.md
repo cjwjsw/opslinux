@@ -6,15 +6,16 @@ mkdir -p /data0/prometheus
 groupadd prometheus
 useradd -g prometheus prometheus -d /data0/prometheus
  
-tar -xvf prometheus-2.9.1.linux-amd64.tar.gz -C /data0/prometheus
-
+tar -xvf prometheus-2.9.1.linux-amd64.tar.gz
+cd /usr/local/src/
+mv prometheus-2.9.1.linux-amd64/* /data0/prometheus/
  
 cd /data0/prometheus/
-mkdir {data,cfg,logs,bin} -p
+mkdir -p {data,cfg,logs,bin} 
 mv prometheus promtool bin/
 mv prometheus.yml cfg/
  
-chown -R prometheus.prometheus *
+chown -R prometheus.prometheus /data0/prometheus
 ```
 
 
