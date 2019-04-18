@@ -90,6 +90,40 @@ mv node_exporter-0.17.0.linux-amd64 /data0/prometheus/node_exporter
 chown -R prometheus.prometheus /data0/prometheus
 ```
 
+2、创建node_exporter.service的 systemd unit 文件
+```
+cat > /usr/lib/systemd/system/node_exporter.service <<EOF
+[Unit]
+Description=node_exporter
+Documentation=https://prometheus.io/
+After=network.target
+ 
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/data0/prometheus/node_exporter/node_exporter
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+3、启动服务
+```
+systemctl daemon-reload
+systemctl enable node_exporter.service
+systemctl start node_exporter.service
+```
+
+4、运行状态
+```
+systemctl status prometheus.service
+```
+
+5、客户监控端数据汇报
+
+访问：http://192.168.56.11:9100/metrics，查看从exporter具体能抓到的数据.如下：
 
 参考文档：
 
