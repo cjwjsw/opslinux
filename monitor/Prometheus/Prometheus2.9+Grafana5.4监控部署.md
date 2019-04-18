@@ -60,7 +60,10 @@ systemctl enable prometheus.service
 systemctl start prometheus.service
 ```
 
-
+6、运行状态
+```
+systemctl status prometheus.service
+```
 
 参考文档：
 
