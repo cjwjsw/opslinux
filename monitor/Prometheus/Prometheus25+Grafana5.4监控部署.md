@@ -1,4 +1,37 @@
-# 一、Prometheus概述
+# 一、什么是TSDB？
+
+TSDB(Time Series Database)时序列数据库，我们可以简单的理解为一个优化后用来处理时间序列数据的软件，并且数据中的数组是由时间进行索引的。
+
+1、时间序列数据库的特点
+
+    大部分时间都是写入操作。
+
+    写入操作几乎是顺序添加，大多数时候数据到达后都以时间排序。
+
+    写操作很少写入很久之前的数据，也很少更新数据。大多数情况在数据被采集到数秒或者数分钟后就会被写入数据库。
+
+    删除操作一般为区块删除，选定开始的历史时间并指定后续的区块。很少单独删除某个时间或者分开的随机时间的数据。
+
+    基本数据大，一般超过内存大小。一般选取的只是其一小部分且没有规律，缓存几乎不起任何作用。
+
+    读操作是十分典型的升序或者降序的顺序读。
+
+    高并发的读操作十分常见。
+
+2、常见的时间序列数据库
+```
+TSDB项目    官网
+influxDB    https://influxdata.com/
+RRDtool    http://oss.oetiker.ch/rrdtool/
+Graphite    http://graphiteapp.org/
+OpenTSDB    http://opentsdb.net/
+Kdb+    http://kx.com/
+Druid    http://druid.io/
+KairosDB    http://kairosdb.github.io/
+Prometheus    https://prometheus.io/
+```
+
+# 二、Prometheus概述
 
 Prometheus是一个开源的系统监视和警报工具包，自2012成立以来，许多公司和组织采用了Prometheus。它现在是一个独立的开源项目，并独立于任何公司维护。
 在2016年，Prometheus加入云计算基金会作为Kubernetes之后的第二托管项目。
