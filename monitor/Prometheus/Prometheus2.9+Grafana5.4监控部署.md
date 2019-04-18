@@ -33,6 +33,35 @@ promtool check config /data0/prometheus/config/prometheus.yml
 Checking /data0/prometheus/config/prometheus.yml
   SUCCESS: 0 rule files found
 ```
+
+4、创建prometheus.service 的 systemd unit 文件
+```
+cat > /etc/systemd/system/prometheus.service <<EOF
+[Unit]
+Description=Prometheus
+Documentation=https://prometheus.io/
+After=network.target
+ 
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/data0/prometheus/bin/prometheus --config.file=/data0/prometheus/config/prometheus.yml --storage.tsdb.path=/data0/prometheus/data
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+5、启动服务
+```
+systemctl daemon-reload
+systemctl enable prometheus.service
+systemctl start prometheus.service
+```
+
+
+
 参考文档：
 
 https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
