@@ -73,6 +73,24 @@ http://192.168.56.11:9090/targets
 http://192.168.56.11:9090/graph
 ```
 
+# 二、node_exporter安装及配置
+
+1、下载及解压安装包
+```
+wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
+
+#mkdir -p /data0/prometheus 
+#groupadd prometheus
+#useradd -g prometheus prometheus -d /data0/prometheus
+ 
+tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
+cd /usr/local/src/
+mv node_exporter-0.17.0.linux-amd64 /data0/prometheus/node_exporter
+ 
+chown -R prometheus.prometheus /data0/prometheus
+```
+
+
 参考文档：
 
 https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
