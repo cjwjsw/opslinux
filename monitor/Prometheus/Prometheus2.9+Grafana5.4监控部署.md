@@ -118,7 +118,7 @@ systemctl start node_exporter.service
 
 4、运行状态
 ```
-systemctl status prometheus.service
+systemctl status node_exporter.service
 ```
 
 5、客户监控端数据汇报
