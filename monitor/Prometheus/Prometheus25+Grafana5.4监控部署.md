@@ -52,8 +52,7 @@ Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库
     2. exporters：负责向prometheus server做数据汇报的程序统。而不同的数据汇报由不同的exporters实现，比如监控主机有node-exporters，mysql有MySQL server exporter
     
     3. pushgateway：主要使用场景为：
-       Prometheus 采用 pull 模式，可能由于不在一个子网或者防火墙原因，导致 Prometheus 无法直接拉取各个 target 数据。在监控业务数据的时候，需要将不同数据汇总, 由 Prometheus 统一收集。
-　　　　总结：实现类似于zabbix-proxy功能；
+       Prometheus 采用 pull 模式，可能由于不在一个子网或者防火墙原因，导致 Prometheus 无法直接拉取各个 target 数据。在监控业务数据的时候，需要将不同数据汇总, 由 Prometheus 统一收集。总结：实现类似于zabbix-proxy功能；
     
      4. Alertmanager：实现prometheus的告警功能。
 
