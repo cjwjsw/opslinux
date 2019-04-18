@@ -64,6 +64,9 @@ systemctl start prometheus.service
 ```
 systemctl status prometheus.service
 ```
+7、查看ui
+
+Prometheus自带有简单的UI, http://192.168.56.11:9090/
 
 参考文档：
 
