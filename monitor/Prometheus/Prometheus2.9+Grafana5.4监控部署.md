@@ -68,6 +68,11 @@ systemctl status prometheus.service
 
 Prometheus自带有简单的UI, http://192.168.56.11:9090/
 
+```
+http://192.168.56.11:9090/targets
+http://192.168.56.11:9090/graph
+```
+
 参考文档：
 
 https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
