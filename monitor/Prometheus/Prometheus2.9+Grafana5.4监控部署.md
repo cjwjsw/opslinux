@@ -2,15 +2,14 @@
 ```
 wget https://github.com/prometheus/prometheus/releases/download/v2.9.1/prometheus-2.9.1.linux-amd64.tar.gz
 
-mkdir -p /data/prometheus 
+mkdir -p /data0/prometheus 
 groupadd prometheus
-useradd -g prometheus prometheus -d /app/prometheus
+useradd -g prometheus prometheus -d /data0/prometheus
  
-tar -xvf prometheus-2.5.0.linux-amd64.tar.gz
-cd prometheus-2.5.0.linux-amd64/
-mv * /data/prometheus
+tar -xvf prometheus-2.9.1.linux-amd64.tar.gz -C /data0/prometheus
+
  
-cd /app/prometheus/
+cd /data0/prometheus/
 mkdir {data,cfg,logs,bin} -p
 mv prometheus promtool bin/
 mv prometheus.yml cfg/
