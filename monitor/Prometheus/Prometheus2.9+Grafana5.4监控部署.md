@@ -28,7 +28,10 @@ source /etc/profile
 
 3、检查配置文件
 ```
+promtool check config /data0/prometheus/config/prometheus.yml
+
 Checking /data0/prometheus/config/prometheus.yml
+  SUCCESS: 0 rule files found
 ```
 参考文档：
 
