@@ -57,7 +57,7 @@ EOF
 ```
 systemctl daemon-reload
 systemctl enable prometheus.service
-systemctl start prometheus.service
+systemctl restart prometheus.service
 ```
 
 6、运行状态
@@ -79,9 +79,9 @@ http://192.168.56.11:9090/graph
 ```
 wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 
-#mkdir -p /data0/prometheus 
-#groupadd prometheus
-#useradd -g prometheus prometheus -d /data0/prometheus
+mkdir -p /data0/prometheus 
+groupadd prometheus
+useradd -g prometheus prometheus -d /data0/prometheus
  
 tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
 cd /usr/local/src/
@@ -113,7 +113,7 @@ EOF
 ```
 systemctl daemon-reload
 systemctl enable node_exporter.service
-systemctl start node_exporter.service
+systemctl restart node_exporter.service
 ```
 
 4、运行状态
