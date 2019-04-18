@@ -33,8 +33,7 @@ Prometheus    https://prometheus.io/
 
 # 二、Prometheus概述
 
-Prometheus是一个开源的系统监视和警报工具包，自2012成立以来，许多公司和组织采用了Prometheus。它现在是一个独立的开源项目，并独立于任何公司维护。
-在2016年，Prometheus加入云计算基金会作为Kubernetes之后的第二托管项目。
+Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB)，它使用Go语言开发，是一个开源的系统监视和警报工具包，自2012成立以来，许多公司和组织采用了Prometheus。它现在是一个独立的开源项目，并独立于任何公司维护。Prometheus和Heapster(Heapster是K8S的一个子项目，用于获取集群的性能数据。)相比功能更完善、更全面。Prometheus性能也足够支撑上万台规模的集群。
 
 特点：
 
