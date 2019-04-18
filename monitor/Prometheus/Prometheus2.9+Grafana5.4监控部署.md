@@ -16,3 +16,9 @@ mv prometheus.yml cfg/
  
 chown -R prometheus.prometheus *
 ```
+
+
+
+参考文档：
+
+https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
