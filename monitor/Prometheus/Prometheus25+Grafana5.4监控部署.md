@@ -54,6 +54,7 @@ Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库
 
 架构图
 
+  ![prometheus架构图](https://github.com/Lancger/opslinux/blob/master/images/prometheus.png)
 
 
 
