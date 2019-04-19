@@ -53,7 +53,22 @@ systemctl enable mysqld_exporter
 curl localhost:9104/metrics
 ```
 
+# 五、Prometheus server配置拉取数据
 
+利用 Prometheus 的 static_configs 来拉取 mysqld_exporter 的数据。
+
+编辑prometheus.yml文件，添加内容
+```
+cat prometheus.yml
+  - job_name: mysql_node3
+    static_configs:
+      - targets: ['192.168.56.13:9104']
+```
+重启prometheus，然后在Prometheus页面中的Targets中就能看到新加入的mysql
+
+# 六、MySQL exporter Dashboard 模板
+
+搜索mysql的Grafana Dashboard，导入进去
 
 参考资料：
 
