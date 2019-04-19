@@ -64,7 +64,61 @@ systemctl restart prometheus.service
 ```
 systemctl status prometheus.service
 ```
-7、查看ui
+
+7、prometheus.yml配置文件
+```
+[root@linux-node1 config]# cat prometheus.yml
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['192.168.56.11:9090']
+      labels:
+        instance: prometheus_server
+
+  - job_name: linux1
+    static_configs:
+      - targets: ['192.168.56.11:9100']
+        labels:
+          instance: sys1
+
+  - job_name: linux2
+    static_configs:
+      - targets: ['192.168.56.12:9100']
+        labels:
+          instance: sys2
+
+  - job_name: linux3
+    static_configs:
+      - targets: ['192.168.56.13:9100']
+        labels:
+          instance: sys3
+```
+8、查看ui
 
 Prometheus自带有简单的UI, http://192.168.56.11:9090/
 
