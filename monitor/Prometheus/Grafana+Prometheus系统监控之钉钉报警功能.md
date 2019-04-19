@@ -6,7 +6,10 @@
 由于目前的版本邮件警报暂时走不通，然而钉钉也是一个不错的选择。
 
 
-
+```
+touch /var/test
+time dd if=/dev/zero of=/var/test bs=8k count=1000000
+```
 参考文档：
 
 https://blog.52itstyle.vip/archives/2029/    Grafana+Prometheus系统监控之钉钉报警功能 
