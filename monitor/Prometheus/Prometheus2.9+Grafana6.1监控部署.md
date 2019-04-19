@@ -138,7 +138,7 @@ yum localinstall grafana-6.1.4-1.x86_64.rpm
 ```
 systemctl daemon-reload
 systemctl enable grafana-server.service
-systemctl start grafana-server.service
+systemctl restart grafana-server.service
 ```
 
 3、访问WEB界面
