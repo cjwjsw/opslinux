@@ -34,7 +34,7 @@ After=network.target
 [Service]
 Type=simple
 User=prometheus
-ExecStart=/data0/prometheus/mysqld_exporter --config.my-cnf=/data0/prometheus/mysqld_exporter/my.cnf
+ExecStart=/data0/prometheus/mysqld_exporter/mysqld_exporter --config.my-cnf=/data0/prometheus/mysqld_exporter/my.cnf
 Restart=on-failure
 
 [Install]
