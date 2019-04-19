@@ -45,7 +45,7 @@ EOF
 # 四、启动myslqd_exporter
 ```
 systemctl daemon-reload
-systemctl start mysqld_exporter
+systemctl restart mysqld_exporter
 systemctl status mysqld_exporter
 systemctl enable mysqld_exporter
 
