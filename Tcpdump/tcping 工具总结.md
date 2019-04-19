@@ -8,6 +8,9 @@ mv tcpping /usr/bin/
 cd /usr/bin
 
 chmod 755 tcpping
+
+
+ ./tcpping www.aliyun.com 80
 ```
 
 参考文档：
