@@ -14,7 +14,8 @@ make distclean
 
 #4、安装
 make MALLOC=libc PREFIX=/usr/local/redis install
-cp redis.conf /etc/redis.conf
+mkdir /etc/redis/
+cp redis.conf /etc/redis/6379.conf
 cd /usr/local/redis/bin/
 cp redis-benchmark redis-cli redis-server /usr/bin/
 
