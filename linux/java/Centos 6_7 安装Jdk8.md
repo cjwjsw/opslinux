@@ -35,18 +35,3 @@ vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
 ./apache-activemq-5.15.8/bin/activemq start (启动MQ)
 ```
 
-# 三、
-```
-Shell>wget http://download.redis.io/redis-stable.tar.gz
-Shell>tar -zxvf redis-stable.tar.gz
-Shell>cd redis-stable/src
-Shell> make=libc ？ -->  make MALLOC=libc 
-Shell> make  install
-Shell>vim ../redis.conf
-        requirepass ********** (修改密码)  // test
-        bind 127.0.0.1 (注释掉,对外部提供服务)
-        port 6379    (端口号)
-        protected-mode no (更改为no,允许公网访问redis cache)
-shell> nohup  redis-server ./redis.conf & (后台启动)
-shell> tail -f nohup.out  (查看服务启动状态)
-```
