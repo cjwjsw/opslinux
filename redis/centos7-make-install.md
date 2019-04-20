@@ -173,5 +173,8 @@ iptables -A INPUT -s x.x.x.x -p tcp --dport 6379 -j ACCEPT
 
 参考文档：
 
+https://segmentfault.com/a/1190000017780463  Centos7安装Redis 
+
+
 http://www.144d.com/post-583.html
 
