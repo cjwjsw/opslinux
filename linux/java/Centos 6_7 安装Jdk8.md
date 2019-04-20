@@ -1,3 +1,5 @@
+# 一、java环境部署
+
 ```
 mkdir /opt/java && cd /opt/java 
 tar -zxvf jdk-8u201-linux-x64.tar.gz 
@@ -13,3 +15,4 @@ source /etc/profile  (生效环境变量)
 
 java -version       (检查安装 是否成功)
 ```
+
