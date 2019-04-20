@@ -83,8 +83,10 @@ systemctl status redis
 
 # 五、系统参数优化
 ```
+注意一
 echo 511 > /proc/sys/net/core/somaxconn
 
+注意二
 vim /etc/sysctl.conf
 然后sysctl -p 使配置文件生效
 vm.overcommit_memory=1
@@ -93,13 +95,14 @@ sysctl vm.overcommit_memory=1
 或
 echo 1 > /proc/sys/vm/overcommit_memory
 
+注意三
 vim /etc/rc.local
 新增
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
 
-# 防火墙配置
+# 六、防火墙配置
 ```
 iptables -A INPUT -s x.x.x.x -p tcp --dport 6379 -j ACCEPT
 ```
