@@ -19,7 +19,6 @@ mkdir /usr/local/redis/etc/
 cp redis.conf /usr/local/redis/etc/
 cd /usr/local/redis/bin/
 cp redis-benchmark redis-cli redis-server /usr/bin/
-
 ```
 
 # 二、配置环境变量
@@ -32,6 +31,118 @@ export PATH="$PATH:/usr/local/redis/bin"
 source /etc/profile
 ```
 
+# 三、redis启动脚本
+```
+#!/bin/sh
+#
+# bdrp        init file for starting up the bdrp daemon
+#
+# chkconfig:   - 20 80
+# description: Starts and stops the bdrp daemon.
+#
+### BEGIN INIT INFO
+# Provides: bdrp-server
+# Required-Start: $local_fs $remote_fs $network
+# Required-Stop: $local_fs $remote_fs $network
+# Short-Description: start and stop Redis server
+# Description: A persistent key-value database
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+name="redis-server"
+exec="/usr/bin/$name"
+pidfile="/var/run/redis/redis.pid"
+CLIEXEC="/usr/bin/redis-cli"
+REDISHOST="127.0.0.1"
+REDISPORT="6379"
+REDIS_CONFIG="/usr/local/redis/etc/redis.conf"
+AUTH="test"
+
+
+lockfile=/var/lock/subsys/redis
+
+start() {
+    [ -f $REDIS_CONFIG ] || exit 6
+    [ -x $exec ] || exit 5
+    echo -n $"Starting $name: "
+    daemon --user redis "$exec $REDIS_CONFIG --daemonize yes --pidfile $pidfile"
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $name: "
+
+    $CLIEXEC -h $REDISHOST -p $REDISPORT -a $AUTH shutdown
+
+    retval=$?
+    if [ -f $pidfile ]
+    then
+        # shutdown haven't work, try old way
+        killproc -p $pidfile $name
+        retval=$?
+    else
+        success "$name shutdown"
+    fi
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    false
+}
+
+rh_status() {
+    status -p $pidfile $name
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart}"
+        exit 2
+esac
+exit $?
+```
 
 
 参考文档：
