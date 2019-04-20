@@ -14,7 +14,7 @@ make distclean
 
 
 #4、安装
-make PREFIX=/usr/local/redis install
+make MALLOC=libc PREFIX=/usr/local/redis install
 mkdir /usr/local/redis/etc/
 cp redis.conf /usr/local/redis/etc/
 cd /usr/local/redis/bin/
@@ -33,13 +33,8 @@ source /etc/profile
 ```
 
 
-# 三、创建服务
-```
-vi /lib/systemd/system/redis.service
-
-
 
 参考文档：
 
 http://www.144d.com/post-583.html
-```
+
