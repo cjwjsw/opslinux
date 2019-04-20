@@ -107,6 +107,14 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 iptables -A INPUT -s x.x.x.x -p tcp --dport 6379 -j ACCEPT
 ```
 
+# 七、测试连接
+```
+redis-cli -h 127.0.0.1 -a "foobared"  会弹出个警告
+Warning: Using a password with '-a' option on the command line interface may not be safe.
+
+#解决办法（2>/dev/null将标准错误去除即可）
+redis-cli -h 127.0.0.1 -a "foobared" 2>/dev/null
+```
 参考文档：
 
 https://segmentfault.com/a/1190000017780463  Centos7安装Redis 
