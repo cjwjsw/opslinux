@@ -95,7 +95,7 @@ echo 1 > /proc/sys/vm/overcommit_memory
 
 vim /etc/rc.local
 新增
-echo never > /sys/kernel/mm/transparent_hugepage/enabled。
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
 
