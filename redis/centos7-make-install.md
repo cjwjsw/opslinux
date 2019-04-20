@@ -150,8 +150,22 @@ exit $?
 
 # 四、redis服务启动
 ```
-systemctl restart redis.service
+#刷新配置
+systemctl daemon-reload
+
+systemctl start redis
+systemctl restart redis
+systemctl stop redis
+
+#开机自启动
+systemctl enable redis
+systemctl disable redis
+
+#查看状态
+systemctl status redis
+
 ```
+
 参考文档：
 
 http://www.144d.com/post-583.html
