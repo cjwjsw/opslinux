@@ -31,3 +31,15 @@ export PATH="$PATH:/usr/local/redis/bin"
 # 让环境变量立即生效
 source /etc/profile
 ```
+
+
+# 三、创建服务
+```
+vi /lib/systemd/system/redis.service
+
+
+
+参考文档：
+
+http://www.144d.com/post-583.html
+```
