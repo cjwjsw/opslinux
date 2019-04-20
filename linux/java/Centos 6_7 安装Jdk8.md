@@ -1,8 +1,10 @@
 # 一、java环境部署
 
 ```
+wget https://download.oracle.com/otn/java/jdk/8u211-b12/478a62b7d4e34b78b671c754eaaf38ab/jdk-8u211-linux-x64.tar.gz
+
 mkdir /opt/java && cd /opt/java 
-tar -zxvf jdk-8u201-linux-x64.tar.gz 
+tar -zxvf jdk-8u211-linux-x64.tar.gz
 
 vim /etc/profile
 在最后一行添加
