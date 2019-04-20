@@ -165,6 +165,12 @@ systemctl status redis
 
 ```
 
+
+# 防火墙配置
+```
+iptables -A INPUT -s x.x.x.x -p tcp --dport 6379 -j ACCEPT
+```
+
 参考文档：
 
 http://www.144d.com/post-583.html
