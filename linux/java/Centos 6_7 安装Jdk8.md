@@ -22,3 +22,13 @@ source /etc/profile  (生效环境变量)
 
 java -version       (检查安装 是否成功)
 ```
+
+# 二、Activemq安装部署
+```
+http://activemq.apache.org/download.html  
+
+wget http://archive.apache.org/dist/activemq/5.15.8/apache-activemq-5.15.8-bin.tar.gz
+tar -zxvf apache-activemq-5.15.8-bin.tar.gz
+
+vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
+```
