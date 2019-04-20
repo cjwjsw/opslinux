@@ -33,6 +33,9 @@ source /etc/profile
 
 # 三、redis启动脚本
 ```
+vim /etc/init.d/redis
+```
+```
 #!/bin/sh
 #
 # bdrp        init file for starting up the bdrp daemon
@@ -145,6 +148,10 @@ exit $?
 ```
 
 
+# 四、redis服务启动
+```
+systemctl restart redis.service
+```
 参考文档：
 
 http://www.144d.com/post-583.html
