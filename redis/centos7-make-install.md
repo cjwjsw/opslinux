@@ -21,6 +21,10 @@ cp redis-benchmark redis-cli redis-server /usr/bin/
 
 #创建用户
 useradd redis -M -s /sbin/nologin
+
+#创建日志文件
+touch /var/log/redis_6379.log
+chown redis:redis /var/log/redis_6379.log
 ```
 
 # 二、配置环境变量
