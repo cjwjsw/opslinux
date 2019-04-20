@@ -24,7 +24,11 @@ useradd redis -M -s /sbin/nologin
 
 #创建日志文件
 touch /var/log/redis_6379.log
-chown redis:redis /var/log/redis_6379.log
+mkdir -p /var/lib/redis/6379
+chown -R redis:redis /var/log/redis_6379.log
+chown -R redis:redis /var/lib/redis/6379
+
+tail -100f /var/log/redis_6379.log
 ```
 
 # 二、配置环境变量
