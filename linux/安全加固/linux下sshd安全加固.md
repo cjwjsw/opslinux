@@ -37,7 +37,7 @@ PermitRootLogin no #禁用root 登录
 RSAAuthentication yes #通过RSA认证
 PubkeyAuthentication yes
 AuthorizedKeysFile	%h/.ssh/authorized_keys
-PasswordAuthentication no #禁止密码方式验证
+#PasswordAuthentication no #禁止密码方式验证
 ChallengeResponseAuthentication no
 GSSAPIAuthentication no
 GSSAPICleanupCredentials no
