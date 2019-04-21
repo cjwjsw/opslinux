@@ -53,14 +53,14 @@ Subsystem	sftp	/usr/libexec/openssh/sftp-server
 
 # 三、测试验证
 ```
-[root@linux-node1 .ssh]# ssh-keygen
+[www@linux-node1 .ssh]# ssh-keygen
 
 Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter file in which to save the key (/home/www/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa.
-Your public key has been saved in /root/.ssh/id_rsa.pub.
+Your identification has been saved in /home/www/.ssh/id_rsa.
+Your public key has been saved in /home/www/.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:O+lLbCn0p2wfD5j9GEyMUv3RqbsCMAmUXVmRzdT6GCg root@linux-node1
 The key's randomart image is:
@@ -75,10 +75,10 @@ The key's randomart image is:
 |       *.+.B .   |
 |       .=oo.+    |
 +----[SHA256]-----+
-[root@linux-node1 .ssh]# ssh-copy-id -p33389 root@192.168.56.11
+[www@linux-node1 .ssh]# ssh-copy-id -p33389 root@192.168.56.11
 
 
-[root@linux-node1 .ssh]# ssh -i id_rsa -p33389 root@192.168.56.11
+[www@linux-node1 .ssh]# ssh -i id_rsa -p33389 root@192.168.56.11
 Last login: Sun Apr 21 17:26:42 2019 from 192.168.56.12
 ```
 参考文档：
