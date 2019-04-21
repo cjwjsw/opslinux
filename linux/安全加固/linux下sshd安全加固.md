@@ -18,6 +18,7 @@ RSAAuthentication yes
 
 # 允许pubKey（id_rsa.pub）登录
 PubkeyAuthentication yes
+AuthorizedKeysFile      %h/.ssh/authorized_keys
 
 
 4、禁止密码方式验证
