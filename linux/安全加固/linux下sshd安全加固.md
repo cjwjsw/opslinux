@@ -13,6 +13,8 @@ Port 36301 #改到一般扫描器扫到累死才能找到的端口（从20 扫�
 2、 vim /etc/ssh/sshd_config
 
 
+4、禁止密码方式验证
+PasswordAuthentication no #禁止密码方式验证
 ```
 
 参考文档：
