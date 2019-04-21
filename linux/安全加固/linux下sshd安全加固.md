@@ -25,6 +25,62 @@ AuthorizedKeysFile      %h/.ssh/authorized_keys
 PasswordAuthentication no #禁止密码方式验证
 ```
 
+# 二、sshd_config配置
+```
+Port 33389
+ListenAddress 192.168.56.11:22
+ListenAddress 0.0.0.0:33389
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+SyslogFacility AUTHPRIV
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile	%h/.ssh/authorized_keys
+PasswordAuthentication yes
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+GSSAPICleanupCredentials no
+UsePAM yes
+X11Forwarding yes
+UseDNS no
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
+```
+
+# 三、测试验证
+```
+[root@linux-node1 .ssh]# ssh-keygen
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:O+lLbCn0p2wfD5j9GEyMUv3RqbsCMAmUXVmRzdT6GCg root@linux-node1
+The key's randomart image is:
++---[RSA 2048]----+
+|   ..o ..oo*..   |
+|    o . ... o... |
+|     . .. ....o  |
+|      +.Eo..oo   |
+|      ooS.o o+   |
+|     . +.X  ...  |
+|      . %.B .    |
+|       *.+.B .   |
+|       .=oo.+    |
++----[SHA256]-----+
+[root@linux-node1 .ssh]# ssh-copy-id -p33389 root@192.168.56.11
+
+
+[root@linux-node1 .ssh]# ssh -i id_rsa -p33389 root@192.168.56.11
+Last login: Sun Apr 21 17:26:42 2019 from 192.168.56.12
+```
 参考文档：
 
 https://www.cnblogs.com/lcword/p/5917321.html
