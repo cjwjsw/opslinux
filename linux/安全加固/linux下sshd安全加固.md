@@ -75,7 +75,7 @@ The key's randomart image is:
 |       *.+.B .   |
 |       .=oo.+    |
 +----[SHA256]-----+
-[www@linux-node1 .ssh]# ssh-copy-id -p33389 root@192.168.56.11
+[www@linux-node1 .ssh]# ssh-copy-id -p33389 www@192.168.56.11
 
 
 [www@linux-node1 .ssh]# ssh -i id_rsa -p33389 root@192.168.56.11
