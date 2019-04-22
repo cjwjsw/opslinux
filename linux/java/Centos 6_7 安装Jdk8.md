@@ -35,3 +35,10 @@ vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
 ./apache-activemq-5.15.8/bin/activemq start (启动MQ)
 ```
 
+# 三、tomcat8部署
+```
+wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
+
+
+
+```
