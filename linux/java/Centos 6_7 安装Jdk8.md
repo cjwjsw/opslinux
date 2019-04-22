@@ -37,8 +37,21 @@ vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
 
 # 三、tomcat8部署
 ```
+
+wget http://cronolog.org/download/cronolog-1.6.2.tar.gz 
+tar zxvf cronolog-1.6.2.tar.gz 
+cd cronolog-1.6.2
+./configure 
+make && make install 
+
+
 wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
 
 
 
 ```
+
+
+参考文档：
+
+https://www.cnblogs.com/happy-king/p/9193401.html      Tomcat的日志分割三种方法
