@@ -36,6 +36,12 @@ vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
 
 访问：
 http://0.0.0.0:8161  admin/admin
+
+
+修改密码
+vim jetty-realm.properties
+
+admin: admin, admin
 ```
 
 # 三、tomcat8部署
