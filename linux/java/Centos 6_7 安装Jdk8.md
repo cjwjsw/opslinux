@@ -33,6 +33,9 @@ tar -zxvf apache-activemq-5.15.8-bin.tar.gz
 vim  apache-activemq-5.15.8/conf/activemq.xml (开启jmx,默认为false)
 
 ./apache-activemq-5.15.8/bin/activemq start (启动MQ)
+
+访问：
+http://0.0.0.0:8161  admin/admin
 ```
 
 # 三、tomcat8部署
