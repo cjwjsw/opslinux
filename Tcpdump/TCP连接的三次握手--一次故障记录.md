@@ -6,6 +6,7 @@
 
     那么三次握手就是为了保证tcp的可靠传输，下边是用wireshark抓取一次失败的http请求的结果：
 
+  ![tcpdump-tcp](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
 
     首先TCP的三次握手是建立连接
 
