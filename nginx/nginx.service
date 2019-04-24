@@ -23,7 +23,7 @@ systemctl enable nginx
 systemctl disable nginx
  
 # 启动nginx服务
-systemctl start nginx
+systemctl restart nginx
  
 # 查看服务当前状态
 systemctl status nginx
