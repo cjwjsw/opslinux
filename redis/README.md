@@ -5,3 +5,5 @@
 参看资料：
 
 https://www.cnblogs.com/autohome7390/p/6433956.html
+
+https://blog.csdn.net/Fe_cow/article/details/89485883   Redis 基础入门
