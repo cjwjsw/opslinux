@@ -1,4 +1,26 @@
+# 一、防火墙
+```
+查看防火墙配置
+root@localhost ~]# iptables -S
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT 
+-A INPUT -p icmp -j ACCEPT 
+-A INPUT -i lo -j ACCEPT 
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT 
+-A INPUT -j REJECT --reject-with icmp-host-prohibited 
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
 
+
+发现系统不接收VRRP协议，于是修改iptables 
+iptables -I INPUT 4 -p vrrp -j ACCEPT
+
+-A INPUT -p vrrp -j ACCEPT
+
+-A RH-Firewall-1-INPUT -p vrrp -j ACCEPT 
+
+```
 
 参考文档：
 
