@@ -21,6 +21,14 @@ iptables -I INPUT 4 -p vrrp -j ACCEPT
 -A RH-Firewall-1-INPUT -p vrrp -j ACCEPT 
 
 ```
+# 二、注意事项
+```
+1、DR模式
+a、keepalived配置转发的端口要和后端端口保持一致，因为DR模式只会改写mac，不会改其他的信息
+b、LVS机器的IP要和后端的IP在同一个vlan下面
+c、防火墙要放开vrrp协议，不然会脑裂
+
+```
 
 参考文档：
 
