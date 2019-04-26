@@ -107,6 +107,7 @@ mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 
 ```
 cat >/etc/my.cnf <<EOF
+cat >/etc/my.cnf <<EOF
 # For advice on how to change settings please see
 # http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
 [client]
@@ -146,7 +147,7 @@ log-bin=/data0/mysql_data/mysql-bin
 
 ## 开启慢查询日志记录
 slow_query_log=on
-slow-query-log-file=/data0/mysql_data/mysqld-slow.log
+slow-query-log-file=/var/log/mysqld-slow.log
 long_query_time=1
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
@@ -170,6 +171,7 @@ symbolic-links=0
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+EOF
 EOF
 ```
 
