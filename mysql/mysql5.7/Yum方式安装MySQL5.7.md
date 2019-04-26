@@ -93,6 +93,7 @@ Permissive
 
 默认为
 --initialize-insecure    初始化为空密码
+
 --basedir=/usr/
 
 mysql_install_db --user=mysql --datadir=/data0/mysql_data
@@ -100,9 +101,7 @@ mysql_install_db --user=mysql --datadir=/data0/mysql_data
 mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 ```
 
-    #创建慢日志文件并赋权限
-    touch /data0/mysql_data/mysqld.log
-    touch /data0/mysql_data/mysqld-slow.log
+    #赋权限
     chown mysql:mysql /data0/mysql_data/
 
 ```
