@@ -90,7 +90,13 @@ Permissive
 
 ```
 #初始化mysql
+
+默认为
+--basedir=/usr/
+
 mysql_install_db --user=mysql --datadir=/data0/mysql_data
+
+mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 ```
 
     #创建慢日志文件并赋权限
