@@ -23,6 +23,7 @@ Permissive
 ```
 #赋权限
 chown mysql:mysql /data0/mysql_data/
+chown mysql:mysql /var/lib/mysql/
 
 #初始化mysql
 默认为
