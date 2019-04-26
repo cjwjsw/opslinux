@@ -30,6 +30,7 @@ yum安装的mysql默认  --basedir=/usr/
 
 --initialize-insecure    初始化为空密码
 
+#指定参数初始化
 mysql_install_db --user=mysql --basedir=/usr/ --datadir=/data0/mysql_data/
 
 #指定配置文件初始化
