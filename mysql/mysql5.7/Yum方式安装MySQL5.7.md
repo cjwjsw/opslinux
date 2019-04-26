@@ -110,8 +110,10 @@ EOF
    ```
     1、首先启动MySQL
    
+    systemctl start mysqld.service
     systemctl restart mysqld.service
-    
+    systemctl enabled mysqld.service
+
     2、查看MySQL运行状态，运行状态如图：
     
     systemctl status mysqld.service
