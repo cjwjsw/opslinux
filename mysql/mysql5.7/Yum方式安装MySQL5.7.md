@@ -106,7 +106,6 @@ mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 
 ```
 cat >/etc/my.cnf <<EOF
-cat >/etc/my.cnf <<EOF
 # For advice on how to change settings please see
 # http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
 [client]
@@ -170,7 +169,6 @@ symbolic-links=0
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-EOF
 EOF
 ```
 
