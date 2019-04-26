@@ -161,6 +161,9 @@ pid-file=/var/run/mysqld/mysqld.pid
 ## 五、启动mysql服务
 
 ```
+#初始化
+mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
+
 /etc/init.d/mysqld start
 /etc/init.d/mysqld stop
 /etc/init.d/mysqld restart
