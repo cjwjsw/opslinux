@@ -21,20 +21,20 @@ Permissive
 ## 2、MySQL配置文件
 
 ```
-#初始化mysql
+#赋权限
+chown mysql:mysql /data0/mysql_data/
 
+#初始化mysql
 默认为
+yum安装的mysql默认  --basedir=/usr/
+
 --initialize-insecure    初始化为空密码
 
---basedir=/usr/
+mysql_install_db --user=mysql --basedir=/usr/ --datadir=/data0/mysql_data/
 
-mysql_install_db --user=mysql --datadir=/data0/mysql_data
-
+#指定配置文件初始化
 mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 ```
-
-    #赋权限
-    chown mysql:mysql /data0/mysql_data/
 
 ```
 cat >/etc/my.cnf <<EOF
@@ -102,9 +102,6 @@ symbolic-links=0
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 EOF
-
-
-systemctl restart mysqld.service
 ```
     
 
@@ -112,7 +109,7 @@ systemctl restart mysqld.service
    ```
     1、首先启动MySQL
    
-    systemctl start mysqld.service
+    systemctl restart mysqld.service
     
     2、查看MySQL运行状态，运行状态如图：
     
