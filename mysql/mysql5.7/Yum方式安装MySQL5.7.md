@@ -88,6 +88,11 @@ Permissive
  
 ## 3、MySQL配置文件
 
+```
+#初始化mysql
+mysql_install_db --initialize-insecure --user=mysql --datadir=/data0/mysql_data
+```
+
     #创建慢日志文件并赋权限
     touch /data0/mysql_data/mysqld.log
     touch /data0/mysql_data/mysqld-slow.log
