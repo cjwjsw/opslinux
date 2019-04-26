@@ -126,6 +126,7 @@ cat >/etc/my.cnf <<EOF
 # join_buffer_size = 128M
 # sort_buffer_size = 2M
 # read_rnd_buffer_size = 2M
+basedir=/usr/
 datadir=/data0/mysql_data
 socket=/data0/mysql_data/mysql.sock
 
