@@ -92,6 +92,7 @@ Permissive
 #初始化mysql
 
 默认为
+--initialize-insecure    初始化为空密码
 --basedir=/usr/
 
 mysql_install_db --user=mysql --datadir=/data0/mysql_data
