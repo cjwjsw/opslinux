@@ -89,8 +89,9 @@ Permissive
 ## 3、MySQL配置文件
 
     #创建慢日志文件并赋权限
-    touch /var/log/mysqld-slow.log
-    chown mysql:mysql /var/log/mysqld-slow.log
+    touch /data0/mysql_data/mysqld.log
+    touch /data0/mysql_data/mysqld-slow.log
+    chown mysql:mysql /data0/mysql_data/
 
 ```
 cat >/etc/my.cnf <<EOF
