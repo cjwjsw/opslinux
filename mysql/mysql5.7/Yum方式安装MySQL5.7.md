@@ -113,8 +113,8 @@ cat >/etc/my.cnf <<EOF
 # join_buffer_size = 128M
 # sort_buffer_size = 2M
 # read_rnd_buffer_size = 2M
-datadir=/var/lib/mysql
-socket=/var/lib/mysql/mysql.sock
+datadir=/data0/mysql_data
+socket=/data0/mysql_data/mysql.sock
 
 character_set_server=utf8
 init_connect='SET NAMES utf8'
@@ -124,11 +124,11 @@ init_connect='SET NAMES utf8'
 
 ## 开启binlog日志记录
 server-id=1
-log-bin=/var/lib/mysql/mysql-bin
+log-bin=/data0/mysql_data/mysql-bin
 
 ## 开启慢查询日志记录
 slow_query_log=on
-slow-query-log-file=/var/log/mysqld-slow.log
+slow-query-log-file=/data0/mysql_data/mysqld-slow.log
 long_query_time=1
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
@@ -150,8 +150,8 @@ validate_password=OFF
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
+log-error=/data0/mysql_data/mysqld.log
+pid-file=//data0/mysql_data/mysqld.pid
 EOF
 ```
 
