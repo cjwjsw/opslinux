@@ -109,6 +109,10 @@ mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 cat >/etc/my.cnf <<EOF
 # For advice on how to change settings please see
 # http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html
+[client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
 
 [mysqld]
 #
@@ -127,8 +131,8 @@ cat >/etc/my.cnf <<EOF
 # sort_buffer_size = 2M
 # read_rnd_buffer_size = 2M
 basedir=/usr/
-datadir=/data0/mysql_data
-socket=/data0/mysql_data/mysql.sock
+datadir=/data0/mysql_data/
+socket=/var/lib/mysql/mysql.sock
 
 character_set_server=utf8
 init_connect='SET NAMES utf8'
@@ -159,13 +163,13 @@ binlog-ignore-db=information_schema
 #binlog-do-db=memberdb
 
 ## 禁用密码检测插件
-validate_password=OFF
+#validate_password=OFF
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
-log-error=/data0/mysql_data/mysqld.log
-pid-file=//data0/mysql_data/mysqld.pid
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
 EOF
 ```
 
