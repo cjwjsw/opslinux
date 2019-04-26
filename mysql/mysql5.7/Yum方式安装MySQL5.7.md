@@ -90,7 +90,7 @@ Permissive
 
 ```
 #初始化mysql
-mysql_install_db --initialize-insecure --user=mysql --datadir=/data0/mysql_data
+mysql_install_db --user=mysql --datadir=/data0/mysql_data
 ```
 
     #创建慢日志文件并赋权限
