@@ -56,8 +56,9 @@ iptables -Z
 iptables -A INPUT -i lo -j ACCEPT
 #开放21端口(FTP)
 iptables -A INPUT -p tcp --dport 21 -j ACCEPT
-#开放22端口
+#开放22和33389端口(SSH)
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp --dport 33389 -j ACCEPT
 #开放80端口(HTTP)
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 #开放443端口(HTTPS)
