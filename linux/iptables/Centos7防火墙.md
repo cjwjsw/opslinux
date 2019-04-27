@@ -14,7 +14,8 @@ systemctl disable firewalld.service
 systemctl mask firewalld
 
 #查看默认防火墙状态(not running:关闭，running:开启)
-firewall-cmd –state
+root># firewall-cmd --state 
+not running
 ```
 
 # 二、安装iptable iptable-service
