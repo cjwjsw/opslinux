@@ -1,8 +1,16 @@
-# 一、安装iptables
+# 一、禁用自带的firewalld服务
 
-CentOS7默认的防火墙不是iptables,而是firewalle.
+CentOS7默认的防火墙不是iptables,而是firewalle
 
-安装iptable iptable-service
+```
+#停止firewalld服务
+systemctl stop firewalld
+
+#禁用firewalld服务
+systemctl mask firewalld
+```
+
+# 二、安装iptable iptable-service
 
 ```
 #先检查是否安装了iptables
