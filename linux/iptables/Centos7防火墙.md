@@ -2,12 +2,19 @@
 
 CentOS7默认的防火墙不是iptables,而是firewalle
 
-```
-#停止firewalld服务
-systemctl stop firewalld
+1、关闭firewall
 
-#禁用firewalld服务
+```
+#停止firewall
+systemctl stop firewalld.service
+
+#禁止firewall开机启动
+systemctl disable firewalld.service
+或
 systemctl mask firewalld
+
+#查看默认防火墙状态(not running:关闭，running:开启)
+firewall-cmd –state
 ```
 
 # 二、安装iptable iptable-service
