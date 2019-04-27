@@ -38,7 +38,7 @@ systemctl restart iptables.service
 systemctl enable iptables.service
 ```
 
-# 三、设置规则
+# 三、通用规则设置
 ```
 #查看iptables现有规则
 iptables -L -n
@@ -50,7 +50,7 @@ iptables -P INPUT ACCEPT
 iptables -F
 #清空所有自定义规则
 iptables -X
-#所有计数器归0
+#所有计数器归 0
 iptables -Z
 #允许来自于lo接口的数据包(本地访问)
 iptables -A INPUT -i lo -j ACCEPT
