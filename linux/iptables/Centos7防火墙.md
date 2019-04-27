@@ -86,6 +86,9 @@ iptables -A INPUT  -p tcp -m multiport --dports 22,80,443 -j ACCEPT
 
 iptables -A OUTPUT -p tcp -m multiport --sports 22,80,443 -j ACCEPT
 
+#允许192.168.1.123访问本机的3306端口
+iptables -I INPUT -s 192.168.1.123 -ptcp --dport 3306 -j ACCEPT
+
 #单个IP的命令是
 iptables -I INPUT -s 211.1.100.99 -j DROP
 
@@ -138,7 +141,8 @@ iptables -A INPUT -i lo -j ACCEPT
 #iptables -A INPUT -p tcp --dport 21 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+iptables -I INPUT -s 192.168.52.0/24 -p tcp --dport 3306 -j ACCEPT
 iptables -A INPUT -p tcp --dport 33389 -j ACCEPT
 iptables -A INPUT  -p tcp -m multiport --dports 21:22,80,443 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
