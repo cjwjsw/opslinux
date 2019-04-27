@@ -42,7 +42,7 @@ systemctl enable iptables.service
 ```
 #查看iptables现有规则
 iptables -L -n
-或者
+#或者
 iptables -S
 #先允许所有,不然有可能会杯具
 iptables -P INPUT ACCEPT
