@@ -211,7 +211,15 @@ Access: Server
 取消Default的勾选，其余默认，点击"Add"，如下：
 ```
 
+# 四、替换grafana的dashboards
+
+```
+```
+
 参考文档：
 
 https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2.5+Grafana5.4监控部署
+
 https://www.cnblogs.com/smallSevens/p/7805842.html    Grafana+Prometheus打造全方位立体监控系统 
+
+https://www.cnblogs.com/sfnz/p/6566951.html安装prometheus+grafana监控mysql redis kubernetes等 
