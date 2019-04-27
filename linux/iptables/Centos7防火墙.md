@@ -32,6 +32,10 @@ yum install -y iptables-services
 
 #升级iptables
 yum update iptables 
+
+#重启iptables服务并设置为开机启动
+systemctl restart iptables.service
+systemctl enable iptables.service
 ```
 
 # 二、设置规则
