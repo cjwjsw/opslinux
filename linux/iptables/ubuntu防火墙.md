@@ -89,5 +89,6 @@ sudo ufw allow 33389/tcp
 sudo ufw allow from 192.168.52.0/24
 sudo ufw default deny  #默认关闭所有外部访问
 sudo ufw reload
+sudo ufw enable
 sudo ufw status
 ```
