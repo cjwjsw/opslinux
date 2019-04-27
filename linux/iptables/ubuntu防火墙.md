@@ -71,9 +71,9 @@ $ sudo ufw delete allow from 192.168.254.254
 # 五、脚本
 ```
 sudo apt-get install -y ufw
-sudo ufw status
 sudo ufw allow 22
 sudo ufw allow 33389
 sudo ufw allow from 192.168.52.0/24
 sudo ufw enable
+sudo ufw status
 ```
