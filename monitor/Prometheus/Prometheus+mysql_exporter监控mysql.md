@@ -1,5 +1,7 @@
 # 一、mysqld_exporter安装及配置
 ```
+cd /usr/local/src/
+
 wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
 
 mv mysqld_exporter-0.11.0.linux-amd64 /data0/prometheus/mysqld_exporter
