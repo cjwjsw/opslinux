@@ -131,6 +131,7 @@ http://192.168.56.11:9090/graph
 
 1、下载及解压安装包
 ```
+cd /usr/local/src/
 wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 
 mkdir -p /data0/prometheus 
