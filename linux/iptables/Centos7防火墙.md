@@ -80,28 +80,33 @@ iptables -P FORWARD DROP
 # 四、其他规则设定
 
 ```
-使用multiport可以添加多个不连接的端口
+#使用multiport可以添加多个不连接的端口
 iptables -A INPUT -p tcp -m multiport –dport 21:25,135:139 -j DROP
 iptables -A INPUT  -p tcp -m multiport --dports 22,80,443 -j ACCEPT
 
 iptables -A OUTPUT -p tcp -m multiport --sports 22,80,443 -j ACCEPT
 
-单个IP的命令是
+#单个IP的命令是
 iptables -I INPUT -s 211.1.100.99 -j DROP
 
-封IP段的命令是
+#封IP段的命令是
 iptables -I INPUT -s 211.1.0.0/16 -j DROP
 iptables -I INPUT -s 211.2.0.0/16 -j DROP
 iptables -I INPUT -s 211.3.0.0/16 -j DROP
 
-封整个大段的命令是
+#封整个大段的命令是
 iptables -I INPUT -s 211.0.0.0/8 -j DROP
 
-禁止指定的端口80：
+#禁止指定的端口80：
 iptables -A INPUT -p tcp --dport 80 -j DROP
 
-拒绝所有的端口：
+#拒绝所有的端口：
 iptables -A INPUT -j DROP
+
+#屏蔽HTTP服务Flood攻击
+有时会有用户在某个服务，例如 HTTP 80 上发起大量连接请求，此时我们可以启用如下规则：
+iptables -A INPUT -p tcp --dport 80 -m limit --limit 100/minute --limit-burst 200 -j ACCEPT
+上述命令会将连接限制到每分钟 100 个，上限设定为 200。
 ```
 
 # 四、解封
