@@ -1,5 +1,9 @@
 # 一、查看当前防火墙状态
+ 由于LInux原始的防火墙工具iptables过于繁琐，所以ubuntu默认提供了一个基于iptable之上的防火墙工具ufw。
 ```
+安装
+sudo apt-get install ufw
+ 
 查看当前防火墙状态
 sudo ufw status
 
