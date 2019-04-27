@@ -20,6 +20,9 @@ sudo ufw enable
 sudo ufw status
 
 active 说明防火墙开启成功。
+
+防火墙重启
+sudo ufw reload
 ```
 
 # 三、关闭防火墙
@@ -85,6 +88,6 @@ sudo ufw allow 22/tcp
 sudo ufw allow 33389/tcp
 sudo ufw allow from 192.168.52.0/24
 sudo ufw default deny  #默认关闭所有外部访问
-sudo ufw enable
+sudo ufw reload
 sudo ufw status
 ```
