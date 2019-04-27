@@ -139,6 +139,7 @@ iptables -A INPUT -i lo -j ACCEPT
 #iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+iptables -A INPUT -p tcp --dport 33389 -j ACCEPT
 iptables -A INPUT  -p tcp -m multiport --dports 21:22,80,443 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
