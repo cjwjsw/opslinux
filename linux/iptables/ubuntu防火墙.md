@@ -31,6 +31,9 @@ sudo ufw disable
 
 sudo ufw status
 如果是inactive 说明我们的防火墙已经关闭掉
+
+重置所有规则
+sudo ufw reset
 ```
 
 # 四、常用指令
@@ -84,6 +87,7 @@ sudo ufw delete 2
 # 五、脚本
 ```
 sudo apt-get install -y ufw
+sudo ufw reset
 sudo ufw allow 22/tcp
 sudo ufw allow 33389/tcp
 sudo ufw allow from 192.168.52.0/24
