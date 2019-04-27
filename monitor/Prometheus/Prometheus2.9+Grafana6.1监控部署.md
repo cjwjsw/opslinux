@@ -234,7 +234,9 @@ Access: Server
 
 https://grafana.com/dashboards   
 ```
-https://github.com/percona/grafana-dashboards/blob/master/dashboards/MySQL_Overview.json
+https://grafana.com/dashboards/8919   基础监控
+
+https://grafana.com/dashboards/7362   数据库监控
 ```
 
 参考文档：
