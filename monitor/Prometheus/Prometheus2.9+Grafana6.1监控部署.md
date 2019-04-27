@@ -163,6 +163,24 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF
 ```
+ubuntu下创建服务
+```
+cat > /etc/systemd/system/node_exporter.service <<EOF
+[Unit]
+Description=node_exporter
+Documentation=https://prometheus.io/
+After=network.target
+ 
+[Service]
+Type=simple
+User=prometheus
+ExecStart=/data0/prometheus/node_exporter/node_exporter
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+```
 
 3、启动服务
 ```
