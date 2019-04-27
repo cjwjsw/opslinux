@@ -66,6 +66,16 @@ $ sudo ufw allow from 192.168.254.254
 
 $ sudo ufw delete allow from 192.168.254.254
 
+根据端口删除规则
+
+先查询规则号：
+
+sudo ufw status numbered
+
+然后再根据号来删除
+
+sudo ufw delete 2
+
 ```
 
 # 五、脚本
