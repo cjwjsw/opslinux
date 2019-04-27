@@ -79,17 +79,30 @@ iptables -P FORWARD DROP
 
 # 三、其他规则设定
 ```
-#如果要添加内网ip信任（接受其所有TCP请求）
-iptables -A INPUT -p tcp -s 192.168.56.0/24 -j ACCEPT
+单个IP的命令是
+iptables -I INPUT -s 211.1.100.99 -j DROP
 
-#过滤所有非以上规则的请求
-iptables -P INPUT DROP
+封IP段的命令是
+iptables -I INPUT -s 211.1.0.0/16 -j DROP
+iptables -I INPUT -s 211.2.0.0/16 -j DROP
+iptables -I INPUT -s 211.3.0.0/16 -j DROP
 
-#要封停一个IP，使用下面这条命令：
-iptables -I INPUT -s ***.***.***.*** -j DROP
+封整个大段的命令是
+iptables -I INPUT -s 211.0.0.0/8 -j DROP
 
-#要解封一个IP，使用下面这条命令:
-iptables -D INPUT -s ***.***.***.*** -j DROP
+禁止指定的端口80：
+iptables -A INPUT -p tcp --dport 80 -j DROP
+
+拒绝所有的端口：
+iptables -A INPUT -j DROP
+```
+
+# 四、解封
+```
+解封：
+iptables -L INPUT
+
+iptables -L --line-numbers 然后iptables -D INPUT 序号
 ```
 
 # 四、保存规则设定
@@ -122,4 +135,6 @@ systemctl restart iptables.service
 
 参考资料：
 
-https://www.cnblogs.com/kreo/p/4368811.html
+https://www.cnblogs.com/kreo/p/4368811.html    CentOS7安装iptables防火墙
+
+https://www.cnblogs.com/qtxdy/p/7724652.html   linux iptables 关闭端口和网段 
