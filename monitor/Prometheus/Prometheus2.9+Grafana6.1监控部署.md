@@ -244,3 +244,6 @@ https://blog.csdn.net/xiegh2014/article/details/84936174   CentOS7.5 Prometheus2
 https://www.cnblogs.com/smallSevens/p/7805842.html    Grafana+Prometheus打造全方位立体监控系统 
 
 https://www.cnblogs.com/sfnz/p/6566951.html安装prometheus+grafana监控mysql redis kubernetes等 
+
+
+https://blog.csdn.net/hzs33/article/details/86553259  prometheus+grafana监控mysql、canal服务器
