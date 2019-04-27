@@ -77,8 +77,14 @@ iptables -P OUTPUT ACCEPT
 iptables -P FORWARD DROP
 ```
 
-# 三、其他规则设定
+# 四、其他规则设定
+
 ```
+iptables -A INPUT -p tcp -m multiport –dport 21:25,135:139 -j DROP
+
+iptables -A INPUT  -p tcp -m multiport --dports 22,80,443 -j ACCEPT
+iptables -A OUTPUT -p tcp -m multiport --sports 22,80,443 -j ACCEPT
+
 单个IP的命令是
 iptables -I INPUT -s 211.1.100.99 -j DROP
 
@@ -138,3 +144,5 @@ systemctl restart iptables.service
 https://www.cnblogs.com/kreo/p/4368811.html    CentOS7安装iptables防火墙
 
 https://www.cnblogs.com/qtxdy/p/7724652.html   linux iptables 关闭端口和网段 
+
+https://www.cnblogs.com/linuxprobe/p/5643684.html 20条IPTables防火墙规则用法！  
