@@ -80,9 +80,10 @@ iptables -P FORWARD DROP
 # 四、其他规则设定
 
 ```
+使用multiport可以添加多个不连接的端口
 iptables -A INPUT -p tcp -m multiport –dport 21:25,135:139 -j DROP
-
 iptables -A INPUT  -p tcp -m multiport --dports 22,80,443 -j ACCEPT
+
 iptables -A OUTPUT -p tcp -m multiport --sports 22,80,443 -j ACCEPT
 
 单个IP的命令是
