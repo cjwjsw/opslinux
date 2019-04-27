@@ -114,7 +114,9 @@ iptables -A INPUT -p tcp --dport 80 -m limit --limit 100/minute --limit-burst 20
 解封：
 iptables -L INPUT
 
-iptables -L --line-numbers 然后iptables -D INPUT 序号
+iptables -L --line-numbers 
+然后
+iptables -D INPUT 序号
 ```
 
 # 四、保存规则设定
@@ -132,10 +134,12 @@ iptables -F
 iptables -X
 iptables -Z
 iptables -A INPUT -i lo -j ACCEPT
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-iptables -A INPUT -p tcp --dport 21 -j ACCEPT
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+#iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+iptables -A INPUT  -p tcp -m multiport --dports 21:22,80,443 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -P INPUT DROP
