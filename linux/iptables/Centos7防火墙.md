@@ -23,22 +23,15 @@ not running
 ```
 #先检查是否安装了iptables
 service iptables status
+或
+systemctl status iptables.service
 
-#安装iptables
+#如果没安装，使用yum安装
 yum install -y iptables
+yum install -y iptables-services
 
 #升级iptables
 yum update iptables 
-
-#安装iptables-services
-yum install iptables-services
-
-禁用/停止自带的firewalld服务
-#停止firewalld服务
-systemctl stop firewalld
-
-#禁用firewalld服务
-systemctl mask firewalld
 ```
 
 # 二、设置规则
