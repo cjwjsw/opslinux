@@ -109,7 +109,7 @@ iptables -A INPUT -p tcp --dport 80 -m limit --limit 100/minute --limit-burst 20
 上述命令会将连接限制到每分钟 100 个，上限设定为 200。
 ```
 
-# 四、解封
+# 五、解封
 ```
 解封：
 iptables -L INPUT
@@ -119,14 +119,14 @@ iptables -L --line-numbers
 iptables -D INPUT 序号
 ```
 
-# 四、保存规则设定
+# 六、保存规则设定
 ```
 #保存iptables规则并重启
 service iptables save
 systemctl restart iptables.service
 ```
 
-# 五、防火墙完整设置脚本
+# 七、防火墙完整设置脚本
 ```
 #!/bin/sh
 iptables -P INPUT ACCEPT
