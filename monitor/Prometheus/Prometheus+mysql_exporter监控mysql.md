@@ -72,6 +72,9 @@ cat prometheus.yml
 
 # 六、MySQL exporter Dashboard 模板
 
+```
+https://grafana.com/dashboards/7362
+```
 搜索mysql的Grafana Dashboard，导入进去
 
 参考资料：
@@ -79,3 +82,5 @@ cat prometheus.yml
 https://mp.weixin.qq.com/s?__biz=MzI1NjkzNDU4OQ==&mid=2247483975&idx=1&sn=9607317215ed8252968083cf09b9762d&scene=21%23wechat_redirect    构建狂拽炫酷屌的 MySQL 监控平台 
 
 https://www.cnblogs.com/bigberg/p/10118215.html 
+
+https://blog.csdn.net/hzs33/article/details/86553259  prometheus+grafana监控mysql、canal服务器
