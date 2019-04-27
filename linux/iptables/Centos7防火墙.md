@@ -89,20 +89,9 @@ iptables -D INPUT -s ***.***.***.*** -j DROP
 
 # 四、保存规则设定
 ```
-#保存上述规则
+#保存iptables规则并重启
 service iptables save
-
-
-
-#注册iptables服务
-#相当于以前的chkconfig iptables on
-systemctl enable iptables.service
-
-#开启服务
-systemctl start iptables.service
-
-#查看状态
-systemctl status iptables.service
+systemctl restart iptables.service
 ```
 
 # 五、防火墙完整设置脚本
