@@ -38,7 +38,7 @@ systemctl restart iptables.service
 systemctl enable iptables.service
 ```
 
-# 二、设置规则
+# 三、设置规则
 ```
 #查看iptables现有规则
 iptables -L -n
