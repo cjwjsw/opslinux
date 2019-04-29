@@ -18,7 +18,7 @@ touch /var/log/prometheus/node_exporter.log
 chmod 777 /var/log/prometheus/node_exporter.log
 chown prometheus:prometheus /var/log/prometheus/node_exporter.log
 touch /etc/sysconfig/node_exporter.conf
-cat > /etc/sysconfig/node_exporter.conf <<EOF
+cat > /etc/sysconfig/node_exporter.conf <<\EOF
 ARGS=""
 EOF
 /etc/init.d/node_exporter start
