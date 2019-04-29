@@ -1,6 +1,6 @@
 # 一、安装
 ```
-yum install daemonize
+yum install -y daemonize
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 groupadd prometheus
 useradd -g prometheus prometheus -s /sbin/nologin -c "prometheus Daemons"
