@@ -22,8 +22,9 @@ cat > /etc/sysconfig/node_exporter.conf <<\EOF
 ARGS=""
 EOF
 chmod +x /etc/init.d/node_exporter
-/etc/init.d/node_exporter start
+/etc/init.d/node_exporter restart
 chkconfig node_exporter on
+tail -100f /var/log/prometheus/node_exporter.log
 ```
 
 # 二、启动脚本
