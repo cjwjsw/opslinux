@@ -194,7 +194,7 @@ add_user(){
 
 #set sshd
 ssh_config(){
-    mv /etc/ssh/sshd_config /etc/ssh/sshd_config-default_bak
+    mv -f /etc/ssh/sshd_config /etc/ssh/sshd_config-default_bak
     cat >/etc/ssh/sshd_config<<EOF
 Protocol 2
 SyslogFacility AUTH
