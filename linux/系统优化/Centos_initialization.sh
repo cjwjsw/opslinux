@@ -202,6 +202,7 @@ ssh_config(){
 Protocol 2
 Port 22
 Port 33389
+ListenAddress 0.0.0.0:22
 ListenAddress 0.0.0.0:33389
 SyslogFacility AUTH
 LogLevel INFO
