@@ -200,12 +200,17 @@ ssh_config(){
     mv -f /etc/ssh/sshd_config /etc/ssh/sshd_config-default_bak
     cat >/etc/ssh/sshd_config<<EOF
 Protocol 2
+Port 22
+Port 33389
+ListenAddress 0.0.0.0:33389
 SyslogFacility AUTH
 LogLevel INFO
 LoginGraceTime 10m
-PermitRootLogin yes
+#PermitRootLogin no #禁用root 登录
 MaxAuthTries 5
-PasswordAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile      %h/.ssh/authorized_keys
+#PasswordAuthentication no #禁止密码方式验证
 UsePAM yes
 AllowTcpForwarding no
 X11Forwarding no
@@ -216,12 +221,17 @@ PermitTunnel no
 Banner /etc/motd
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
 RSAAuthentication yes
-PubkeyAuthentication yes
 AuthorizedKeysFile      .ssh/authorized_keys
 EOF
     echo "#######################################################"
-    systemctl restart sshd
-    echo "sshd_config set OK!!"
+    if [ $RELEASEVER == 6 ];then
+        /etc/init.d/sshd restart
+        echo "Centos6 sshd_config set OK!!"
+    fi
+    if [ $RELEASEVER == 7 ];then
+        systemctl restart sshd
+        echo "Centos7 sshd_config set OK!!"
+    fi
 }
 
 ipv6_config(){
