@@ -1,4 +1,4 @@
-# 一、
+# 一、安装
 ```
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 groupadd prometheus
