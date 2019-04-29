@@ -208,10 +208,12 @@ LogLevel INFO
 LoginGraceTime 10m
 #PermitRootLogin no #禁用root 登录
 MaxAuthTries 5
+RSAAuthentication yes #通过RSA认证
 PubkeyAuthentication yes
 AuthorizedKeysFile      %h/.ssh/authorized_keys
 #PasswordAuthentication no #禁止密码方式验证
 UsePAM yes
+GSSAPIAuthentication no
 AllowTcpForwarding no
 X11Forwarding no
 PrintLastLog no
@@ -221,7 +223,6 @@ PermitTunnel no
 Banner /etc/motd
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
 RSAAuthentication yes
-AuthorizedKeysFile      .ssh/authorized_keys
 EOF
     echo "#######################################################"
     if [ $RELEASEVER == 6 ];then
