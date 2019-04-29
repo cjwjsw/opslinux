@@ -9,7 +9,7 @@ mkdir -p /usr/local/prometheus/mysqld_exporter/
 cd /usr/local/src/
 wget -O /usr/local/src/mysqld_exporter-0.11.0.linux-amd64.tar.gz https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
 tar -xvf mysqld_exporter-0.11.0.linux-amd64.tar.gz
-mv mysqld_exporter-0.11.0.linux-amd64/* /usr/local/prometheus/mysqld_exporter/
+mv -f mysqld_exporter-0.11.0.linux-amd64/* /usr/local/prometheus/mysqld_exporter/
 chown -R prometheus:prometheus /usr/local/prometheus/
 mkdir -p /var/run/prometheus/
 mkdir -p /var/log/prometheus/
