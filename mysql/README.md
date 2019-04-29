@@ -120,3 +120,24 @@ yum install -y mysql-client
 rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 yum install -y mysql-community-client
 ```
+
+## 七、修改mysql引擎
+```
+default-storage-engine = InnoDB
+
+alter table password ENGINE = InnoDB;
+
+alter table password modify column sn varchar(50);
+
+mysql> show variables like "%default%";
++---------------------------------+--------+
+| Variable_name                   | Value  |
++---------------------------------+--------+
+| default_storage_engine          | InnoDB |
+| default_tmp_storage_engine      | InnoDB |
+| default_week_format             | 0      |
+| explicit_defaults_for_timestamp | OFF    |
++---------------------------------+--------+
+4 rows in set (0.00 sec)
+
+```
