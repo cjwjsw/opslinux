@@ -4,26 +4,27 @@ yum install -y daemonize
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 groupadd prometheus
 useradd -g prometheus prometheus -s /sbin/nologin -c "prometheus Daemons"
-mkdir -p /usr/local/prometheus/node_exporter/
+chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow*
+mkdir -p /usr/local/prometheus/mysql_exporter/
 cd /usr/local/src/
-wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
-tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
-mv node_exporter-0.17.0.linux-amd64/* /usr/local/prometheus/node_exporter/
+wget -O /usr/local/src/mysqld_exporter-0.11.0.linux-amd64.tar.gz https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
+tar -xvf mysqld_exporter-0.11.0.linux-amd64.tar.gz
+mv mysqld_exporter-0.11.0.linux-amd64/* /usr/local/prometheus/mysql_exporter/
 chown -R prometheus:prometheus /usr/local/prometheus/
 mkdir -p /var/run/prometheus/
 mkdir -p /var/log/prometheus/
 chown prometheus:prometheus /var/run/prometheus/
 chown prometheus:prometheus /var/log/prometheus/
-touch /var/log/prometheus/node_exporter.log
-chmod 777 /var/log/prometheus/node_exporter.log
-chown prometheus:prometheus /var/log/prometheus/node_exporter.log
-touch /etc/sysconfig/node_exporter.conf
-cat > /etc/sysconfig/node_exporter.conf <<\EOF
+touch /var/log/prometheus/mysql_exporter.log
+chmod 777 /var/log/prometheus/mysql_exporter.log
+chown prometheus:prometheus /var/log/prometheus/mysql_exporter.log
+touch /etc/sysconfig/mysql_exporter.conf
+cat > /etc/sysconfig/mysql_exporter.conf <<\EOF
 ARGS=""
 EOF
-chmod +x /etc/init.d/node_exporter
-/etc/init.d/node_exporter start
-chkconfig node_exporter on
+chmod +x /etc/init.d/mysql_exporter
+/etc/init.d/mysql_exporter start
+chkconfig mysql_exporter on
 ```
 
 # 二、启动脚本
