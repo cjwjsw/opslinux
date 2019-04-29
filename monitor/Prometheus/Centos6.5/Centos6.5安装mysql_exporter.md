@@ -25,7 +25,6 @@ EOF
 chmod +x /etc/init.d/mysqld_exporter
 /etc/init.d/mysqld_exporter start
 chkconfig mysqld_exporter on
-
 cat << EOF > /usr/local/prometheus/mysqld_exporter/my.cnf
 [client]
 user=exporter
