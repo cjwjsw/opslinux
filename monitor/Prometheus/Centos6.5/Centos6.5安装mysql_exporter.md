@@ -30,6 +30,7 @@ cat << EOF > /usr/local/prometheus/mysqld_exporter/my.cnf
 user=exporter
 password=exporter
 EOF
+tail -100f /var/log/prometheus/mysqld_exporter.log
 ```
 
 # 二、启动脚本
