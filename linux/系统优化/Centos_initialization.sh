@@ -297,6 +297,44 @@ EOF
     echo "sysctl set OK!!"
 }
 
+
+#audit_log
+audit_log(){
+    mkdir /var/log/shell_audit
+    touch /var/log/shell_audit/audit.log
+
+    chown nobody:nobody /var/log/shell_audit/audit.log
+    chmod 002 /var/log/shell_audit/audit.log
+
+    chattr +a /var/log/shell_audit/audit.log
+
+    echo "HISTSIZE=2048" >> /etc/profile
+    echo 'HISTTIMEFORMAT="%Y/%m/%d %T   ";'>> /etc/profile
+    echo "export HISTTIMEFORMAT">> /etc/profile
+    echo "export HISTORY_FILE=/var/log/shell_audit/audit.log">> /etc/profile
+    echo "export PROMPT_COMMAND='{ code=$?;thisHistID=`history 1|awk "{print \\$1}"`;lastCommand=`history 1| awk "{\\$1=\"\" ;print}"`;user=`id -un`;whoStr=(`who -u am i`);realUser=${whoStr[0]};logDay=${whoStr[2]};logTime=${whoStr[3]};pid=${whoStr[5]};ip=${whoStr[6]};if [ ${thisHistID}x != ${lastHistID}x ];then echo -E `date "+%Y/%m/%d %H:%M:%S"` $user\($realUser\)@$ip[PID:$pid][LOGIN:$logDay $logTime] --- [$PWD]$lastCommand [$code];lastHistID=$thisHistID;fi; } >> $HISTORY_FILE'" >> /etc/profile
+
+    cat >/etc/logrotate.d/shell_audit<<EOF
+/var/log/shell_audit/audit.log { 
+    weekly  
+    missingok 
+    dateext 
+    rotate 100
+    sharedscripts 
+    prerotate 
+    /usr/bin/chattr -a /var/log/shell_audit/audit.log 
+    endscript 
+    sharedscripts 
+    postrotate 
+      /bin/touch /var/log/shell_audit/audit.log
+      /bin/chmod 002 /var/log/shell_audit/audit.log
+      /bin/chown nobody:nobody /var/log/shell_audit/audit.log
+      /usr/bin/chattr +a /var/log/shell_audit/audit.log
+    endscript 
+}
+EOF
+}
+
 main(){
     yum_config
     iptables_config
@@ -307,6 +345,7 @@ main(){
     ssh_config
     ipv6_config
     sysctl_config
+    audit_log
 }
 main
 
