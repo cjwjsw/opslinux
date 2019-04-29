@@ -23,13 +23,13 @@ cat > /etc/sysconfig/mysqld_exporter.conf <<\EOF
 ARGS="--config.my-cnf=/usr/local/prometheus/mysqld_exporter/my.cnf"
 EOF
 chmod +x /etc/init.d/mysqld_exporter
-/etc/init.d/mysqld_exporter start
-chkconfig mysqld_exporter on
 cat << EOF > /usr/local/prometheus/mysqld_exporter/my.cnf
 [client]
 user=exporter
 password=exporter
 EOF
+/etc/init.d/mysqld_exporter start
+chkconfig mysqld_exporter on
 tail -100f /var/log/prometheus/mysqld_exporter.log
 ```
 
