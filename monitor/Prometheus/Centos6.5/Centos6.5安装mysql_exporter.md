@@ -25,6 +25,13 @@ EOF
 chmod +x /etc/init.d/mysql_exporter
 /etc/init.d/mysql_exporter start
 chkconfig mysql_exporter on
+
+
+cat << EOF > /usr/local/prometheus/mysql_exporter/my.cnf
+[client]
+user=exporter
+password=123456
+EOF
 ```
 
 # 二、启动脚本
