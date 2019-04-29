@@ -26,7 +26,7 @@ chkconfig node_exporter on
 
 # 二、启动脚本
 ```
-cat > /etc/init.d/node_exporter <<EOF
+cat > /etc/init.d/node_exporter <<\EOF
 #!/bin/bash
 #
 #   /etc/rc.d/init.d/node_exporter
@@ -38,7 +38,6 @@ cat > /etc/init.d/node_exporter <<EOF
 
 # Source function library.
 . /etc/init.d/functions
-
 
 RETVAL=0
 PROG="node_exporter"
