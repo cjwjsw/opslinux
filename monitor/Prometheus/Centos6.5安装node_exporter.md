@@ -1,10 +1,11 @@
 # 一、安装
 ```
+yum install daemonize
 chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 groupadd prometheus
 useradd -g prometheus prometheus -s /sbin/nologin -c "prometheus Daemons"
-cd /usr/local/src/
 mkdir -p /usr/local/prometheus/node_exporter/
+cd /usr/local/src/
 wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
 mv node_exporter-0.17.0.linux-amd64/* /usr/local/prometheus/node_exporter/
