@@ -21,6 +21,7 @@ touch /etc/sysconfig/node_exporter.conf
 cat > /etc/sysconfig/node_exporter.conf <<\EOF
 ARGS=""
 EOF
+chmod +x /etc/init.d/node_exporter
 /etc/init.d/node_exporter start
 chkconfig node_exporter on
 ```
