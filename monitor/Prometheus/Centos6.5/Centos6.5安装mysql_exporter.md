@@ -30,7 +30,7 @@ chkconfig mysql_exporter on
 cat << EOF > /usr/local/prometheus/mysql_exporter/my.cnf
 [client]
 user=exporter
-password=123456
+password=exporter
 EOF
 ```
 
