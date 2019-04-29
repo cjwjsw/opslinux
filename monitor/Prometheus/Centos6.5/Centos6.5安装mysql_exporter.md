@@ -20,7 +20,7 @@ chmod 777 /var/log/prometheus/mysql_exporter.log
 chown prometheus:prometheus /var/log/prometheus/mysql_exporter.log
 touch /etc/sysconfig/mysql_exporter.conf
 cat > /etc/sysconfig/mysql_exporter.conf <<\EOF
-ARGS=""
+ARGS="--user=exporter --password=exporter"
 EOF
 chmod +x /etc/init.d/mysql_exporter
 /etc/init.d/mysql_exporter start
