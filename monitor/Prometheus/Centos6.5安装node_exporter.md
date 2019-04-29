@@ -30,7 +30,7 @@ chkconfig node_exporter on
 cat > /etc/init.d/node_exporter <<\EOF
 #!/bin/bash
 #
-#   /etc/rc.d/init.d/node_exporter
+# /etc/rc.d/init.d/node_exporter
 #
 # chkconfig: 2345 80 80
 #
