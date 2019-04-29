@@ -105,6 +105,11 @@ esac
 
 exit ${RETVAL}
 ```
+
+# 三、设置开机启动
+```
+chkconfig node_exporter on
+```
 参考文档：
 
 https://www.veryarm.com/19670.html  
