@@ -26,6 +26,7 @@ chkconfig node_exporter on
 
 # 二、启动脚本
 ```
+cat > /etc/init.d/node_exporter <<EOF
 #!/bin/bash
 #
 #   /etc/rc.d/init.d/node_exporter
@@ -104,6 +105,7 @@ case "$1" in
 esac
 
 exit ${RETVAL}
+EOF
 ```
 
 # 三、设置开机启动
