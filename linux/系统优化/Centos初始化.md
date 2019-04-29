@@ -22,7 +22,7 @@ RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
 #configure yum source
 yum_config(){
     yum -y install epel-release 
-    yum -y install vim wget bind-utils lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel
+    yum -y install vim wget bind-utils bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel
 }
 
 #firewalld
@@ -44,6 +44,12 @@ iptables_config(){
     fi
 }
 
+system_bash(){
+    #修改Bash提示符字符串
+    echo "改Bash提示符字符串......"
+    echo 'PS1="\[\e[37;40m\][\[\e[32;40m\]\u\[\e[37;40m\]@\h \[\e[36;40m\]\w\[\e[0m\]]\\$ "' >> ~/.bashrc
+    source .bashrc
+}
 
 #system config
 system_config(){
@@ -59,14 +65,16 @@ system_config(){
 
 #set ulimit
 ulimit_config(){
+
     tag1=`grep  "ulimit -SHn" /etc/rc.local`
+
     if [ $? -eq 0 ]
     then
         echo "参数存在替换"
-        sed -i 's/^ulimit -SHn.*/ulimit -SHn 102400/g' /etc/rc.local
+        sed -i 's/^ulimit -SHn.*/ulimit -SHn 65535/g' /etc/rc.local
         # sed -i "/^ulimit -SHn/c ulimit -SHn 102400" /etc/rc.local    # c 匹配行替换
     else
-        echo "ulimit -SHn 102400" >> /etc/rc.local
+        echo "ulimit -SHn 65535" >> /etc/rc.local
     fi
 
     echo "limit memory"
@@ -83,7 +91,7 @@ ulimit_config(){
     fi
 
     sed -i "/^ulimit -SHn.*/d" /etc/profile
-    echo "ulimit -SHn 102400" >> /etc/profile
+    echo "ulimit -SHn 65535" >> /etc/profile
 
     mv /etc/security/limits.conf /etc/security/limits.conf-default_bak
     cat > /etc/security/limits.conf << EOF
@@ -138,7 +146,6 @@ ulimit_config(){
 #
 #<domain>      <type>  <item>         <value>
 #
-
 #*               soft    core            0
 #*               hard    rss             10000
 #@student        hard    nproc           20
@@ -146,9 +153,7 @@ ulimit_config(){
 #@faculty        hard    nproc           50
 #ftp             hard    nproc           0
 #@student        -       maxlogins       4
-
 # End of file
-
 *           soft   nofile       102400
 *           hard   nofile       102400
 *           soft   nproc        102400
@@ -221,7 +226,7 @@ cat /etc/sysconfig/network | grep NETWORKING_IPV6
 #set sysctl
 sysctl_config(){
     cp /etc/sysctl.conf /etc/sysctl.conf.bak
-    cat > /etc/sysctl.conf << EOF
+    cat > /etc/sysctl.conf << \EOF
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv4.ip_forward = 0
@@ -267,6 +272,7 @@ main(){
     yum_config
     iptables_config
     system_config
+    system_bash
     ulimit_config
     add_user
     ssh_config
