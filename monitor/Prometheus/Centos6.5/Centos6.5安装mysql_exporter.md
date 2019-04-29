@@ -29,26 +29,26 @@ chkconfig mysql_exporter on
 
 # 二、启动脚本
 ```
-cat > /etc/init.d/node_exporter <<\EOF
+cat > /etc/init.d/mysql_exporter <<\EOF
 #!/bin/bash
 #
-# /etc/rc.d/init.d/node_exporter
+# /etc/rc.d/init.d/mysql_exporter
 #
 # chkconfig: 2345 80 80
 #
-# config: /etc/prometheus/node_exporter.conf
-# pidfile: /var/run/prometheus/node_exporter.pid
+# config: /etc/prometheus/mysql_exporter.conf
+# pidfile: /var/run/prometheus/mysql_exporter.pid
 
 # Source function library.
 . /etc/init.d/functions
 
 RETVAL=0
-PROG="node_exporter"
+PROG="mysql_exporter"
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}.conf
-DAEMON=/usr/local/prometheus/node_exporter/${PROG}
+DAEMON=/usr/local/prometheus/mysql_exporter/${PROG}
 PID_FILE=/var/run/prometheus/${PROG}.pid
 LOCK_FILE=/var/lock/subsys/${PROG}
-LOG_FILE=/var/log/prometheus/node_exporter.log
+LOG_FILE=/var/log/prometheus/mysql_exporter.log
 DAEMON_USER="prometheus"
 GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
 
@@ -56,11 +56,11 @@ GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
 
 start() {
   if check_status > /dev/null; then
-    echo "node_exporter is already running"
+    echo "mysql_exporter is already running"
     exit 0
   fi
 
-  echo -n $"Starting node_exporter: "
+  echo -n $"Starting mysql_exporter: "
   daemonize -u ${DAEMON_USER} -p ${PID_FILE} -l ${LOCK_FILE} -a -e ${LOG_FILE} -o ${LOG_FILE} ${DAEMON} ${ARGS} && success || failure
 
   RETVAL=$?
@@ -69,7 +69,7 @@ start() {
 }
 
 stop() {
-    echo -n $"Stopping node_exporter: "
+    echo -n $"Stopping mysql_exporter: "
     killproc -p ${PID_FILE} -d 10 ${DAEMON}
     RETVAL=$?
     echo
@@ -113,9 +113,9 @@ EOF
 
 # 三、设置开机启动
 ```
-chmod +x /etc/init.d/node_exporter
+chmod +x /etc/init.d/mysql_exporter
 
-chkconfig node_exporter on
+chkconfig mysql_exporter on
 ```
 参考文档：
 
