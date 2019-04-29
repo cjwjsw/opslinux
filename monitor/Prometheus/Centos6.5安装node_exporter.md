@@ -109,6 +109,8 @@ EOF
 
 # 三、设置开机启动
 ```
+chmod +x /etc/init.d/node_exporter
+
 chkconfig node_exporter on
 ```
 参考文档：
