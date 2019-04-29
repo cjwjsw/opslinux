@@ -44,17 +44,20 @@ iptables_config(){
     if [ $RELEASEVER == 6 ];then
         /etc/init.d/iptables save
         /etc/init.d/iptables stop
-        chkconfig iptables off  
+        chkconfig iptables off
+        iptables -P INPUT ACCEPT
         /sbin/iptables -F
         /sbin/iptables -X
         /sbin/iptables -Z
     fi
     if [ $RELEASEVER == 7 ];then
+        service iptables save
+        systemctl stop firewalld.service
+        systemctl disable firewalld.service
+        iptables -P INPUT ACCEPT
         /sbin/iptables -F
         /sbin/iptables -X
         /sbin/iptables -Z
-        systemctl stop firewalld.service
-        systemctl disable firewalld.service
     fi
 }
 
