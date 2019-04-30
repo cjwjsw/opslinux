@@ -40,6 +40,8 @@
     tar xzf redis-4.0.1.tar.gz
     cd redis-4.0.1
     make
+    make test
+    make install
     
     #2、如果因为上次编译失败，有残留的文件
     make distclean
