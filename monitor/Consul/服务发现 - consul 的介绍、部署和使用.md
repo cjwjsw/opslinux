@@ -1,3 +1,4 @@
+
 ```
 consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node0 -bind=192.168.56.11 -datacenter=dc1 -config-dir=/var/consul
 
@@ -7,12 +8,26 @@ consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node1 -bind
 
 consul agent -data-dir=/var/consul -node=node3 -bind=192.168.56.13 -client=192.168.56.13 -datacenter=dc1 -ui -config-dir=/var/consul
 
+#未加入集群疯狂报错
+2019/04/30 19:22:37 [WARN] raft: no known peers, aborting election
+2019/04/30 19:22:39 [ERR] agent: failed to sync remote state: No cluster leader
+2019/04/30 19:23:03 [ERR] agent: Coordinate update error: No cluster leader
+2019/04/30 19:23:16 [ERR] agent: failed to sync remote state: No cluster leader
+2019/04/30 19:23:27 [ERR] agent: Coordinate update error: No cluster leader
+2019/04/30 19:23:40 [ERR] agent: failed to sync remote state: No cluster leader
+2019/04/30 19:23:59 [ERR] agent: Coordinate update error: No cluster leader
+2019/04/30 19:24:14 [ERR] agent: failed to sync remote state: No cluster leader
+2019/04/30 19:24:24 [ERR] agent: Coordinate update error: No cluster leader
+2019/04/30 19:24:45 [ERR] agent: failed to sync remote state: No cluster leader
+2019/04/30 19:24:58 [ERR] agent: Coordinate update error: No cluster leader
 
 #加入集群
+[root@linux-node1 ~]# consul join 192.168.56.12
+Successfully joined cluster by contacting 1 nodes.
 
-192.168.56.11：  consul join 192.168.56.12
+[root@linux-node1 ~]#  consul join 192.168.56.13
+Successfully joined cluster by contacting 1 nodes.
 
-192.168.56.11：  consul join 192.168.56.13
 ```
 
 参考链接：
