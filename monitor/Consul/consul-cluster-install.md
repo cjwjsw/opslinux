@@ -13,8 +13,8 @@ chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
 
-consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES---这里生产秘钥
-
+# consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES---这里生产秘钥
+# t7GKGbWdWOvyLA2kPaLVwQ==
 
 # create configuration used after bootstrapping. The assumption is that
 # the IP addres of this server is 192.168.56.11 and the
@@ -29,7 +29,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",
+  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
   "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
@@ -90,7 +90,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": false,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",
+  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
   "start_join": ["192.168.56.11","192.168.56.13"]
 }
 EOF
@@ -149,7 +149,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",
+  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
   "start_join": ["192.168.56.11","192.168.56.12"]
 }
 EOF
