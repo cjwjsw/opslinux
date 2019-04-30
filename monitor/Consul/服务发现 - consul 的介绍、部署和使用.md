@@ -1,5 +1,6 @@
 # 一、安装
 ```
+#启动
 consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node0 -bind=192.168.56.11 -datacenter=dc1 -ui -config-dir=/var/consul
 
 
