@@ -6,6 +6,13 @@ consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node1 -bind
 
 
 consul agent -data-dir=/var/consul -node=node3 -bind=192.168.56.13 -client=192.168.56.13 -datacenter=dc1 -ui -config-dir=/var/consul
+
+
+#加入集群
+
+192.168.56.11：  consul join 192.168.56.12
+
+192.168.56.11：  consul join 192.168.56.13
 ```
 
 参考链接：
