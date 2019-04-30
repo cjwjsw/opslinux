@@ -29,7 +29,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
+  "encrypt": "t7GKGbWdWOvyLA2kPaLVwQ==",
   "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
@@ -90,7 +90,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": false,
   "client_addr": "0.0.0.0",
-  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
+  "encrypt": "t7GKGbWdWOvyLA2kPaLVwQ==",
   "start_join": ["192.168.56.11","192.168.56.13"]
 }
 EOF
@@ -149,7 +149,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[t7GKGbWdWOvyLA2kPaLVwQ==]",
+  "encrypt": "t7GKGbWdWOvyLA2kPaLVwQ==",
   "start_join": ["192.168.56.11","192.168.56.12"]
 }
 EOF
