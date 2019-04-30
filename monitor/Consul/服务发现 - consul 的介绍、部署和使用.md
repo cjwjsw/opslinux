@@ -31,7 +31,7 @@ Successfully joined cluster by contacting 1 nodes.
 
 ```
 
-# 访问
+二、# 访问
 ```
 http://192.168.56.11:8500/ui/
 ```
