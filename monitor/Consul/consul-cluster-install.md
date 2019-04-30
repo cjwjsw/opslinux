@@ -144,10 +144,10 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "node_name": "consul-b",
   "bootstrap": false,
   "data_dir": "/var/consul",
-  "server": false,
+  "server": true,
   "bind_addr": "192.168.56.13",
   "bootstrap_expect": 3,
-  "ui": true,
+  "ui": false,
   "client_addr": "0.0.0.0",
   "encrypt": "t7GKGbWdWOvyLA2kPaLVwQ==",
   "start_join": ["192.168.56.11","192.168.56.12"]
