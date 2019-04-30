@@ -4,26 +4,35 @@
 yum install -y epel-release
 yum install -y bind-utils unzip jq
 cd ~/
-wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
-unzip consul_1.4.4_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/1.0.2/consul_1.0.2_linux_amd64.zip
+unzip consul_1.0.2_linux_amd64.zip
 mv consul /usr/local/bin/
 adduser consul
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
-consul keygen   # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES
+consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES
 
-# creeate bootstrap consul configuration
+
+# create configuration used after bootstrapping. The assumption is that
+# the IP addres of this server is 192.168.56.11 and the
+# other consul nodes are 192.168.56.12 & 192.168.56.13
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
-    "bootstrap": true,
-    "server": true,
-    "datacenter": "dc1",
-    "data_dir": "/var/consul",
-    "encrypt": "[output of consul keygen]"
+  "node_name": "consul-a",
+  "bootstrap": false,
+  "data_dir": "/var/consul",
+  "server": true,
+  "bind_addr": "192.168.56.11",
+  "bootstrap_expect": 3,
+  "ui": true,
+  "client_addr": "0.0.0.0",
+  "encrypt": "[output of consul keygen]",
+  "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
+
 
 sudo tee /etc/systemd/system/consul.service << 'EOF'
 [Unit]
@@ -51,23 +60,7 @@ systemctl status consul.service
 systemctl enable consul.service
 
 
-# create configuration used after bootstrapping. The assumption is that
-# the IP addres of this server is 192.168.56.11 and the
-# other consul nodes are 192.168.56.12 & 192.168.56.13
-sudo tee /etc/consul.d/consul.json << 'EOF'
-{
-  "node_name": "consul-a",
-  "bootstrap": false,
-  "data_dir": "/var/consul",
-  "server": true,
-  "bind_addr": "192.168.56.11",
-  "bootstrap_expect": 3,
-  "ui": true,
-  "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",
-  "start_join": ["192.168.56.12","192.168.56.13"]
-}
-EOF
+
 ```
 
 # 二、consul-b-install.sh
