@@ -47,7 +47,7 @@ Group=consul
 PIDFile=/run/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
@@ -107,7 +107,7 @@ Group=consul
 PIDFile=/run/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
@@ -166,7 +166,7 @@ Group=consul
 PIDFile=/run/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
