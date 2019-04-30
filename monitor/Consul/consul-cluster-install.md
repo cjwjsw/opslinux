@@ -185,3 +185,8 @@ systemctl start consul.service
 systemctl status consul.service
 systemctl enable consul.service
 ```
+
+
+参考文档：
+
+https://gist.github.com/sdorsett/5cf05bb5e02f1e4a20224bae62b375ea
