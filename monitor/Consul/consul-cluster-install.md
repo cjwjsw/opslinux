@@ -95,7 +95,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "server": true,
   "bind_addr": "192.168.56.12",
   "bootstrap_expect": 3,
-  "ui": true,
+  "ui": false,
   "client_addr": "0.0.0.0",
   "encrypt": "[output of consul-a 'consul keygen' command]",
   "start_join": ["192.168.56.11","192.168.56.13"]
