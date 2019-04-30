@@ -4,8 +4,8 @@
 yum install -y epel-release
 yum install -y bind-utils unzip jq
 cd ~/
-wget https://releases.hashicorp.com/consul/1.0.2/consul_1.0.2_linux_amd64.zip
-unzip consul_1.0.2_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
+unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
 adduser consul
 mkdir /etc/consul.d
