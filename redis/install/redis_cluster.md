@@ -48,6 +48,12 @@
     
 ### 创建节点
 
+
+```
+#批量替换
+for i in {20001..20006} {20101..20106};do sed -i 's/10.1.5.116/10.1.5.119/g' redis_${i}.conf;done
+```
+
     #1、首先在 192.168.56.11机器上 /opt/redis-4.0.1 目录下创建 redis-cluster 目录
     mkdir /opt/redis-4.0.1/redis-cluster
     
