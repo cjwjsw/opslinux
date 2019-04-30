@@ -16,6 +16,43 @@ chown -R consul:consul /var/consul
 # consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES---这里生产秘钥
 # t7GKGbWdWOvyLA2kPaLVwQ==
 
+# creeate bootstrap consul configuration
+sudo tee /etc/consul.d/consul.json << 'EOF'
+{
+    "bootstrap": true,
+    "server": true,
+    "datacenter": "dc1",
+    "data_dir": "/var/consul",
+    "encrypt": "t7GKGbWdWOvyLA2kPaLVwQ=="
+}
+EOF
+
+sudo tee /etc/systemd/system/consul.service << 'EOF'
+[Unit]
+Description=Consul service discovery agent
+Requires=network-online.target
+After=network.target
+
+[Service]
+User=consul
+Group=consul
+PIDFile=/run/consul.pid
+Restart=on-failure
+Environment=GOMAXPROCS=2
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -node-id=$(uuidgen | awk '{print tolower($0)}')
+ExecReload=/bin/kill -s HUP $MAINPID
+KillSignal=SIGINT
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl restart consul.service
+systemctl status consul.service
+systemctl enable consul.service
+
 # create configuration used after bootstrapping. The assumption is that
 # the IP addres of this server is 192.168.56.11 and the
 # other consul nodes are 192.168.56.12 & 192.168.56.13
@@ -33,34 +70,6 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
-
-
-sudo tee /etc/systemd/system/consul.service << 'EOF'
-[Unit]
-Description=Consul service discovery agent
-Requires=network-online.target
-After=network.target
-
-[Service]
-User=consul
-Group=consul
-PIDFile=/run/consul.pid
-Restart=on-failure
-Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
-ExecReload=/bin/kill -s HUP $MAINPID
-KillSignal=SIGINT
-TimeoutStopSec=5
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-systemctl daemon-reload
-systemctl restart consul.service
-systemctl status consul.service
-systemctl enable consul.service
-
 ```
 
 # 二、consul-b-install.sh
@@ -107,7 +116,7 @@ Group=consul
 PIDFile=/run/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -node-id=$(uuidgen | awk '{print tolower($0)}')
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
@@ -166,7 +175,7 @@ Group=consul
 PIDFile=/run/consul.pid
 Restart=on-failure
 Environment=GOMAXPROCS=2
-ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -disable-host-node-id
+ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir=/etc/consul.d -node-id=$(uuidgen | awk '{print tolower($0)}')
 ExecReload=/bin/kill -s HUP $MAINPID
 KillSignal=SIGINT
 TimeoutStopSec=5
