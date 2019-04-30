@@ -16,7 +16,7 @@ chown -R consul:consul /var/consul
 # consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES---这里生产秘钥
 # t7GKGbWdWOvyLA2kPaLVwQ==
 
-# creeate bootstrap consul configuration
+# creeate bootstrap consul configuration   --- -bootstrap一般只在集群初始化时使用一次。
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
     "bootstrap": true,
