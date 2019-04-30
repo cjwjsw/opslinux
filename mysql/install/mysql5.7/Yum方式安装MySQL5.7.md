@@ -79,7 +79,7 @@ log-bin=/data0/mysql_data/mysql-bin
 
 ## 开启慢查询日志记录
 slow_query_log=on
-slow-query-log-file=/var/log/mysqld-slow.log
+slow-query-log-file=/data0/mysql_data/mysqld-slow.log
 long_query_time=1
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
@@ -91,7 +91,16 @@ expire_logs_days=7
 ## 复制过滤：也就是指定哪个数据库不用同步（mysql、information_schema库一般不同步）
 binlog-ignore-db=mysql
 binlog-ignore-db=information_schema
+default-storage-engine=INNODB
 
+#log_bin_trust_function_creator控制是否可以信任存储函数创建
+log_bin_trust_function_creators=1
+
+lower_case_table_names=1
+default-time_zone = '+8:00'
+max_allowed_packet=64M
+event_scheduler=ON
+sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
 ## 指定需要同步的数据库
 #binlog-do-db=memberdb
 
