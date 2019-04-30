@@ -1,12 +1,12 @@
-
+# 一、安装
 ```
-consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node0 -bind=192.168.56.11 -datacenter=dc1 -config-dir=/var/consul
+consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node0 -bind=192.168.56.11 -datacenter=dc1 -ui -config-dir=/var/consul
 
 
 consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node1 -bind=192.168.56.12 -datacenter=dc1 -config-dir=/var/consul
 
 
-consul agent -data-dir=/var/consul -node=node3 -bind=192.168.56.13 -client=192.168.56.13 -datacenter=dc1 -ui -config-dir=/var/consul
+consul agent -data-dir=/var/consul -node=node3 -bind=192.168.56.13 -client=192.168.56.13 -datacenter=dc1 -config-dir=/var/consul
 
 #未加入集群疯狂报错
 2019/04/30 19:22:37 [WARN] raft: no known peers, aborting election
@@ -28,6 +28,11 @@ Successfully joined cluster by contacting 1 nodes.
 [root@linux-node1 ~]#  consul join 192.168.56.13
 Successfully joined cluster by contacting 1 nodes.
 
+```
+
+# 访问
+```
+http://192.168.56.11:8500/ui/
 ```
 
 参考链接：
