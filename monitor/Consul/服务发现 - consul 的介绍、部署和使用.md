@@ -9,6 +9,13 @@ consul agent -server -bootstrap-expect=2 -data-dir=/var/consul -node=node1 -bind
 
 consul agent -data-dir=/var/consul -node=node3 -bind=192.168.56.13 -client=192.168.56.13 -datacenter=dc1 -config-dir=/var/consul
 
+
+ nohup ./consul agent -ui -server -bootstrap-expect 2 -data-dir=data -node=consul01 -config-dir=conf -bind=10.33.16.224 -client=0.0.0.0 &
+
+ nohup ./consul agent -server -bootstrap-expect 2 -data-dir=data -node=consul02 -config-dir=conf -bind=10.33.16.225 -client=0.0.0.0 &
+
+nohup ./consul agent -server -bootstrap-expect 2 -data-dir=data -node=consul03 -config-dir=conf -bind=10.33.16.189 -client=0.0.0.0 &
+
 #未加入集群疯狂报错
 2019/04/30 19:22:37 [WARN] raft: no known peers, aborting election
 2019/04/30 19:22:39 [ERR] agent: failed to sync remote state: No cluster leader
