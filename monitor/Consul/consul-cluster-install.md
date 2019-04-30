@@ -85,20 +85,20 @@ chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
 
-# The assumption is that the IP addres of this server is 192.168.56.11
-# and the other consul servers are 192.168.56.12 & 192.168.56.13
+# The assumption is that the IP addres of this server is 192.168.56.12
+# and the other consul servers are 192.168.56.11 & 192.168.56.13
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
   "node_name": "consul-b",
   "bootstrap": false,
   "data_dir": "/var/consul",
   "server": true,
-  "bind_addr": "192.168.56.11",
+  "bind_addr": "192.168.56.12",
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
   "encrypt": "[output of consul-a 'consul keygen' command]",
-  "start_join": ["192.168.56.12","192.168.56.13"]
+  "start_join": ["192.168.56.11","192.168.56.13"]
 }
 EOF
 
@@ -128,7 +128,7 @@ systemctl status consul.service
 systemctl enable consul.service
 ```
 
-# 三、consul-b-install.sh
+# 三、consul-c-install.sh
 
 ```
 yum install -y epel-release
@@ -143,20 +143,20 @@ chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
 
-# The assumption is that the IP addres of this server is 192.168.56.12
-# and the other consul servers are 192.168.56.11 & 192.168.56.13
+# The assumption is that the IP addres of this server is 192.168.56.13
+# and the other consul servers are 192.168.56.11 & 192.168.56.12
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
   "node_name": "consul-b",
   "bootstrap": false,
   "data_dir": "/var/consul",
-  "server": true,
-  "bind_addr": "192.168.56.12",
+  "server": false,
+  "bind_addr": "192.168.56.13",
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
   "encrypt": "[output of consul-a 'consul keygen' command]",
-  "start_join": ["192.168.56.11","192.168.56.13"]
+  "start_join": ["192.168.56.11","192.168.56.12"]
 }
 EOF
 
