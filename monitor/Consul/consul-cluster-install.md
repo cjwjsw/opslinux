@@ -1,3 +1,5 @@
+# 一、consul-a-install.txt 
+
 ```
 yum install -y epel-release
 yum install -y bind-utils unzip jq
@@ -67,4 +69,6 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
 }
 EOF
 ```
+
+# 二、consul-a-install.txt 
 
