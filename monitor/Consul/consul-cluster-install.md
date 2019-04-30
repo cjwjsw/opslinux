@@ -76,8 +76,8 @@ EOF
 yum install -y epel-release
 yum install -y bind-utils unzip jq
 cd ~/
-wget https://releases.hashicorp.com/consul/1.0.2/consul_1.0.2_linux_amd64.zip
-unzip consul_1.0.2_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
+unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
 adduser consul
 mkdir /etc/consul.d
@@ -85,20 +85,20 @@ chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
 
-# The assumption is that the IP addres of this server is 192.168.100.52
-# and the other consul servers are 192.168.100.51 & 192.168.100.53
+# The assumption is that the IP addres of this server is 192.168.56.11
+# and the other consul servers are 192.168.56.12 & 192.168.56.13
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
   "node_name": "consul-b",
   "bootstrap": false,
   "data_dir": "/var/consul",
   "server": true,
-  "bind_addr": "192.168.100.52",
+  "bind_addr": "192.168.56.11",
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
   "encrypt": "[output of consul-a 'consul keygen' command]",
-  "start_join": ["192.168.100.51","192.168.100.53"]
+  "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
 
@@ -134,8 +134,8 @@ systemctl enable consul.service
 yum install -y epel-release
 yum install -y bind-utils unzip jq
 cd ~/
-wget https://releases.hashicorp.com/consul/1.0.2/consul_1.0.2_linux_amd64.zip
-unzip consul_1.0.2_linux_amd64.zip
+wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
+unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
 adduser consul
 mkdir /etc/consul.d
@@ -143,20 +143,20 @@ chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
 
-# The assumption is that the IP addres of this server is 192.168.100.53
-# and the other consul servers are 192.168.100.51 & 192.168.100.52
+# The assumption is that the IP addres of this server is 192.168.56.12
+# and the other consul servers are 192.168.56.11 & 192.168.56.13
 sudo tee /etc/consul.d/consul.json << 'EOF'
 {
-  "node_name": "consul-c",
+  "node_name": "consul-b",
   "bootstrap": false,
   "data_dir": "/var/consul",
   "server": true,
-  "bind_addr": "192.168.100.53",
+  "bind_addr": "192.168.56.12",
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
   "encrypt": "[output of consul-a 'consul keygen' command]",
-  "start_join": ["192.168.100.51","192.168.100.52"]
+  "start_join": ["192.168.56.11","192.168.56.13"]
 }
 EOF
 
