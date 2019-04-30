@@ -59,8 +59,6 @@ systemctl start consul.service
 systemctl status consul.service
 systemctl enable consul.service
 
-
-
 ```
 
 # 二、consul-b-install.sh
