@@ -12,7 +12,8 @@ mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
 chown -R consul:consul /var/consul
-consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES
+
+consul keygen # generate encryption key that will be used ad the "encrypt" entry of ALL CONSUL NODES---这里生产秘钥
 
 
 # create configuration used after bootstrapping. The assumption is that
@@ -28,7 +29,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",
+  "encrypt": "[output of consul keygen]",  #替换为上面产生的秘钥
   "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
