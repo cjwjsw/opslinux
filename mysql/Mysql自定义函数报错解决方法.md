@@ -85,6 +85,10 @@ mysql> show variables like '%func%';
 +---------------------------------+-------+
 
 1 row in set (0.00 sec)
+
+
+#mysql的exchange不能执行存储过程解决办法
+GRANT EXECUTE ON ichson_lore_source.* TO 'exchange'@'%'; GRANT SELECT ON `mysql`.`proc` TO 'exchange'@'%';
 ```
 
 
