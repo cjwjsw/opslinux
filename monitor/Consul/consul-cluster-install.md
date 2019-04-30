@@ -29,7 +29,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul keygen]",  #替换为上面产生的秘钥
+  "encrypt": "[output of consul keygen]",
   "start_join": ["192.168.56.12","192.168.56.13"]
 }
 EOF
@@ -56,7 +56,8 @@ TimeoutStopSec=5
 WantedBy=multi-user.target
 EOF
 
-systemctl start consul.service
+systemctl daemon-reload
+systemctl restart consul.service
 systemctl status consul.service
 systemctl enable consul.service
 
@@ -89,7 +90,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": false,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul-a 'consul keygen' command]",
+  "encrypt": "[output of consul keygen]",
   "start_join": ["192.168.56.11","192.168.56.13"]
 }
 EOF
@@ -115,7 +116,8 @@ TimeoutStopSec=5
 WantedBy=multi-user.target
 EOF
 
-systemctl start consul.service
+systemctl daemon-reload
+systemctl restart consul.service
 systemctl status consul.service
 systemctl enable consul.service
 ```
@@ -147,7 +149,7 @@ sudo tee /etc/consul.d/consul.json << 'EOF'
   "bootstrap_expect": 3,
   "ui": true,
   "client_addr": "0.0.0.0",
-  "encrypt": "[output of consul-a 'consul keygen' command]",
+  "encrypt": "[output of consul keygen]",
   "start_join": ["192.168.56.11","192.168.56.12"]
 }
 EOF
@@ -173,7 +175,8 @@ TimeoutStopSec=5
 WantedBy=multi-user.target
 EOF
 
-systemctl start consul.service
+systemctl daemon-reload
+systemctl restart consul.service
 systemctl status consul.service
 systemctl enable consul.service
 ```
