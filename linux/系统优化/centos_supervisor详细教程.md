@@ -6,6 +6,10 @@ systemctl restart supervisord    # 启动supervisord服务
 
 systemctl status supervisord     # 查看supervisord服务状态
 ps -ef|grep supervisord          # 查看是否存在supervisord进程
+
+创建supervisor配置文件
+echo_supervisord_conf > /etc/supervisord.conf
+
 ```
 
 
@@ -18,7 +22,7 @@ Description=Supervisor daemon
 
 [Service]
 Type=forking
-ExecStart=/bin/supervisord -c /etc/supervisor/supervisord.conf
+ExecStart=/bin/supervisord -c /etc/supervisord.conf
 ExecStop=/bin/supervisorctl shutdown
 ExecReload=/bin/supervisorctl reload
 KillMode=process
