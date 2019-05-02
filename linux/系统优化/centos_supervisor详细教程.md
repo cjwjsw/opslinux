@@ -9,10 +9,9 @@ ps -ef|grep supervisord          # 查看是否存在supervisord进程
 ```
 
 
-# 二、
-```
-配置supervisord开机启动
+# 二、配置supervisord开机启动
 
+```
 sudo tee /usr/lib/systemd/system/supervisord.service << 'EOF'
 [Unit]
 Description=Supervisor daemon 
