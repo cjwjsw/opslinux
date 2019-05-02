@@ -9,6 +9,33 @@ ps -ef|grep supervisord          # 查看是否存在supervisord进程
 ```
 
 
+# 二、
+```
+配置supervisord开机启动
+
+sudo tee /usr/lib/systemd/system/supervisord.service << 'EOF'
+[Unit]
+Description=Supervisor daemon 
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+ExecStop=/usr/bin/supervisorctl shutdown
+ExecReload=/usr/bin/supervisorctl reload
+KillMode=process
+Restart=on-failure
+RestartSec=42s 
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl restart supervisord
+systemctl enable supervisord
+systemctl is-enabled supervisord
+```
+
+
 参考资料：
 
 https://blog.csdn.net/DongGeGe214/article/details/80264811  
