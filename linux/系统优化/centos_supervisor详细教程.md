@@ -80,6 +80,8 @@ EOF
 
 #查看管理的服务
 supervisorctl status
+
+supervisorctl start salt-master
 ```
 
 参考资料：
