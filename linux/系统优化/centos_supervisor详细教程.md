@@ -60,6 +60,10 @@ stdout_logfile=/tmp/hello.log      ; 指定日志文件路径，可以绝对路�
 stdout_logfile_maxbytes=50MB         ; 文件切割大小
 stdout_logfile_backups=10            ; 保留的备份数
 EOF
+
+
+#查看管理的服务
+supervisorctl status
 ```
 
 参考资料：
