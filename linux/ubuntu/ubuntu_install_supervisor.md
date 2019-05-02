@@ -1,6 +1,6 @@
 # 一、安装
 ```
-yum install -y epel-release supervisor
+sudo apt-get install supervisor 
 systemctl enable supervisord     # 开机自启动
 systemctl restart supervisord    # 启动supervisord服务
 
