@@ -37,6 +37,7 @@ systemctl daemon-reload
 systemctl restart supervisord
 systemctl enable supervisord
 systemctl is-enabled supervisord
+systemctl status supervisord
 ```
 
 
