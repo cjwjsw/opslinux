@@ -72,7 +72,7 @@ systemctl status supervisor
 # 三、测试
 ```
 # 管理salt-master 
-tee /etc/supervisord.d/salt-master.conf << 'EOF'
+tee /etc/supervisor/conf.d/salt-master.conf << 'EOF'
 [program:salt-master]
 command=/usr/bin/salt-master
 autostart=true
@@ -80,7 +80,7 @@ autorestart=true
 EOF
 
 # 管理salt-minion
-tee /etc/supervisord.d/salt-minion.conf << 'EOF'
+tee /etc/supervisor/conf.d/salt-minion.conf << 'EOF'
 [program:salt-minion]
 command=/usr/bin/salt-minion
 autostart=true
