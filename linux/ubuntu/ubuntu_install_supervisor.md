@@ -71,26 +71,6 @@ systemctl status supervisor
 
 # 三、测试
 ```
-修改
-# vim /etc/supervisord.conf
-
-[include]
-files = /etc/supervisord.d/*.conf
-
-新增测试配置
-tee /etc/supervisord.d/hello.conf << 'EOF'
-[program:hello]
-directory=/root                      ; 运行程序时切换到指定目录
-command=/bin/bash hello.sh           ; 执行程序 ( 程序不能时后台运行的方式 )
-autostart=true                       ; 程序随 supervisord 启动而启动
-startsecs=10                         ; 程序启动 10 后没有退出，认为程序启动成功 
-redirect_stderr=true                 ; 标准错误输出重定向到标准输出
-stdout_logfile=/tmp/hello.log      ; 指定日志文件路径，可以绝对路径 ( 相对路径 相对 directory= 指定的目录 )
-stdout_logfile_maxbytes=50MB         ; 文件切割大小
-stdout_logfile_backups=10            ; 保留的备份数
-EOF
-
-
 # 管理salt-master 
 tee /etc/supervisord.d/salt-master.conf << 'EOF'
 [program:salt-master]
@@ -115,4 +95,4 @@ supervisorctl start salt-master
 
 参考资料：
 
-https://blog.csdn.net/DongGeGe214/article/details/80264811  
+https://www.jianshu.com/p/68605ac9d06a
