@@ -44,28 +44,29 @@ EOF
 # 二、配置supervisord开机启动
 
 ```
-sudo tee /usr/lib/systemd/system/supervisord.service << 'EOF'
+sudo tee /lib/systemd/system/supervisor.service << 'EOF'
 [Unit]
-Description=Supervisor daemon 
+Description=Supervisor process control system for UNIX
+Documentation=http://supervisord.org
+After=network.target
 
 [Service]
-Type=forking
-ExecStart=/bin/supervisord -c /etc/supervisord.conf
-ExecStop=/bin/supervisorctl shutdown
-ExecReload=/bin/supervisorctl reload
+ExecStart=/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf $OPTIONS reload
 KillMode=process
 Restart=on-failure
-RestartSec=42s 
+RestartSec=50s
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl restart supervisord
-systemctl enable supervisord
-systemctl is-enabled supervisord
-systemctl status supervisord
+systemctl restart supervisor
+systemctl enable supervisor
+systemctl is-enabled supervisor
+systemctl status supervisor
 ```
 
 # 三、测试
