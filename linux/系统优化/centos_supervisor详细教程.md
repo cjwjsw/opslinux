@@ -43,11 +43,13 @@ systemctl status supervisord
 # 三、测试
 ```
 修改
-;[include]
-files = /etc/supervisord.d/*.ini
+# vim /etc/supervisord.conf
+
+[include]
+files = /etc/supervisord.d/*.conf
 
 新增测试配置
-tee /etc/supervisord.d/hello.ini << 'EOF'
+tee /etc/supervisord.d/hello.conf << 'EOF'
 [program:hello]
 directory=/root                      ; 运行程序时切换到指定目录
 command=/bin/bash hello.sh           ; 执行程序 ( 程序不能时后台运行的方式 )
