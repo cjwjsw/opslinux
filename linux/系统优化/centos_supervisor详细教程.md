@@ -62,6 +62,22 @@ stdout_logfile_backups=10            ; 保留的备份数
 EOF
 
 
+# 管理salt-master 
+tee /etc/supervisord.d/salt-master.conf << 'EOF'
+[program:salt-master]
+command=/usr/bin/salt-master
+autostart=true
+autorestart=true
+EOF
+
+# 管理salt-minion
+tee /etc/supervisord.d/salt-minion.conf << 'EOF'
+[program:salt-minion]
+command=/usr/bin/salt-minion
+autostart=true
+autorestart=true
+EOF
+
 #查看管理的服务
 supervisorctl status
 ```
