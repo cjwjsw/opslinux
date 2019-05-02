@@ -1,11 +1,11 @@
 # 一、安装
 ```
 sudo apt-get install supervisor -y
-systemctl enable supervisord     # 开机自启动
-systemctl restart supervisord    # 启动supervisord服务
+systemctl enable supervisor     # 开机自启动
+systemctl restart supervisor    # 启动supervisord服务
 
-systemctl status supervisord     # 查看supervisord服务状态
-ps -ef|grep supervisord          # 查看是否存在supervisord进程
+systemctl status supervisor     # 查看supervisord服务状态
+ps -ef|grep supervisor          # 查看是否存在supervisord进程
 
 创建supervisor配置文件
 echo_supervisord_conf > /etc/supervisord.conf
