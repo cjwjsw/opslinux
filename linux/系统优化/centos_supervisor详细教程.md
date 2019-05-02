@@ -29,6 +29,7 @@ RestartSec=42s
 WantedBy=multi-user.target
 EOF
 
+systemctl daemon-reload
 systemctl restart supervisord
 systemctl enable supervisord
 systemctl is-enabled supervisord
