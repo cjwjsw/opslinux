@@ -280,6 +280,7 @@ comp-lzo
 persist-key
 persist-tun
 status openvpn-status.log
+log-append  openvpn.log
 verb 3
 ```
 固定ip
