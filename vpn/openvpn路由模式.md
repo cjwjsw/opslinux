@@ -296,6 +296,26 @@ ifconfig-push 10.10.100.21 10.10.100.22
 [root@localhost ccd]# cat tokok_vpnc2
 ifconfig-push 10.10.200.23 10.10.200.24
 ```
+客户端配置
+```
+#vim /etc/openvpn/openv_client.ovpn
+client
+dev tun
+proto tcp
+remote 23.244.61.198 1999
+resolv-retry infinite
+nobind
+auth-nocache
+persist-key
+persist-tun
+ca ca.crt
+cert fhex_c1.crt
+key fhex_vpnc1.key
+comp-lzo
+verb 4
+max-routes 1000
+#route 192.168.52.0 255.255.255.0 vpn_gateway
+```
 防火墙配置
 ```
 [root@izuf62w1juq9pm5jar66slz ccd]# cat /etc/sysconfig/iptables
