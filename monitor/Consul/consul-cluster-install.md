@@ -7,6 +7,7 @@ cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
@@ -81,6 +82,7 @@ cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
@@ -140,6 +142,7 @@ cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
 adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
