@@ -3,11 +3,11 @@
 ```
 yum install -y epel-release
 yum install -y bind-utils unzip jq
-cd ~/
+cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
-adduser consul
+adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
@@ -77,11 +77,11 @@ EOF
 ```
 yum install -y epel-release
 yum install -y bind-utils unzip jq
-cd ~/
+cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
-adduser consul
+adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
@@ -136,11 +136,11 @@ systemctl enable consul.service
 ```
 yum install -y epel-release
 yum install -y bind-utils unzip jq
-cd ~/
+cd /usr/local/src/
 wget https://releases.hashicorp.com/consul/1.4.4/consul_1.4.4_linux_amd64.zip
 unzip consul_1.4.4_linux_amd64.zip
 mv consul /usr/local/bin/
-adduser consul
+adduser consul -s /sbin/nologin
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d/
 mkdir /var/consul
