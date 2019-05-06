@@ -16,6 +16,12 @@ server {
 }
 
 
+server {
+  listen      80;
+  server_name xxx.com www.xxx.com;
+  return      301 https://$server_name$request_uri;  //这是 nginx 最新支持的写法
+}
+
 要新加一个server 不要写在listen 443里面，写在里面就一直是https重定向到https，进入死循环。
 ```
 
