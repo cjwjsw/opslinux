@@ -13,7 +13,7 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 echo -e "\033[31m 这个是centos6/7系统安装 node_exporter 服务程序，Please continue to enter or ctrl+C to cancel \033[0m"
-sleep 3
+sleep 1
 
 # get kernel version
 RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
@@ -26,7 +26,7 @@ config(){
 	groupadd prometheus
 	useradd -g prometheus prometheus -s /sbin/nologin -c "prometheus Daemons"
 	chattr +i /etc/passwd* && chattr +i /etc/group* && chattr +i /etc/shadow* && chattr -i /etc/gshadow*
-	mkdir -pv /usr/local/sandai/prometheus/node_exporter/
+	mkdir -pv /usr/local/prometheus/node_exporter/
 }
 
 #download
@@ -39,7 +39,7 @@ get_soft(){
 
 #change_permission
 change_permission(){
-	chmod +x /usr/local/sandai/prometheus/node_exporter/*
+	chmod +x /usr/local/prometheus/node_exporter/*
 	chown -R prometheus:prometheus /usr/local/sandai/prometheus/
 	mkdir -p /var/run/
 	mkdir -p /var/log/
@@ -75,10 +75,10 @@ iptables_check(){
     cp /etc/sysconfig/iptables /etc/sysconfig/iptables.bak_$(date +%F-%H-%M-%S)
     service iptables save
     echo "检查是否开通了123.160.28.213/32的9100-9200策略"
-    res=`iptables -S|grep 123.160.28.213|grep 9100`
+    res=`iptables -S|grep 13.160.28.213|grep 9100`
     if [ "$res" = "" ]; then 
         echo "规则不存在"
-        iptables -I RH-Firewall-1-INPUT -s 123.160.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT
+        iptables -I RH-Firewall-1-INPUT -s 13.160.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT
     else
     	echo "规则已经存在"
     fi
