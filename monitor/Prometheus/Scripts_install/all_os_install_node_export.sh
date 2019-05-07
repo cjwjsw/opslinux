@@ -13,7 +13,7 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 echo -e "\033[31m 这个是centos6/7系统安装 node_exporter 服务程序，Please continue to enter or ctrl+C to cancel \033[0m"
-sleep 1
+sleep 3
 
 # get kernel version
 RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
@@ -31,8 +31,13 @@ config(){
 
 #download
 get_soft(){
-	# cd /usr/local/src/
-	#wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
+	cd /usr/local/src/
+	if [ -f "node_exporter-0.17.0.linux-amd64.tar.gz" ];then
+		echo "安装包已经存在"
+	else
+		echo "正在下载安装包...."
+	    wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
+	fi
 	tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
 	mv -f node_exporter-0.17.0.linux-amd64/* /usr/local/prometheus/node_exporter/
 }
@@ -40,7 +45,7 @@ get_soft(){
 #change_permission
 change_permission(){
 	chmod +x /usr/local/prometheus/node_exporter/*
-	chown -R prometheus:prometheus /usr/local/sandai/prometheus/
+	chown -R prometheus:prometheus /usr/local/prometheus/
 	mkdir -p /var/run/
 	mkdir -p /var/log/
 	touch /var/log/node_exporter.log
