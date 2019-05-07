@@ -15,8 +15,8 @@ mkdir -p /var/log/prometheus/
 chown prometheus:prometheus /var/run/prometheus/
 chown prometheus:prometheus /var/log/prometheus/
 touch /var/log/prometheus/node_exporter.log
-chmod 777 /var/log/prometheus/node_exporter.log
-chown prometheus:prometheus /var/log/prometheus/node_exporter.log
+chmod 777 /var/log/node_exporter.log
+chown prometheus:prometheus /var/log/node_exporter.log
 touch /etc/sysconfig/node_exporter.conf
 cat > /etc/sysconfig/node_exporter.conf <<\EOF
 ARGS=""
@@ -24,7 +24,7 @@ EOF
 chmod +x /etc/init.d/node_exporter
 /etc/init.d/node_exporter restart
 chkconfig node_exporter on
-tail -100f /var/log/prometheus/node_exporter.log
+tail -100f /var/log/node_exporter.log
 ```
 
 # 二、启动脚本
@@ -37,7 +37,7 @@ cat > /etc/init.d/node_exporter <<\EOF
 # chkconfig: 2345 80 80
 #
 # config: /etc/prometheus/node_exporter.conf
-# pidfile: /var/run/prometheus/node_exporter.pid
+# pidfile: /var/run/node_exporter.pid
 
 # Source function library.
 . /etc/init.d/functions
@@ -46,9 +46,9 @@ RETVAL=0
 PROG="node_exporter"
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}.conf
 DAEMON=/usr/local/prometheus/node_exporter/${PROG}
-PID_FILE=/var/run/prometheus/${PROG}.pid
+PID_FILE=/var/run/${PROG}.pid
 LOCK_FILE=/var/lock/subsys/${PROG}
-LOG_FILE=/var/log/prometheus/node_exporter.log
+LOG_FILE=/var/log/node_exporter.log
 DAEMON_USER="prometheus"
 GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
 
