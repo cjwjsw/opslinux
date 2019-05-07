@@ -13,7 +13,7 @@
 RETVAL=0
 PROG="node_exporter"
 DAEMON_SYSCONFIG=/etc/sysconfig/${PROG}.conf
-DAEMON=/usr/local/sandai/prometheus/node_exporter/${PROG}
+DAEMON=/usr/local/prometheus/node_exporter/${PROG}
 PID_FILE=/var/run/${PROG}.pid
 LOCK_FILE=/var/lock/subsys/${PROG}
 LOG_FILE=/var/log/node_exporter.log
