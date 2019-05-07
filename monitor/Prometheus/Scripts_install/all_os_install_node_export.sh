@@ -34,7 +34,7 @@ get_soft(){
 	# cd /usr/local/src/
 	#wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 	tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
-	mv -f node_exporter-0.17.0.linux-amd64/* /usr/local/sandai/prometheus/node_exporter/
+	mv -f node_exporter-0.17.0.linux-amd64/* /usr/local/prometheus/node_exporter/
 }
 
 #change_permission
