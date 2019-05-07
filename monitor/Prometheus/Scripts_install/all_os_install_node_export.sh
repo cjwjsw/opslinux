@@ -84,6 +84,7 @@ iptables_check(){
     if [ "$res" = "" ]; then 
         echo "规则不存在"
         iptables -I RH-Firewall-1-INPUT -s 13.160.28.213/32 -p tcp -m tcp -m multiport --dports 9100:9200 -j ACCEPT
+	service iptables save
     else
     	echo "规则已经存在"
     fi
