@@ -13,7 +13,7 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 echo -e "\033[31m 这个是centos6/7系统安装 node_exporter 服务程序，Please continue to enter or ctrl+C to cancel \033[0m"
-sleep 3
+sleep 1
 
 # get kernel version
 RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
