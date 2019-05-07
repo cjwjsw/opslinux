@@ -33,9 +33,9 @@ config(){
 get_soft(){
 	cd /usr/local/src/
 	if [ -f "node_exporter-0.17.0.linux-amd64.tar.gz" ];then
-		echo "安装包已经存在"
+	    echo "安装包已经存在"
 	else
-		echo "正在下载安装包...."
+	    echo "正在下载安装包...."
 	    wget -O /usr/local/src/node_exporter-0.17.0.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
 	fi
 	tar -xvf node_exporter-0.17.0.linux-amd64.tar.gz
