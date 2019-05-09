@@ -1,6 +1,5 @@
 # 一、秘钥分发脚本
 
-ssh-dist.sh
 ```
 cat > /tmp/ssh-dist.sh << \EOF
 #!/bin/bash
@@ -50,6 +49,10 @@ chmod +x /tmp/ssh-dist.sh
 # 格式如下：
 ip:密码
 
+cat > /tmp/ip.txt <<\EOF
+192.168.56.11:123456
+192.168.56.12:123456
+EOF
 ```
 # 三、使用方法
 ```
