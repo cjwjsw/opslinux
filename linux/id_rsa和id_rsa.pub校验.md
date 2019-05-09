@@ -1,6 +1,24 @@
 ```
 diff -qs <(ssh-keygen -yf ~/.ssh/id_rsa) <(cut -d ' ' -f 1,2 ~/.ssh/id_rsa.pub)
 
+
+
+
+
+以“-----BEGIN PUBLIC KEY-----”开头 “-----END PUBLIC KEY-----” 结尾
+
+这种格式的需要使用openssl生成
+
+openssl genrsa -out id_rsa 1024
+openssl rsa -in id_rsa -pubout -out id_rsa.pub
+
+至于验证id_rsa.pub和id_rsa是否匹配的方法如下：
+
+ssh-keygen  -y -f id_rsa > id_rsa.pub.tobecompared
+
+然后比较id_rsa.pub.tobecompared 与 id_rsa.pub 的内容是否一致
+
+
 ```
 
 参考文档：
