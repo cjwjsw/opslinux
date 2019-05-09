@@ -21,11 +21,15 @@ else
     fi 
 fi 
 EOF
+
 ```
 ```
 #使用方法
+cd /tmp/
+chmod +x /tmp/check_ssl.sh
+check_ssl.sh server.pem server.key
 
-root># ./check_ssl.sh server.pem server.key
+#输出结果
 rsaEncryption
 ok
 ```
