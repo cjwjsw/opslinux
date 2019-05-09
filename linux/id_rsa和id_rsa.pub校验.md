@@ -3,8 +3,6 @@ diff -qs <(ssh-keygen -yf ~/.ssh/id_rsa) <(cut -d ' ' -f 1,2 ~/.ssh/id_rsa.pub)
 
 
 
-
-
 以“-----BEGIN PUBLIC KEY-----”开头 “-----END PUBLIC KEY-----” 结尾
 
 这种格式的需要使用openssl生成
@@ -25,5 +23,6 @@ ssh-keygen  -y -f id_rsa > id_rsa.pub.tobecompared
 
 https://segmentfault.com/q/1010000008302009  怎么验证id_rsa.pub和id_rsa是否匹配
 
+https://blog.csdn.net/u010472499/article/details/53915683  检验公钥和私钥是否配对 
 
 https://stackoverflow.com/questions/274560/how-do-you-test-a-public-private-dsa-keypair
