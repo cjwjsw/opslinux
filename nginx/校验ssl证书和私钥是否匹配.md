@@ -17,7 +17,7 @@ else
         requestModuleMd5=`openssl x509 -in $1 -pubkey -noout | openssl md5` 
     fi 
     if [ "$requestModuleMd5" = "$privateModuleMd5" ] ; then 
-    	echo "ok" 
+        echo "ok" 
     fi 
 fi 
 EOF
@@ -27,7 +27,7 @@ EOF
 #使用方法
 cd /tmp/
 chmod +x /tmp/check_ssl.sh
-check_ssl.sh server.pem server.key
+./check_ssl.sh server.pem server.key
 
 #输出结果
 rsaEncryption
