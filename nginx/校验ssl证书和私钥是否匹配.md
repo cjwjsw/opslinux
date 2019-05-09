@@ -1,4 +1,4 @@
-# check_ssl.sh
+# 一、check_ssl.sh
 
 ```
 #!/bin/sh 
@@ -29,7 +29,7 @@ fi
 
 ```
 
-# 二、或者这种
+# 二、命令行校验
 ```
 (openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5) | uniq 
 ```
