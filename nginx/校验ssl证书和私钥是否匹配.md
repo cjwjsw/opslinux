@@ -1,7 +1,7 @@
 # 一、check_ssl.sh
 
 ```
-cat > /tmp/check_ssl.sh << EOF
+cat > /tmp/check_ssl.sh << \EOF
 #!/bin/sh 
 if [[ "$1" = "" || "$2" = "" ]]; then 
     echo "certCheck.sh certfile keyfile" exit 0; 
