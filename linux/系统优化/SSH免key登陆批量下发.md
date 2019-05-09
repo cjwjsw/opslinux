@@ -49,7 +49,7 @@ chmod +x /tmp/ssh-dist.sh
 # 格式如下：
 ip:密码
 
-cat > /tmp/ip.txt <<\EOF
+cat > /tmp/ssh-ip <<\EOF
 192.168.56.11:123456
 192.168.56.12:123456
 EOF
