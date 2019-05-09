@@ -1,17 +1,11 @@
 # 一、check_ssl.sh
 
 ```
+cat > /tmp/check_ssl.sh << EOF
 #!/bin/sh 
 if [[ "$1" = "" || "$2" = "" ]]; then 
-    echo "certCheck.sh  certfile keyfile" exit 0; 
+    echo "certCheck.sh certfile keyfile" exit 0; 
 else 
-    #certModuleMd5=`openssl x509 -noout -modulus -in $1 | openssl md5` 
-    #privateModuleMd5=`openssl rsa -noout -modulus -in $2 | openssl md5` 
-    #if [  "$certModuleMd5" = "$privateModuleMd5" ] ; then 
-    #        echo "ok" 
-    #else 
-    #	echo "not ok" 
-    #fi 
     value=`openssl x509 -text -noout -in $1 | grep "Public Key Algorithm:" | awk -F ':' 'BEGIN {}  {print $2} END {}'`
 
     if [ "$value" = " rsaEncryption" ] ; then 
@@ -26,7 +20,14 @@ else
     	echo "ok" 
     fi 
 fi 
+EOF
+```
+```
+#使用方法
 
+root># ./check_ssl.sh server.pem server.key
+rsaEncryption
+ok
 ```
 
 # 二、命令行校验ssl证书
