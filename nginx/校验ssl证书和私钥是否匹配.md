@@ -29,11 +29,21 @@ fi
 
 ```
 
-# 二、命令行校验
+# 二、命令行校验ssl证书
 ```
 pem=server.pem
 key=server.key
-(openssl x509 -noout -modulus -in $pem | openssl md5 ; openssl rsa -noout -modulus -in $key | openssl md5) | uniq 
+(openssl x509 -noout -modulus -in $pem | openssl md5 ; openssl rsa -noout -modulus -in $key | openssl md5) | uniq
+
+#正常结果
+(stdin)= 3f3919ba18cfbbeecfbd4dfc8e24092e
+
+#异常结果
+unable to load certificate
+140119833331600:error:0906D064:PEM routines:PEM_read_bio:bad base64 decode:pem_lib.c:829:
+(stdin)= d41d8cd98f00b204e9800998ecf8427e
+unable to load Private Key
+140502187399056:error:0906D064:PEM routines:PEM_read_bio:bad base64 decode:pem_lib.c:829:
 ```
 
 参考文档：
