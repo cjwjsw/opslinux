@@ -31,7 +31,9 @@ fi
 
 # 二、命令行校验
 ```
-(openssl x509 -noout -modulus -in server.pem | openssl md5 ; openssl rsa -noout -modulus -in server.key | openssl md5) | uniq 
+pem=server.pem
+key=server.key
+(openssl x509 -noout -modulus -in $pem | openssl md5 ; openssl rsa -noout -modulus -in $key | openssl md5) | uniq 
 ```
 
 参考文档：
