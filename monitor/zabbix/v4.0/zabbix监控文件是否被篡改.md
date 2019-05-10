@@ -4,7 +4,8 @@ wget http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-get-2.4.8-1.el6.x86_
 
 rpm -Uvh zabbix-get-2.4.8-1.el6.x86_64.rpm 
 
-[root@tw06a920 ~]#  zabbix_get -s 10.33.99.21 -p 10050 -k "vfs.file.cksum[/var/spool/cron/root]"
+zabbix_get -s 10.33.99.21 -p 10050 -k "vfs.file.cksum[/var/spool/cron/root]"
+
 2281612052
 ```
 # 二、注意事项
