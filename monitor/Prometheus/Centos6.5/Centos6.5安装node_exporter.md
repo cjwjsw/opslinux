@@ -1,7 +1,7 @@
 # 一、安装
 ```
 yum install -y daemonize
-chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow*
+chattr -i /etc/passwd* && chattr -i /etc/group* && chattr -i /etc/shadow* && chattr -i /etc/gshadow*
 groupadd prometheus
 useradd -g prometheus prometheus -s /sbin/nologin -c "prometheus Daemons"
 mkdir -p /usr/local/prometheus/node_exporter/
