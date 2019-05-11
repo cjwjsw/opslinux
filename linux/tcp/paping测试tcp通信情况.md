@@ -8,6 +8,8 @@ tar -zxvf paping_1.5.5_x86-64_linux.tar.gz
 # 二、测试
 ```
 ./paping -p 80 -c 10 www.baidu.com
+
+./paping -p 443 -c 10 www.baidu.com
 ```
 
 # 三、
