@@ -17,6 +17,15 @@ LAST_ACK 6
 SYN_RECV 21
 ESTABLISHED 176
 TIME_WAIT 2619
+
+sysctl -w net.ipv4.tcp_timestamps=0
+sysctl -w net.ipv4.tcp_tw_recycle=0
+
+root># netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+ESTABLISHED 276
+FIN_WAIT1 1
+FIN_WAIT2 101
+TIME_WAIT 160     ---TIME_WAIT明显下降
 ```
 
 参考资料：
