@@ -8,7 +8,6 @@ net.ipv4.ip_local_port_range = 1024 65000
 
 3）启用TIME-WAIT状态sockets快速回收功能;用于快速减少在TIME-WAIT状态TCP连接数。1表示启用;0表示关闭。但是要特别留意的是：这个选项一般不推荐启用，因为在NAT(Network Address Translation)网络下，会导致大量的TCP连接建立错误，从而引起网站访问故障。
 net.ipv4.tcp_tw_recycle = 0
-
 ----------------------------------------------------------------------------------------------------------------------------------
 实际上，net.ipv4.tcp_tw_recycle功能的开启，要需要net.ipv4.tcp_timestamps（一般系统默认是开启这个功能的）这个开关开启后才有效果；
 当tcp_tw_recycle 开启时（tcp_timestamps 同时开启，快速回收 socket 的效果达到），对于位于NAT设备后面的 Client来说，是一场灾难！
@@ -122,3 +121,5 @@ net.ipv4.tcp_tw_recycle = 1 这个功能打开后，确实能减少TIME-WAIT状�
 参看文档：
 
 https://blog.csdn.net/tiantiandjava/article/details/79969909  	nginx应用总结--突破高并发的性能优化
+
+https://www.jianshu.com/p/87ec508be2c5  sysctl.conf 配置
