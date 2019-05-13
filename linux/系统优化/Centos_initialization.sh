@@ -64,7 +64,7 @@ system_bash(){
     #修改Bash提示符字符串
     echo "改Bash提示符字符串......"
     echo 'PS1="\[\e[37;40m\][\[\e[32;40m\]\u\[\e[37;40m\]@\h \[\e[36;40m\]\w\[\e[0m\]]\\$ "' >> ~/.bashrc
-    source .bashrc
+    source ~/.bashrc
 }
 
 #system config
