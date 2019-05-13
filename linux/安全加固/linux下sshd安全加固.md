@@ -27,16 +27,16 @@ PasswordAuthentication no #禁止密码方式验证
 # 二、sshd_config配置
 ```
 Port 33389
-ListenAddress 192.168.56.11:22
+ListenAddress 0.0.0.0:22
 ListenAddress 0.0.0.0:33389
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTHPRIV
-PermitRootLogin no #禁用root 登录
-RSAAuthentication yes #通过RSA认证
+#PermitRootLogin no    #禁用root 登录
+#RSAAuthentication yes #通过RSA认证
 PubkeyAuthentication yes
-AuthorizedKeysFile	%h/.ssh/authorized_keys
+AuthorizedKeysFile      %h/.ssh/authorized_keys
 #PasswordAuthentication no #禁止密码方式验证
 ChallengeResponseAuthentication no
 GSSAPIAuthentication no
@@ -48,7 +48,7 @@ AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
 AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
 AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
-Subsystem	sftp	/usr/libexec/openssh/sftp-server
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
 ```
 
 # 三、测试验证
