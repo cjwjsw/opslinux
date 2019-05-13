@@ -73,7 +73,7 @@ system_config(){
     setenforce 0
 
     # 设置上海时区
-    cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    # cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
     # 设置为东京时区
     # ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
@@ -308,7 +308,7 @@ EOF
 
 #audit_log
 audit_log(){
-    mkdir /var/log/shell_audit
+    mkdir -pv /var/log/shell_audit
     touch /var/log/shell_audit/audit.log
 
     chown nobody:nobody /var/log/shell_audit/audit.log
@@ -317,9 +317,8 @@ audit_log(){
     chattr +a /var/log/shell_audit/audit.log
 
     echo "HISTSIZE=2048" >> /etc/profile
-    echo 'HISTTIMEFORMAT="%Y/%m/%d %T   ";'>> /etc/profile
-    echo "export HISTTIMEFORMAT">> /etc/profile
-    echo "export HISTORY_FILE=/var/log/shell_audit/audit.log">> /etc/profile
+    echo 'HISTTIMEFORMAT="%Y/%m/%d %T   ";export HISTTIMEFORMAT' >> /etc/profile
+    echo "export HISTORY_FILE=/var/log/shell_audit/audit.log" >> /etc/profile
     echo "export PROMPT_COMMAND='{ code=$?;thisHistID=`history 1|awk "{print \\$1}"`;lastCommand=`history 1| awk "{\\$1=\"\" ;print}"`;user=`id -un`;whoStr=(`who -u am i`);realUser=${whoStr[0]};logDay=${whoStr[2]};logTime=${whoStr[3]};pid=${whoStr[5]};ip=${whoStr[6]};if [ ${thisHistID}x != ${lastHistID}x ];then echo -E `date "+%Y/%m/%d %H:%M:%S"` $user\($realUser\)@$ip[PID:$pid][LOGIN:$logDay $logTime] --- [$PWD]$lastCommand [$code];lastHistID=$thisHistID;fi; } >> $HISTORY_FILE'" >> /etc/profile
 
     cat >/etc/logrotate.d/shell_audit<<EOF
@@ -353,6 +352,6 @@ main(){
     ssh_config
     ipv6_config
     sysctl_config
-    audit_log
+    #audit_log
 }
 main
