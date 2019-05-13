@@ -35,8 +35,7 @@ yum_config(){
     fi
     yum clean all
     yum makecache
-    yum -y install epel-release 
-    yum -y install vim wget bind-utils bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel iptables-services iptables
+    yum -y install vim wget bind-utils epel-release bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel iptables-services iptables
 }
 
 #firewalld
@@ -170,17 +169,29 @@ ulimit_config(){
 #@faculty        hard    nproc           50
 #ftp             hard    nproc           0
 #@student        -       maxlogins       4
+
+
 # End of file
-*           soft   nofile       102400
-*           hard   nofile       102400
-*           soft   nproc        102400
-*           hard   nproc        102400
+* soft           nofile           204800
+* hard           nofile           204800
+* soft           nproc            204800
+* hard           nproc            204800
 EOF
 
 #  *          代表针对所有用户   
 # nproc      是代表最大进程数   
 # nofile     是代表最大文件打开数 
 # soft nofile表示软限制，hard nofile表示硬限制，软限制要小于等于硬限制。
+
+cat > /etc/security/limits.d/90-nproc.conf << EOF
+* soft nproc 204800
+* hard nproc 204800
+EOF
+
+cat > /etc/security/limits.d/def.conf << EOF
+* soft nproc 204800
+* hard nproc 204800
+EOF
 }
 
 #add user
@@ -188,6 +199,7 @@ add_user(){
     useradd www
     echo "GoodLuck2019"|passwd --stdin www
     mkdir -p /home/www/.ssh/
+    chmod 700 /home/www/.ssh/
     echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyrgnAdfukV1xAllnl/IEFh/T9X4BkRlhSNMarwZIhZJ8S9euxz4PciAZTVqZ7zudcaPxjZGhtfa6ak5DHPW5GBr/DJ8Zh9Vk9p/c19szAUw04Go/ZuwaaSjIgdJwctfxnbBRVMSqMZFozc97MSh6yWoxLA3k2CWzv0yl9sjs3uUcYqe67GcFZaNQiomSGEKeBCxxtKQZyUEV2F7ufcoDIgcm9m2DH//DSflLd8QAyOj4Y4vj5Qcr8lThV9pWhjYq/sD1spxGbplz7+NQJeV8HEC5AzA1jZXy+pTFyV6DEOhPnn4V+GWUiDF39S8ky1wx0UpzpGxSRpTXhu1f9126B" > /home/www/.ssh/authorized_keys
     chmod 600 /home/www/.ssh/authorized_keys
     chown www:www -R /home/www
@@ -199,31 +211,29 @@ add_user(){
 ssh_config(){
     mv -f /etc/ssh/sshd_config /etc/ssh/sshd_config-default_bak
     cat >/etc/ssh/sshd_config<<EOF
-Protocol 2
-Port 22
 Port 33389
 ListenAddress 0.0.0.0:22
 ListenAddress 0.0.0.0:33389
-SyslogFacility AUTH
-LogLevel INFO
-LoginGraceTime 10m
-#PermitRootLogin no #禁用root 登录
-MaxAuthTries 5
-RSAAuthentication yes #通过RSA认证
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+SyslogFacility AUTHPRIV
+#PermitRootLogin no    #禁用root 登录
+#RSAAuthentication yes #通过RSA认证
 PubkeyAuthentication yes
 AuthorizedKeysFile      %h/.ssh/authorized_keys
 #PasswordAuthentication no #禁止密码方式验证
-UsePAM yes
+ChallengeResponseAuthentication no
 GSSAPIAuthentication no
-AllowTcpForwarding no
-X11Forwarding no
-PrintLastLog no
-UsePrivilegeSeparation yes
+GSSAPICleanupCredentials no
+UsePAM yes
+X11Forwarding yes
 UseDNS no
-PermitTunnel no
-Banner /etc/motd
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
-RSAAuthentication yes
 EOF
     echo "#######################################################"
     if [ $RELEASEVER == 6 ];then
@@ -256,14 +266,11 @@ cat /etc/sysconfig/network | grep NETWORKING_IPV6
 sysctl_config(){
     cp /etc/sysctl.conf /etc/sysctl.conf.bak
     cat > /etc/sysctl.conf << \EOF
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv4.ip_forward = 0
 net.ipv4.conf.default.rp_filter = 1
 net.ipv4.conf.default.accept_source_route = 0
 kernel.sysrq = 0
 kernel.core_uses_pid = 1
-net.ipv4.tcp_syncookies = 1
 kernel.msgmnb = 65536
 kernel.msgmax = 65536
 kernel.shmmax = 68719476736
@@ -281,13 +288,14 @@ net.core.netdev_max_backlog = 262144
 net.core.somaxconn = 262144
 net.ipv4.tcp_max_orphans = 3276800
 net.ipv4.tcp_max_syn_backlog = 262144
-net.ipv4.tcp_timestamps = 0
 net.ipv4.tcp_synack_retries = 1
 net.ipv4.tcp_syn_retries = 1
-net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_tw_recycle = 0
+net.ipv4.tcp_syncookies = 1
 net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_fin_timeout = 30
 net.ipv4.tcp_mem = 94500000 915000000 927000000
-net.ipv4.tcp_fin_timeout = 1
 net.ipv4.tcp_keepalive_time = 30
 net.ipv4.ip_local_port_range = 1024 65000
 EOF
@@ -348,4 +356,3 @@ main(){
     audit_log
 }
 main
-
