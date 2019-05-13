@@ -26,7 +26,7 @@ yum makecache
 ## 三、更新epel源
 ```bash
 #通用
-yum install epel-release
+yum install epel-release -y
 
 #centos7系统
 wget https://mirrors.aliyun.com/repo/epel-7.repo
