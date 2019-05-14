@@ -31,7 +31,7 @@ src/redis-migrate-tool -h
 ```
 3.1）配置文件实例：
 
-vim /opt/cachecloud/redis-migrate-tool/rmt.conf
+vim /tmp/rmt.conf
 
 示例1：从rdb文件恢复数据到redis cluster集群
 
@@ -93,7 +93,7 @@ source_safe: true
 
 3.2）软件运行：
 
-cd /opt/cachecloud/redis-migrate-tool
+cd /usr/local/src/redis-migrate-tool
 src/redis-migrate-tool -c rmt.conf -o log -d
 
 3.3）状态查看：通过redis-cli连接redis-migrate-tool监控的端口，运行info命令
