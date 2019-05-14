@@ -1,7 +1,6 @@
 # 一、安装依赖
 
 ```
-依赖：
 yum -y install automake
 yum -y install libtool
 yum -y install autoconf
