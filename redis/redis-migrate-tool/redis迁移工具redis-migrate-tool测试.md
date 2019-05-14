@@ -9,7 +9,7 @@ yum -y install bzip2
 
 # 二、软件编译安装
 ```
-官方链接：https://github.com/vipshop/redis-migrate-tool
+1、官方链接：https://github.com/vipshop/redis-migrate-tool
 软件编译安装：
 
 cd /usr/local/src/
@@ -21,6 +21,9 @@ mkdir data
 autoreconf -fvi
 ./configure
 make
+src/redis-migrate-tool -h
+
+2、检查安装是否成功，如下图所示即为正确
 src/redis-migrate-tool -h
 ```
 
