@@ -87,13 +87,14 @@ sudo ufw delete 2
 # 五、脚本
 ```
 sudo apt-get install -y ufw
+sudo ufw reset
 sudo ufw allow 22/tcp
 sudo ufw allow 33389/tcp
 sudo ufw allow from 192.168.52.0/24
 sudo ufw allow 9100/tcp
-sudo ufw allow 8300:8900/tcp
-sudo ufw allow 12170/tcp
-sudo ufw default deny  #默认关闭所有外部访问
+sudo ufw allow 8300:8900/tcp from 23.244.63.0/24
+sudo ufw allow 12170/tcp from 23.244.63.0/24
+sudo ufw default deny
 sudo ufw reload
 sudo ufw status
 ```
