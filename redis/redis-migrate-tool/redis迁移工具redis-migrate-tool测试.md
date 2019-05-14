@@ -12,7 +12,7 @@ yum -y install bzip2
 官方链接：https://github.com/vipshop/redis-migrate-tool
 软件编译安装：
 
-mkdir /usr/local/src/  && cd /usr/local/src/
+cd /usr/local/src/
 wget https://github.com/vipshop/redis-migrate-tool/archive/master.zip
 unzip master.zip
 mv redis-migrate-tool-master redis-migrate-tool
