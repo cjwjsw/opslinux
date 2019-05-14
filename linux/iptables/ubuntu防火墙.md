@@ -99,4 +99,5 @@ sudo ufw allow from 23.244.63.0/24 to any port 12170
 sudo ufw default deny
 sudo ufw reload
 sudo ufw enable
+sudo ufw status
 ```
