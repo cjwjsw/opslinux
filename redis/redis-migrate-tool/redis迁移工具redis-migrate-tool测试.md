@@ -7,7 +7,7 @@ yum -y install autoconf
 yum -y install bzip2
 ```
 
-# 二、安装
+# 二、软件编译安装
 ```
 官方链接：https://github.com/vipshop/redis-migrate-tool
 软件编译安装：
@@ -23,3 +23,10 @@ autoreconf -fvi
 make
 src/redis-migrate-tool -h
 ```
+
+
+参考资料：
+
+https://blog.51cto.com/qiangsh/2104767?utm_source=oschina-app  Redis Cluster在线迁移
+
+https://blog.51cto.com/8370646/2170479  redis迁移工具redis-migrate-tool测试
