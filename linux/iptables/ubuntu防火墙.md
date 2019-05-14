@@ -88,6 +88,7 @@ sudo ufw delete 2
 ```
 sudo apt-get install -y ufw
 sudo ufw reset
+
 sudo ufw allow 22/tcp
 sudo ufw allow 33389/tcp
 sudo ufw allow 9100/tcp
@@ -97,7 +98,8 @@ sudo ufw allow from 23.244.63.0/24 to any port 8331
 sudo ufw allow from 23.244.63.0/24 to any port 8336
 sudo ufw allow from 23.244.63.0/24 to any port 12170
 sudo ufw default deny
-sudo ufw reload
 sudo ufw enable
+sudo ufw reload
+
 sudo ufw status
 ```
