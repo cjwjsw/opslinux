@@ -6,6 +6,12 @@ cnt=1200
 awk 'BEGIN{printf "%.0f\n",('$cnt'*'0.8')}'
 ```
 
+# 二、整形运算
+```
+#!/bin/bash
+cnt=1200
+expr $cnt '*' 2
+```
 参考资料
 
 
