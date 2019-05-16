@@ -65,6 +65,12 @@ wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apa
 
 ```
 
+# 四、同步
+```
+yum install rsync -y
+rsync -av --exclude "logs" --exclude "log" /data0/opt/tomcat8_8081_taskjob /tmp/test
+
+```
 
 参考文档：
 
