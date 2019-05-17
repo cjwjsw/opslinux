@@ -157,9 +157,27 @@ git reset –soft HEAD~1
 git reset –hard HEAD~1
 回退一个版本,清空暂存区,将已提交的内容的版本恢复到本地,本地的文件也将被恢复的版本替换
 ```
+
+# 六、Git 查看和切换分支
+```
+#查看所有分支
+git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/nnvm
+  remotes/origin/piiswrong-patch-1
+  remotes/origin/v0.9rc1
+  
+#查看本地分支
+git branch
+
+#切换分支
+git checkout -b v0.9rc1 origin/v0.9rc1
+```
 参考：https://blog.csdn.net/liang0000zai/article/details/50724632
 
-# 六、linux cp 隐藏文件和删除隐藏文件
+# 七、linux cp 隐藏文件和删除隐藏文件
 ```
 显示所有文件，包含隐藏文件
 ls -la   
