@@ -91,6 +91,9 @@ EOF
 supervisorctl status
 
 supervisorctl start salt-master
+
+supervisorctl start salt-minion
+
 ```
 
 参考资料：
