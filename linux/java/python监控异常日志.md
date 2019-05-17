@@ -94,3 +94,8 @@ if __name__ == '__main__':
 ```
 * * * * * /opt/tomcat-8081-taskjob/bin/log_monitor.py >> /tmp/run.log
 ```
+
+
+参考文档：
+
+https://www.cnblogs.com/cornerxin/p/8807799.html
