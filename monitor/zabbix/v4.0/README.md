@@ -120,7 +120,7 @@ Ubuntu系统
 ```
 cd /tmp
 wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2%2Bstretch_all.deb
-dpkg -i zabbix-release_4.0-2%2Bstretch_all.deb
+dpkg -i zabbix-release_4.0-2+stretch_all.deb
 
 apt-get install -y zabbix-agent
 
