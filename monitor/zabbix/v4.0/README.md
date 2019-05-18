@@ -125,7 +125,7 @@ dpkg -i zabbix-release_4.0-2+stretch_all.deb
 apt-get install -y zabbix-agent
 
 cat > /etc/zabbix/zabbix_agentd.conf << \EOF
-PidFile=/var/run/zabbix-agent/zabbix_agentd.pid
+PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix-agent/zabbix_agentd.log
 LogFileSize=0
 DebugLevel=2
