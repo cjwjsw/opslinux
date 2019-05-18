@@ -75,6 +75,9 @@ init_connect='SET NAMES utf8'
 #跳过密码验证登录
 #skip-grant-tables
 
+#跳过域名检测
+skip-name-resolve
+
 ## 开启binlog日志记录
 server-id=1
 log-bin=/data0/mysql_data/mysql-bin
