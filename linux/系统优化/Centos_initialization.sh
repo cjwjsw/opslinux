@@ -298,6 +298,7 @@ net.ipv4.tcp_fin_timeout = 30
 net.ipv4.tcp_mem = 94500000 915000000 927000000
 net.ipv4.tcp_keepalive_time = 30
 net.ipv4.ip_local_port_range = 1024 65000
+vm.overcommit_memory=1
 EOF
     /sbin/sysctl -p
     source /etc/profile
