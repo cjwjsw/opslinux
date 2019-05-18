@@ -103,6 +103,10 @@ HostnameItem=system.run[echo $(hostname)]
 HostMetadataItem=system.uname
 Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
+
+
+systemctl restart zabbix-agent
+systemctl enable zabbix-agent
 ```
 参看文档：
 https://blog.csdn.net/xiegh2014/article/details/83045412
