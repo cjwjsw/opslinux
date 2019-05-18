@@ -88,5 +88,21 @@
 
   ![zabbux4.0-1.png](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
 
+# 三、zabbix_agentd配置
+```
+cat > /etc/zabbix/zabbix_agentd.conf << \EOF
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+DebugLevel=2
+Server=23.244.61.92
+ServerActive=23.244.61.92
+EnableRemoteCommands=1
+UnsafeUserParameters=1
+HostnameItem=system.run[echo $(hostname)]
+HostMetadataItem=system.uname
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
+EOF
+```
 参看文档：
 https://blog.csdn.net/xiegh2014/article/details/83045412
