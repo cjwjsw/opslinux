@@ -21,6 +21,8 @@ Permissive
 ## 2、MySQL配置文件
 
 ```
+mkdir -p /data0/mysql_data/
+
 #赋权限
 chown mysql:mysql /data0/mysql_data/
 chown mysql:mysql /var/lib/mysql/
