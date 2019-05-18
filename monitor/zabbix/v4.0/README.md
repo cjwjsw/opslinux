@@ -90,6 +90,12 @@
 
 # 三、zabbix_agentd配置
 ```
+cd /tmp
+wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+yum -y install zabbix-release-4.0-1.el7.noarch.rpm
+
+yum -y install zabbix-agent
+
 cat > /etc/zabbix/zabbix_agentd.conf << \EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix/zabbix_agentd.log
