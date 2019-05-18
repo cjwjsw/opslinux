@@ -89,6 +89,8 @@
   ![zabbux4.0-1.png](https://github.com/Lancger/opslinux/blob/master/images/mysql-ab.png)
 
 # 三、zabbix_agentd配置
+
+Centos7系统
 ```
 cd /tmp
 wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
@@ -113,6 +115,34 @@ EOF
 
 systemctl restart zabbix-agent
 systemctl enable zabbix-agent
+```
+Ubuntu系统
+```
+cd /tmp
+wget https://repo.zabbix.com/zabbix/4.0/debian/pool/main/z/zabbix-release/zabbix-release_4.0-2%2Bstretch_all.deb
+dpkg -i zabbix-release_4.0-2%2Bstretch_all.deb
+
+apt-get install -y zabbix-agent
+
+
+cat > /etc/zabbix/zabbix_agentd.conf << \EOF
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+DebugLevel=2
+Server=23.244.61.92
+ServerActive=23.244.61.92
+EnableRemoteCommands=1
+UnsafeUserParameters=1
+HostnameItem=system.run[echo $(hostname)]
+HostMetadataItem=system.uname
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
+EOF
+
+service zabbix-agent restart
+update-rc.d zabbix-agent enable
+
+ufw allow 10050/tcp
 ```
 参看文档：
 https://blog.csdn.net/xiegh2014/article/details/83045412
