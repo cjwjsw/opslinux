@@ -117,8 +117,6 @@ def analysis_log(file):
 if __name__ == '__main__':
   error_info = analysis_log(tomcat_log)
   if  error_info != "":
-    #dingding("18320940196,18320909220", error_info)
-    dingding("18320940196", error_info)
-
-
+    #dingding("18888888,18888888", error_info)
+    dingding("18888888", error_info)
 ```
