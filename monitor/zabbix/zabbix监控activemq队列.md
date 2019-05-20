@@ -1,4 +1,6 @@
-    公司业务使用activemq5.9.1消息队列，由于队列阻塞导致程序端口无响应，并且telnet无法连通。经过over 1 hour的排查，最终定位原因activemq导致。遂写了一个监控activemq队列信息的脚本。
+
+公司业务使用activemq5.9.1消息队列，由于队列阻塞导致程序端口无响应，并且telnet无法连通。经过over 1 hour的排查，最终定位原因activemq导致。遂写了一个监控activemq队列信息的脚本。
+
     
 # 一、脚本部分
 ```
@@ -44,6 +46,33 @@ function Queue()
 #call function and input queue_name queue_type
 Queue $1 $2
 ```
+
+# 二、测试脚本
+
+1、测试执行脚本，需要传入2个参数，其中一个是对列名称，一个是队列类型（如Pending,Consumers,Enqueued,Dnqueued）
+
+```
+[root@localhost ~]# bash activemqqueue.sh message.push Consumers
+32
+```
+
+# 三、zabbix监控部分
+
+1.编辑配置文件
+```
+[root@localhost ~]# cat /etc/zabbix/zabbix_agentd.d/userparameter_activemqqueue.conf
+# monitor tomcat process and port
+UserParameter=tomcatamqqueue[*],/etc/scripts/activemqqueue.sh $1 $2
+```
+
+2.创建zabbix模板，并传递相应的队列名称和队列类型。根据下图依次创建自己的item。
+
+3.创建展示Pending,Consumers,Enqueued,Dequeued等图表。
+
+4.触发报警，当Pending的值大于某一个值时报警，比如1000。
+
+5.邮件发送。
+
 
 参考文档：
 
