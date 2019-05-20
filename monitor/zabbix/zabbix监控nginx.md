@@ -40,7 +40,9 @@ writing — 响应数据到客户端的数量
 waiting — 开启 keep-alive 的情况下,这个值等于 active – (reading+writing), 意思就是 Nginx 已经处理完正在等候下一次请求指令的驻留连接.
 ```
 
-# 二、编写客户端脚本ngx_status.sh
+# 二、zabbix客户端配置
+
+1、编写客户端脚本ngx_status.sh
 
 vim ngx_status.sh
 
@@ -82,6 +84,22 @@ function requests {
 # 执行function
 $1
 ```
+
+2、zabbix客户端配置
+
+将自定义的UserParameter加入配置文件，然后重启agentd，如下：
+```
+cat /etc/zabbix/zabbix_agentd.conf | grep nginx
+UserParameter=nginx.status[*],/etc/zabbix/scripts/ngx-status.sh $1
+```
+
+3、zabbix_get获取数据
+```
+zabbix_get -s 127.0.0.1 -k 'nginx.status[ping]'
+```
+
+# 三、zabbix web端配置
+
 
 参考文档：
 
