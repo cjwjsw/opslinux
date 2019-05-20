@@ -17,6 +17,13 @@
  pillar_roots:
   base:
     - /srv/pillar
+    
+    
+#测试
+salt -N centos-all test.ping
+
+salt -N ubuntu-all test.ping
+
 ```
 # 二、zabbix_agent安装包和脚本批量下发
 ```
