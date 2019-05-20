@@ -14,5 +14,11 @@ salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl restart zabbix-agent"
 
 
 第三套（Centos7）
+cd /srv/salt/
+salt "fhex-one-com-3rd-0*" cmd.run "systemctl stop zabbix-agent"
+salt "fhex-one-com-3rd-0*" cmd.run "rm -rf /etc/zabbix/"
+salt-cp "fhex-one-com-3rd-0*" zabbix_agent_v4.0.tar.gz /tmp/
+salt "fhex-one-com-3rd-0*" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
+salt "fhex-one-com-3rd-0*" cmd.run "systemctl restart zabbix-agent"
 
 ```
