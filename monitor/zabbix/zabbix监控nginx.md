@@ -101,6 +101,7 @@ zabbix_get -s 127.0.0.1 -k 'nginx.status[ping]'
 # 三、zabbix web端配置
 
 
+https://www.cnblogs.com/bluecarrife/p/9229693.html  zabbix监控Nginx模板
 参考文档：
 
 http://www.ttlsa.com/zabbix/zabbix-monitor-nginx-performance/ 
