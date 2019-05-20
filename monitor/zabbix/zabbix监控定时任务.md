@@ -17,3 +17,8 @@ chmod 644  /var/spool/cron/root
 ```
 salt "*" cmd.run "touch /var/spool/cron/root && chmod 755  /var/spool/cron && chmod 644  /var/spool/cron/root"
 ```
+
+# 四、测试验证
+```
+zabbix_get -s 23.244.63.23 -k "vfs.file.cksum[/var/spool/cron/root]"
+```
