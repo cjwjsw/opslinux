@@ -19,11 +19,14 @@
     - /srv/pillar
     
     
-#测试
+#salt分组测试
 salt -N centos-all test.ping
 
 salt -N ubuntu-all test.ping
 
+salt -N centos7-1rd test.ping
+
+salt -N ubuntu-1rd test.ping
 ```
 # 二、zabbix_agent安装包和脚本批量下发
 ```
@@ -49,3 +52,7 @@ salt "fhex-one-com-3rd-0*" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /
 salt "fhex-one-com-3rd-0*" cmd.run "systemctl restart zabbix-agent"
 
 ```
+
+参考资料
+
+https://www.cnblogs.com/snailshadow/p/8214294.html 
