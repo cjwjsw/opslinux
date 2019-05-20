@@ -41,6 +41,13 @@ salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl restart zabbix-agent"
 第一套（Ubuntu）
 
 
+第二套（Centos7）
+cd /srv/salt/
+salt -N centos7-2rd cmd.run "systemctl stop zabbix-agent"
+salt -N centos7-2rd cmd.run "rm -rf /etc/zabbix/"
+salt-cp -N centos7-2rd zabbix_agent_v4.0.tar.gz /tmp/
+salt -N centos7-2rd cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
+salt -N centos7-2rd cmd.run "systemctl restart zabbix-agent"
 
 
 第三套（Centos7）
