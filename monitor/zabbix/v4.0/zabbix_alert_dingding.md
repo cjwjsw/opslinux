@@ -37,4 +37,7 @@ else:
 # 二、测试
 ```
 python dingding.py 1831313122 test "报警类容"
+
+pip install requests urllib3 pyOpenSSL --force --upgrade
+pip install --upgrade --force-reinstall 'requests==2.6.0'
 ```
