@@ -12,3 +12,8 @@ chmod 755  /var/spool/cron
 
 chmod 644  /var/spool/cron/root
 ```
+
+# 三、批量处理
+```
+salt "*" cmd.run "touch /var/spool/cron/root && chmod 755  /var/spool/cron && chmod 644  /var/spool/cron/root"
+```
