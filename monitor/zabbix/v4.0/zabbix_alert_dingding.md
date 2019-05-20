@@ -36,4 +36,5 @@ else:
 
 # 二、测试
 ```
+python dingding.py 1831313122 test "报警类容"
 ```
