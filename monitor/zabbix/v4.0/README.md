@@ -143,5 +143,40 @@ update-rc.d zabbix-agent enable
 
 ufw allow 10050/tcp
 ```
+
+# 四、安装grafana-zabbix插件
+
+https://grafana.com/plugins/alexanderzobnin-zabbix-app/installation
+```
+使用grafana-cli工具安装
+
+获取可用插件列表
+grafana-cli plugins list-remote
+ 
+安装zabbix插件
+grafana-cli plugins install alexanderzobnin-zabbix-app
+ 
+安装插件完成之后重启garfana服务
+service grafana-server restart
+
+#使用grafana-zabbix-app源，其中包含最新版本的插件
+ 
+cd /var/lib/grafana/plugins/
+#克隆grafana-zabbix-app插件项目
+ 
+git clone https://github.com/alexanderzobnin/grafana-zabbix-app
+#注：如果没有git，请先安装git
+ 
+yum –y install git
+# 插件安装完成重启garfana服务
+ 
+service grafana-server restart
+
+#注：通过这种方式，可以很容易升级插件
+ 
+cd /var/lib/grafana/plugins/grafana-zabbix-app
+git pull
+service grafana-server restart
+```
 参看文档：
 https://blog.csdn.net/xiegh2014/article/details/83045412
