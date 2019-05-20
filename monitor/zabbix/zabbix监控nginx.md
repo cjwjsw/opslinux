@@ -6,12 +6,18 @@ nginx和php-fpm一样内建了一个状态页，对于想了解nginx的状态以
 
 在默认主机里面加上location或者你希望能访问到的主机里面。
 
+新增一个 default.conf 文件
 ```
-location ~ /ngx_status {
-    stub_status on;
-    access_log off;
-    allow 127.0.0.1;
-    deny all;
+server {
+    listen  *:80 default_server;
+    server_name _;
+    location /ngx_status 
+    {
+        stub_status on;
+        access_log off;
+        allow 127.0.0.1;
+        deny all;
+    }
 }
 ```
 2. 重启nginx
