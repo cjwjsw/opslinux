@@ -178,5 +178,25 @@ cd /var/lib/grafana/plugins/grafana-zabbix-app
 git pull
 service grafana-server restart
 ```
+
+```
+修改图形为饼状，需要下载另一个grafana-piechart-panel
+https://grafana.com/plugins/grafana-piechart-panel
+--------------------------------------------------
+grafana-cli plugins install grafana-piechart-panel
+---------------------------------------------------
+安装其他图形插件
+grafana-cli plugins install grafana-clock-panel
+#钟表形展示
+grafana-cli plugins install briangann-gauge-panel
+#字符型展示
+grafana-cli plugins install natel-discrete-panel
+#服务器状态
+grafana-cli plugins install vonage-status-panel
+```
+
+
 参看文档：
 https://blog.csdn.net/xiegh2014/article/details/83045412
+
+https://www.cnblogs.com/kevingrace/p/7108060.html   分布式监控系统Zabbix--使用Grafana进行图形展示
