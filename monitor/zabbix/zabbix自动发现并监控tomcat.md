@@ -15,6 +15,9 @@ ln -s /opt/java/jdk1.8.0_211/bin/jstack /usr/local/sbin/jstack
 
 #注意项目路径的权限
 chmod 755 /data0/op/ -R
+
+#修改客户端的sudoers文件
+echo "zabbix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/zabbix 
 ```
 
 2、编写tomcat_name_discovery.py
