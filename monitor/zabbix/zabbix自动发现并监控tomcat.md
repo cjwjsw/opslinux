@@ -82,6 +82,7 @@ esac
 
 # 三、测试运行结果
 ```
+#测试自动发现
 one-app-05<2019-05-21 08:35:32> /etc/zabbix/scripts
 root># ./tomcat_name_discovery.py 
 {
@@ -109,6 +110,10 @@ root># ./tomcat_name_discovery.py
         }
     ]
 }
+
+#测试指标
+root># zabbix_get -s 192.168.52.105 -p 10050 -k tomcat.status.thread_num[tomcat8_8080_job,thread.num]
+14
 ```
 
 # 四、客户端配置
