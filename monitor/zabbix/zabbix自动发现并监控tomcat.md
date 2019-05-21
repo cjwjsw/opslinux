@@ -8,7 +8,13 @@ pip install simplejson --trusted-host mirrors.aliyun.com -i https://mirrors.aliy
 ```
 # 二、编写自动发现脚本
 
-tomcat_name_discovery.py
+1、配置jstack环境变量
+```
+ln -s /opt/java/jdk1.8.0_211/bin/jstack /usr/local/sbin/jstack
+
+```
+
+2、编写tomcat_name_discovery.py
 
 ```
 #!/usr/bin/env python 
