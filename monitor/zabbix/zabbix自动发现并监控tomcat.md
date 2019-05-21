@@ -76,6 +76,8 @@ cat userparameter_tomcat.conf
 UserParameter=tomcat.name.discovery, /etc/zabbix/scripts/tomcat_name_discovery.py
 ```
 
+# 五、zabbix界面添加自动发现模板
+
 
 参考文档：
 
