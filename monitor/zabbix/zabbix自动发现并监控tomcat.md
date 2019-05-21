@@ -37,8 +37,45 @@ print json.dumps({'data':tomcats},sort_keys=True,indent=4,separators=(',',':'))
 
 # 三、测试运行结果
 ```
-
+one-app-05<2019-05-21 08:35:32> /etc/zabbix/scripts
+root># ./tomcat_name_discovery.py 
+{
+    "data":[
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8080_job"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8081_taskjob"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8082_schedule"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8083_inner"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8084_match"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8085_openapi"
+        },
+        {
+            "{#TOMCAT_NAME}":"tomcat8_8086_console"
+        }
+    ]
+}
 ```
+
+# 四、客户端配置
+在客户端配置文件中添加自定义的监控项key，示例如下：
+```
+cd /etc/zabbix/zabbix_agentd.d/
+
+cat userparameter_tomcat.conf
+# 变量1的key定义为：tomcat.name.discovery, 是脚本自动发现的tomcat实例名称，获取途径是执行tomcat_name_discovery.py
+UserParameter=tomcat.name.discovery, /etc/zabbix/scripts/tomcat_name_discovery.py
+```
+
 
 参考文档：
 
