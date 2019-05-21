@@ -47,6 +47,39 @@ for tomcat in t.split('\n'):
 print json.dumps({'data':tomcats},sort_keys=True,indent=4,separators=(',',':'))
 ```
 
+3、创建监控项脚本tomcat_status_monitor.sh
+```
+#!/bin/bash
+######################################
+# Usage: tomcat project status monitor
+#
+# Changelog:
+# 2019-05-20 1151980610@qq.com create
+######################################
+# config zabbix sudo
+# echo "zabbix ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/zabbix 
+
+TOMCAT_NAME=$1
+status=$2
+
+TOMCAT_PID=`/usr/bin/ps -ef | grep "$TOMCAT_NAME" | grep "[o]rg.apache.catalina.startup.Bootstrap start" | grep -v grep | awk '{print $2}'`
+
+jstack=`which jstack`
+
+case $status in
+     thread.num)
+
+     # use jstack --help
+     /usr/bin/sudo ${jstack} -l ${TOMCAT_PID} | grep http | grep -v grep | wc -l
+     ;;
+
+     *)
+     echo "Usage: $0 {TOMCAT_NAME status[thread.num]}"
+     exit 1
+     ;;
+esac
+```
+
 # 三、测试运行结果
 ```
 one-app-05<2019-05-21 08:35:32> /etc/zabbix/scripts
@@ -83,9 +116,11 @@ root># ./tomcat_name_discovery.py
 ```
 cd /etc/zabbix/zabbix_agentd.d/
 
-cat userparameter_tomcat.conf
 # 变量1的key定义为：tomcat.name.discovery, 是脚本自动发现的tomcat实例名称，获取途径是执行tomcat_name_discovery.py
 UserParameter=tomcat.name.discovery, /etc/zabbix/scripts/tomcat_name_discovery.py
+# 变量2的key自定义为：tomcat.status.thread_num, [*]表示需要变量支持，$1,$2(脚本中$2,即tomcat的监控项自定义，监控项可添加)，获取途径执行：tomcat_status_monitor.sh
+UserParameter=tomcat.status.thread_num[*], /etc/zabbix/scripts/tomcat_status_monitor.sh $1 $2
+
 ```
 
 # 五、zabbix界面添加自动发现模板
