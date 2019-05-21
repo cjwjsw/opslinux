@@ -1,3 +1,8 @@
+# 一、权限测试
+```
+sudo -u zabbix  cat /opt/tomcat-8081-taskjob/logs/catalina.2019-05-21.out
+```
+
 ```
 表达式：{zabbix:log[/etc/zabbix/a.log,"ERROR|error",,,skip,,].iregexp(ERROR|error)}=1 and  {zabbix:log[/etc/zabbix/a.log,"ERROR|error",,,skip,,].nodata(60)}=0
 
@@ -11,3 +16,6 @@
 参考资料:
 
 https://www.cnblogs.com/ultranms/p/9523721.html  zabbix3.4.7主动模式监控日志(多关键字)
+
+
+https://blog.csdn.net/achenyuan/article/details/87687236  zabbix4.0学习六：Zabbix监控日志
