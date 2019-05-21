@@ -75,6 +75,8 @@
 ### 4.配置数据库zabbix server
     vim /etc/zabbix/zabbix_server.conf 
     DBPassword=zabbix
+    
+    Timeout=30
 
 ### 5.编辑Zabbix前端PHP配置,更改时区
     vim /etc/httpd/conf.d/zabbix.conf
