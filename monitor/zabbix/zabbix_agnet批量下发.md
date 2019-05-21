@@ -30,13 +30,14 @@ salt -N ubuntu-1rd test.ping
 ```
 # 二、zabbix_agent安装包和脚本批量下发
 ```
-第一套（Centos7）（注意zabbix_server在fhex-one-09机器）
+第一套（Centos7）（注意zabbix_server在fhex-one-10机器）
 cd /srv/salt/
-salt -E "fhex-one-0[5-8]|fhex-one-10" cmd.run "systemctl stop zabbix-agent"
-salt -E "fhex-one-0[5-8]|fhex-one-10" cmd.run "rm -rf /etc/zabbix/"
-salt-cp -E "fhex-one-0[5-8]|fhex-one-10" zabbix_agent_v4.0.tar.gz /tmp/
-salt -E "fhex-one-0[5-8]|fhex-one-10" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
-salt -E "fhex-one-0[5-8]|fhex-one-10" cmd.run "systemctl restart zabbix-agent"
+salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl stop zabbix-agent"
+salt -E "fhex-one-0[5-9]" cmd.run "cp -rf /etc/zabbix /etc/zabbix_bak"
+salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "rm -rf /etc/zabbix/"
+salt-cp -E "fhex-one-0[5-9]|fhex-one-10" zabbix_agent_v4.0.tar.gz /tmp/
+salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
+salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl restart zabbix-agent"
 
 第一套（Ubuntu）
 
