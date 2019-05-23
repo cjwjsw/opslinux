@@ -113,7 +113,7 @@ EOF
 ## 五、启动mysql服务
 ```
 #指定配置文件初始化
-mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
+mysql_install_db --defaults-file=/etc/my.cnf --user=mysql
 
 #创建慢日志文件并赋权限
 touch /var/log/mysqld-slow.log
