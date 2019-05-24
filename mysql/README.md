@@ -162,8 +162,10 @@ show grants for exchange@"192.168.52.%";
 show grants for exchange@"%";
 
 
+#msyql不能执行存储过程解决办法
 GRANT ALL PRIVILEGES ON *.* TO exchange@"%" IDENTIFIED BY "qaA12!@$#$";
 GRANT ALL PRIVILEGES ON *.* TO 'exchange'@'%';
 GRANT EXECUTE ON `ichson_lore_source`.* TO 'exchange'@'%';
 GRANT SELECT ON `mysql`.`proc` TO 'exchange'@'%';
+
 ```
