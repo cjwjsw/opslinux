@@ -141,3 +141,29 @@ mysql> show variables like "%default%";
 4 rows in set (0.00 sec)
 
 ```
+
+## 八、查询用户
+```
+mysql> use mysql;
+mysql> select Host,User from user;
++--------------+---------------+
+| Host         | User          |
++--------------+---------------+
+| %            | root          |
+| 192.168.52.% | exchange      |
+| 192.168.52.% | root          |
+| localhost    | mysql.session |
+| localhost    | mysql.sys     |
+| localhost    | root          |
++--------------+---------------+
+
+
+show grants for exchange@"192.168.52.%";
+show grants for exchange@"%";
+
+
+GRANT ALL PRIVILEGES ON *.* TO exchange@"%" IDENTIFIED BY "qaA12!@$#$";
+GRANT ALL PRIVILEGES ON *.* TO 'exchange'@'%';
+GRANT EXECUTE ON `ichson_lore_source`.* TO 'exchange'@'%';
+GRANT SELECT ON `mysql`.`proc` TO 'exchange'@'%';
+```
