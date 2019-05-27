@@ -193,7 +193,7 @@ EOF
  
  # 四、命令行安装
  ```
- yum list installed | grep mysql
+yum list installed | grep mysql
 yum -y remove mysql-libs.x86_64
 wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
 yum -y install mysql57-community-release-el7-10.noarch.rpm
