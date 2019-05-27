@@ -33,18 +33,17 @@ salt -N ubuntu-1rd test.ping
 第一套（Centos7）（注意zabbix_server在fhex-one-10机器）
 cd /srv/salt/
 salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl stop zabbix-agent"
-salt -E "fhex-one-0[5-9]" cmd.run "cp -rf /etc/zabbix /etc/zabbix_bak"
+salt -E "fhex-one-0[5-9]" cmd.run "cp -rf /etc/zabbix/ /tmp/zabbix_bak"
 salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "rm -rf /etc/zabbix/"
 salt-cp -E "fhex-one-0[5-9]|fhex-one-10" zabbix_agent_v4.0.tar.gz /tmp/
 salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
 salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl restart zabbix-agent"
 
-第一套（Ubuntu）
-
 
 第二套（Centos7）
 cd /srv/salt/
 salt -N centos7-2rd cmd.run "systemctl stop zabbix-agent"
+salt -N centos7-2rd cmd.run "cp -rf /etc/zabbix/ /tmp/zabbix_bak"
 salt -N centos7-2rd cmd.run "rm -rf /etc/zabbix/"
 salt-cp -N centos7-2rd zabbix_agent_v4.0.tar.gz /tmp/
 salt -N centos7-2rd cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
@@ -59,6 +58,15 @@ salt-cp "fhex-one-com-3rd-0*" zabbix_agent_v4.0.tar.gz /tmp/
 salt "fhex-one-com-3rd-0*" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
 salt "fhex-one-com-3rd-0*" cmd.run "systemctl restart zabbix-agent"
 
+
+Ubunut系统下发
+cd /srv/salt/
+salt -N ubuntu-all cmd.run "systemctl stop zabbix-agent"
+salt -N ubuntu-all cmd.run "cp -rf /etc/zabbix/ /tmp/zabbix_bak"
+salt -N ubuntu-all cmd.run "rm -rf /etc/zabbix/"
+salt-cp -N ubuntu-all zabbix_agent_ubutnu_v4.0.tar.gz /tmp/
+salt -N ubuntu-all cmd.run "tar -zxvf /tmp/zabbix_agent_ubutnu_v4.0.tar.gz -C /etc/"
+salt -N ubuntu-all cmd.run "systemctl restart zabbix-agent"
 ```
 
 # 三、zabbix_agent安装包和脚本单台主机下发
