@@ -52,17 +52,18 @@ default-character-set = utf8
 cat > /etc/my.cnf <<EOF
 [client]
 port=3306
-socket=/var/lib/mysql/mysql.sock
+socket=/data0/mysql_data/mysql.sock
 default-character-set=utf8
 
 [mysql]
 default-character-set=utf8
 
 [mysqld]
-datadir= /var/lib/mysql
+basedir=/usr/
+datadir=/data0/mysql_data/
 port=3306
-socket=/var/lib/mysql/mysql.sock
-pid-file=/var/run/mysqld/mysqld.pid
+socket=/data0/mysql_data/mysql.sock
+pid-file=/data0/mysql_data/mysqld.pid
 collation-server=utf8_general_ci
 max_connections=1000
 
@@ -71,13 +72,14 @@ character_set_client=utf8
 
 #跳过密码验证登录
 #skip-grant-tables
+skip-name-resolve
 
-#slow_query_log=on
-#slow-query-log-file=/var/log/mysqld-slow.log
-#long_query_time=1
+slow_query_log=on
+slow-query-log-file=/data0/mysql_data/mysqld-slow.log
+long_query_time=1
 
 server-id=1
-log-bin=/var/lib/mysql/mysql-bin
+log-bin=/data0/mysql_data/mysql-bin
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
 binlog_format=MIXED
@@ -105,8 +107,8 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 lower_case_table_names=1
 
 [mysqld_safe]
-log-error=/var/log/mysqld.log
-pid-file=/var/run/mysqld/mysqld.pid
+log-error=/data0/mysql_data/mysqld.log
+pid-file=/data0/mysql_data/mysqld.pid
 EOF
 ```
 
