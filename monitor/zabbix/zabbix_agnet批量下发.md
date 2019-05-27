@@ -61,6 +61,17 @@ salt "fhex-one-com-3rd-0*" cmd.run "systemctl restart zabbix-agent"
 
 ```
 
+# 三、zabbix_agent安装包和脚本单台主机下发
+
+```
+cd /srv/salt/
+salt "jys006" cmd.run "systemctl stop zabbix-agent"
+salt "jys006" cmd.run "rm -rf /etc/zabbix/"
+salt-cp "jys006" zabbix_agent_v4.0.tar.gz /tmp/
+salt "jys006" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
+salt "jys006" cmd.run "systemctl restart zabbix-agent"
+```
+
 参考资料
 
 https://www.cnblogs.com/snailshadow/p/8214294.html 
