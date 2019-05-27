@@ -189,7 +189,23 @@ EOF
     yum -y remove mysql57-community-release-el7-10.noarch
      
     大功告成
+ ```
  
+ # 四、命令行安装
+ ```
+ yum list installed | grep mysql
+yum -y remove mysql-libs.x86_64
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql57-community-release-el7-10.noarch.rpm
+yum -y install mysql-community-server
+mkdir -p /data0/mysql_data/
+chown mysql:mysql /data0/mysql_data/
+chown mysql:mysql /var/lib/mysql/
+mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
+systemctl start mysqld.service
+systemctl restart mysqld.service
+systemctl enable mysqld.service
+ ```
  
 
 
