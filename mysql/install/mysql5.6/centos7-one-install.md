@@ -91,6 +91,12 @@ expire_logs_days=7
 binlog-ignore-db=mysql
 binlog-ignore-db=information_schema
 
+## 指定存储引擎
+default-storage-engine=INNODB
+
+## 存储函数权限控制
+log_bin_trust_function_creators=1
+
 ## 指定需要同步的数据库
 #binlog-do-db=memberdb
 
