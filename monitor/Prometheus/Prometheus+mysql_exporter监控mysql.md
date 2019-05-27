@@ -14,7 +14,7 @@ chown -R prometheus.prometheus /data0/prometheus
 mysqld_exporter需要连接到Mysql，所以需要Mysql的权限，我们先为它创建用户并赋予所需的权限：
 
 select User,Host from mysql.user;
-delete from mysql.user where User="exporter" and Host='%';
+delete from mysql.user where User="exporter" and Host='localhost';
 CREATE USER 'exporter'@'localhost' IDENTIFIED BY 'exporter';
 GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'localhost';
 ```
