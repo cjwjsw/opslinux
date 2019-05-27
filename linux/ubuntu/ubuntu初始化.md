@@ -36,6 +36,13 @@ sudo ufw allow ssh
 sudo ufw enable
 ```
 
+# 二、修改主机名
+
+```
+https://www.cnblogs.com/zeusmyth/p/6231350.html
+
+vim /etc/hostname
+```
 
 参考文档：
 
