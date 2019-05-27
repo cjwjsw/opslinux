@@ -19,6 +19,7 @@ mysqld_exporter需要连接到Mysql，所以需要Mysql的权限，我们先为�
 select User,Host from mysql.user;
 delete from mysql.user where User="exporter" and Host='localhost';
 GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'localhost' IDENTIFIED BY "exporter";
+flush privileges;
 exit;
 ```
 
