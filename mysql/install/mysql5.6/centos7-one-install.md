@@ -114,12 +114,10 @@ EOF
 
 ## 五、启动mysql服务
 ```
+mkdir -p /data0/mysql_data/
+
 #指定配置文件初始化
 mysql_install_db --defaults-file=/etc/my.cnf --user=mysql
-
-#创建慢日志文件并赋权限
-touch /var/log/mysqld-slow.log
-chown mysql:mysql /var/log/mysqld-slow.log
 
 systemctl enable mysqld
 systemctl disable mysqld
