@@ -64,8 +64,8 @@ cd /srv/salt/
 salt -N ubuntu-all cmd.run "systemctl stop zabbix-agent"
 salt -N ubuntu-all cmd.run "cp -rf /etc/zabbix/ /tmp/zabbix_bak"
 salt -N ubuntu-all cmd.run "rm -rf /etc/zabbix/"
-salt-cp -N ubuntu-all zabbix_agent_ubutnu_v4.0.tar.gz /tmp/
-salt -N ubuntu-all cmd.run "tar -zxvf /tmp/zabbix_agent_ubutnu_v4.0.tar.gz -C /etc/"
+salt-cp -N ubuntu-all zabbix_agent_ubuntu_v4.0.tar.gz /tmp/
+salt -N ubuntu-all cmd.run "tar -zxvf /tmp/zabbix_agent_ubuntu_v4.0.tar.gz -C /etc/"
 salt -N ubuntu-all cmd.run "systemctl restart zabbix-agent"
 ```
 
