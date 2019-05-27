@@ -80,6 +80,12 @@ salt "jys006" cmd.run "tar -zxvf /tmp/zabbix_agent_v4.0.tar.gz -C /etc/"
 salt "jys006" cmd.run "systemctl restart zabbix-agent"
 ```
 
+# 四、批量重启
+```
+salt "*" cmd.run "systemctl restart zabbix-agent"
+
+```
+
 参考资料
 
 https://www.cnblogs.com/snailshadow/p/8214294.html 
