@@ -120,6 +120,10 @@ EOF
 
 ## 五、启动mysql服务
 ```
+mkdir /var/lib/mysql-files
+chown -R mysql:mysql /var/lib/mysql-files/
+chmod 700 /var/lib/mysql-files/
+
 mkdir -p /data0/mysql_data/
 
 #指定配置文件初始化
