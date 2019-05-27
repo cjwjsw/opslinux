@@ -77,6 +77,9 @@
     DBPassword=zabbix
     
     Timeout=30
+    
+    如果修改了mysql默认的socket文件需要做以下操作
+    ln -s /data0/mysql_data/mysql.sock /var/lib/mysql/mysql.sock
 
 ### 5.编辑Zabbix前端PHP配置,更改时区
     vim /etc/httpd/conf.d/zabbix.conf
