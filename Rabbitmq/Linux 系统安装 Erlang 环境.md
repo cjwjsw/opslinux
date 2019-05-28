@@ -35,28 +35,10 @@ cd /usr/local/src/
 https://github.com/rabbitmq/erlang-rpm/releases/tag/v20.3.8.20
 ```
 
-导入 Erlang  相关 key：
-
-```bash
-$ rpm --import https://packages.erlang-solutions.com/rpm/erlang_solutions.asc
-```
-
-修改 repo 文件，启用 gpg 校验功能:
-
-```bash
-[erlang-solutions]
-name=CentOS $releasever - $basearch - Erlang Solutions
-baseurl=https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch
-gpgcheck=1    # 修改此参数，将 0 改为 1
-gpgkey=https://packages.erlang-solutions.com/rpm/erlang_solutions.asc
-enabled=1
-```
-
 安装 Erlang：
 
 ```bash
-$ yum makecache
-$ yum install erlang -y
+rpm -Uvh erlang-20.3.8.20-1.el7.x86_64.rpm
 ```
 
 等待安装完成即可。
