@@ -29,8 +29,7 @@ yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf gi
 下载 Erlang 软件：
 
 ```bash
-mkdir /opt/soft
-cd /opt/soft
+cd /usr/local/src/
 wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
 rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
 ```
