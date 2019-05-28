@@ -32,9 +32,8 @@ RabbitMQ 的官方下载地址：<https://www.rabbitmq.com/download.html>
 ### 下载 RabbitMQ 软件包
 
 ```bash
-$ mkdir /opt/soft
-$ cd /opt/soft
-$ wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.9/rabbitmq-server-3.7.9-1.el7.noarch.rpm
+cd /usr/local/src/
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.9/rabbitmq-server-3.7.9-1.el7.noarch.rpm
 ```
 
 ### 安装 RabbitMQ
