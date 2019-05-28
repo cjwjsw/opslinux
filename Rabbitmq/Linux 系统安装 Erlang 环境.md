@@ -30,7 +30,7 @@ yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf gi
 
 ```bash
 cd /usr/local/src/
-wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+wget https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_20.3.8.21-1~centos~7_amd64.rpm
 rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
 ```
 
