@@ -61,3 +61,5 @@ Eshell V10.1  (abort with ^G)
 https://github.com/yeaheo/hello-linux/blob/master/rabbitmq/rabbitmq-erlang-installation.md  Linux 系统安装 Erlang 环境
 
 https://blog.csdn.net/lixiang987654321/article/details/81233843  报错依赖库问题
+
+https://www.cnblogs.com/centos2017/p/10451411.html  
