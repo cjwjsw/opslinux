@@ -67,7 +67,7 @@ rabbitmqctl status
 
 ```bash
 mkdir /etc/rabbitmq
-cp /usr/share/doc/rabbitmq-server-3.7.9/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config
+cp /usr/share/doc/rabbitmq-server-3.6.15/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config
 ```
 
 配置文件准备好后，就可以重启服务了：
