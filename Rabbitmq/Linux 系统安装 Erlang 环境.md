@@ -21,18 +21,18 @@ $ uname -r
 下载基本依赖软件：
 
 ```bash
-$ yum update -y
-$ yum install epel-release -y
-$ yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf git wget wxBase.x86_64
+yum update -y
+yum install epel-release -y
+yum install gcc gcc-c++ glibc-devel make ncurses-devel openssl-devel autoconf git wget wxBase.x86_64
 ```
 
 下载 Erlang 软件：
 
 ```bash
-$ mkdir /opt/soft
-$ cd /opt/soft
-$ wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
-$ rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+mkdir /opt/soft
+cd /opt/soft
+wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
 ```
 
 导入 Erlang  相关 key：
