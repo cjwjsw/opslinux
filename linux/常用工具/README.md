@@ -12,6 +12,21 @@ awk 'BEGIN{printf "%.0f\n",('$cnt'*'0.8')}'
 cnt=1200
 expr $cnt '*' 2
 ```
+
+# 三、pstree
+```
+1、在 Mac OS上
+
+      brew install pstree
+
+2、在 Fedora/Red Hat/CentOS
+
+      yum -y install psmisc
+
+3、在 Ubuntu/Debian
+
+     apt-get install psmisc
+```
 参考资料
 
 
