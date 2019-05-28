@@ -31,8 +31,8 @@ yum install -y unixODBC unixODBC-devel wxBase wxGTK SDL wxGTK-gl
 
 ```bash
 cd /usr/local/src/
-wget https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_20.3.8.21-1~centos~7_amd64.rpm
-rpm -Uvh esl-erlang_20.3.8.21-1~centos~7_amd64.rpm
+
+https://github.com/rabbitmq/erlang-rpm/releases/tag/v20.3.8.20
 ```
 
 导入 Erlang  相关 key：
