@@ -41,10 +41,7 @@ https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_6_15
 ### 安装 RabbitMQ
 
 ```bash
-$ rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-
-# this example assumes the CentOS 7 version of the package
-$ yum install rabbitmq-server-3.7.9-1.el7.noarch.rpm -y
+yum install rabbitmq-server-3.6.15-1.el7.noarch.rpm -y
 ```
 
 > 有时侯在安装的过程中会报错，这个可能是由于 RabbitMQ 和 Erlang 的版本问题，当我们遇到相关错误的时候，可以尝试更换版本。
