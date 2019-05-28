@@ -49,14 +49,14 @@ yum install rabbitmq-server-3.6.15-1.el7.noarch.rpm -y
 ### 启动相关服务
 
 ```bash
-$ systemctl start rabbitmq-server
-$ systemctl enable rabbitmq-server
+systemctl start rabbitmq-server
+systemctl enable rabbitmq-server
 ```
 
 检查 RabbitMQ 服务的状态:
 
 ```bash
-$ rabbitmqctl status
+rabbitmqctl status
 ```
 
 当 RabbitMQ 服务正常启动后，我们可以查看对应的日志，日志默认在 `/var/log/rabbitmq/`目录下。日志中给出了rabbitmq 启动的重要信息，如 node 名，$home 目录，cookie hash 值，日志文件，数据存储目录等，但是默认情况下没有配置文件的相关信息，我们需要手动创建配置文件
@@ -66,14 +66,14 @@ $ rabbitmqctl status
 首先需要手动创建 `/etc/rabbitmq` 目录，然后把配置文件模板复制到此目录下：
 
 ```bash
-$ mkdir /etc/rabbitmq
-$ cp /usr/share/doc/rabbitmq-server-3.7.9/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config
+mkdir /etc/rabbitmq
+cp /usr/share/doc/rabbitmq-server-3.7.9/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config
 ```
 
 配置文件准备好后，就可以重启服务了：
 
 ```bash
-$ systemctl restart rabbitmq-server.service
+systemctl restart rabbitmq-server.service
 ```
 
 > 另外还可以建环境配置文件：`/etc/rabbitmq/rabbitmq-env.conf`
