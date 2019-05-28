@@ -49,7 +49,7 @@ yum install rabbitmq-server-3.6.15-1.el7.noarch.rpm -y
 ### 启动相关服务
 
 ```bash
-systemctl start rabbitmq-server
+systemctl restart rabbitmq-server
 systemctl enable rabbitmq-server
 ```
 
