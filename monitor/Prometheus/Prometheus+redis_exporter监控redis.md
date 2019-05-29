@@ -11,40 +11,20 @@ mv redis_exporter-v1.0.0.linux-amd64 /data0/prometheus/redis_exporter
 
 chown -R prometheus.prometheus /data0/prometheus
 
-#赋权
-mysqld_exporter需要连接到Mysql，所以需要Mysql的权限，我们先为它创建用户并赋予所需的权限：
-
-#CREATE USER 'exporter'@'localhost' IDENTIFIED BY 'exporter';
-#GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'localhost';
-
-select User,Host from mysql.user;
-delete from mysql.user where User="exporter" and Host='localhost';
-GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'localhost' IDENTIFIED BY "exporter";
-flush privileges;
-exit;
 ```
 
-# 二、创建配置文件
-```
-cd /data0/prometheus/mysqld_exporter
-cat << EOF > my.cnf
-[client]
-user=exporter
-password=exporter
-EOF
-```
 
-# 三、创建mysqld_exporter.service的 systemd unit 文件
+# 二、创建redis_exporter.service的 systemd unit 文件
 ```
-cat <<EOF > /etc/systemd/system/mysqld_exporter.service
+cat <<EOF > /etc/systemd/system/redis_exporter.service
 [Unit]
-Description=mysqld_exporter
+Description=redis_exporter
 After=network.target
 
 [Service]
 Type=simple
 User=prometheus
-ExecStart=/data0/prometheus/mysqld_exporter/mysqld_exporter --config.my-cnf=/data0/prometheus/mysqld_exporter/my.cnf
+ExecStart=/data0/prometheus/redis_exporter/redis_exporter
 Restart=on-failure
 
 [Install]
@@ -55,12 +35,12 @@ EOF
 # 四、启动myslqd_exporter
 ```
 systemctl daemon-reload
-systemctl restart mysqld_exporter
-systemctl status mysqld_exporter
-systemctl enable mysqld_exporter
+systemctl restart redis_exporter
+systemctl status redis_exporter
+systemctl enable redis_exporter
 
 验证
-curl localhost:9104/metrics
+curl localhost:9121/metrics
 ```
 
 # 五、Prometheus server配置拉取数据
