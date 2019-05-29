@@ -1,10 +1,11 @@
-# 一、mysqld_exporter安装及配置
+# 一、redis_exporter安装及配置
 ```
+#下载地址
+https://github.com/oliver006/redis_exporter/releases
+
 cd /usr/local/src/
 
-wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
-
-tar -zxvf mysqld_exporter-0.11.0.linux-amd64.tar.gz
+tar -zxvf redis_exporter-v1.0.0.linux-amd64.tar.gz
 
 mv mysqld_exporter-0.11.0.linux-amd64 /data0/prometheus/mysqld_exporter
 
