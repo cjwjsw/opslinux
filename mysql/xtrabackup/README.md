@@ -32,9 +32,15 @@ innobackupex --default-file=/etc/my.cnf --user=root --password=***** --databases
 [root@ mysql]# cat /data1/mysql/xtrabackup_binlog_info
 mysql-bin.000002 499886662
 
-
 #恢复数据
 innobackupex --default-file=/etc/my.cnf --apply-log /data1/mysql/
+
+#重新做主从
+stop slave;
+reset slave;
+change master to master_host='172.98.98.182', master_user='repluser', master_password='repluser', master_port=3306, master_log_file='1.000002', master_log_pos=195025061, master_connect_retry=5;
+start slave;
+show slave status\G;
 ```
 
 
