@@ -16,5 +16,5 @@ mysql-bin.000002 499886662
 
 
 #恢复数据
-
+innobackupex --default-file=/etc/my.cnf --apply-log /data1/mysql/
 ```
