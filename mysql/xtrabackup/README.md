@@ -41,3 +41,7 @@ innobackupex --default-file=/etc/my.cnf --apply-log /data1/mysql/
 参考文档：
 
 https://www.percona.com/doc/percona-xtrabackup/8.0/installation/yum_repo.html  Installing Percona XtraBackup on Red Hat Enterprise Linux and CentOS
+
+
+https://www.cnblogs.com/hllnj2008/p/5207066.html  Xtrabackup流备份与恢复
+
