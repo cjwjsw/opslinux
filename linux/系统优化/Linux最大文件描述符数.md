@@ -8,9 +8,13 @@
 
    3.重新设置：
 
-    ①临时性： $ echo 1000000 > /pro/sys/fs/file-max
+    ①临时性： 
 
-    ②永久性：在配置文件/etc/sysctl.conf中设置
+    echo 1000000 > /pro/sys/fs/file-max
+
+    ②永久性：
+    
+    在配置文件/etc/sysctl.conf中设置
 
     fs.file-max = 1000000
 
