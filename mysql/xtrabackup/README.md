@@ -1,3 +1,7 @@
+# 一、
+```
+
+```
 # 一、主库导出数据
 ```
 #全库导出
@@ -18,3 +22,8 @@ mysql-bin.000002 499886662
 #恢复数据
 innobackupex --default-file=/etc/my.cnf --apply-log /data1/mysql/
 ```
+
+
+参考文档：
+
+https://www.percona.com/doc/percona-xtrabackup/8.0/installation/yum_repo.html  Installing Percona XtraBackup on Red Hat Enterprise Linux and CentOS
