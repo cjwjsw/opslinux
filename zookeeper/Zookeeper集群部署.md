@@ -55,7 +55,7 @@ echo "3" > /data0/zookeeper/zkdata/myid
 # 四、服务启动
 ```
 #服务启动
-/usr/local/zookeeper/bin/zkServer.sh start
+/usr/local/zookeeper/bin/zkServer.sh start /usr/local/zookeeper/conf/zoo.cfg
 
 netstat -lutnp |grep java
 tcp        0      0 0.0.0.0:2181  
@@ -72,7 +72,7 @@ vim /etc/rc.local 添加：
 
 # 五、检查状态
 ```
-/usr/local/zookeeper/bin/zkServer.sh status
+/usr/local/zookeeper/bin/zkServer.sh status /usr/local/zookeeper/conf/zoo.cfg
 
 ZooKeeper JMX enabled by default
 Using config: /usr/local/zookeeper/conf/zoo.cfg
