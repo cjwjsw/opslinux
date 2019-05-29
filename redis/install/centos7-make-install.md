@@ -24,14 +24,14 @@ useradd redis -M -s /sbin/nologin
 
 #创建日志文件
 touch /var/log/redis_6379.log
-mkdir -p /var/lib/redis/6379
+mkdir -p /data0/redis_data
+chown -R redis:redis /data0/redis_data
 chown -R redis:redis /var/log/redis_6379.log
-chown -R redis:redis /var/lib/redis/6379
 
 tail -100f /var/log/redis_6379.log
 ```
 
-# 二、配置环境变量
+# 二、配置环境变量和配置
 ```
 vim /etc/profile
 export PATH="$PATH:/usr/local/redis/bin"
@@ -39,6 +39,73 @@ export PATH="$PATH:/usr/local/redis/bin"
 
 # 让环境变量立即生效
 source /etc/profile
+
+cat > /etc/redis/6379.conf <<-EOF
+#bind 192.168.52.103
+bind 0.0.0.0
+protected-mode yes
+port 6379
+tcp-backlog 511
+timeout 0
+tcp-keepalive 300
+daemonize yes
+supervised no
+pidfile /var/run/redis_6379.pid
+loglevel notice
+logfile /var/log/redis_6379.log
+databases 16
+always-show-logo yes
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir /data0/redis_data
+slave-serve-stale-data yes
+slave-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+repl-disable-tcp-nodelay no
+slave-priority 100
+requirepass bllnetwell!#@2019
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+slave-lazy-flush no
+appendonly no
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+aof-load-truncated yes
+aof-use-rdb-preamble no
+lua-time-limit 5000
+slowlog-log-slower-than 10000
+slowlog-max-len 128
+latency-monitor-threshold 0
+notify-keyspace-events ""
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-size -2
+list-compress-depth 0
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+activerehashing yes
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+hz 10
+aof-rewrite-incremental-fsync yes
+rename-command CONFIG CONFIG_b9fc8327c4dee7
+rename-command SHUTDOWN SHUTDOWN_b9fc8327c4dee7
+rename-command FLUSHDB ""
+rename-command FLUSHALL ""
+EOF
 ```
 
 # 三、redis启动脚本
