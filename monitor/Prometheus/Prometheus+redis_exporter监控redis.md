@@ -22,20 +22,24 @@ chown -R prometheus.prometheus /data0/prometheus
 
 cat <<EOF > /etc/systemd/system/redis_exporter.service
 [Unit]
-Description=redis_exporter
-After=network.target
+Description=Prometheus
+Documentation=https://github.com/oliver006/redis_exporter
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
 User=prometheus
+Group=prometheus
+ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/data0/prometheus/redis_exporter/redis_exporter \
   --log-format=txt \
   --namespace=redis \
   --web.listen-address=:9121 \
-  --web.telemetry-path=/metrics \
-  --redis.password="bllnetwell!#@2019"
-  
-Restart=on-failure
+  --web.telemetry-path=/metrics
+
+SyslogIdentifier=redis_exporter
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
