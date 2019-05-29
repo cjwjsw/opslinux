@@ -90,7 +90,7 @@ ulimit_config(){
         sed -i 's/^ulimit -SHn.*/ulimit -SHn 65535/g' /etc/rc.local
         # sed -i "/^ulimit -SHn/c ulimit -SHn 102400" /etc/rc.local    # c 匹配行替换
     else
-        echo "ulimit -SHn 65535" >> /etc/rc.local
+        echo "ulimit -SHn 204800" >> /etc/rc.local
     fi
 
     echo "limit memory"
@@ -107,7 +107,7 @@ ulimit_config(){
     fi
 
     sed -i "/^ulimit -SHn.*/d" /etc/profile
-    echo "ulimit -SHn 65535" >> /etc/profile
+    echo "ulimit -SHn 204800" >> /etc/profile
 
     mv /etc/security/limits.conf /etc/security/limits.conf-default_bak
     cat > /etc/security/limits.conf << EOF
