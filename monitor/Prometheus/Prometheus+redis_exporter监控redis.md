@@ -16,7 +16,6 @@ chown -R prometheus.prometheus /data0/prometheus
 
 ```
 
-
 # 二、创建redis_exporter.service的 systemd unit 文件
 ```
 # 1、Centos7系统
@@ -33,7 +32,9 @@ ExecStart=/data0/prometheus/redis_exporter/redis_exporter \
   --log-format=txt \
   --namespace=redis \
   --web.listen-address=:9121 \
-  --web.telemetry-path=/metrics
+  --web.telemetry-path=/metrics \
+  --redis.password="redispass"
+  
 Restart=on-failure
 
 [Install]
@@ -138,7 +139,8 @@ cat <<EOF > /etc/sysconfig/redis_exporter
 ARGS="--log-format=txt \
 --namespace=redis \
 --web.listen-address=:9121 \
---web.telemetry-path=/metrics"
+--web.telemetry-path=/metrics" \
+--redis.password="redispass"
 EOF
 ```
 
