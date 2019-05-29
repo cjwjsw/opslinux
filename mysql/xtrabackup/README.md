@@ -10,5 +10,11 @@ innobackupex --default-file=/etc/my.cnf --user=root --password=***** --databases
 # 二、从库恢复
 
 ```
+#查看binlog日志
+[root@ mysql]# cat /data1/mysql/xtrabackup_binlog_info
+mysql-bin.000002 499886662
+
+
+#恢复数据
 
 ```
