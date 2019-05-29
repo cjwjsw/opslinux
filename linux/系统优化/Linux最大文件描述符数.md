@@ -4,7 +4,7 @@
 
    2.查看：
    
-    cat /proc/sys/fs/file-max
+   cat /proc/sys/fs/file-max
 
    3.重新设置：
 
