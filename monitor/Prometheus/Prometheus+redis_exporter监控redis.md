@@ -133,25 +133,30 @@ case "$1" in
 esac
 EOF
 
-```
-
-# 三、创建配置文件
-```
-
+# 3、Centos6的配置文件
+cat <<EOF > /etc/sysconfig/redis_exporter
 ARGS="--log-format=txt \
 --namespace=redis \
 --web.listen-address=:9121 \
 --web.telemetry-path=/metrics"
+EOF
 ```
 
 # 四、启动myslqd_exporter
 ```
+# Centos7系统
 systemctl daemon-reload
 systemctl restart redis_exporter
 systemctl status redis_exporter
 systemctl enable redis_exporter
 
-验证
+
+# Centos6系统
+chmod +x /etc/init.d/redis_exporter
+/etc/init.d/redis_exporter start
+chkconfig redis_exporter on
+
+# 验证
 curl localhost:9121/metrics
 ```
 
