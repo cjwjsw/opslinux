@@ -182,7 +182,7 @@ cat prometheus.yml
 # 六、Redis exporter Dashboard 模板
 
 ```
-https://grafana.com/dashboards/7362
+https://grafana.com/dashboards/763/revisions
 ```
 搜索redis的Grafana Dashboard，导入进去
 
