@@ -144,7 +144,7 @@ ARGS="--log-format=txt \
 EOF
 ```
 
-# 四、启动myslqd_exporter
+# 四、启动redis_exporter
 ```
 # Centos7系统
 systemctl daemon-reload
