@@ -19,6 +19,7 @@ chown -R prometheus.prometheus /data0/prometheus
 
 # 二、创建redis_exporter.service的 systemd unit 文件
 ```
+# 1、Centos7系统
 cat <<EOF > /etc/systemd/system/redis_exporter.service
 [Unit]
 Description=redis_exporter
@@ -27,12 +28,29 @@ After=network.target
 [Service]
 Type=simple
 User=prometheus
-ExecStart=/data0/prometheus/redis_exporter/redis_exporter
+ExecStart=/data0/prometheus/redis_exporter/redis_exporter \
+  --log-format=txt \
+  --namespace=redis \
+  --web.listen-address=:9121 \
+  --web.telemetry-path=/metrics
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
+
+# 2、Centos6系统
+
+```
+
+# 三、创建配置文件
+```
+
+ARGS="--log-format=txt \
+--namespace=redis \
+--web.listen-address=:9121 \
+--web.telemetry-path=/metrics"
 ```
 
 # 四、启动myslqd_exporter
