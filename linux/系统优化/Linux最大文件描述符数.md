@@ -10,7 +10,7 @@
 
     ①临时性： 
 
-    echo 1000000 > /pro/sys/fs/file-max
+    echo 1000000 > /proc/sys/fs/file-max
 
     ②永久性：
     
