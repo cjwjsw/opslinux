@@ -173,18 +173,18 @@ curl localhost:9121/metrics
 编辑prometheus.yml文件，添加内容
 ```
 cat prometheus.yml
-  - job_name: mysql_node3
+  - job_name: buycoins-redis
     static_configs:
-      - targets: ['192.168.56.13:9104']
+      - targets: ['192.168.52.87:9121']
 ```
-重启prometheus，然后在Prometheus页面中的Targets中就能看到新加入的mysql
+重启prometheus，然后在Prometheus页面中的Targets中就能看到新加入的redis
 
-# 六、MySQL exporter Dashboard 模板
+# 六、Redis exporter Dashboard 模板
 
 ```
 https://grafana.com/dashboards/7362
 ```
-搜索mysql的Grafana Dashboard，导入进去
+搜索redis的Grafana Dashboard，导入进去
 
 参考资料：
 
