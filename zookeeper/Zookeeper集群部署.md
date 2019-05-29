@@ -65,6 +65,9 @@ tcp        0      0 0.0.0.0:2181
 vim /etc/rc.local 添加：
 
 /usr/local/zookeeper/bin/zkServer.sh start
+
+#指定配置文件启动
+/usr/local/zookeeper/bin/zkServer.sh start /usr/local/zookeeper/conf/zoo.cfg
 ```
 
 # 五、检查状态
