@@ -12,7 +12,7 @@
 
 ```
 cd /usr/local/src/
-wget http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
 ```
 
 # 三、安装zookeeper
