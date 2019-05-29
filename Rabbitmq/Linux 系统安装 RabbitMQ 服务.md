@@ -78,6 +78,16 @@ systemctl restart rabbitmq-server.service
 
 > 另外还可以建环境配置文件：`/etc/rabbitmq/rabbitmq-env.conf`
 
+```
+mkdir -p /data0/rabbitmq/mnesia /data0/rabbitmq/log
+chown -R rabbitmq:rabbitmq /data0/rabbitmq/
+
+#cat rabbitmq-env.conf 
+
+RABBITMQ_MNESIA_BASE=/data0/rabbitmq/mnesia
+RABBITMQ_LOG_BASE=/data0/rabbitmq/log
+```
+
 ### 安装 web 插件
 
 management plugin 默认就在 RabbitMQ 的发布版本中，enable即可：
