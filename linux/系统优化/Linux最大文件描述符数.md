@@ -21,17 +21,19 @@
 
 # 二：进程
 
-  1.进程最多打开文件描述符数：user limit中的nofile的soft limit
+  1.进程最多打开文件描述符数：user limit中的 nofile 的soft limit
 
-  2.查看：$ ulimit -n
+  2.查看:
+  
+  ulimit -n
 
   3.设置：
 
-    ①临时性：通过ulimit -Sn设置最大打开文件描述符的soft limit，注意soft limit 不能大于 hard limit
+    ①临时性：通过 ulimit -Sn 设置最大打开文件描述符的soft limit，注意 soft limit 不能大于 hard limit
     
-    ulimit -Hn可查看hard limit，另外ulimit-n默认查看的是soft limit，
+    ulimit -Hn可查看 hard limit，另外 ulimit-n 默认查看的是 soft limit，
     
-    但是ulimit -n 180000则是同时设置foft limit和hard limit。
+    但是 ulimit -n 180000 则是同时设置foft limit和hard limit。
    
     对于非root用户只能设置比原来小的hard limit。
 
@@ -39,7 +41,7 @@
 
     B：设置soft limit,必须小于hard limit:
 
-    $ ulimit -Sn 160000
+    ulimit -Sn 160000
 
     ②永久性：
     
