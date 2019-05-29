@@ -33,7 +33,7 @@ ExecStart=/data0/prometheus/redis_exporter/redis_exporter \
   --namespace=redis \
   --web.listen-address=:9121 \
   --web.telemetry-path=/metrics \
-  --redis.password="redispass"
+  --redis.password="bllnetwell!#@2019"
   
 Restart=on-failure
 
