@@ -75,6 +75,13 @@ ZooKeeper JMX enabled by default
 Using config: /usr/local/zookeeper/conf/zoo.cfg
 Mode: leader
 ```
+
+# 六、连接测试
+
+```
+/usr/local/zookeeper/bin/zkCli.sh -server 172.18.8.24:2181
+
+```
 参考资料：
 
 https://segmentfault.com/a/1190000009983727
