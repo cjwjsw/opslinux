@@ -20,6 +20,7 @@ chown -R prometheus.prometheus /data0/prometheus
 # 二、创建redis_exporter.service的 systemd unit 文件
 ```
 # 1、Centos7系统
+
 cat <<EOF > /etc/systemd/system/redis_exporter.service
 [Unit]
 Description=redis_exporter
@@ -41,6 +42,96 @@ EOF
 
 
 # 2、Centos6系统
+
+cat <<EOF > /etc/init.d/redis_exporter
+#!/bin/bash
+# Author: Josphat Mutai, kiplangatmtai@gmail.com , https://github.com/jmutai
+# redis_exporter     This shell script takes care of starting and stopping Prometheus redis exporter 
+#
+# chkconfig: 2345 80 80
+# description: Prometheus redis exporter  start script
+# processname: redis_exporter
+# pidfile: /var/run/redis_exporter.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+PROGNAME=redis_exporter
+PROG=/data0/prometheus/redis_exporter/${PROGNAME}
+RUNAS=prometheus
+LOCKFILE=/var/lock/subsys/${PROGNAME}
+PIDFILE=/var/run/${PROGNAME}.pid
+LOGFILE=/var/log/${PROGNAME}.log
+DAEMON_SYSCONFIG=/etc/sysconfig/${PROGNAME}
+
+# GO CPU core Limit
+
+#GOMAXPROCS=$(grep -c ^processor /proc/cpuinfo)
+GOMAXPROCS=1
+
+# Source config
+
+. ${DAEMON_SYSCONFIG}
+
+start() {
+    if [[ -f $PIDFILE ]] > /dev/null; then
+        echo "redis_exporter  is already running"
+        exit 0
+    fi
+
+    echo -n "Starting redis_exporter  service…"
+    daemonize -u ${USER} -p ${PIDFILE} -l ${LOCKFILE} -a -e ${LOGFILE} -o ${LOGFILE} ${PROG} ${ARGS}
+    RETVAL=$?
+    echo ""
+    return $RETVAL
+}
+
+stop() {
+    if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
+        echo "Service not running"
+        return 1
+    fi
+    echo 'Stopping service…'
+    #kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
+    killproc -p ${PIDFILE} -d 10 ${PROG}
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f ${LOCKFILE} ${PIDFILE}
+    return $RETVAL
+}
+
+status() {
+    if [ -f "$PIDFILE" ] || kill -0 $(cat "$PIDFILE"); then
+      echo "redis exporter  service running..."
+      echo "Service PID: `cat $PIDFILE`"
+    else
+      echo "Service not running"
+    fi
+     RETVAL=$?
+     return $RETVAL
+}
+
+# Call function
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 2
+esac
+EOF
 
 ```
 
