@@ -5,6 +5,9 @@ https://github.com/oliver006/redis_exporter/releases
 
 cd /usr/local/src/
 
+export VER="1.0.0"
+wget https://github.com/oliver006/redis_exporter/releases/download/v${VER}/redis_exporter-v${VER}.linux-amd64.tar.gz
+
 tar -zxvf redis_exporter-v1.0.0.linux-amd64.tar.gz 
 
 mv redis_exporter-v1.0.0.linux-amd64 /data0/prometheus/redis_exporter
@@ -65,8 +68,4 @@ https://grafana.com/dashboards/7362
 
 参考资料：
 
-https://mp.weixin.qq.com/s?__biz=MzI1NjkzNDU4OQ==&mid=2247483975&idx=1&sn=9607317215ed8252968083cf09b9762d&scene=21%23wechat_redirect    构建狂拽炫酷屌的 MySQL 监控平台 
-
-https://www.cnblogs.com/bigberg/p/10118215.html 
-
-https://blog.csdn.net/hzs33/article/details/86553259  prometheus+grafana监控mysql、canal服务器
+https://computingforgeeks.com/how-to-monitor-redis-server-with-prometheus-and-grafana-in-5-minutes/
