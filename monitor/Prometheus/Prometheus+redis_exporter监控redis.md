@@ -48,7 +48,7 @@ curl localhost:9121/metrics
 
 # 五、Prometheus server配置拉取数据
 
-利用 Prometheus 的 static_configs 来拉取 mysqld_exporter 的数据。
+利用 Prometheus 的 static_configs 来拉取 redis_exporter 的数据。
 
 编辑prometheus.yml文件，添加内容
 ```
