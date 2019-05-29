@@ -5,9 +5,9 @@ https://github.com/oliver006/redis_exporter/releases
 
 cd /usr/local/src/
 
-tar -zxvf redis_exporter-v1.0.0.linux-amd64.tar.gz
+tar -zxvf redis_exporter-v1.0.0.linux-amd64.tar.gz 
 
-mv mysqld_exporter-0.11.0.linux-amd64 /data0/prometheus/mysqld_exporter
+mv redis_exporter-v1.0.0.linux-amd64 /data0/prometheus/redis_exporter
 
 chown -R prometheus.prometheus /data0/prometheus
 
