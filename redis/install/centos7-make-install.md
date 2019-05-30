@@ -101,8 +101,6 @@ client-output-buffer-limit slave 256mb 64mb 60
 client-output-buffer-limit pubsub 32mb 8mb 60
 hz 10
 aof-rewrite-incremental-fsync yes
-rename-command CONFIG CONFIG_b9fc8327c4dee7
-rename-command SHUTDOWN SHUTDOWN_b9fc8327c4dee7
 rename-command FLUSHDB ""
 rename-command FLUSHALL ""
 EOF
