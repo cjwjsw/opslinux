@@ -5,8 +5,37 @@ yum install sysstat -y
 
 iostat -mtx 2
 
+[root@coinearn-io-02-mysql ~]# iostat -d -x -k 1 10
+Linux 3.10.0-957.12.1.el7.x86_64 (coinearn-io-02-mysql)         05/30/2019      _x86_64_        (24 CPU)
 
-%util： 工作时间或者繁忙时间占总时间的百分比
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+sda               0.00     0.00    0.00    0.00     0.02     0.01   129.61     0.00    0.81    0.26    6.88   0.21   0.00
+sdb               0.00     9.38    0.01   21.15     0.38   436.30    41.26     0.21    9.84    9.79    9.84   7.09  15.00
+dm-0              0.00     0.00    0.02   26.81     0.35   432.87    32.29     0.21    7.79   10.18    7.79   5.45  14.63
+dm-1              0.00     0.00    0.00    0.00     0.00     0.00    57.42     0.00   21.41   21.41    0.00  19.91   0.00
+dm-2              0.00     0.00    0.00    0.51     0.02     3.42    13.52     0.01   12.00   16.15   11.99  10.74   0.55
+
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+sda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
+sdb               0.00     0.00    0.00    2.00     0.00     4.00     4.00     0.01   32.50    0.00   32.50   4.50   0.90
+dm-0              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.01    0.00    0.00    0.00   0.00   0.90
+dm-1              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
+dm-2              0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
+
+
+rrqm/s：每秒这个设备相关的读取请求有多少被Merge了（当系统调用需要读取数据的时候，VFS将请求发到各个FS，如果FS发现不同的读取请求读取的是相同Block的数据，FS会将这个请求合并Merge）；wrqm/s：每秒这个设备相关的写入请求有多少被Merge了。
+
+rsec/s：每秒读取的扇区数；
+wsec/：每秒写入的扇区数。
+rKB/s：The number of read requests that were issued to the device per second；
+wKB/s：The number of write requests that were issued to the device per second；
+avgrq-sz 平均请求扇区的大小
+avgqu-sz 是平均请求队列的长度。毫无疑问，队列长度越短越好。    
+await：  每一个IO请求的处理的平均时间（单位是微秒毫秒）。这里可以理解为IO的响应时间，一般地系统IO响应时间应该低于5ms，如果大于10ms就比较大了。
+         这个时间包括了队列时间和服务时间，也就是说，一般情况下，await大于svctm，它们的差值越小，则说明队列时间越短，反之差值越大，队列时间越长，说明系统出了问题。
+svctm    表示平均每次设备I/O操作的服务时间（以毫秒为单位）。如果svctm的值与await很接近，表示几乎没有I/O等待，磁盘性能很好，如果await的值远高于svctm的值，则表示I/O队列等待太长，         系统上运行的应用程序将变慢。
+%util： 在统计时间内所有处理IO时间，除以总共统计时间。例如，如果统计间隔1秒，该设备有0.8秒在处理IO，而0.2秒闲置，那么该设备的%util = 0.8/1 = 80%，所以该参数暗示了设备的繁忙程度
+。一般地，如果该参数是100%表示设备已经接近满负荷运行了（当然如果是多磁盘，即使%util是100%，因为磁盘的并发能力，所以磁盘使用未必就到了瓶颈）。
 
 
 ```
@@ -144,5 +173,7 @@ svctm 发送到设备的I/O请求的平均执行时间。单位为毫 秒。
 参考资料：
 
 https://blog.csdn.net/shaochenshuo/article/details/76212566
+
+https://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858810.html    Linux IO实时监控iostat命令详解 
 
 https://blog.csdn.net/a454213722/article/details/25727347   【io 负载分析 第一步】linux 安装sysstat使用iostat、mpstat、sar、sa
