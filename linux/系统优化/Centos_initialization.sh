@@ -35,7 +35,7 @@ yum_config(){
     fi
     yum clean all
     yum makecache
-    yum -y install vim wget bind-utils epel-release bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel iptables-services iptables
+    yum -y install vim wget telnet bind-utils epel-release bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel iptables-services iptables
 }
 
 #firewalld
