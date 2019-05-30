@@ -150,6 +150,9 @@ EOF
 
 # 四、启动redis_exporter
 ```
+#命令行测试
+./redis_exporter  -redis.addr=192.168.52.87:6379  -redis.password='123456'
+
 # Centos7系统
 systemctl daemon-reload
 systemctl restart redis_exporter
