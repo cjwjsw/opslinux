@@ -18,7 +18,7 @@
 
 :INPUT DROP [8:632]   #代表filter表上默认的input chain为drop ，对应上面的命令iptables -P INPUT DROP，中括号里面的两个数字代表的是这条链上已经接受到的包的数量及字节数量[包的数量:包的总字节数]
 :FORWARD DROP [0:0]   #代表filter表上默认的forward chain为drop ，对应上面的命令iptables -P FORWARD DROP，中括号里面的两个数字代表的是这条链上已经接受到的包的数量及字节数量[包的数量:包的总字节数]
-:OUTPUT ACCEPT [4:416] #代表filter表上默认的forward chain为drop ，对应上面的命令iptables -P OUTPUT ACCEPT，中括号里面的两个数字代表的是这条链上已经接受到的包的数量及字节数量[包的数量:包的总字节数]
+:OUTPUT ACCEPT [4:416] #代表filter表上默认的output chain为drop ，对应上面的命令iptables -P OUTPUT ACCEPT，中括号里面的两个数字代表的是这条链上已经接受到的包的数量及字节数量[包的数量:包的总字节数]
 ```
 
 # 三、iptables优化
