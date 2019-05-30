@@ -147,7 +147,7 @@ iptables -I INPUT -s 192.168.52.0/24 -p tcp --dport 3306 -j ACCEPT
 iptables -A INPUT  -s 192.168.52.0/24 -p tcp -m multiport --dports 8080:8090 -j ACCEPT
 iptables -A INPUT  -p tcp -m multiport --dports 21:22,80,443 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
-iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 iptables -P INPUT DROP
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD DROP
