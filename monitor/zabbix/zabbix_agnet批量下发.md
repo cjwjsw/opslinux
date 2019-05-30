@@ -30,6 +30,11 @@ salt -N ubuntu-1rd test.ping
 ```
 # 二、zabbix_agent安装包和脚本批量下发
 ```
+cd /tmp
+wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-1.el7.noarch.rpm
+yum -y install zabbix-release-4.0-1.el7.noarch.rpm
+yum -y install zabbix-agent
+
 第一套（Centos7）（注意zabbix_server在fhex-one-10机器）
 cd /srv/salt/
 salt -E "fhex-one-0[5-9]|fhex-one-10" cmd.run "systemctl stop zabbix-agent"
