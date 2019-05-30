@@ -228,6 +228,13 @@ supervisorctl status
 supervisorctl start salt-master
 supervisorctl start salt-minion
 
+systemctl stop salt-minion
+systemctl daemon-reload
+systemctl stop supervisord
+systemctl restart supervisord
+supervisorctl status
+ps -ef|grep salt-minion
+
 ```
 
 参考资料：
