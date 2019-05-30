@@ -15,3 +15,5 @@ iostat -mtx 2
 参考资料：
 
 https://blog.csdn.net/shaochenshuo/article/details/76212566
+
+https://blog.csdn.net/a454213722/article/details/25727347   【io 负载分析 第一步】linux 安装sysstat使用iostat、mpstat、sar、sa
