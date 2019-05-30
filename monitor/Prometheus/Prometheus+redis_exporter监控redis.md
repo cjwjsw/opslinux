@@ -36,7 +36,10 @@ ExecStart=/data0/prometheus/redis_exporter/redis_exporter \
   --log-format=txt \
   --namespace=redis \
   --web.listen-address=:9121 \
-  --web.telemetry-path=/metrics
+  --web.telemetry-path=/metrics \
+  --redis.addr=192.168.52.87 \
+  --redis.password=bllnetwell!#@2019
+
 
 SyslogIdentifier=redis_exporter
 Restart=always
