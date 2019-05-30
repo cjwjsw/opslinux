@@ -151,7 +151,11 @@ EOF
 # 四、启动redis_exporter
 ```
 #命令行测试
+#单实例启动
 ./redis_exporter  -redis.addr=192.168.52.87:6379  -redis.password='123456'
+
+#多实例启动
+./redis_exporter -redis.addr 127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382 -redis.password '123456'
 
 # Centos7系统
 systemctl daemon-reload
