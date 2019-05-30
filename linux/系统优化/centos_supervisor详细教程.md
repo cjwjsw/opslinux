@@ -1,10 +1,10 @@
 # 一、安装
 ```
 yum install -y epel-release supervisor
-systemctl enable supervisord     # 开机自启动
-systemctl restart supervisord    # 启动supervisord服务
+systemctl enable supervisord
+systemctl restart supervisord
 
-systemctl status supervisord     # 查看supervisord服务状态
+systemctl status supervisord
 ps -ef|grep supervisord          # 查看是否存在supervisord进程
 
 创建supervisor配置文件
