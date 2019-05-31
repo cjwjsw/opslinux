@@ -7,11 +7,11 @@
 
 - [Centos7安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/install/mysql5.7/Yum方式安装MySQL5.7.md)
 
-- [Mysql主从架构](https://github.com/Lancger/opslinux/blob/master/mysql/mysql%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84.md)
+- [Mysql主从架构](https://github.com/Lancger/opslinux/blob/master/mysql/framework/mysql%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84.md)
 
-- [Mysql-MHA原理和部署](https://github.com/Lancger/opslinux/blob/master/mysql/Mysql-MHA.md)
+- [Mysql-MHA原理和部署](https://github.com/Lancger/opslinux/blob/master/mysql/framework/Mysql-MHA.md)
 
-- [Mysql架构分享和调优](https://github.com/Lancger/opslinux/blob/master/mysql/MYSQL企业常用架构与调优经验分享.md)
+- [Mysql架构分享和调优](https://github.com/Lancger/opslinux/blob/master/mysql/framework/MYSQL%E4%BC%81%E4%B8%9A%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB.md)
 
 
 
