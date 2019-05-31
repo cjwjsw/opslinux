@@ -1,11 +1,11 @@
 ## 一、mysql手册
-- [Centos6安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos6-one-install.md)
+- [Centos6安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/install/mysql5.6/centos6-one-install.md)
 
-- [Centos6安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.7/Yum方式安装MySQL5.7.md)
+- [Centos6安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/install/mysql5.7/Yum方式安装MySQL5.7.md)
 
-- [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.6/centos7-one-install.md)
+- [Centos7安装mysql5.6](https://github.com/Lancger/opslinux/blob/master/mysql/install/mysql5.6/centos7-one-install.md)
 
-- [Centos7安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/mysql5.7/Yum方式安装MySQL5.7.md)
+- [Centos7安装mysql5.7](https://github.com/Lancger/opslinux/blob/master/mysql/install/mysql5.7/Yum方式安装MySQL5.7.md)
 
 - [Mysql主从架构](https://github.com/Lancger/opslinux/blob/master/mysql/mysql%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84.md)
 
