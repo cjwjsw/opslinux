@@ -198,9 +198,9 @@ https://grafana.com/dashboards/763/revisions
 
 ![redis-export](https://github.com/Lancger/opslinux/blob/master/images/redis-export.jpg)
 
-
 ![redis-export](https://github.com/Lancger/opslinux/blob/master/images/grafna-load.jpg)
 
+![redis-export](https://github.com/Lancger/opslinux/blob/master/images/grafna-load-2.jpg)
 
 参考资料：
 
