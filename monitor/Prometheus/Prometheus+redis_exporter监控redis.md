@@ -196,6 +196,12 @@ https://grafana.com/dashboards/763/revisions
 ```
 搜索redis的Grafana Dashboard，导入进去
 
+- [redis-export](https://github.com/Lancger/opslinux/blob/master/images/redis-export.jpg)
+
+
+- [redis-export](https://github.com/Lancger/opslinux/blob/master/images/grafna-load.jpg)
+
+
 参考资料：
 
 https://computingforgeeks.com/how-to-monitor-redis-server-with-prometheus-and-grafana-in-5-minutes/
