@@ -73,7 +73,7 @@ system_config(){
     setenforce 0
 
     # 设置上海时区
-    # cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
     # 设置为东京时区
     # ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
