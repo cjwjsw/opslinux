@@ -29,7 +29,15 @@ CLOSED： 没有任何连接状态
 # 二、查出哪个IP地址连接最多,将其封了
 
 ```
-netstat -na|grep ESTABLISHED|awk {'print $5'}|awk -F: {'print $1'}|sort|uniq -c|sort -r
-
-netstat -na|grep SYN|awk {'print $5'}|awk -F: {'print $1'}|sort|uniq -c|sort -r
+[root@linux-node2 ~]# netstat -na|grep ESTABLISHED|awk {'print $5'}|awk -F: {'print $1'}|sort|uniq -c|sort -nr|head -10
+    181 192.168.52.112
+    164 192.168.52.114
+     99 203.90.247.93
+     90 203.90.247.79
+     86 192.168.52.113
+     64 110.87.15.245
+     63 27.186.130.18
+     59 58.34.9.219
+     57 183.52.138.180
+     55 223.74.220.205
 ```
