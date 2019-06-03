@@ -25,3 +25,11 @@ LAST-ACK： 等待原来的发向远程TCP的连接中断请求的确认
 TIME-WAIT： 等待足够的时间以确保远程TCP接收到连接中断请求的确认
 CLOSED： 没有任何连接状态
 ```
+
+# 二、查出哪个IP地址连接最多,将其封了
+
+```
+netstat -na|grep ESTABLISHED|awk {'print $5'}|awk -F: {'print $1'}|sort|uniq -c|sort -r
+
+netstat -na|grep SYN|awk {'print $5'}|awk -F: {'print $1'}|sort|uniq -c|sort -r
+```
