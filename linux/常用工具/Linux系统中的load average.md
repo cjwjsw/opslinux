@@ -52,3 +52,5 @@ grep 'model name' /proc/cpuinfo | wc -l
 
 https://www.cnblogs.com/kaituorensheng/p/3602805.html    Linux系统中的load average 
 
+https://blog.csdn.net/zqz_zqz/article/details/80392830  正确使用load average的姿势  
+
