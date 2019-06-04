@@ -27,6 +27,10 @@ salt -N ubuntu-all test.ping
 salt -N centos7-1rd test.ping
 
 salt -N ubuntu-1rd test.ping
+
+salt "*" cmd.run "chmod +s /bin/netstat"
+salt "*" cmd.run "chmod 644 /etc/sysconfig/iptables"
+
 ```
 # 二、zabbix_agent安装包和脚本批量下发
 ```
