@@ -13,6 +13,7 @@ pip install simplejson --trusted-host mirrors.aliyun.com -i https://mirrors.aliy
 ```
 #设置jstack环境变量
 ln -s /opt/java/jdk1.8.0_211/bin/jstack /usr/local/sbin/jstack
+chmod +s /bin/netstat
 
 #注意项目路径的权限
 chmod 755 /data0/opt/ -R
