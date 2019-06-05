@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8 
 #报警模块
-#作者：林应勇
 #更改日志：2019-05-31
 import requests
 import json
