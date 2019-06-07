@@ -2,6 +2,7 @@
 ```
 命令：
 cat /sys/block/sda/queue/rotational
+cat /sys/block/sdb/queue/rotational
 
 注意：
 命令中的sba是你的磁盘名称，可以通过df命令查看磁盘，然后修改成你要的
