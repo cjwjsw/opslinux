@@ -19,6 +19,9 @@ GRANT REPLICATION SLAVE ON *.* TO 'repluser'@'192.168.52.%' IDENTIFIED BY 'replu
 FLUSH PRIVILEGES;
 
 show grants for repluser@"192.168.52.%";
+
+#备份到本地
+innobackupex --default-file=/etc/my.cnf --user=root --password=123456 --stream=tar /tmp |gzip > /data0/bak.tar
 ```
 
 # 二、salve操作
