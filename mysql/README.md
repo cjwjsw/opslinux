@@ -23,10 +23,12 @@
 #方式二
 mysql> set password=password('123456');
 
+
 #方式三
 mysql> use mysql
 mysql> GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "root";
 mysql> update user set Password = password('123456') where User='root';
+mysql> update user set Password = password('123456') where User='root' and Host="127.0.0.1";
 mysql> show grants for root@"%";
 mysql> flush privileges;
 mysql> select Host,User,Password from user where User='root';
