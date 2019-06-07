@@ -4,7 +4,7 @@
 
 yum remove percona-xtrabackup
 
-yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
 yum list | grep percona
 
@@ -15,7 +15,7 @@ yum install -y percona-xtrabackup-24
 wget https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.4/\
 binary/redhat/7/x86_64/percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 
-yum localinstall percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
+yum localinstall -y percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 
 ```
 # 二、主库导出数据
