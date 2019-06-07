@@ -188,3 +188,10 @@ mysql> show variables like '%read_only%';
 3 rows in set (0.00 sec)
 
 ```
+
+## 十、mysql只导出表结构
+
+```
+mysqldump --opt -d db_config -u root -p > /tmp/job.sql
+
+```
