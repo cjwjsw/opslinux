@@ -45,6 +45,17 @@ mysql -uroot -p'123456'
 use aud2;
 
 select count('id') from test_while;
+
+#重建主从
+stop slave;
+
+reset slave;
+
+change master to master_host='192.168.52.88', master_user='repluser', master_password='repluser', master_port=3306, master_log_file='1.000002', master_log_pos=195025061, master_connect_retry=5;
+
+start slave;
+
+show slave status\G;
 ```
 
 # 三、新机器操作
