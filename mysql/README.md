@@ -195,3 +195,11 @@ mysql> show variables like '%read_only%';
 mysqldump --opt -d db_config -u root -p > /tmp/job.sql
 
 ```
+
+## 十一、开启binlog
+```
+show variables like 'log_bin';
+
+# 开启log_bin
+log-bin=/data0/mysql_data/mysql-bin
+```
