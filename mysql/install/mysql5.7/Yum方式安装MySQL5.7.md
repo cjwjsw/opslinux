@@ -17,29 +17,7 @@ yum -y install mysql-community-server
 Permissive
 
 ```
-
-## 2、MySQL配置文件
-
-```
-mkdir -p /data0/mysql_data/
-
-#赋权限
-chown mysql:mysql /data0/mysql_data/
-chown mysql:mysql /var/lib/mysql/
-
-#初始化mysql
-默认为
-yum安装的mysql默认  --basedir=/usr/
-
---initialize-insecure    初始化为空密码
-
-#指定参数初始化
-mysql_install_db --user=mysql --basedir=/usr/ --datadir=/data0/mysql_data/
-
-#指定配置文件初始化
-mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
-```
-
+## 2、my.cnf配置文件
 ```
 cat >/etc/my.cnf <<EOF
 # For advice on how to change settings please see
@@ -119,9 +97,31 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 EOF
 ```
+
+## 3、MySQL目录配置
+
+```
+mkdir -p /data0/mysql_data/
+
+#赋权限
+chown mysql:mysql /data0/mysql_data/
+chown mysql:mysql /var/lib/mysql/
+
+#初始化mysql
+默认为
+yum安装的mysql默认  --basedir=/usr/
+
+--initialize-insecure    初始化为空密码
+
+#指定参数初始化
+mysql_install_db --user=mysql --basedir=/usr/ --datadir=/data0/mysql_data/
+
+#指定配置文件初始化
+mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
+```
     
 
-## 3、MySQL数据库设置
+## 4、MySQL数据库设置
    ```
     1、首先启动MySQL
    
