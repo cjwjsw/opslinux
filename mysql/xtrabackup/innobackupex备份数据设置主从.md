@@ -39,3 +39,13 @@ use aud2;
 
 select count('id') from test_while;
 ```
+
+# 三、新机器操作
+```
+systemctl stop mysqld
+
+cd /data0/mysql_data/
+
+rm -rf /data0/mysql_data/*
+
+```
