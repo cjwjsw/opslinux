@@ -4,7 +4,7 @@
 
 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
-yum install -y percona-xtrabackup-24
+yum install -y percona-xtrabackup-24 pigz
 
 #备份数据远程输出到目标机器
 
@@ -21,7 +21,7 @@ innobackupex --default-file=/etc/my.cnf --user=root --password=123456 --stream=t
 
 yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
-yum install -y percona-xtrabackup-24
+yum install -y percona-xtrabackup-24 pigz
 
 #恢复数据到从库目录
 
