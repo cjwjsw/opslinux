@@ -2,19 +2,21 @@
 ```
 #1、Installing Percona XtraBackup from Percona yum repository
 
+yum remove percona-xtrabackup
+
 yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
-yum install percona-xtrabackup-80
+yum list | grep percona
+
+yum install percona-xtrabackup-24
 
 #2、Installing Percona XtraBackup using downloaded rpm packages
 
-wget https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-8.0.4/binary/redhat/7/x86_64/percona-xtrabackup-80-8.0.4-1.el7.x86_64.rpm
+wget https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-2.4.4/\
+binary/redhat/7/x86_64/percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 
-yum localinstall percona-xtrabackup-80-8.0.4-1.el7.x86_64.rpm
+yum localinstall percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 
-#3、Uninstalling Percona XtraBackup
-
-yum remove percona-xtrabackup
 ```
 # 二、主库导出数据
 ```
