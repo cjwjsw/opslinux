@@ -8,7 +8,7 @@ yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
 yum list | grep percona
 
-yum install percona-xtrabackup-24
+yum install -y percona-xtrabackup-24
 
 #2、Installing Percona XtraBackup using downloaded rpm packages
 
