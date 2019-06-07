@@ -20,6 +20,9 @@ yum localinstall percona-xtrabackup-24-2.4.4-1.el7.x86_64.rpm
 ```
 # 二、主库导出数据
 ```
+#本地导出
+innobackupex --default-file=/etc/my.cnf --user=root --password="123456" --stream=tar  /tmp |gzip > /data0/back.tar.gz
+
 #全库导出
 innobackupex --default-file=/etc/my.cnf --user=root --password=***** --stream=tar  --tmpdir=/usr/local/mysql_bk/ /usr/local/mysql_bk/  |pigz -p 16 |ssh -i /root/.ssh/id_rsa_new root@192.168.56.100 "pigz -d | tar -xf - -C /data1/mysql"
 
