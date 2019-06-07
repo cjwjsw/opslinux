@@ -28,6 +28,7 @@ sdb     1
 # 三、检测方式三
 ```
 lsscsi 
+
 [0:0:0:0]    disk    ATA      Samsung SSD 850  3B6Q  /dev/sda  ---三星SSD
 [1:0:0:0]    disk    ATA      ST91000640NS     AA09  /dev/sdb  ---希捷SATA
 ```
