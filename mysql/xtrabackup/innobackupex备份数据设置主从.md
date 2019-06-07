@@ -8,7 +8,7 @@ yum install -y percona-xtrabackup-24
 
 #备份数据远程输出到目标机器
 
-ssh-copy root@192.168.52.132
+ssh-copy-id root@192.168.52.132
 
 innobackupex --default-file=/etc/my.cnf --user=root --password=123456 --stream=tar  --tmpdir=/usr/local/mysql_bk/ /usr/local/mysql_bk/  |pigz -p 16 |ssh root@192.168.52.132 "pigz -d | tar -xf - -C /data0/mysql_data"
 
