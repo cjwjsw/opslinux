@@ -80,6 +80,7 @@ default-storage-engine=INNODB
 #log_bin_trust_function_creator控制是否可以信任存储函数创建
 log_bin_trust_function_creators=1
 
+
 lower_case_table_names=1
 default-time_zone = '+8:00'
 max_allowed_packet=64M
@@ -93,6 +94,8 @@ sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_B
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
+innodb_buffer_pool_size=4G
+innodb_flush_log_at_trx_commit=2
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
