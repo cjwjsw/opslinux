@@ -67,6 +67,7 @@ long_query_time=1
 
 ## 主从复制的格式（mixed,statement,row，默认格式是statement）
 binlog_format=MIXED
+max_connections=10000
 
 ## 二进制日志自动删除/过期的天数。默认值为0，表示不自动删除。
 expire_logs_days=7
