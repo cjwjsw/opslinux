@@ -203,3 +203,19 @@ show variables like 'log_bin';
 # 开启log_bin
 log-bin=/data0/mysql_data/mysql-bin
 ```
+
+## 十二、批量导出部分数据
+```
+#!/bin/bash
+BAKDIR="/tmp/DBbackup"
+DBUSER=root
+DBPWD=$(/usr/bin/perl -e 'use MIME::Base64; print decode_base64("aaaaaaa")')
+HOST="172.18.8.9"
+mkdir -p ${BAKDIR}
+DS="test"
+tbs=`mysql -h${HOST} -u${DBUSER} -p${DBPWD} -D${DS} -e "show tables;" 2>/dev/null |grep -v \+|grep -v Tables_in_change_center`
+for ts in ${tbs}
+do
+  mysql -h${HOST} -u${DBUSER} -p${DBPWD} -A ${DS} -e "SELECT * FROM ${ts} LIMIT 1;" 2>/dev/null > $BAKDIR/${ts}.csv
+done
+```
