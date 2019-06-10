@@ -21,18 +21,18 @@ RELEASEVER=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
 
 #configure yum source
 yum_config(){
-    if [ $RELEASEVER == 6 ];then
-        echo -e "\033[32m 这个是Centos6系统 \033[0m"
-        mv -f /etc/yum.repos.d /etc/yum.repos.d_backup
-        mkdir /etc/yum.repos.d
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
-    fi
-    if [ $RELEASEVER == 7 ];then
-        echo -e "\033[32m 这个是Centos7系统 \033[0m"
-        mv -f /etc/yum.repos.d /etc/yum.repos.d_backup
-        mkdir /etc/yum.repos.d
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
-    fi
+#     if [ $RELEASEVER == 6 ];then
+#         echo -e "\033[32m 这个是Centos6系统 \033[0m"
+#         mv -f /etc/yum.repos.d /etc/yum.repos.d_backup
+#         mkdir /etc/yum.repos.d
+#         wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS6-Base-163.repo
+#     fi
+#     if [ $RELEASEVER == 7 ];then
+#         echo -e "\033[32m 这个是Centos7系统 \033[0m"
+#         mv -f /etc/yum.repos.d /etc/yum.repos.d_backup
+#         mkdir /etc/yum.repos.d
+#         wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+#     fi
     yum clean all
     yum makecache
     yum -y install vim wget telnet bind-utils epel-release rsync bc lsof traceroute strace net-snmp lrzsz zip xz unzip vnstat iotop iftop bc net-tools openssh-clients gcc gcc-c++ make cmake libxml2-devel openssl-devel curl curl-devel sudo ntp ntpdate ncurses-devel autoconf automake zlib-devel python-devel iptables-services iptables
