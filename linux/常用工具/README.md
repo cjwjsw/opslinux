@@ -27,6 +27,20 @@ expr $cnt '*' 2
 
      apt-get install psmisc
 ```
+
+# 四、强制覆盖
+```
+#方式一
+使用原生的cp命令
+/bin/cp -rf /root/.bashrc /home/www/
+
+#方式二
+取消cp命令别名
+unalias cp
+
+复制完成后恢复别名
+alias cp='cp -i'
+```
 参考资料
 
 
