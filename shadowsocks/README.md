@@ -14,11 +14,9 @@ ss-panel-v3-mod一键前后端脚本暂时做下收藏。
     wget -N --no-check-certificate https://raw.githubusercontent.com/hao35954514/ss-panel-and-ss-py-mu/master/ss-panel-v3-mod.sh && chmod +x ss-panel-v3-mod.sh && bash ss-panel-v3-mod.sh
 
 
-# 二、
+# 二、ss_go.sh
+
 ```
-
-ss_go.sh
-
     脚本说明: Shadowsocks 一键安装管理脚本
     系统支持: CentOS6+ / Debian6+ / Ubuntu14+
     使用方法: https://doub.io/ss-jc67/
