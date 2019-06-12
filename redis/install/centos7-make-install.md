@@ -43,7 +43,7 @@ source /etc/profile
 cat > /etc/redis/6379.conf <<-EOF
 #bind 192.168.52.103
 bind 0.0.0.0
-protected-mode yes
+protected-mode no
 port 6379
 tcp-backlog 511
 timeout 0
