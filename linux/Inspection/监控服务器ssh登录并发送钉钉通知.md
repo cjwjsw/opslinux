@@ -38,12 +38,12 @@ nali  42.96.189.63
 ## 三、编写脚本
 
 ```
-# vim  /usr/local/bin/ssh_login_monitor.sh
+cat > /usr/local/bin/ssh_login_monitor.sh << \EOF
 
 #!/bin/bash
 
 echo
-CommonlyIP=("120.237.124.116" "192.168.56.1")             #  常用ssh登陆服务器的IP地址,即IP白名单
+CommonlyIP=("120.237.124.116" "45.112.46.88")             #  常用ssh登陆服务器的IP地址,即IP白名单
 
 function SendMessageToDingding(){
     url="https://oapi.dingtalk.com/robot/send?access_token=cb45835cbcfdb378d3bc2b82f172a47e8e9cd08c1f439192af19e96e936a1338"
@@ -77,10 +77,10 @@ do
 done
 
 if [ "$COOL" == "YES" ];then
-    subject="用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址安全！"
-    echo "用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址安全！" >> $SSHLoginLog
+    echo "用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址为 ${LoginIP} 安全IP,归属地 ${LoginPlace}" >> $SSHLoginLog
+    subject="用户 ${UserName} 于北京时间 ${LoginTime} 登陆了服务器,其IP地址为 ${LoginIP} 安全IP,归属地 ${LoginPlace}"
     echo $subject
-    SendMessageToDingding
+    #SendMessageToDingding
 elif [ $LoginIP ];then
     echo "用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址为 $LoginIP ,归属地 $LoginPlace " >> $SSHLoginLog
     subject="用户 ${UserName} 于北京时间 ${LoginTime} 登陆了服务器,其IP地址为 ${LoginIP},归属地 ${LoginPlace}"
@@ -88,6 +88,7 @@ elif [ $LoginIP ];then
     SendMessageToDingding
 fi
 echo
+EOF
 ```
   
 ## 四、配置生效
