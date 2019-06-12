@@ -41,6 +41,9 @@ yum install -y percona-xtrabackup-24 pigz
 
 innobackupex --default-file=/etc/my.cnf --apply-log /data0/mysql_data
 
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.56.%' IDENTIFIED BY 'repl';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY 'repl';
+
 #修改目录权限
 
 chown -R mysql:mysql /data0/mysql_data
