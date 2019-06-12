@@ -107,7 +107,11 @@ EOF
 # vim  /etc/ssh/sshrc
 
 # 添加下面这句话即可
+
+cat > /etc/ssh/sshrc << \EOF
 /bin/sh  /usr/local/bin/ssh_login_monitor.sh
+EOF
+
 ```
 
     由于/etc/hosts.allow 无论登录用户是谁，执行该文件中的都将是root用户，因此，被调用的脚本也是root执行的。但是 /etc/ssh/sshrc 中就不一样了，哪个用户登录的，就是哪个用户执行脚本，那么问题来了，记录登录信息的日志此时可能权限为644（echo生成的txt文件默认权限），普通用户写不成该文件！所以一定要记得用root用户赋予login_access.log文件 666 权限（如果结合zabbix自定义报警的话，就需要读文件，在这里读写权限一起给了）：
