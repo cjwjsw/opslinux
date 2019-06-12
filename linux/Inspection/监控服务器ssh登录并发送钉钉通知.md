@@ -39,7 +39,6 @@ nali  42.96.189.63
 
 ```
 cat > /usr/local/bin/ssh_login_monitor.sh << \EOF
-
 #!/bin/bash
 
 echo
