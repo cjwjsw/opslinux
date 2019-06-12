@@ -38,16 +38,32 @@ nali  42.96.189.63
 ## 三、编写脚本
 
 ```
-# vim  /opt/scripts/ssh_login_monitor.sh
+# vim  /usr/local/bin/ssh_login_monitor.sh
 
 #!/bin/bash
 
 echo
-CommonlyIP=("192.168.56.2" "192.168.56.1")                           #  常用ssh登陆服务器的IP地址,即IP白名单
-SendToEmail=("1151980610@qq.com" "123456789@qq.com")   #  接收报警的邮箱地址
+CommonlyIP=("120.237.124.116" "192.168.56.1")             #  常用ssh登陆服务器的IP地址,即IP白名单
 
+function SendMessageToDingding(){
+    url="https://oapi.dingtalk.com/robot/send?access_token=cb45835cbcfdb378d3bc2b82f172a47e8e9cd08c1f439192af19e96e936a1338"
+    UA="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
+    res=`curl -XPOST -s -L -H "Content-Type:application/json" -H "charset:utf-8" $url -d "
+    {
+    \"msgtype\": \"text\", 
+    \"text\": {
+             \"content\": \"=====服务器上线通知=====\n用户名 : $UserName\n主机名 : $Hostname\n来源IP : $LoginIP\n归属地 : $LoginPlace\n登录时间 : $LoginTime\"
+             },
+    \"at\": {
+             \"atMobiles\": [""],
+             \"isAtAll\": false
+             }
+    }"`
+}
+    
 LoginInfo=`last | grep "still logged in" | head -n1`
 UserName=`echo $LoginInfo | gawk '{print $1}'`
+Hostname=`hostname`
 LoginIP=`echo $LoginInfo | gawk '{print $3}'`
 LoginTime=`date +'%Y-%m-%d %H:%M:%S'`
 LoginPlace=`/usr/local/bin/nali $LoginIP | gawk -F'[][]' '{print $2}'`
@@ -61,10 +77,15 @@ do
 done
 
 if [ "$COOL" == "YES" ];then
-    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址安全！" >> $SSHLoginLog
+    subject="用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址安全！"
+    echo "用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址安全！" >> $SSHLoginLog
+    echo $subject
+    SendMessageToDingding
 elif [ $LoginIP ];then
-    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址为【 $LoginIP 】,归属地【 $LoginPlace 】" | mail -s "【 通知 】 有终端SSH连上服务器了!" ${SendToEmail[*]}
-    echo "用户【 $UserName 】于北京时间【 $LoginTime 】登陆了服务器,其IP地址为【 $LoginIP 】,归属地【 $LoginPlace 】" >> $SSHLoginLog
+    echo "用户 $UserName 于北京时间 $LoginTime 登陆了服务器,其IP地址为 $LoginIP ,归属地 $LoginPlace " >> $SSHLoginLog
+    subject="用户 ${UserName} 于北京时间 ${LoginTime} 登陆了服务器,其IP地址为 ${LoginIP},归属地 ${LoginPlace}"
+    echo $subject
+    SendMessageToDingding
 fi
 echo
 ```
