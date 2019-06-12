@@ -34,6 +34,59 @@ tail -100f /var/log/redis_6379.log
 
 # 二、配置
 
+1、哨兵一配置
+```
+
+mkdir -p /data0/redis_data/sentinel_16379
+chown -R redis:redis /data0/redis_data/
+
+port 16379
+daemonize yes
+protected-mode no
+dir "/data0/redis_data/sentinel_16379"
+logfile "/var/log/redis_16379.log"
+sentinel monitor mymaster 172.31.234.36 6379 1
+sentinel down-after-milliseconds mymaster 5000
+sentinel parallel-syncs mymaster 1
+sentinel auth-pass mymaster Allwell!#@2019 
+sentinel failover-timeout mymaster 15000
+```
+
+2、哨兵二配置
+```
+mkdir -p /data0/redis_data/sentinel_16379
+chown -R redis:redis /data0/redis_data/
+
+port 16379
+daemonize yes
+protected-mode no
+dir "/data0/redis_data/sentinel_16379"
+logfile "/var/log/redis_16379.log"
+sentinel monitor mymaster 172.31.234.36 6379 1
+sentinel down-after-milliseconds mymaster 5000
+sentinel parallel-syncs mymaster 1
+sentinel auth-pass mymaster Allwell!#@2019 
+sentinel failover-timeout mymaster 15000
+```
+
+
+3、哨兵二配置
+```
+mkdir -p /data0/redis_data/sentinel_16379
+chown -R redis:redis /data0/redis_data/
+
+port 16379
+daemonize yes
+protected-mode no
+dir "/data0/redis_data/sentinel_16379"
+logfile "/var/log/redis_16379.log"
+sentinel monitor mymaster 172.31.234.36 6379 1
+sentinel down-after-milliseconds mymaster 5000
+sentinel parallel-syncs mymaster 1
+sentinel auth-pass mymaster Allwell!#@2019 
+sentinel failover-timeout mymaster 15000
+```
+
 
 # 三、测试
 
