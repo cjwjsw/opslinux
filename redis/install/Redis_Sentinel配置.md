@@ -1,4 +1,13 @@
-# 一、安装
+# 一、概述
+```
+Redis_Master      172.31.234.36   6379
+Redis_Slave       172.31.234.37   6379
+
+Redis_Sentinel1   172.31.234.36   16379
+Redis_Sentinel2   172.31.234.37   16379
+Redis_Sentinel3   172.31.234.37   16380
+```
+# 二、安装
 
 ```
 #1、安装依赖
@@ -32,7 +41,7 @@ chown -R redis:redis /var/log/redis_6379.log
 tail -100f /var/log/redis_6379.log
 ```
 
-# 二、配置
+# 三、配置
 
 1、哨兵一配置
 ```
@@ -88,7 +97,7 @@ sentinel failover-timeout mymaster 15000
 ```
 
 
-# 三、测试
+# 四、测试
 
 参考文档：
 
