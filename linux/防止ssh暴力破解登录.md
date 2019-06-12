@@ -5,7 +5,7 @@
 #Denyhosts SHELL SCRIPT
 
 cat /var/log/secure|awk '/Failed/{print $(NF-3)}'|sort|uniq -c|awk '{print $2"=" $1;}' >/tmp/Denyhosts.txt
-DEFINE="5"
+DEFINE="15"
 for i in `cat /tmp/Denyhosts.txt`
 do
     IP=`echo $i|awk -F= '{print $1}'`
@@ -21,5 +21,5 @@ done
 ```
 # 定时任务
 ```
-*/1 * * * * /bin/bash /root/Denyhosts.sh
+*/1 * * * * /bin/bash /usr/local/bin/Denyhosts.sh
 ```
