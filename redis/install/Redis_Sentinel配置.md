@@ -229,7 +229,16 @@ sentinel failover-timeout mymaster 15000
 ```
 
 
-# 四、测试
+# 四、服务启动
+```
+#启动redis_server
+redis-server /etc/redis/6379.conf 
+
+#启动redis_sentinel
+redis-sentinel /etc/redis/1679.conf 
+
+redis-sentinel /etc/redis/16380.conf 
+```
 
 参考文档：
 
