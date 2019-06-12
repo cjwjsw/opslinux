@@ -12,8 +12,13 @@ cd nali-ipip-master/
 
 如果要使用nali的全部命令，需要安装一下依赖包
 ```
-CentOS/RedHat: yum install traceroute bind-utils bind-utils -y
-Debian/Ubuntu: apt-get update; apt-get install traceroute dnsutils bind-utils -y
+#CentOS/RedHat: 
+
+yum install traceroute bind-utils bind-utils -y
+
+#Debian/Ubuntu: 
+
+apt-get update; apt-get install traceroute dnsutils bind-utils -y
 ```
 
 查看一下环境变量nali在哪个目录下：
