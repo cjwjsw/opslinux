@@ -75,11 +75,11 @@ sentinel failover-timeout mymaster 15000
 mkdir -p /data0/redis_data/sentinel_16379
 chown -R redis:redis /data0/redis_data/
 
-port 16379
+port 16380
 daemonize yes
 protected-mode no
 dir "/data0/redis_data/sentinel_16379"
-logfile "/var/log/redis_16379.log"
+logfile "/var/log/redis_16380.log"
 sentinel monitor mymaster 172.31.234.36 6379 1
 sentinel down-after-milliseconds mymaster 5000
 sentinel parallel-syncs mymaster 1
