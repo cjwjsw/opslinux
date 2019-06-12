@@ -213,13 +213,13 @@ sentinel failover-timeout mymaster 15000
 
 3、哨兵二配置
 ```
-mkdir -p /data0/redis_data/sentinel_16379
+mkdir -p /data0/redis_data/sentinel_16380
 chown -R redis:redis /data0/redis_data/
 
 port 16380
 daemonize yes
 protected-mode no
-dir "/data0/redis_data/sentinel_16379"
+dir "/data0/redis_data/sentinel_16380"
 logfile "/var/log/redis_16380.log"
 sentinel monitor mymaster 172.31.234.36 6379 1
 sentinel down-after-milliseconds mymaster 5000
