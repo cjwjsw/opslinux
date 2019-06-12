@@ -219,3 +219,8 @@ do
   mysql -h${HOST} -u${DBUSER} -p${DBPWD} -A ${DS} -e "SELECT * FROM ${ts} LIMIT 1;" 2>/dev/null > $BAKDIR/${ts}.csv
 done
 ```
+
+## 十三、导出表结构和数据
+```
+mysqldump -uroot -p123456 change onelevel > onelevel.sql
+```
