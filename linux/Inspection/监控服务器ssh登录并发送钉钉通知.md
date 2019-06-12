@@ -1,29 +1,9 @@
- # Shell脚本监控服务器pts登录情况记录为日志并邮件通知
+ # Shell脚本监控服务器pts登录情况记录为日志并钉钉通知
  
-## 一、配置服务器sendmail发邮件功能
- 
- 安装sendmail服务：
-```sh
-yum  install  sendmail  -y
-yum -y install mailx
-yum -y install jwhois
-```
-
- 下面启动sendmail服务：
-```sh
-/etc/init.d/sendmail  restart
-
-systemctl restart sendmail
-```
-
-启动后请单独用mail -s测试邮件是否可以发送出去，此处不介绍了。
-```
-mail -s test 1151980610@qq.com
-```
-
-## 二、Linux下用nali查询IP地址归属地：
+## 一、Linux下用nali查询IP地址归属地：
 安装nali
 ```
+cd /usr/local/src/
 wget https://github.com/dzxx36gyy/nali-ipip/archive/master.zip
 unzip master.zip
 cd nali-ipip-master/
