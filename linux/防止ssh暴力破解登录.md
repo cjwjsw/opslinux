@@ -1,5 +1,6 @@
 # 防暴力破解登录
 ```
+cat > /usr/local/bin/Denyhosts.sh << \EOF
 #!/bin/bash
 
 #Denyhosts SHELL SCRIPT
@@ -18,6 +19,7 @@ do
         fi
     fi
 done
+EOF
 ```
 # 定时任务
 ```
