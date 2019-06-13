@@ -209,7 +209,7 @@ function install_nginx(){
     info_echo "开始配置nginx-${nginx_version}"
     cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak
     echo "" >/usr/local/nginx/conf/nginx.conf
-    mkdir -p /usr/local/nginx/conf/servers && mkdir -p /data0/logs/nginx-zabbix && mkdir -p /data0/www/zabbix
+    mkdir -p /usr/local/nginx/conf/vhosts && mkdir -p /data0/logs/nginx-zabbix && mkdir -p /data0/www/zabbix
 cat <<"EOF" > /usr/local/nginx/conf/nginx.conf
 user nginx;
 worker_processes auto;
@@ -242,11 +242,11 @@ http {
     charset utf-8;
     log_format  main '$http_x_forwarded_for $remote_addr $remote_user [$time_local] "$request" $http_host $status $upstream_status $body_bytes_sent "$http_referer" "$http_user_agent" $upstream_addr $request_time $upstream_response_time';
     log_format mine   '$http_x_forwarded_for" - $upstream_addr - $upstream_cache_status - $upstream_status - $upstream_http_host - $request_time - [$time_local] - $request';
-    include servers/*;
+    include vhosts/*;
     }
 EOF
 
-cat <<"EOF" > /usr/local/nginx/conf/servers/zabbix.conf
+cat <<"EOF" > /usr/local/nginx/conf/vhosts/zabbix.conf
 server {
         listen       80;
         server_name  zabbix;
