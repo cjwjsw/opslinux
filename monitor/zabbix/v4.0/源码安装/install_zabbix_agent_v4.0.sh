@@ -81,6 +81,7 @@ function install_zabbix(){
     cd /usr/local/src/ && tar xvf zabbix-${zabbix_server_version}.tar.gz
     cd /usr/local/src/zabbix-${zabbix_server_version}
     ./configure \
+    --prefix=/usr/local/zabbix \
     --sysconfdir=/etc/zabbix/ \
     --enable-agent
     check_exit "configure zabbix-${zabbix_server_version}-agent失败"
