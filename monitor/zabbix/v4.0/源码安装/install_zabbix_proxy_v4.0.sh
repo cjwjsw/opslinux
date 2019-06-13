@@ -142,11 +142,11 @@ LogFile=/var/logs/zabbix_proxy.log
 EOF
 
     info_echo "开始导入mysql数据"
-    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/schema.sql 
+    mysql -uzabbix -pzabbix zabbix_proxy < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/schema.sql 
 
     info_echo "开始启动zabbix_proxy"
     sleep 2s
-    /usr/local/zabbix_proxy/sbin/zabbix_proxy
+    /usr/local/zabbix_proxy/sbin/zabbix_proxy -c /usr/local/zabbix_proxy/etc/zabbix_proxy.conf
     STAT=`echo $?`
     PORT=`netstat -lntup|grep zabbix_proxy|wc -l`
     if [ $STAT -eq 0 ] && [ $PORT -eq 1 ];then
