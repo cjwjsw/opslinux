@@ -94,7 +94,7 @@ function install_zabbix(){
     chown zabbix:zabbix /var/log/zabbix_agentd.log
 
 cat <<"EOF" > /etc/zabbix/zabbix_agentd.conf
-PidFile=/var/run/zabbix_agentd.pid
+PidFile=/tmp/zabbix_agentd.pid
 LogFile=/var/log/zabbix_agentd.log
 LogFileSize=0
 DebugLevel=2
