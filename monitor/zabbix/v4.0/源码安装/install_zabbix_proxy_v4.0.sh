@@ -143,6 +143,9 @@ cat <<"EOF" > /etc/init.d/zabbix_proxy
 
 #processname: zabbix_proxy
 
+# Source function library.
+. /etc/init.d/functions
+
 case $1 in
        start)
               echo -n "Starting zabbix_proxy"
