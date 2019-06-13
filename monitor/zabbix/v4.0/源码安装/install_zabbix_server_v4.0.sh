@@ -288,9 +288,16 @@ function install_mysql(){
      
     info_echo "开始安装mysql"
     sleep 2s
-    yum install mariadb-server -y
+    
+    yum -y remove mysql-libs.x86_64
+
+    wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+    yum -y install mysql57-community-release-el7-10.noarch.rpm
+    yum -y install mysql-community-server
+
     check_exit "安装mysql失败"
-    systemctl start mariadb
+    systemctl start mysqld.service
+
     STAT=`echo $?`
     PORT=`netstat -lntup|grep mysql|wc -l`
     if [ $STAT -eq 0 ] && [ $PORT -eq 1 ];then
