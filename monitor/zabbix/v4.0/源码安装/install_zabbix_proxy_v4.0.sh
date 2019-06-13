@@ -64,7 +64,7 @@ function download_install_package(){
     
     if [ ! -f "/usr/local/src/zabbix-${zabbix_server_version}.tar.gz" ];then
         info_echo "开始下载zabbix-${zabbix_server_version}.tar.gz"
-        wget -P /usr/local/src https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
+        wget -O /usr/local/src/zabbix-${zabbix_server_version}.tar.gz https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
         check_success "zabbix-${zabbix_server_version}.tar.gz已下载至/usr/local/src目录"
     else
         info_echo "zabbix-${zabbix_server_version}.tar.gz已存在,不需要下载"
