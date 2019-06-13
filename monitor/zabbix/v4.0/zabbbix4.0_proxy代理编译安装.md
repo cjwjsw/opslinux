@@ -21,11 +21,10 @@ yum -y install mysql-devel curl curl-devel net-snmp net-snmp-devel
 
 3、更改主机名
 
-hostnamectl set-hostname LG_Proxy && vim /etc/hosts
+hostnamectl set-hostname zabbix_proxy
 
-192.168.30.38 LG_Proxy
-
-127.0.0.1 LG_Proxy
+192.168.30.38 zabbix_proxy
+127.0.0.1 zabbix_proxy
 
 4、下载安装包
 
