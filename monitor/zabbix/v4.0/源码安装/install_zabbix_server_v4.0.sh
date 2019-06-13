@@ -114,7 +114,6 @@ function install_php(){
     info_echo "开始安装php-${php_version}"
     sleep 2s
     groupadd php-fpm && useradd -s /sbin/nologin -g php-fpm -M php-fpm
-    groupadd zabbix &&  useradd -g zabbix zabbix
     cd /usr/local/src
     tar xvf /usr/local/src/php-${php_version}.tar.gz
     cd /usr/local/src/php-${php_version}
@@ -335,6 +334,7 @@ EOF
 function install_zabbix(){
 
     info_echo "开始安装zabbix-${zabbix_server_version}"
+    groupadd zabbix &&  useradd -g zabbix zabbix
     sleep 2s
     yum install OpenIPMI-devel libevent-devel net-snmp-devel -y
     cd /usr/local/src/ && tar xvf zabbix-${zabbix_server_version}.tar.gz
