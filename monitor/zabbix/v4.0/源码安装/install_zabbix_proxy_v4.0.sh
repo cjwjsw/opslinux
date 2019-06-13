@@ -113,6 +113,8 @@ function install_zabbix(){
     make && make install
     check_exit "make zabbix-${zabbix_server_version}-proxy失败"
     info_echo "开始配置zabbix-${zabbix_server_version}-proxy"
+    touch /var/log/zabbix_proxy.log
+    chown zabbix:zabbix /var/log/zabbix_proxy.log
 
 cat <<"EOF" > /usr/local/zabbix_proxy/etc/zabbix_proxy.conf
 ProxyMode=0
