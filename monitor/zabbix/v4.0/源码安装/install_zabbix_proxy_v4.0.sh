@@ -115,17 +115,17 @@ function install_zabbix(){
     info_echo "开始配置zabbix-${zabbix_server_version}-proxy"
 
 cat <<"EOF" > /usr/local/zabbix_proxy/etc/zabbix_proxy.conf
-ProxyMode=0
-Server=192.168.56.12
+ProxyMode=0   #指定代理那种模式的agent，0为主动模式，1位被动模式；
+Server=192.168.56.12 #zabbix server服务器的地址或主机名
 ServerPort=10051
-Hostname=zbx_pxy_01
+Hostname=zbx_pxy_01  #代理服务器的名称
 DBHost=localhost
 DBName=zabbix_proxy
 DBUser=zabbix
 DBPassword=zabbix
 DebugLevel=4
-ConfigFrequency=600
-DataSenderFrequency=5
+ConfigFrequency=10  #间隔多久从zabbix server获取监控信息
+DataSenderFrequency=5  #数据发送时间间隔，默认为1秒，被动模式不使用
 StartPollers=10
 StartPollersUnreachable=5
 StartTrappers=20
@@ -136,7 +136,7 @@ CacheSize=128M
 StartDBSyncers=10
 HistoryCacheSize=128M
 HistoryTextCacheSize=64M
-FpingLocation=/usr/sbin/fping
+#FpingLocation=/usr/sbin/fping
 LogSlowQueries=3000
 LogFile=/var/logs/zabbix_proxy.log
 EOF
