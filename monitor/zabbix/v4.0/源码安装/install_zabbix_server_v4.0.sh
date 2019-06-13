@@ -99,13 +99,13 @@ function download_install_package(){
         info_echo "zabbix-${zabbix_server_version}.tar.gz已存在,不需要下载"
     fi
     
-    if [ ! -f "/usr/local/src/jdk-8u131-linux-x64.tar.gz" ];then
-        info_echo "开始下载jdk-8u131-linux-x64.tar.gz"
-        wget -P /usr/local/src -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz
-        check_success "jdk-8u131-linux-x64.tar.gz已下载至/usr/local/src目录"
-    else
-        info_echo "jdk-8u131-linux-x64.tar.gz已存在,不需要下载"
-    fi
+#     if [ ! -f "/usr/local/src/jdk-8u131-linux-x64.tar.gz" ];then
+#         info_echo "开始下载jdk-8u131-linux-x64.tar.gz"
+#         wget -P /usr/local/src -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz
+#         check_success "jdk-8u131-linux-x64.tar.gz已下载至/usr/local/src目录"
+#     else
+#         info_echo "jdk-8u131-linux-x64.tar.gz已存在,不需要下载"
+#     fi
 
 }
 
@@ -396,7 +396,7 @@ function main(){
     install_php
     install_nginx
     install_mysql
-    install_jdk
+    #install_jdk
     install_zabbix
     
 }
