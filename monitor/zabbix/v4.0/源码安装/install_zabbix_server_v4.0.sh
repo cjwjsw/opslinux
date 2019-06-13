@@ -82,6 +82,7 @@ function download_install_package(){
     else
         info_echo "nginx-${nginx_version}.tar.gz已存在,不需要下载"
     fi
+    
     if [ ! -f "/usr/local/src/php-${php_version}.tar.gz" ];then
         info_echo "开始下载php-${php_version}.tar.gz"
         wget -P /usr/local/src http://cn2.php.net/distributions/php-${php_version}.tar.gz
@@ -89,7 +90,6 @@ function download_install_package(){
     else
         info_echo "php-${php_version}.tar.gz已存在,不需要下载"
     fi
-    
     
     if [ ! -f "/usr/local/src/zabbix-${zabbix_server_version}.tar.gz" ];then
         info_echo "开始下载zabbix-${zabbix_server_version}.tar.gz"
