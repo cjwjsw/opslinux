@@ -144,7 +144,7 @@ mysql> show variables like "%default%";
 
 ```
 
-## 八、查询用户
+## 八、查询和删除用户
 ```
 mysql> use mysql;
 mysql> select Host,User from user;
@@ -163,6 +163,7 @@ mysql> select Host,User from user;
 show grants for exchange@"192.168.52.%";
 show grants for exchange@"%";
 
+delete from user where Host="localhost";
 
 #msyql不能执行存储过程解决办法
 GRANT ALL PRIVILEGES ON *.* TO exchange@"%" IDENTIFIED BY "qaA12!@$#$";
