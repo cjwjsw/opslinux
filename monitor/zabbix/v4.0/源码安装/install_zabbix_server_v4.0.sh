@@ -1,5 +1,5 @@
-```
 #!/bin/bash
+
 #安装zabbix4.0脚本
 err_echo(){
     echo -e "\033[41;37m[Error]: $1 \033[0m"
@@ -394,11 +394,3 @@ function main(){
 }
 
 main
-
-```
-
-参考资料：
-
-https://www.cnblogs.com/biaopei/p/9877747.html  zabbix4.0离线快速编译安装（编译安装方法）
-
-https://www.cnblogs.com/uglyliu/p/10143914.html   Centos7一键编译安装zabbix-4.0.2 
