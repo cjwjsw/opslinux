@@ -209,7 +209,7 @@ function install_nginx(){
     info_echo "开始配置nginx-${nginx_version}"
     cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak
     echo "" >/usr/local/nginx/conf/nginx.conf
-    mkdir -p /usr/local/nginx/conf/servers && mkdir -p /data/logs/nginx-zabbix && mkdir -p /data/home/www/zabbix
+    mkdir -p /usr/local/nginx/conf/servers && mkdir -p /data0/logs/nginx-zabbix && mkdir -p /data0/www/zabbix
 cat <<"EOF" > /usr/local/nginx/conf/nginx.conf
 user nginx;
 worker_processes auto;
@@ -252,21 +252,21 @@ server {
         server_name  zabbix;
 
         location / {
-            root /data/home/www/zabbix;
+            root /data0/www/zabbix;
             index index.php;
 
         }
         location ~ \.php$ {
            
-            root /data/home/www/zabbix;
+            root /data0/www/zabbix;
             fastcgi_pass 127.0.0.1:9000;
             fastcgi_index index.php;
             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
             include fastcgi_params;
         }
         
-        access_log      /data/logs/nginx-zabbix/zabbix-access.log  main;
-        access_log      /data/logs/nginx-zabbix/zabbix_mine.log mine;
+        access_log      /data0/logs/nginx-zabbix/zabbix-access.log  main;
+        access_log      /data0/logs/nginx-zabbix/zabbix_mine.log mine;
 
 } 
 EOF
@@ -351,8 +351,8 @@ function install_zabbix(){
     make && make install
     check_exit "make zabbix-${zabbix_server_version}失败"
     info_echo "开始配置zabbix-${zabbix_server_version}"
-    cp -R /usr/local/src/zabbix-${zabbix_server_version}/frontends/php/* /data/home/www/zabbix
-    chown -R zabbix.zabbix /data/home/www/zabbix
+    cp -R /usr/local/src/zabbix-${zabbix_server_version}/frontends/php/* /data0/www/zabbix
+    chown -R zabbix.zabbix /data0/www/zabbix
     chown -R zabbix.zabbix /usr/local/zabbix
     cp /usr/local/src/zabbix-${zabbix_server_version}/misc/init.d/fedora/core5/* /etc/init.d/
     sed -i "s#/usr/local/sbin/zabbix_server#/usr/local/zabbix/sbin/zabbix_server#g" /etc/init.d/zabbix_server
