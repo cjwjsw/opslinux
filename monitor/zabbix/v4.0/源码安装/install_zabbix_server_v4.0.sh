@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #安装zabbix4.0脚本
+
 err_echo(){
     echo -e "\033[41;37m[Error]: $1 \033[0m"
     exit 1
@@ -29,6 +30,12 @@ check_success(){
     fi
 }
 
+zabbix_server_version="4.0.9"
+
+nginx_version="1.16.0"
+
+php_version="7.2.13"
+
 [ $(id -u) != "0" ] && err_echo "please run this script as root user." && exit 1
 
 function init_servers(){
@@ -56,6 +63,7 @@ function install_package(){
     yum install ntpdate gcc gcc-c++ wget lsof lrzsz -y
 
     info_echo "开始安装php所需依赖包"
+    
     yum install -y libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel readline readline-devel libxslt libxslt-devel
     yum install -y systemd-devel mysql-devel
     yum install -y openjpeg-devel
@@ -67,28 +75,28 @@ function install_package(){
 
 function download_install_package(){
 
-    if [ ! -f "/usr/local/src/nginx-1.14.2.tar.gz" ];then
-        info_echo "开始下载nginx-1.14.2.tar.gz"
-        wget -P /usr/local/src https://nginx.org/download/nginx-1.14.2.tar.gz
-        check_success "nginx-1.14.2.tar.gz已下载至/usr/local/src目录"
+    if [ ! -f "/usr/local/src/nginx-${nginx_version}.tar.gz" ];then
+        info_echo "开始下载nginx-${nginx_version}.tar.gz"
+        wget -P /usr/local/src https://nginx.org/download/nginx-${nginx_version}.tar.gz
+        check_success "nginx-${nginx_version}.tar.gz已下载至/usr/local/src目录"
     else
-        info_echo "nginx-1.14.2.tar.gz已存在,不需要下载"
+        info_echo "nginx-${nginx_version}.tar.gz已存在,不需要下载"
     fi
-    if [ ! -f "/usr/local/src/php-7.2.13.tar.gz" ];then
-        info_echo "开始下载php-7.2.13.tar.gz"
-        wget -P /usr/local/src http://cn2.php.net/distributions/php-7.2.13.tar.gz
-        check_success "php-7.2.13.tar.gz已下载至/usr/local/src目录"
+    if [ ! -f "/usr/local/src/php-${php_version}.tar.gz" ];then
+        info_echo "开始下载php-${php_version}.tar.gz"
+        wget -P /usr/local/src http://cn2.php.net/distributions/php-${php_version}.tar.gz
+        check_success "php-${php_version}.tar.gz已下载至/usr/local/src目录"
     else
-        info_echo "php-7.2.13.tar.gz已存在,不需要下载"
+        info_echo "php-${php_version}.tar.gz已存在,不需要下载"
     fi
     
     
-    if [ ! -f "/usr/local/src/zabbix-4.0.2.tar.gz" ];then
-        info_echo "开始下载zabbix-4.0.2.tar.gz"
-        wget -P /usr/local/src https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/4.0.2/zabbix-4.0.2.tar.gz
-        check_success "zabbix-4.0.2.tar.gz已下载至/usr/local/src目录"
+    if [ ! -f "/usr/local/src/zabbix-${zabbix_server_version}.tar.gz" ];then
+        info_echo "开始下载zabbix-${zabbix_server_version}.tar.gz"
+        wget -P /usr/local/src https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
+        check_success "zabbix-${zabbix_server_version}.tar.gz已下载至/usr/local/src目录"
     else
-        info_echo "zabbix-4.0.2.tar.gz已存在,不需要下载"
+        info_echo "zabbix-${zabbix_server_version}.tar.gz已存在,不需要下载"
     fi
     
     if [ ! -f "/usr/local/src/jdk-8u131-linux-x64.tar.gz" ];then
@@ -103,13 +111,13 @@ function download_install_package(){
 
 function install_php(){
 
-    info_echo "开始安装php-7.2.13"
+    info_echo "开始安装php-${php_version}"
     sleep 2s
     groupadd php-fpm && useradd -s /sbin/nologin -g php-fpm -M php-fpm
     groupadd zabbix &&  useradd -g zabbix zabbix
     cd /usr/local/src
-    tar xvf /usr/local/src/php-7.2.13.tar.gz
-    cd /usr/local/src/php-7.2.13
+    tar xvf /usr/local/src/php-${php_version}.tar.gz
+    cd /usr/local/src/php-${php_version}
     ./configure \
     --prefix=/usr/local/php \
     --with-config-file-path=/usr/local/php/etc \
@@ -156,15 +164,15 @@ function install_php(){
     --with-fpm-group=php-fpm \
     --with-fpm-systemd \
     --disable-fileinfo
-    check_exit "configure php-7.2.13失败"
+    check_exit "configure php-${php_version}失败"
     make && make install
-    check_exit "make php-7.2.13失败"
+    check_exit "make php-${php_version}失败"
 
-    info_echo "开始配置php-7.2.13"
+    info_echo "开始配置php-${php_version}"
 
-    cp /usr/local/src/php-7.2.13/php.ini-production /usr/local/php/etc/php.ini && cd /usr/local/php/etc && cp php-fpm.conf.default php-fpm.conf
+    cp /usr/local/src/php-${php_version}/php.ini-production /usr/local/php/etc/php.ini && cd /usr/local/php/etc && cp php-fpm.conf.default php-fpm.conf
     cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
-    cp /usr/local/src/php-7.2.13/sapi/fpm/php-fpm.service /usr/lib/systemd/system
+    cp /usr/local/src/php-${php_version}/sapi/fpm/php-fpm.service /usr/lib/systemd/system
 
     sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/g" /usr/local/php/etc/php.ini
     sed -i "s#`grep max_execution_time /usr/local/php/etc/php.ini`#max_execution_time = 300#g" /usr/local/php/etc/php.ini
@@ -191,15 +199,15 @@ function install_php(){
 }
 function install_nginx(){
 
-    info_echo "开始安装nginx-1.14.2"
+    info_echo "开始安装nginx-${nginx_version}"
     sleep 2s
     useradd nginx -s /sbin/nologin -M
-    cd /usr/local/src && tar xvf nginx-1.14.2.tar.gz
-    cd nginx-1.14.2 && ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-http_realip_module --with-http_stub_status_module --with-http_ssl_module --with-http_flv_module --with-http_gzip_static_module --with-cc-opt=-O3 --with-stream
-    check_exit "configure nginx-1.14.2失败"
+    cd /usr/local/src && tar xvf nginx-${nginx_version}.tar.gz
+    cd nginx-${nginx_version} && ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-http_realip_module --with-http_stub_status_module --with-http_ssl_module --with-http_flv_module --with-http_gzip_static_module --with-cc-opt=-O3 --with-stream
+    check_exit "configure nginx-${nginx_version}失败"
     make && make install
-    check_exit "make nginx-1.14.2失败"
-    info_echo "开始配置nginx-1.14.2"
+    check_exit "make nginx-${nginx_version}失败"
+    info_echo "开始配置nginx-${nginx_version}"
     cp /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.bak
     echo "" >/usr/local/nginx/conf/nginx.conf
     mkdir -p /usr/local/nginx/conf/servers && mkdir -p /data/logs/nginx-zabbix && mkdir -p /data/home/www/zabbix
@@ -326,11 +334,11 @@ EOF
 
 function install_zabbix(){
 
-    info_echo "开始安装zabbix-4.0.2"
+    info_echo "开始安装zabbix-${zabbix_server_version}"
     sleep 2s
     yum install OpenIPMI-devel libevent-devel net-snmp-devel -y
-    cd /usr/local/src/ && tar xvf zabbix-4.0.2.tar.gz
-        cd /usr/local/src/zabbix-4.0.2
+    cd /usr/local/src/ && tar xvf zabbix-${zabbix_server_version}.tar.gz
+    cd /usr/local/src/zabbix-${zabbix_server_version}
     ./configure \
     --prefix=/usr/local/zabbix \
     --enable-server --enable-agent \
@@ -339,14 +347,14 @@ function install_zabbix(){
     --with-libcurl --with-libxml2 \
     --with-openipmi \
     --enable-proxy
-    check_exit "configure zabbix-4.0.2失败"
+    check_exit "configure zabbix-${zabbix_server_version}失败"
     make && make install
-    check_exit "make zabbix-4.0.2失败"
-    info_echo "开始配置zabbix-4.0.2"
-    cp -R /usr/local/src/zabbix-4.0.2/frontends/php/* /data/home/www/zabbix
+    check_exit "make zabbix-${zabbix_server_version}失败"
+    info_echo "开始配置zabbix-${zabbix_server_version}"
+    cp -R /usr/local/src/zabbix-${zabbix_server_version}/frontends/php/* /data/home/www/zabbix
     chown -R zabbix.zabbix /data/home/www/zabbix
     chown -R zabbix.zabbix /usr/local/zabbix
-    cp /usr/local/src/zabbix-4.0.2/misc/init.d/fedora/core5/* /etc/init.d/
+    cp /usr/local/src/zabbix-${zabbix_server_version}/misc/init.d/fedora/core5/* /etc/init.d/
     sed -i "s#/usr/local/sbin/zabbix_server#/usr/local/zabbix/sbin/zabbix_server#g" /etc/init.d/zabbix_server
     sed -i "s#/usr/local/sbin/zabbix_agentd#/usr/local/zabbix/sbin/zabbix_agentd#g" /etc/init.d/zabbix_agentd
     cp /usr/local/zabbix/etc/zabbix_server.conf /usr/local/zabbix/etc/zabbix_server.conf.bak
@@ -363,9 +371,9 @@ Timeout=30
 EOF
 
     info_echo "开始导入mysql数据"
-    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-4.0.2/database/mysql/schema.sql 
-    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-4.0.2/database/mysql/images.sql
-    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-4.0.2/database/mysql/data.sql 
+    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/schema.sql 
+    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/images.sql
+    mysql -uzabbix -pzabbix zabbix < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/data.sql 
 
     info_echo "开始启动zabbix_server"
     sleep 2s
