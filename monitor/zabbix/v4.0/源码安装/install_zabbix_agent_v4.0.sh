@@ -105,7 +105,7 @@ EnableRemoteCommands=1
 UnsafeUserParameters=1
 HostnameItem=system.run[echo $(hostname)]
 HostMetadataItem=system.uname
-Include=/etc/zabbix/zabbix_agentd.d/*.conf
+Include=/etc/zabbix/zabbix_agentd.conf.d/*.conf
 EOF
 
     chmod +x /etc/init.d/zabbix_agentd
