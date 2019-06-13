@@ -56,7 +56,7 @@ function init_servers(){
 function install_package(){
 
     info_echo "开始安装系统必备依赖包"
-    yum install ntpdate gcc gcc-c++ wget lsof lrzsz -y
+    yum install -y ntpdate gcc gcc-c++ wget lsof lrzsz mysql-devel
 
 }
 
