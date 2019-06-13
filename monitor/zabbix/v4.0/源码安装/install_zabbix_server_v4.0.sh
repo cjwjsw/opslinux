@@ -49,11 +49,11 @@ function init_servers(){
     info_echo "更换阿里源"
     yum install wget -y
     cp /etc/yum.repos.d/* /tmp
-    rm -f /etc/yum.repos.d/*
+    #rm -f /etc/yum.repos.d/*
     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
     wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-    yum clean all
-    yum makecache
+    #yum clean all
+    #yum makecache
 
 }
 
