@@ -97,7 +97,8 @@ function install_mysql(){
     info_echo "开始创建zabbix账号和授权"
     sleep 2s
     mysql -uroot -e "create database zabbix_proxy character set utf8;" 
-    mysql -uroot -e "grant all privileges on zabbix_proxy.* to zabbix@localhost identified by 'zabbix';"
+    #mysql -uroot -e "grant all privileges on zabbix_proxy.* to zabbix@localhost identified by 'zabbix';"
+    mysql -uroot -e "grant all privileges on zabbix_proxy.* to zabbix@"%" identified by 'zabbix';"
     mysql -uroot -e "flush privileges;"
     mysql -uroot -e "show databases;"
     
