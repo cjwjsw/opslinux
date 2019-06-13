@@ -45,7 +45,7 @@ function init_servers(){
     info_echo "更换阿里源"
     yum install wget -y
     cp /etc/yum.repos.d/* /tmp
-    rm -f /etc/yum.repos.d/*
+    #rm -f /etc/yum.repos.d/*
     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
     wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
     yum clean all
@@ -56,7 +56,7 @@ function init_servers(){
 function install_package(){
 
     info_echo "开始安装系统必备依赖包"
-    yum install -y ntpdate gcc gcc-c++ wget lsof lrzsz mysql-devel
+    yum install -y ntpdate gcc gcc-c++ wget lsof lrzsz mysql-devel curl-devel
 
 }
 
