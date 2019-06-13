@@ -138,6 +138,40 @@ DataSenderFrequency=60
 PidFile=/tmp/zabbix_proxy.pid
 EOF
 
+cat <<"EOF" > /etc/init.d/zabbix_proxy
+#!/bin/bash
+
+#processname: zabbix_proxy
+
+case $1 in
+       start)
+              echo -n "Starting zabbix_proxy"
+              /usr/local/zabbix_proxy/sbin/zabbix_proxy
+              echo " done"
+       ;;
+
+       stop)
+              echo -n "Stopping zabbix_proxy"
+              killall -9 zabbix_proxy
+              echo " done"
+       ;;
+
+        restart)
+                $0 stop
+                $0 start
+       ;;
+
+       show)
+              ps -aux|grep zabbix_proxy
+       ;;
+
+       *)
+              echo -n "Usage: $0 {start|stop|restart|show}"
+       ;;
+
+esac
+EOF
+
     info_echo "开始导入mysql数据"
     mysql -uzabbix -pzabbix zabbix_proxy < /usr/local/src/zabbix-${zabbix_server_version}/database/mysql/schema.sql 
 
