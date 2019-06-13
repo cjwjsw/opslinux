@@ -110,7 +110,7 @@ EOF
     chmod +x /etc/init.d/zabbix_agentd
     /etc/init.d/zabbix_agentd restart
     STAT=`echo $?`
-    PORT=`netstat -lntup|grep zabbix_proxy|wc -l`
+    PORT=`netstat -lntup|grep zabbix_agentd|wc -l`
     if [ $STAT -eq 0 ] && [ $PORT -eq 1 ];then
         info_echo "zabbix_agentd启动成功"
     else
