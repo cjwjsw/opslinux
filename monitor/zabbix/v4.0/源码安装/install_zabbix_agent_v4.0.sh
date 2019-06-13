@@ -72,7 +72,6 @@ function download_install_package(){
 
 }
 
-
 function install_zabbix(){
 
     info_echo "开始安装zabbix-${zabbix_server_version}-agent"
