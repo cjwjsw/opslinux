@@ -177,7 +177,8 @@ EOF
 
     info_echo "开始启动zabbix_proxy"
     sleep 2s
-    /usr/local/zabbix_proxy/sbin/zabbix_proxy -c /usr/local/zabbix_proxy/etc/zabbix_proxy.conf
+    chmod +x /etc/init.d/zabbix_proxy
+    /etc/init.d/zabbix_proxy restart
     STAT=`echo $?`
     PORT=`netstat -lntup|grep zabbix_proxy|wc -l`
     if [ $STAT -eq 0 ] && [ $PORT -eq 1 ];then
