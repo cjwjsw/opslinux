@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#安装zabbix4.0脚本
+#安装zabbix4.0_proxy脚本
 
 err_echo(){
     echo -e "\033[41;37m[Error]: $1 \033[0m"
@@ -96,7 +96,6 @@ function install_mysql(){
     
 }
 
-
 function install_zabbix(){
 
     info_echo "开始安装zabbix-${zabbix_server_version}-proxy"
@@ -109,26 +108,37 @@ function install_zabbix(){
     --prefix=/usr/local/zabbix_proxy \
     --enable-proxy --enable-agent \
     --with-mysql --with-net-snmp \
-    --with-libcurl \
+    --with-libcurl 
     check_exit "configure zabbix-${zabbix_server_version}-proxy失败"
     make && make install
     check_exit "make zabbix-${zabbix_server_version}-proxy失败"
     info_echo "开始配置zabbix-${zabbix_server_version}-proxy"
 
 cat <<"EOF" > /usr/local/zabbix_proxy/etc/zabbix_proxy.conf
+ProxyMode=0
+Server=192.168.56.12
+ServerPort=10051
+Hostname=zbx_pxy_01
 DBHost=localhost
-LogFile=/var/logs/zabbix_proxy.log
 DBName=zabbix_proxy
 DBUser=zabbix
 DBPassword=zabbix
-CacheSize=100M
- 
-HeartbeatFrequency=60
-DataSenderFrequency=1
-StartPingers=50
-StartDiscoverers=30
-StartPollers=300
-DataSenderFrequency=1
+DebugLevel=4
+ConfigFrequency=600
+DataSenderFrequency=5
+StartPollers=10
+StartPollersUnreachable=5
+StartTrappers=20
+StartPingers=20
+StartDiscoverers=20
+HousekeepingFrequency=1
+CacheSize=128M
+StartDBSyncers=10
+HistoryCacheSize=128M
+HistoryTextCacheSize=64M
+FpingLocation=/usr/sbin/fping
+LogSlowQueries=3000
+LogFile=/var/logs/zabbix_proxy.log
 EOF
 
     info_echo "开始导入mysql数据"
@@ -145,7 +155,6 @@ EOF
         err_echo "zabbix_proxy,请检查"
     fi
 }
-
 
 function main(){
 
