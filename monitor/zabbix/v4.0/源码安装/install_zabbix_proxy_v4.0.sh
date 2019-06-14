@@ -150,39 +150,78 @@ EOF
 
 cat <<"EOF" > /etc/init.d/zabbix_proxy
 #!/bin/bash
+#
+#       /etc/rc.d/init.d/zabbix_proxy
+#
+# Starts the zabbix_proxy daemon
+#
+# chkconfig: - 95 5
+# description: Zabbix Monitoring Proxy
+# processname: zabbix_proxy
+# pidfile: /tmp/zabbix_proxy.pid
 
-#processname: zabbix_proxy
+# Modified for Zabbix 2.0.0
+# May 2012, Zabbix SIA
 
 # Source function library.
+
 . /etc/init.d/functions
 
-case $1 in
-       start)
-              echo -n "Starting zabbix_proxy"
-              /usr/local/zabbix_proxy/sbin/zabbix_proxy
-              echo " done"
-       ;;
+RETVAL=0
+prog="Zabbix Proxy"
+ZABBIX_BIN="/usr/local/sbin/zabbix_proxy"
 
-       stop)
-              echo -n "Stopping zabbix_proxy"
-              killall -9 zabbix_proxy
-              echo " done"
-       ;;
+if [ ! -x ${ZABBIX_BIN} ] ; then
+        echo -n "${ZABBIX_BIN} not installed! "
+        # Tell the user this has skipped
+        exit 5
+fi
 
-        restart)
-                $0 stop
-                $0 start
-       ;;
+start() {
+        echo -n $"Starting $prog: "
+        daemon $ZABBIX_BIN
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && touch /var/lock/subsys/zabbix_proxy
+        echo
+}
 
-       show)
-              ps -aux|grep zabbix_proxy
-       ;;
+stop() {
+        echo -n $"Stopping $prog: "
+        killproc $ZABBIX_BIN
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/zabbix_proxy
+        echo
+}
 
-       *)
-              echo -n "Usage: $0 {start|stop|restart|show}"
-       ;;
-
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  reload|restart)
+        stop
+        sleep 10
+        start
+        RETVAL=$?
+        ;;
+  condrestart)
+        if [ -f /var/lock/subsys/zabbix_proxy ]; then
+            stop
+            start
+        fi
+        ;;
+  status)
+        status $ZABBIX_BIN
+        RETVAL=$?
+        ;;
+  *)
+        echo $"Usage: $0 {condrestart|start|stop|restart|reload|status}"
+        exit 1
 esac
+
+exit $RETVAL
 EOF
 
     info_echo "开始导入mysql数据"
