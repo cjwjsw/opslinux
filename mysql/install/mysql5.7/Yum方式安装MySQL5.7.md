@@ -96,6 +96,7 @@ sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_B
 symbolic-links=0
 innodb_buffer_pool_size=4G
 innodb_flush_log_at_trx_commit=2
+wait_timeout=1800
 
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
