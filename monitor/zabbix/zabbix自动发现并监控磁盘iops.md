@@ -1,4 +1,4 @@
-一、安装依赖(simplejson)
+# 一、安装依赖(simplejson)
 ```
 cd /tmp/
 wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
