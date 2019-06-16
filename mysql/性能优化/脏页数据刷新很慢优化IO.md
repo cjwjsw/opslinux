@@ -18,6 +18,18 @@ mysql> show variables like 'innodb_buffer_pool%';
 | innodb_buffer_pool_size             | 8589934592     |
 +-------------------------------------+----------------+
 10 rows in set (0.00 sec)
+
+
+mysql> show variables like 'innodb_lru_scan_depth%';
++-----------------------+-------+
+| Variable_name         | Value |
++-----------------------+-------+
+| innodb_lru_scan_depth | 1024  |
++-----------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> SET GLOBAL innodb_lru_scan_depth=256;
+Query OK, 0 rows affected (0.00 sec)
 ```
 
 参考文档：
