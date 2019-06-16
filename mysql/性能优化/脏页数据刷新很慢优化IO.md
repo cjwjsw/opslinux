@@ -32,6 +32,24 @@ mysql> SET GLOBAL innodb_lru_scan_depth=256;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
+# 二、修改默认超时时间
+```
+#在线修改
+mysql> set  global wait_timeout=1800;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show global variables like 'wait_timeout';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| wait_timeout  | 1800  |
++---------------+-------+
+1 row in set (0.01 sec)
+
+#配置文件修改
+wait_timeout=1800
+```
+
 参考文档：
 
 https://zeven0707.github.io/2018/08/21/InnoDB-page_cleaner-1000ms%20intended%20loop%20took%20xxxms/  [Mysql] InnoDB：page_cleaner：1000ms intended loop took xxxms
