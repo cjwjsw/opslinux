@@ -1,4 +1,24 @@
+```
+mysql> SET GLOBAL innodb_buffer_pool_size = 8589934592;
+Query OK, 0 rows affected (0.63 sec)
 
+mysql> show variables like 'innodb_buffer_pool%';
++-------------------------------------+----------------+
+| Variable_name                       | Value          |
++-------------------------------------+----------------+
+| innodb_buffer_pool_chunk_size       | 134217728      |
+| innodb_buffer_pool_dump_at_shutdown | ON             |
+| innodb_buffer_pool_dump_now         | OFF            |
+| innodb_buffer_pool_dump_pct         | 25             |
+| innodb_buffer_pool_filename         | ib_buffer_pool |
+| innodb_buffer_pool_instances        | 8              |
+| innodb_buffer_pool_load_abort       | OFF            |
+| innodb_buffer_pool_load_at_startup  | ON             |
+| innodb_buffer_pool_load_now         | OFF            |
+| innodb_buffer_pool_size             | 8589934592     |
++-------------------------------------+----------------+
+10 rows in set (0.00 sec)
+```
 
 参考文档：
 
