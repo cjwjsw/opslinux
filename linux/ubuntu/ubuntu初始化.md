@@ -36,6 +36,19 @@ sudo ufw allow ssh
 sudo ufw enable
 ```
 
+3、Linux系统，切换用户后只显示$问题
+```
+useradd www -m -d /home/www
+```
+
+4、Linux系统，切换用户后只显示$问题
+```
+将sh改成bash就可以了
+
+www:x:1001:1001::/home/www:/bin/bash
+```
+
+
 # 二、修改主机名
 
 ```
