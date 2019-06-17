@@ -79,3 +79,5 @@ useradd www -m
 参考文档：
 
 https://blog.csdn.net/longhr/article/details/51669449
+
+https://blog.csdn.net/qq_25844137/article/details/80841451  Linux系统，切换用户后只显示$问题
