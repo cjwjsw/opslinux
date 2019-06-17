@@ -57,6 +57,10 @@ cat > /etc/hostname << EOF
 hk-ubuntu-188
 EOF
 hostname hk-ubuntu-188
+
+
+useradd www -m
+
 ```
 
 参考文档：
