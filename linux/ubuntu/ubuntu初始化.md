@@ -44,6 +44,21 @@ https://www.cnblogs.com/zeusmyth/p/6231350.html
 vim /etc/hostname
 ```
 
+
+# 三、脚本
+```
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install openssh-server ssh -y
+sudo ufw allow ssh
+sudo ufw enable
+sudo ufw status
+cat > /etc/hostname << EOF
+hk-ubuntu-188
+EOF
+hostname hk-ubuntu-188
+```
+
 参考文档：
 
 https://blog.csdn.net/longhr/article/details/51669449
