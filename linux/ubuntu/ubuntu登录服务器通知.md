@@ -4,7 +4,7 @@
 安装nali
 ```
 apt-get update
-apt-get install unzip make gcc -y
+apt-get install unzip make gcc gawk -y
 
 
 cd /usr/local/src/
