@@ -1,9 +1,9 @@
  # Shell脚本监控服务器pts登录情况记录为日志并钉钉通知
  
-## 一、Linux下用nali查询IP地址归属地：
+## 一、Ubuntu下用nali查询IP地址归属地：
 安装nali
 ```
-apt-get install unzip -y
+apt-get install unzip make gcc -y
 cd /usr/local/src/
 wget https://github.com/dzxx36gyy/nali-ipip/archive/master.zip
 unzip master.zip
