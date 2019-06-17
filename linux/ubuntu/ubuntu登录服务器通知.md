@@ -4,6 +4,8 @@
 安装nali
 ```
 apt-get install unzip make gcc -y
+
+
 cd /usr/local/src/
 wget https://github.com/dzxx36gyy/nali-ipip/archive/master.zip
 unzip master.zip
