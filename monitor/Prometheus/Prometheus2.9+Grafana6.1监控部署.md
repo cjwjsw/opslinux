@@ -2,6 +2,7 @@
 
 1、下载及解压安装包
 ```
+cd /usr/local/src/
 wget https://github.com/prometheus/prometheus/releases/download/v2.9.1/prometheus-2.9.1.linux-amd64.tar.gz
 
 mkdir -p /data0/prometheus 
