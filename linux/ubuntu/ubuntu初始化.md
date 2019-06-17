@@ -1,3 +1,4 @@
+# 一、软件更新
 ```
 1、升级系统补丁，注意顺序不可颠倒，也不可省略update
 
@@ -113,6 +114,28 @@ EOF
 
 
 systemctl restart sshd
+```
+
+# 五、防火墙配置
+```
+sudo apt-get install -y ufw
+sudo ufw reset
+
+sudo ufw allow 22/tcp
+sudo ufw allow 33389/tcp
+sudo ufw allow 9100/tcp
+sudo ufw allow from 192.168.52.0/24
+sudo ufw allow from 23.244.63.0/24 to any port 8900
+sudo ufw allow from 23.244.63.0/24 to any port 8331
+sudo ufw allow from 23.244.63.0/24 to any port 8336
+sudo ufw allow from 23.244.63.0/24 to any port 12170
+sudo ufw default deny
+sudo ufw enable
+sudo ufw reload
+
+
+sudo ufw status
+
 ```
 
 参考文档：
