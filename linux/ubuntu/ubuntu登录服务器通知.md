@@ -3,6 +3,7 @@
 ## 一、Linux下用nali查询IP地址归属地：
 安装nali
 ```
+apt-get install unzip -y
 cd /usr/local/src/
 wget https://github.com/dzxx36gyy/nali-ipip/archive/master.zip
 unzip master.zip
