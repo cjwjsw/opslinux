@@ -3,6 +3,7 @@
 ## 一、Ubuntu下用nali查询IP地址归属地：
 安装nali
 ```
+apt-get update
 apt-get install unzip make gcc -y
 
 
