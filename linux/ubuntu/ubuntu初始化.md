@@ -72,7 +72,7 @@ EOF
 hostname hk-ubuntu-188
 
 
-useradd www -m
+useradd www -m -d /home/www
 
 ```
 
