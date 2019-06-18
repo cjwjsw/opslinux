@@ -1,3 +1,5 @@
+自动发现并监控redis实例
+
 参考资料：
 
 https://github.com/pavelnemirovsky/zabbix-redis-template
