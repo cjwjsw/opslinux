@@ -1,8 +1,10 @@
 # 一、下载安装二进制包
-```
-从 github 发布地址下载最新的 binary 包：https://github.com/github/gh-ost/releases
 
-https://github.com/github/gh-ost/releases
+从 github 发布地址下载最新的 binary 包：https://github.com/github/gh-ost/releases
+```
+cd /usr/local/src
+export VER="1.0.48"
+wget https://github.com/github/gh-ost/releases/download/v${VER}/gh-ost-${VER}-1.x86_64.rpm
 
 rpm -Uvh gh-ost-1.0.48-1.x86_64.rpm
 
