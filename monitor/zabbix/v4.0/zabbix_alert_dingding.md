@@ -7,10 +7,11 @@ import requests,json,sys,os,datetime
 webhook="https://oapi.dingtalk.com/robot/send?access_token=cb45835cbcfdb378d3bc2b82f172a47e8e9cd08c1f439192af19e96e936a1338"
 user=sys.argv[1]
 text=sys.argv[3]
+
 data={
     "msgtype": "text",
     "text": {
-        "content": text
+        "content": text.replace('\r\n','\n')
     },
     "at": {
         "atMobiles": [
@@ -19,8 +20,10 @@ data={
         "isAtAll": False
     }
 }
-headers = {'Content-Type': 'application/json'}
+
+headers = {'Content-Type': 'application/json;charset=utf-8'}
 x=requests.post(url=webhook,data=json.dumps(data),headers=headers)
+
 if os.path.exists("/tmp/zabbix_dingding.log"):
     f=open("/tmp/zabbix_dingding.log","a+")
 else:
