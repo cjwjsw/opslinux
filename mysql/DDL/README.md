@@ -25,6 +25,10 @@ mysql> set global binlog_format="ROW";
 ```
 
 
+# 三、执行变更
+```
+gh-ost --user="root" --password="123456" --host=127.0.0.1  --database="change" --table="app_bandwidth"  --alter="add last_repair_time INT(11) NOT NULL DEFAULT '0' COMMENT 'repair时间'" --allow-on-master --initially-drop-ghost-table --execute
+```
 参考文档：
 
 https://www.cnblogs.com/zhoujinyi/p/9187421.html  
