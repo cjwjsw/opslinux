@@ -35,4 +35,8 @@ Rows matched: 1  Changed: 1  Warnings: 0
 ```
 
 
-参考资料：https://www.centos.bz/2017/08/zabbix-forget-password-reset/  ZABBIX忘记登录密码重置方法
+参考资料：
+
+https://www.centos.bz/2017/08/zabbix-forget-password-reset/  ZABBIX忘记登录密码重置方法
+
+https://www.cnblogs.com/sky-k/p/9367186.html  Zabbix编译安装(全)
