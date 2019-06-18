@@ -3,15 +3,17 @@
 1、下载及解压安装包
 ```
 cd /usr/local/src/
-wget https://github.com/prometheus/prometheus/releases/download/v2.9.1/prometheus-2.9.1.linux-amd64.tar.gz
+
+export VER="2.10.0"
+wget https://github.com/prometheus/prometheus/releases/download/v${VER}/prometheus-${VER}.linux-amd64.tar.gz
 
 mkdir -p /data0/prometheus 
 groupadd prometheus
 useradd -g prometheus prometheus -d /data0/prometheus
  
-tar -xvf prometheus-2.9.1.linux-amd64.tar.gz
+tar -xvf prometheus-${VER}.linux-amd64.tar.gz
 cd /usr/local/src/
-mv prometheus-2.9.1.linux-amd64/* /data0/prometheus/
+mv prometheus-${VER}.linux-amd64/* /data0/prometheus/
  
 cd /data0/prometheus/
 mkdir -p {data,config,logs,bin} 
