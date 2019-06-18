@@ -2,11 +2,12 @@
 ```
 cd /usr/local/src/
 
-wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.11.0/mysqld_exporter-0.11.0.linux-amd64.tar.gz
+export VER="0.11.0"
+wget https://github.com/prometheus/mysqld_exporter/releases/download/v${VER}/mysqld_exporter-${VER}.linux-amd64.tar.gz
 
-tar -zxvf mysqld_exporter-0.11.0.linux-amd64.tar.gz
+tar -zxvf mysqld_exporter-${VER}.linux-amd64.tar.gz
 
-mv mysqld_exporter-0.11.0.linux-amd64 /data0/prometheus/mysqld_exporter
+mv mysqld_exporter-${VER}.linux-amd64 /data0/prometheus/mysqld_exporter
 
 chown -R prometheus.prometheus /data0/prometheus
 
