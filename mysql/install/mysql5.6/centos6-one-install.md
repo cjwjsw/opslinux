@@ -164,6 +164,8 @@ pid-file=/var/run/mysqld/mysqld.pid
 #初始化
 mysqld --defaults-file=/etc/my.cnf --initialize-insecure --user=mysql
 
+mysql_install_db --user=mysql --datadir=/usr/local/mysql
+
 /etc/init.d/mysqld start
 /etc/init.d/mysqld stop
 /etc/init.d/mysqld restart
