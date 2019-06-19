@@ -155,7 +155,35 @@ ufw allow 10050/tcp
 
 https://grafana.com/plugins/alexanderzobnin-zabbix-app/installation
 ```
-使用grafana-cli工具安装
+1、下载及安装
+
+cd /usr/local/src/
+
+export VER="6.2.4"
+wget https://dl.grafana.com/oss/release/grafana-${VER}-1.x86_64.rpm
+yum localinstall grafana-${VER}-1.x86_64.rpm
+
+2、启动服务
+
+systemctl daemon-reload
+systemctl enable grafana-server.service
+systemctl restart grafana-server.service
+
+3、访问WEB界面
+
+默认账号/密码：admin/admin http://192.168.56.11:3000
+
+4、Grafana添加数据源
+
+在登陆首页，点击"Configuration-Data Sources"按钮，跳转到添加数据源页面，配置如下：
+Name: prometheus
+Type: prometheus
+URL: http://192.168.56.11:9090
+Access: Server
+取消Default的勾选，其余默认，点击"Add"，如下：
+
+
+5、使用grafana-cli工具安装
 
 获取可用插件列表
 grafana-cli plugins list-remote
