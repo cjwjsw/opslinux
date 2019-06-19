@@ -167,3 +167,6 @@ if __name__ == "__main__":
                     print str(e) 
 
 ```
+# 接口
+
+  ![cmdb_api](https://github.com/Lancger/opslinux/blob/master/images/cmdb_api.png)
