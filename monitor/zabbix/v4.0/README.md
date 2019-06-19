@@ -161,7 +161,7 @@ cd /usr/local/src/
 
 export VER="6.2.4"
 wget https://dl.grafana.com/oss/release/grafana-${VER}-1.x86_64.rpm
-yum localinstall grafana-${VER}-1.x86_64.rpm
+yum localinstall -y grafana-${VER}-1.x86_64.rpm
 
 2、启动服务
 
