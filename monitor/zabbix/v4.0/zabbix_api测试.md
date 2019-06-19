@@ -14,3 +14,7 @@ curl -s -X POST -H 'Content-Type:application/json' -d '{
 结果
 {"jsonrpc":"2.0","result":"3bbbf0714fec0ec75cc35d65277b88f2","id":1}
 ```
+
+参考资料：
+
+https://www.cnblogs.com/Peter2014/p/7657480.html  
