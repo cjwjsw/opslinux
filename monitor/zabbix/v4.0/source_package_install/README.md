@@ -66,6 +66,7 @@ cat > /opt/zabbix/init/zabbix_agentd << \EOF
 
 RETVAL=0
 prog="Zabbix Agent"
+conf="/opt/zabbix/etc/zabbix_agentd.conf"
 ZABBIX_BIN="/opt/zabbix/sbin/zabbix_agentd"
 lockfile="/opt/zabbix/var/run/lock/subsys/zabbix_agentd"
 
@@ -77,7 +78,7 @@ fi
 
 start() {
         echo -n $"Starting $prog: "
-        daemon $ZABBIX_BIN
+        daemon --user=zabbix $ZABBIX_BIN -c $conf
         RETVAL=$?
         [ $RETVAL -eq 0 ] && touch $lockfile
         echo
