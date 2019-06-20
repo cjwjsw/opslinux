@@ -26,8 +26,8 @@ cd /tmp && wget -O /tmp/install_zabbix_agent_v4.0.sh https://raw.githubuserconte
 
 #一步一步安装
 
-yum install -y OpenIPMI-devel libevent-devel net-snmp-devel
 zabbix_server_version="4.2.1"
+yum install -y OpenIPMI-devel libevent-devel net-snmp-devel
 rm -rf /var/spool/mail/zabbix
 groupadd zabbix && useradd -M -g zabbix -s /sbin/nologin zabbix
 cd /usr/local/src/
