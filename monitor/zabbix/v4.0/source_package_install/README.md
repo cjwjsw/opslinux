@@ -25,11 +25,118 @@ cd /tmp && wget -O /tmp/install_zabbix_agent_v4.0.sh https://raw.githubuserconte
 
 
 #一步一步安装
+
+yum install -y OpenIPMI-devel libevent-devel net-snmp-devel
 zabbix_server_version="4.2.1"
 rm -rf /var/spool/mail/zabbix
 groupadd zabbix && useradd -M -g zabbix -s /sbin/nologin zabbix
 cd /usr/local/src/
 wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
+cd zabbix-${zabbix_server_version}
+./configure \
+--prefix=/opt/zabbix \
+--sysconfdir=/opt/zabbix/etc/ \
+--enable-agent
+make && make install
+
+mkdir -p /opt/zabbix/var/run/log/
+mkdir -p /opt/zabbix/var/run/lock/subsys/
+
+cat > /opt/zabbix/init/zabbix_agentd << \EOF
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/zabbix_agentd
+#
+# Starts the zabbix_agentd daemon
+#
+# chkconfig: - 95 5
+# description: Zabbix Monitoring Agent
+# processname: zabbix_agentd
+# pidfile: /tmp/zabbix_agentd.pid
+
+# Modified for Zabbix 2.0.0
+# May 2012, Zabbix SIA
+
+# Source function library.
+
+. /etc/init.d/functions
+
+RETVAL=0
+prog="Zabbix Agent"
+ZABBIX_BIN="/opt/zabbix/sbin/zabbix_agentd"
+lockfile="/opt/zabbix/var/run/lock/subsys/zabbix_agentd"
+
+if [ ! -x ${ZABBIX_BIN} ] ; then
+        echo -n "${ZABBIX_BIN} not installed! "
+        # Tell the user this has skipped
+        exit 5
+fi
+
+start() {
+        echo -n $"Starting $prog: "
+        daemon $ZABBIX_BIN
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && touch $lockfile
+        echo
+}
+
+stop() {
+        echo -n $"Stopping $prog: "
+        killproc $ZABBIX_BIN
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && rm -f $lockfile
+        echo
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  reload|restart)
+        stop
+        sleep 10
+        start
+        RETVAL=$?
+        ;;
+  condrestart)
+        if [ -f $lockfile ]; then
+            stop
+            start
+        fi
+        ;;
+  status)
+        status $ZABBIX_BIN
+        RETVAL=$?
+        ;;
+  *)
+        echo $"Usage: $0 {condrestart|start|stop|restart|reload|status}"
+        exit 1
+esac
+
+exit $RETVAL
+EOF
+
+chmod +x /opt/zabbix/init/zabbix_agentd
+
+cat > /opt/zabbix/etc/zabbix_agentd.conf << \EOF
+PidFile=/opt/zabbix/var/run/zabbix_agentd.pid
+LogFile=/opt/zabbix/var/log/zabbix_agentd.log
+LogFileSize=0
+DebugLevel=4
+Server=192.168.56.12
+ServerActive=192.168.56.12
+Timeout=30
+EnableRemoteCommands=1
+UnsafeUserParameters=1
+HostnameItem=system.run[echo $(hostname)]
+HostMetadataItem=system.uname
+Include=/opt/zabbix/etc/zabbix_agentd.conf.d/*.conf
+EOF
+
+chown -R zabbix:zabbix /opt/zabbix/
 ```
 
 参考资料：
