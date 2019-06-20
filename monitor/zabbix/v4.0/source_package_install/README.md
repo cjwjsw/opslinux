@@ -22,6 +22,14 @@ SET PASSWORD = PASSWORD('123456');
 # 三、安装zabbix_agent
 ```
 cd /tmp && wget -O /tmp/install_zabbix_agent_v4.0.sh https://raw.githubusercontent.com/Lancger/opslinux/master/monitor/zabbix/v4.0/%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/install_zabbix_agent_v4.0.sh && chmod +x /tmp/install_zabbix_agent_v4.0.sh && sh /tmp/install_zabbix_agent_v4.0.sh
+
+
+#一步一步安装
+zabbix_server_version="4.2.1"
+rm -rf /var/spool/mail/zabbix
+groupadd zabbix && useradd -M -g zabbix -s /sbin/nologin zabbix
+cd /usr/local/src/
+wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
 ```
 
 参考资料：
