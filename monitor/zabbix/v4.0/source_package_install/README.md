@@ -160,6 +160,15 @@ EOF
 
 chown -R zabbix:zabbix /opt/zabbix/
 
+crontab_tmp="/tmp/crontab_tmp"
+crontab -l | grep -v "zabbix" | grep -v "# check zabbix_agentd" > $crontab_tmp
+newcron="*/5 * * * * /bin/bash /opt/zabbix/init/check_zabbix_agentd.sh >/dev/null 2>&1"
+echo "# check zabbix_agentd" >> $crontab_tmp
+echo "$newcron" >> $crontab_tmp
+chattr -i /var/spool/cron/root 
+crontab $crontab_tmp
+chattr +i /var/spool/cron/root
+
 /opt/zabbix/init/zabbix_agentd restart
 tail -100f /opt/zabbix/var/run/log/zabbix_agentd.log
 ```
