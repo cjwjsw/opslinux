@@ -43,7 +43,7 @@ make && make install
 mkdir -p /opt/zabbix/var/run/log/
 mkdir -p /opt/zabbix/var/run/lock/subsys/
 mkdir -p /opt/zabbix/init/
-touch /opt/zabbix/var/log/zabbix_agentd.log
+touch /opt/zabbix/var/run/log/zabbix_agentd.log
 
 cat > /opt/zabbix/init/zabbix_agentd << \EOF
 #!/bin/bash
@@ -126,7 +126,7 @@ chmod +x /opt/zabbix/init/zabbix_agentd
 
 cat > /opt/zabbix/etc/zabbix_agentd.conf << \EOF
 PidFile=/opt/zabbix/var/run/zabbix_agentd.pid
-LogFile=/opt/zabbix/var/log/zabbix_agentd.log
+LogFile=/opt/zabbix/var/run/log/zabbix_agentd.log
 LogFileSize=0
 DebugLevel=4
 Server=192.168.56.12
