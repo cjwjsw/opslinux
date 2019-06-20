@@ -32,6 +32,7 @@ rm -rf /var/spool/mail/zabbix
 groupadd zabbix && useradd -M -g zabbix -s /sbin/nologin zabbix
 cd /usr/local/src/
 wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/${zabbix_server_version}/zabbix-${zabbix_server_version}.tar.gz
+tar -zxvf zabbix-${zabbix_server_version}.tar.gz
 cd zabbix-${zabbix_server_version}
 ./configure \
 --prefix=/opt/zabbix \
