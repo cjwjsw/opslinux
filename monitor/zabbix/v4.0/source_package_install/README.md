@@ -42,6 +42,7 @@ make && make install
 
 mkdir -p /opt/zabbix/var/run/log/
 mkdir -p /opt/zabbix/var/run/lock/subsys/
+mkdir -p /opt/zabbix/init/
 
 cat > /opt/zabbix/init/zabbix_agentd << \EOF
 #!/bin/bash
