@@ -140,6 +140,24 @@ HostMetadataItem=system.uname
 Include=/opt/zabbix/etc/zabbix_agentd.conf.d/*.conf
 EOF
 
+cat > /opt/zabbix/init/check_zabbix_agentd.sh << \EOF
+#!/bin/bash
+ps -ef | grep -v grep | grep '/opt/zabbix/sbin/zabbix_agentd -c /opt/zabbix/etc/zabbix_agentd.conf' > /dev/null 2>&1
+
+check_ps_zabbix_agent=$?
+
+#确定zabbix_agentd是否存在，若返回0，zabbix_agentd正常，若返回1,则zabbix_agentd服务已停止
+killall -0 /opt/zabbix/sbin/zabbix_agentd
+
+check_respond=$?
+
+if [ ${check_ps_zabbix_agent} -ne 0 -o ${check_respond} -ne 0 ]
+then
+    killall -9 /opt/zabbix/sbin/zabbix_agentd
+    /opt/zabbix/init/zabbix_agentd restart
+fi
+EOF
+
 chown -R zabbix:zabbix /opt/zabbix/
 
 /opt/zabbix/init/zabbix_agentd restart
