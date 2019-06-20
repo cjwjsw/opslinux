@@ -158,6 +158,7 @@ then
 fi
 EOF
 
+chmod +x /opt/zabbix/init/check_zabbix_agentd.sh
 chown -R zabbix:zabbix /opt/zabbix/
 
 crontab_tmp="/tmp/crontab_tmp"
