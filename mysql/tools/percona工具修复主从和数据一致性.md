@@ -13,3 +13,8 @@ pt-table-checksum --replicate=percona.checksums --host=192.168.56.12 --user=root
 ```
 pt-table-sync --sync-to-master h=192.168.56.12,P=3306,u=root,p=123456 --databases=center --charset=utf8 --print  > diff.sql
 ```
+
+
+参考资料：
+
+https://www.ywnds.com/?p=4415  使用pt-table-checksum&pt-table-sync检查和修复主从数据一致性
