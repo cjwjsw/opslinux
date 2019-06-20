@@ -38,7 +38,7 @@ cd zabbix-${zabbix_server_version}
 --prefix=/opt/zabbix \
 --sysconfdir=/opt/zabbix/etc/ \
 --enable-agent
-make && make install
+make -j 4 && make install
 
 mkdir -p /opt/zabbix/var/run/log/
 mkdir -p /opt/zabbix/var/run/lock/subsys/
