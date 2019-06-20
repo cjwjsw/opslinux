@@ -137,6 +137,9 @@ Include=/opt/zabbix/etc/zabbix_agentd.conf.d/*.conf
 EOF
 
 chown -R zabbix:zabbix /opt/zabbix/
+
+/opt/zabbix/init/zabbix_agentd restart
+tail -100f /opt/zabbix/var/log/zabbix_agentd.log
 ```
 
 参考资料：
