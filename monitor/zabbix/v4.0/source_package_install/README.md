@@ -41,6 +41,7 @@ cd zabbix-${zabbix_server_version}
 make -j 4 && make install
 
 mkdir -p /opt/zabbix/var/run/log/
+mkdir -p /opt/zabbix/var/run/tmp/
 mkdir -p /opt/zabbix/var/run/lock/subsys/
 mkdir -p /opt/zabbix/init/
 touch /opt/zabbix/var/run/log/zabbix_agentd.log
