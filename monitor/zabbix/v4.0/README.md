@@ -34,8 +34,8 @@
 
 ### 1. Install Repository with MySQL database
     cd /tmp
-    version="4.2.1"
-    wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-${version}.el7.noarch.rpm
+    version="4.2-1"
+    wget https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-${version}.el7.noarch.rpm
     yum -y install zabbix-release-${version}.el7.noarch.rpm
 
 ### 2. 安装Zabbix server, frontend, agent
@@ -99,8 +99,8 @@
 Centos7系统
 ```
 cd /tmp
-version="4.2.1"
-wget https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-${version}.el7.noarch.rpm
+version="4.2-1"
+wget https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-${version}.el7.noarch.rpm
 yum -y install zabbix-release-${version}.el7.noarch.rpm
 
 yum -y install zabbix-agent
