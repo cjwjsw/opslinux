@@ -29,6 +29,11 @@ ss-panel-v3-mod一键前后端脚本暂时做下收藏。
 wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ss-go.sh && chmod +x ss-go.sh && bash ss-go.sh
 ```
 
+# 三、浏览器直接翻墙
+```
+https://jsproxy.ga/-----https://www.google.com/
+```
+
 参考文档：
 
 http://www.tfss.me/article/26
