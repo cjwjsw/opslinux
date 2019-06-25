@@ -212,5 +212,17 @@ systemctl restart mysqld.service
 systemctl enable mysqld.service
  ```
  
+# 五、Mysql忘记密码
+```
+#vim /etc/my.cnf
 
+skip-grant-tables
 
+use mysql;
+
+update user set authentication_string = password("123456") where user="root";
+
+flush privileges;
+
+systemctl restart mysqld
+```
