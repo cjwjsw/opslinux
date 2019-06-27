@@ -5,5 +5,11 @@
 以上这些文件是每个用户都必备的文件。
 此时可以使用以下命令从主默认文件/etc/skel/下重新拷贝一份配置信息到此用户家目录下
 
+```
 cp /etc/skel/.bashrc  /home/www/
 cp /etc/skel/.bash_profile   /home/www/
+```
+
+参考文档：
+
+https://blog.csdn.net/weixin_43279032/article/details/84531082
