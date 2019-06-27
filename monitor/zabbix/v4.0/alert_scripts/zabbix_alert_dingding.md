@@ -44,3 +44,7 @@ python dingding.py 1831313122 test "报警类容"
 pip install requests urllib3 pyOpenSSL --force --upgrade
 pip install --upgrade --force-reinstall 'requests==2.6.0'
 ```
+
+参考资料：
+
+https://www.cnblogs.com/kevingrace/p/9579282.html  分布式监控系统Zabbix3.4-钉钉告警配置记录 
