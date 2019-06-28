@@ -27,3 +27,8 @@ do
   fi
 done
 ```
+
+
+参考文档；
+
+https://blog.csdn.net/demonson/article/details/87936096   使用 mysqldump 备份数据库时避免锁表
